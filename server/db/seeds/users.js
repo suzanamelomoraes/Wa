@@ -1,13 +1,13 @@
-
-exports.seed = function(knex) {
+exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('users').del()
     .then(function () {
       // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
-};
+      return knex('users').insert([
+        { id: 1, name: 'Don', email: 'don@devacademy.com', mobile: 99999999, password: 'lacucaracha', balance: 3, address: '12 Morgan Street, Newmarket, 0600', latitude: 1234, longitude: 4321 },
+        { id: 2, name: 'Bryce', email: 'bryce@devacademy.com', mobile: 99999999, password: 'potatoes', balance: 3, address: '12 Morgan Street, Newmarket, 0600', latitude: 1234, longitude: 4321 },
+        { id: 3, name: 'Emily', email: 'emily@devacademy.com', mobile: 99999999, password: 'cool', balance: 3, address: '12 Morgan Street, Newmarket, 0600', latitude: 1234, longitude: 4321 },
+        { id: 1, name: 'Jess', email: 'jess@devacademy.com', mobile: 99999999, password: 'great', balance: 3, address: '12 Morgan Street, Newmarket, 0600', latitude: 1234, longitude: 4321 }
+      ])
+    })
+}
