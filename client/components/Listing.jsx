@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, Image } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 import MahiSummary from './MahiSummary'
 
 const mahiDetails = [{
     id: 1,
     name: 'Fix my headlight',
-    category: 'automotive',
+    category: 'Automotive',
     description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
     assigner: 'Andria',
     assignee: null,
@@ -17,7 +17,147 @@ const mahiDetails = [{
   {
     id: 2,
     name: 'Teach me to swim',
-    category: 'sports',
+    category: 'Sports',
+    description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
+    assigner: 'Andrea',
+    assignee: null,
+    status: 'open',
+    time: 6
+  },
+  {
+    id: 1,
+    name: 'Fix my headlight',
+    category: 'Automotive',
+    description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
+    assigner: 'Andria',
+    assignee: null,
+    status: 'open',
+    time: 3
+  },
+  {
+    id: 2,
+    name: 'Teach me to swim',
+    category: 'Sports',
+    description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
+    assigner: 'Andrea',
+    assignee: null,
+    status: 'open',
+    time: 6
+  },
+  {
+    id: 1,
+    name: 'Fix my headlight',
+    category: 'Automotive',
+    description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
+    assigner: 'Andria',
+    assignee: null,
+    status: 'open',
+    time: 3
+  },
+  {
+    id: 2,
+    name: 'Teach me to swim',
+    category: 'Sports',
+    description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
+    assigner: 'Andrea',
+    assignee: null,
+    status: 'open',
+    time: 6
+  },
+  {
+    id: 1,
+    name: 'Fix my headlight',
+    category: 'Automotive',
+    description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
+    assigner: 'Andria',
+    assignee: null,
+    status: 'open',
+    time: 3
+  },
+  {
+    id: 2,
+    name: 'Teach me to swim',
+    category: 'Sports',
+    description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
+    assigner: 'Andrea',
+    assignee: null,
+    status: 'open',
+    time: 6
+  },
+  {
+    id: 1,
+    name: 'Fix my headlight',
+    category: 'Automotive',
+    description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
+    assigner: 'Andria',
+    assignee: null,
+    status: 'open',
+    time: 3
+  },
+  {
+    id: 2,
+    name: 'Teach me to swim',
+    category: 'Sports',
+    description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
+    assigner: 'Andrea',
+    assignee: null,
+    status: 'open',
+    time: 6
+  },
+  {
+    id: 1,
+    name: 'Fix my headlight',
+    category: 'Automotive',
+    description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
+    assigner: 'Andria',
+    assignee: null,
+    status: 'open',
+    time: 3
+  },
+  {
+    id: 2,
+    name: 'Teach me to swim',
+    category: 'Sports',
+    description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
+    assigner: 'Andrea',
+    assignee: null,
+    status: 'open',
+    time: 6
+  },
+  {
+    id: 1,
+    name: 'Fix my headlight',
+    category: 'Automotive',
+    description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
+    assigner: 'Andria',
+    assignee: null,
+    status: 'open',
+    time: 3
+  },
+  {
+    id: 2,
+    name: 'Teach me to swim',
+    category: 'Sports',
+    description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
+    assigner: 'Andrea',
+    assignee: null,
+    status: 'open',
+    time: 6
+  },
+  {
+    id: 1,
+    name: 'Fix my headlight',
+    category: 'Automotive',
+    description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
+    assigner: 'Andria',
+    assignee: null,
+    status: 'open',
+    time: 3
+  },
+  {
+    id: 2,
+    name: 'Teach me to swim',
+    category: 'Sports',
     description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
     assigner: 'Andrea',
     assignee: null,
