@@ -1,137 +1,134 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card } from 'semantic-ui-react'
 
+import { Card } from 'semantic-ui-react'
 import MahiSummary from './MahiSummary'
 
-const mahiDetails = [{
+const mahiDetails = [{ //hard-coded data
     id: 1,
     name: 'Fix my headlight',
-    category: 'Automotive',
+    category_name: 'Automotive',
     description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
-    assigner: 'Andria',
-    assignee: null,
+    assigner_name: 'Andria',
+    assignee_name: null,
     status: 'open',
     time: 3
   },
   {
     id: 2,
     name: 'Teach me to swim',
-    category: 'Sports',
+    category_name: 'Sports',
     description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
-    assigner: 'Andrea',
-    assignee: null,
+    assigner_name: 'Andrea',
+    assignee_name: null,
     status: 'open',
     time: 6
   },
   {
     id: 3,
     name: 'Wanna learn Japanese',
-    category: 'Language',
+    category_name: 'Language',
     description: 'Even just basic phrases is okay!',
-    assigner: 'Andria',
-    assignee: null,
+    assigner_name: 'Andria',
+    assignee_name: null,
     status: 'open',
     time: 3
   },
   {
     id: 4,
     name: 'Teach me basketball',
-    category: 'Sports',
+    category_name: 'Sports',
     description: 'Wanna be the next Kobe beef',
-    assigner: 'Andrea',
-    assignee: null,
+    assigner_name: 'Andrea',
+    assignee_name: null,
     status: 'open',
     time: 6
   },
   {
     id: 5,
     name: 'Basic JS help',
-    category: 'Technical',
+    category_name: 'Technical',
     description: 'Need help with homework!',
-    assigner: 'Andria',
-    assignee: null,
+    assigner_name: 'Andria',
+    assignee_name: null,
     status: 'open',
     time: 3
   },
   {
     id: 6,
     name: 'Teach me volleyball',
-    category: 'Sports',
+    category_name: 'Sports',
     description: 'Need it to impress boyz',
-    assigner: 'Andrea',
-    assignee: null,
+    assigner_name: 'Andrea',
+    assignee_name: null,
     status: 'open',
     time: 6
   },
   {
     id: 7,
     name: 'Fix my computer',
-    category: 'Computer',
+    category_name: 'Computer',
     description: 'Laptop MacBook Air 2013 would not turn on',
-    assigner: 'Andria',
-    assignee: null,
+    assigner_name: 'Andria',
+    assignee_name: null,
     status: 'open',
     time: 3
   },
   {
     id: 8,
     name: 'Teach me billiards',
-    category: 'Sports',
+    category_name: 'Sports',
     description: 'Wanna hit balls',
-    assigner: 'Andrea',
-    assignee: null,
+    assigner_name: 'Andrea',
+    assignee_name: null,
     status: 'open',
     time: 4
   },
   {
     id: 9,
     name: 'Install dashcam',
-    category: 'Automotive',
+    category_name: 'Automotive',
     description: 'Already dashcam, just need installation',
-    assigner: 'Andria',
-    assignee: null,
+    assigner_name: 'Andria',
+    assignee_name: null,
     status: 'open',
     time: 2
   },
   {
     id: 10,
     name: 'Clean car',
-    category: 'Automotive',
+    category_name: 'Automotive',
     description: 'Muddy as hell, but only a sedan',
-    assigner: 'Andria',
-    assignee: null,
+    assigner_name: 'Andria',
+    assignee_name: null,
     status: 'open',
     time: 1
   },
   {
     id: 11,
     name: 'Teach me Te Reo Maori',
-    category: 'Language',
+    category_name: 'Language',
     description: 'So I can make this app',
-    assigner: 'Andria',
-    assignee: null,
+    assigner_name: 'Andria',
+    assignee_name: null,
     status: 'open',
     time: 3
   },
   {
     id: 12,
     name: 'Help clean my yard',
-    category: 'Housework',
+    category_name: 'Housework',
     description: 'Small yard but lots of leaves',
-    assigner: 'Andria',
-    assignee: null,
+    assigner_name: 'Andria',
+    assignee_name: null,
     status: 'open',
     time: 3
   }]
 
 class Listing extends Component {
-  state = {
-
-  }
 
   render () {
-    // const { mahiDetails } = this.props //change mahi name to whatever is being sent
+    // const { mahiDetails } = this.props
 
     return (
       <Card.Group centered>
@@ -142,4 +139,10 @@ class Listing extends Component {
   }
 }
 
-export default Listing
+const mapStateToProps = state => {
+  return {
+    mahiDetails: state.tasks //change name to whatever is in the store
+  }
+}
+
+export default connect(mapStateToProps)(Listing)
