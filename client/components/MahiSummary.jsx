@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Card, Image, Button, Icon } from 'semantic-ui-react'
 
-class MahiSummary extends Component {
+export class MahiSummary extends Component {
   state = {
     title: this.props.title,
     category: this.props.categoryName,
-    hours: this.props.hours,
+    hours: this.props.time,
     description: this.props.description,
-    assigner: this.props.assignee,
+    assigner: this.props.assignerName,
     image: this.props.image
   }
   render () {
