@@ -1,15 +1,15 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom'
 import Listing from './Listing'
 import Home from './Home'
 import Nav from './Nav'
 
 const App = () => (
-  <div>
+  <Router>
     <Route path='/' component={Nav}/>
     <Route exact path='/' component={Home}/>
     <Route exact path='/list' component={Listing}/>
-  </div>
+  </Router>
 )
 
 export default App
