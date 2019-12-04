@@ -32,7 +32,12 @@
     ]
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.3",
+    "pg": "^7.14.0",
+    "superagent": "^5.1.2",
+    "sqlite3": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -55,7 +60,7 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.1",
-    "superagent": "^5.1.0",
+    
     "supertest": "^4.0.2",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5"
