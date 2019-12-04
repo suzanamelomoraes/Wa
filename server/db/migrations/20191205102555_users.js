@@ -4,12 +4,12 @@ exports.up = (knex, Promise) => {
     table.increments('id')
     table.string('name')
     table.string('email')
-    table.number('mobile')
+    table.integer('mobile')
     table.string('password')
-    table.number('balance')
+    table.integer('balance')
     table.text('address')
-    table.number('latitude')
-    table.number('longitude')
+    table.integer('latitude')
+    table.integer('longitude')
   })
 }
 
