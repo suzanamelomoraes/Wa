@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Card } from 'semantic-ui-react'
+import MahiSummary from './MahiSummary'
 
 class Listing extends Component {
   state = {
@@ -7,7 +9,9 @@ class Listing extends Component {
 
   render () {
     return (
-      <h1>Listing</h1>
+      <Card.Group>
+        <MahiSummary />
+      </Card.Group>
     )
   }
 }
