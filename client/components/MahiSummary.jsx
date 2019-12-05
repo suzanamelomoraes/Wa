@@ -7,7 +7,7 @@ class MahiSummary extends Component {
     category: this.props.categoryName,
     hours: this.props.hours,
     description: this.props.description,
-    assigner: this.props.assignee,
+    assigner: this.props.assigner,
     image: this.props.image
   }
   render () {
