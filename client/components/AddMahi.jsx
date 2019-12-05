@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Modal, Form, Header, Button, Dropdown, Image, Container } from 'semantic-ui-react'
+import { Modal, Form, Header, Button, Dropdown, Image } from 'semantic-ui-react'
 
 export class AddMahi extends Component {
   state = {
@@ -16,6 +16,7 @@ export class AddMahi extends Component {
     this.setState({
       modalVisible: false
     })
+    console.log(this.state)
   }
 
   handleChange =(e) => {
@@ -46,7 +47,7 @@ export class AddMahi extends Component {
     }))
 
     return (
-      <Modal as={Form} onSubmit={this.handleSubmit} onChange={this.handleChange} open={modalVisible} size="tiny" trigger={<Button color='brown' onClick={this.viewModal}>Add Task</Button>}>
+      <Modal as={Form} onSubmit={this.handleSubmit} onChange={this.handleChange} open={modalVisible} size="tiny" trigger={<Button color='green' onClick={this.viewModal}>Add Task</Button>}>
 
         <Header as="h1" color='brown' verticalAlign='middle'>
           <Image
