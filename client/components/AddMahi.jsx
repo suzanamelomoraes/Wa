@@ -47,11 +47,19 @@ export class AddMahi extends Component {
     }))
 
     return (
-      <Modal as={Form} onSubmit={this.handleSubmit} onChange={this.handleChange} open={modalVisible} size="tiny" trigger={<Button color='green' onClick={this.viewModal}>Add Task</Button>}>
+      <Modal as={Form}
+        onSubmit={this.handleSubmit}
+        onChange={this.handleChange}
+        open={modalVisible} size="tiny"
+        trigger={<Button color='green'
+          id='addMahi'
+          onClick={this.viewModal}
+        >Add Mahi</Button>}>
 
-        <Header as="h1" color='brown' verticalAlign='middle'>
+        <Header as='h1' color='brown'
+          verticalalign='middle'>
           <Image
-            verticalAlign='center'
+            verticalAlign='middle'
             floated='right'
             size='small'
             circular
@@ -60,7 +68,13 @@ export class AddMahi extends Component {
         </Header>
 
         <Modal.Content>
-          <Form.Input label="Title" name="title" onChanage={this.handleChange} required type="text" placeholder="Name your Mahi" />
+          <Form.Input label='Title'
+            name='title'
+            id='mahiTitle'
+            onChange={this.handleChange}
+            required
+            type='text'
+            placeholder='Name your Mahi' />
         </Modal.Content>
         <Modal.Content>
           <Form.Field control={Dropdown}
@@ -68,7 +82,7 @@ export class AddMahi extends Component {
             name='category'
             fluid
             clearable
-            label="Category"
+            label='Category'
             selection
             required
             onChange={this.handleSelect}
@@ -76,13 +90,30 @@ export class AddMahi extends Component {
           />
         </Modal.Content>
         <Modal.Content>
-          <Form.Input label="Description" name="description" onChanage={this.handleChange} required type="text" placeholder="Describe your Mahi" />
+          <Form.TextArea label='Description'
+            name='description'
+            id='mahiDescription'
+            onChange={this.handleChange}
+            required
+            type='text'
+            placeholder='Describe your Mahi' />
         </Modal.Content>
         <Modal.Content>
-          <Form.Input label="Time in Hours" name="time" onChanage={this.handleChange} required type="number" placeholder="Add the time you need" />
+          <Form.Input label='Time in Hours'
+            name='time'
+            id='time'
+            onChange={this.handleChange}
+            required
+            type='number'
+            placeholder='Add the time you need' />
         </Modal.Content>
         <Modal.Actions>
-          <Button onSubmit={this.handleSubmit} type="submit" color="green" icon="time" content="Add Mahi" />
+          <Button onSubmit={this.handleSubmit}
+            id='submit'
+            type='submit'
+            color='green'
+            icon='time'
+            content='Add Mahi' />
         </Modal.Actions>
       </Modal>
     )
