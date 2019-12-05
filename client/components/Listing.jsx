@@ -125,7 +125,8 @@ const mahiDetails = [{ // hard-coded data
   time: 3
 }]
 
-class Listing extends Component {
+export class Listing extends Component {
+
   render () {
     // const { mahiDetails } = this.props
 
