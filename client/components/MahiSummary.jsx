@@ -2,14 +2,8 @@ import React, { Component } from 'react'
 import { Card, Image, Button, Icon } from 'semantic-ui-react'
 
 export class MahiSummary extends Component {
-  state = {
-    title: this.props.title,
-    category: this.props.categoryName,
-    hours: this.props.time,
-    description: this.props.description,
-    assigner: this.props.assignerName,
-    image: this.props.image
-  }
+  state = {}
+
   render () {
     const { title, category, hours, description, image, assigner } = this.props
     return (
@@ -20,10 +14,10 @@ export class MahiSummary extends Component {
             size='small'
             src={image}
             id='mahiImage'
-          />  
-          <Card.Header as='h1' className='mahiTitle'>{title}</Card.Header>
+          />
+          <Card.Header as='h1' id='mahiTitle'>{title}</Card.Header>
           <Card.Meta as='h3'id='mahiCategory'>Category <Icon name='columns' size='small'></Icon><br/><span>{category}</span></Card.Meta>
-          <Card.Meta as='h3'id='mahiHours'>Hours <Icon name='time' size='small'></Icon><br/><span>{hours} hours</span></Card.Meta>
+          <Card.Meta as='h3'>Hours <Icon name='time' size='small'></Icon><br/><span id='mahiHours'>{hours} hours</span></Card.Meta>
           <Card.Meta as='h3'id='mahiAssigner'>Needed by<br/><span>{assigner}</span></Card.Meta>
           <Card.Description id='mahiDescription'>
             {description}
