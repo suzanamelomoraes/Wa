@@ -6,123 +6,135 @@ import MahiSummary from './MahiSummary'
 
 const mahiDetails = [{ // hard-coded data
   id: 1,
-  name: 'Fix my headlight',
-  category_name: 'Automotive',
+  title: 'Fix my headlight',
+  category: 'Automotive',
   description: 'Toyota Civic 2013, left headlight is broken. Might be electrical connection?',
-  assigner_name: 'Andria',
-  assignee_name: null,
+  assigner: 'Andria',
+  assignee: null,
   status: 'open',
-  time: 3
+  hours: 3,
+  image: '/images/avatar01.png'
 },
 {
   id: 2,
-  name: 'Teach me to swim',
-  category_name: 'Sports',
+  title: 'Teach me to swim',
+  category: 'Sports',
   description: 'Adult, 23, cannot swim at all. Want to get to at least intermediate level',
-  assigner_name: 'Andrea',
-  assignee_name: null,
+  assigner: 'Andrea',
+  assignee: null,
   status: 'open',
-  time: 6
+  hours: 6,
+  image: '/images/avatar01.png'
 },
 {
   id: 3,
-  name: 'Wanna learn Japanese',
-  category_name: 'Language',
+  title: 'Wanna learn Japanese',
+  category: 'Language',
   description: 'Even just basic phrases is okay!',
-  assigner_name: 'Andria',
-  assignee_name: null,
+  assigner: 'Andria',
+  assignee: null,
   status: 'open',
-  time: 3
+  hours: 3,
+  image: '/images/avatar01.png'
 },
 {
   id: 4,
-  name: 'Teach me basketball',
-  category_name: 'Sports',
+  title: 'Teach me basketball',
+  category: 'Sports',
   description: 'Wanna be the next Kobe beef',
-  assigner_name: 'Andrea',
-  assignee_name: null,
+  assigner: 'Andrea',
+  assignee: null,
   status: 'open',
-  time: 6
+  hours: 6,
+  image: '/images/avatar01.png'
 },
 {
   id: 5,
-  name: 'Basic JS help',
-  category_name: 'Technical',
+  title: 'Basic JS help',
+  category: 'Technical',
   description: 'Need help with homework!',
-  assigner_name: 'Andria',
-  assignee_name: null,
+  assigner: 'Andria',
+  assignee: null,
   status: 'open',
-  time: 3
+  hours: 3,
+  image: '/images/avatar01.png'
 },
 {
   id: 6,
-  name: 'Teach me volleyball',
-  category_name: 'Sports',
+  title: 'Teach me volleyball',
+  category: 'Sports',
   description: 'Need it to impress boyz',
-  assigner_name: 'Andrea',
-  assignee_name: null,
+  assigner: 'Andrea',
+  assignee: null,
   status: 'open',
-  time: 6
+  hours: 6,
+  image: '/images/avatar01.png'
 },
 {
   id: 7,
-  name: 'Fix my computer',
-  category_name: 'Computer',
+  title: 'Fix my computer',
+  category: 'Computer',
   description: 'Laptop MacBook Air 2013 would not turn on',
-  assigner_name: 'Andria',
-  assignee_name: null,
+  assigner: 'Andria',
+  assignee: null,
   status: 'open',
-  time: 3
+  hours: 3,
+  image: '/images/avatar01.png'
 },
 {
   id: 8,
-  name: 'Teach me billiards',
-  category_name: 'Sports',
+  title: 'Teach me billiards',
+  category: 'Sports',
   description: 'Wanna hit balls',
-  assigner_name: 'Andrea',
-  assignee_name: null,
+  assigner: 'Andrea',
+  assignee: null,
   status: 'open',
-  time: 4
+  hours: 4,
+  image: '/images/avatar01.png'
 },
 {
   id: 9,
-  name: 'Install dashcam',
-  category_name: 'Automotive',
+  title: 'Install dashcam',
+  category: 'Automotive',
   description: 'Already dashcam, just need installation',
-  assigner_name: 'Andria',
-  assignee_name: null,
+  assigner: 'Andria',
+  assignee: null,
   status: 'open',
-  time: 2
+  hours: 2,
+  image: '/images/avatar01.png'
 },
 {
   id: 10,
-  name: 'Clean car',
-  category_name: 'Automotive',
+  title: 'Clean car',
+  category: 'Automotive',
   description: 'Muddy as hell, but only a sedan',
-  assigner_name: 'Andria',
-  assignee_name: null,
+  assigner: 'Andria',
+  assignee: null,
   status: 'open',
-  time: 1
+  hours: 1,
+  image: '/images/avatar01.png'
 },
 {
   id: 11,
-  name: 'Teach me Te Reo Maori',
-  category_name: 'Language',
+  title: 'Teach me Te Reo Maori',
+  category: 'Language',
   description: 'So I can make this app',
-  assigner_name: 'Andria',
-  assignee_name: null,
+  assigner: 'Andria',
+  assignee: null,
   status: 'open',
-  time: 3
+  hours: 3,
+  image: '/images/avatar01.png'
 },
 {
   id: 12,
-  name: 'Help clean my yard',
-  category_name: 'Housework',
+  title: 'Help clean my yard',
+  category: 'Housework',
   description: 'Small yard but lots of leaves',
-  assigner_name: 'Andria',
-  assignee_name: null,
+  assigner: 'Andria',
+  assignee: null,
   status: 'open',
-  time: 3
+  hours: 3,
+  image: '/images/avatar01.png'
 }]
 
 export class Listing extends Component {

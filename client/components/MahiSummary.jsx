@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Card, Image, Button, Icon } from 'semantic-ui-react'
+import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
+
+import SelectMahi from './SelectMahi'
 
 export class MahiSummary extends Component {
   state = {}
@@ -25,9 +27,9 @@ export class MahiSummary extends Component {
         </Card.Content>
         <Card.Content textAlign='center' extra>
           <div >
-            <Button basic color='green'>
-              View Detail
-            </Button>
+          <Modal trigger={<Button basic color='green'>View Detail</Button>}>
+            <SelectMahi details={this.props}/>
+          </Modal>
           </div>
         </Card.Content>
       </Card>
