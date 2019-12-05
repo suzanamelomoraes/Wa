@@ -12,7 +12,7 @@ const sendGenericErrorMessage = (res) => {
 
 router.get('/', (req, res) => {
   return db.getCategories()
-    .then(tasks => res.json(categories))
+    .then(categories => res.json(categories))
     .catch(() => sendGenericErrorMessage(res))
 })
 
