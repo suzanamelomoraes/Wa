@@ -125,12 +125,13 @@ const mahiDetails = [{ // hard-coded data
   time: 3
 }]
 
-class Listing extends Component {
+export class Listing extends Component {
+
   render () {
     // const { mahiDetails } = this.props
 
     return (
-      <Card.Group centered>
+      <Card.Group centered style={{ marginTop: 75 }}>
         {mahiDetails.map(mahi =>
           <MahiSummary key={mahi.id} {...mahi} />)}
       </Card.Group>
