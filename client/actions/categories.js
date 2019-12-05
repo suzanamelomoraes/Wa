@@ -17,7 +17,7 @@ export function getCategoriesSuccess (categories) {
   }
 }
 
-export function getGetCategories () {
+export function getCategories () {
   return dispatch => {
     dispatch(getCategoriesPending())
 
