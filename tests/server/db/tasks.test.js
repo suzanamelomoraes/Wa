@@ -21,5 +21,5 @@ describe('Taks database tests', () => {
         const actual = tasks.length
         expect(actual).toBe(expected)
       })
-    })
+  })
 })
