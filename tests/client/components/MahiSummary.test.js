@@ -1,11 +1,11 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import MahiSummary from '../../../client/components/MahiSummary'
+import { MahiSummary } from '../../../client/components/MahiSummary'
 
 describe('<MahiSummary /> component tests', () => {
   it('renders props', () => {
-    const expectedProps ={
+    const expectedProps = {
       title: 'I need to learn French',
       category: 'Language',
       hours: 6,
@@ -13,7 +13,9 @@ describe('<MahiSummary /> component tests', () => {
       assigner: 'Te Piha Niha',
       image: '/images/avatar01.png'
     }
-    const component = mount(<MahiSummary match={{ params:expectedProps }} />)
-    expect(component.find('#title').text()).toMatch(expectedProps.title)
+
+    const component = mount(<MahiSummary match={{ params: expectedProps }} />)
+
+    expect(component.find('.mahiTitle').text()).toMatch(expectedProps.title)
   })
 })
