@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 import App from '../../../client/components/App'
 import Nav from '../../../client/components/Nav'
 import Home from '../../../client/components/Home'
-import Listing from '../../../client/components/Listing'
+import { Listing } from '../../../client/components/Listing'
 
 describe('<App /> component tests', () => {
   it('contains <Nav /> (mount)', () => {
