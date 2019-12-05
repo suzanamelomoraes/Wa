@@ -131,7 +131,7 @@ class Listing extends Component {
     // const { mahiDetails } = this.props
 
     return (
-      <Card.Group centered>
+      <Card.Group centered style={{ marginTop: 75 }}>
         {mahiDetails.map(mahi =>
           <MahiSummary key={mahi.id} {...mahi} />)}
       </Card.Group>

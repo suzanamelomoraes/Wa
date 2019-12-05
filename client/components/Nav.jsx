@@ -12,7 +12,7 @@ const NavBar = (props) => {
             <Header data-test="header" as='h1' inverted style={{ fontSize: '2.5rem' }}>Wā</Header>
           </Menu.Item>
           <Menu.Item as={Link} to='/'>Home</Menu.Item>
-          <Menu.Item as={Link} to='/new'>Mahi</Menu.Item>
+          <Menu.Item as={Link} to='/list'>Mahi</Menu.Item>
           <Menu.Item position='right'>
           </Menu.Item>
         </Container>
