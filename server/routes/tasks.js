@@ -16,4 +16,5 @@ router.get('/', (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
+
 module.exports = router
