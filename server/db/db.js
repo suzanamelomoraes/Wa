@@ -1,5 +1,9 @@
 const connection = require('./connection')
 
+function getCategories (db = connection) {
+  return db('categories')
+}
+
 function getTasks (db = connection) {
   return db('tasks')
     .join('categories', 'tasks.cat_id', 'categories.id')
@@ -8,5 +12,6 @@ function getTasks (db = connection) {
 }
 
 module.exports = {
-  getTasks
+  getTasks,
+  getCategories
 }
