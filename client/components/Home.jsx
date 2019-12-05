@@ -1,44 +1,54 @@
 import React from 'react'
-import { Container, Header } from 'semantic-ui-react'
+import { Container, Header, Divider, Image } from 'semantic-ui-react'
 
-const inlineText = <h1 style={{
-  textAlign: 'center',
-  fontSize: '75px',
-  verticalAlign: 'middle',
-  margin: '50%',
-  width: }}>
+const inlineText = <div>
+  <Header as='h1' textAlign='center'>
+    <Header.Content>
+    Nou te rourou <br/>
     Naku te rourou <br/>
-      Nau te rourou <br/>
-      ka ora ai te iwi
-</h1>
+    kia ora ai te iwi
+    </Header.Content>
+  </Header>
+  <Divider inverted />
+  <Header as='h1' textAlign='center'>
+    <Header.Content>
+      With your food basket  <br/>
+      and my food basket <br/>
+      the people will thrive
+    </Header.Content>
+  </Header>
+</div>
 
 const Home = () => (
-  // image
   <>
-<Container
-  style={{ width: '100%', marginTop: 75 }}
->
-  <Header
-    as='h1'
-    inverted
-    style={{
-      poistion: 'absolute',
-      width: '100%',
-      height: 720,
-      margin: 0,
-      padding: 0,
-      opacity: 0.5,
-      backgroundImage: `url(${'images/placeholder.jpg'})`,
-      backgroundSize: 'cover',
-      fontWeight: 'normal',
-      marginBottom: 0,
-      verticalAlign: 'middle'
+  <Container
+    style={{ width: '100%',
+      marginTop: 75
     }}
   >
-    {inlineText}
-  </Header>
-</Container>
+    <Image
+      style={{
+        poistion: 'absolute',
+        width: '100%',
+        height: 720,
+        margin: 0,
+        padding: 0,
+        opacity: 0.5,
+        backgroundImage: `url(${'images/placeholder.jpg'})`,
+        backgroundSize: 'cover',
+        fontWeight: 'normal',
+        marginBottom: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+    >
+      {inlineText}
+    </Image>
+  </Container>
+
   </>
+
 )
 
 export default Home
