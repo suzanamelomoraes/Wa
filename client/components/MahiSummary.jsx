@@ -27,9 +27,9 @@ export class MahiSummary extends Component {
         </Card.Content>
         <Card.Content textAlign='center' extra>
           <div >
-          <Modal trigger={<Button basic color='green'>View Detail</Button>}>
-            <SelectMahi details={this.props}/>
-          </Modal>
+            <Modal trigger={<Button basic color='green'>View Detail</Button>}>
+              <SelectMahi details={this.props}/>
+            </Modal>
           </div>
         </Card.Content>
       </Card>
