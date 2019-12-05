@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <Home /> component (Shallow) render unchanged from previous snapshot 1`] = `
+<Home>
+  <Container
+    style={
+      Object {
+        "marginTop": 75,
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="ui container"
+      style={
+        Object {
+          "marginTop": 75,
+          "width": "100%",
+        }
+      }
+    >
+      <Image
+        as="img"
+        bordered={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundImage": "url(images/placeholder.jpg)",
+            "backgroundSize": "cover",
+            "display": "flex",
+            "fontWeight": "normal",
+            "height": 720,
+            "justifyContent": "center",
+            "margin": 0,
+            "marginBottom": 0,
+            "opacity": 0.5,
+            "padding": 0,
+            "poistion": "absolute",
+            "width": "100%",
+          }
+        }
+        ui={true}
+      >
+        <div
+          className="ui bordered image"
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundImage": "url(images/placeholder.jpg)",
+              "backgroundSize": "cover",
+              "display": "flex",
+              "fontWeight": "normal",
+              "height": 720,
+              "justifyContent": "center",
+              "margin": 0,
+              "marginBottom": 0,
+              "opacity": 0.5,
+              "padding": 0,
+              "poistion": "absolute",
+              "width": "100%",
+            }
+          }
+        >
+          <div>
+            <Header
+              as="h1"
+              textAlign="center"
+            >
+              <h1
+                className="ui center aligned header"
+              >
+                <HeaderContent>
+                  <div
+                    className="content"
+                  >
+                    Nou te rourou 
+                    <br />
+                    Naku te rourou 
+                    <br />
+                    kia ora ai te iwi
+                  </div>
+                </HeaderContent>
+              </h1>
+            </Header>
+            <Divider
+              inverted={true}
+            >
+              <div
+                className="ui inverted divider"
+              />
+            </Divider>
+            <Header
+              as="h1"
+              textAlign="center"
+            >
+              <h1
+                className="ui center aligned header"
+              >
+                <HeaderContent>
+                  <div
+                    className="content"
+                  >
+                    With your food basket  
+                    <br />
+                    and my food basket 
+                    <br />
+                    the people will thrive
+                  </div>
+                </HeaderContent>
+              </h1>
+            </Header>
+          </div>
+        </div>
+      </Image>
+    </div>
+  </Container>
+  <Header
+    size="huge"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexWrap": "wrap",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <div
+      className="ui huge header"
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexWrap": "wrap",
+          "justifyContent": "center",
+        }
+      }
+    >
+       What to do? 
+    </div>
+  </Header>
+  <Grid
+    colums="equal"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexWrap": "wrap",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <div
+      className="ui grid"
+      colums="equal"
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexWrap": "wrap",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <GridColumn
+        computer={4}
+        mobile={12}
+        tablet={8}
+      >
+        <div
+          className="four wide computer twelve wide mobile eight wide tablet column"
+        >
+          <Header
+            as="h3"
+            attached="top"
+          >
+            <h3
+              className="ui top attached header"
+            >
+              This is the top
+            </h3>
+          </Header>
+          <Segment
+            attached={true}
+          >
+            <div
+              className="ui attached segment"
+            >
+              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+          </Segment>
+        </div>
+      </GridColumn>
+      <GridColumn
+        computer={4}
+        mobile={12}
+        tablet={8}
+      >
+        <div
+          className="four wide computer twelve wide mobile eight wide tablet column"
+        >
+          <Header
+            as="h3"
+            attached="top"
+          >
+            <h3
+              className="ui top attached header"
+            >
+              This is the top
+            </h3>
+          </Header>
+          <Segment
+            attached={true}
+          >
+            <div
+              className="ui attached segment"
+            >
+              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+          </Segment>
+        </div>
+      </GridColumn>
+      <GridColumn
+        computer={4}
+        mobile={12}
+        tablet={8}
+      >
+        <div
+          className="four wide computer twelve wide mobile eight wide tablet column"
+        >
+          <Header
+            as="h3"
+            attached="top"
+          >
+            <h3
+              className="ui top attached header"
+            >
+              This is the top
+            </h3>
+          </Header>
+          <Segment
+            attached={true}
+          >
+            <div
+              className="ui attached segment"
+            >
+              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+          </Segment>
+        </div>
+      </GridColumn>
+    </div>
+  </Grid>
+</Home>
+`;
