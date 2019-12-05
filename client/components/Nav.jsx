@@ -1,9 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Container, Header, Menu } from 'semantic-ui-react'
 
-const Nav = () => (
-  <div>
-    <h1>This is NavBar </h1>
-  </div>
-)
+const NavBar = (props) => {
+  return (
+    <>
+      <Menu borderless fixed='top' inverted style = {{ backgroundColor: '#3c1518' }}>
+        <Container>
+          <Menu.Item as={Link} to='/' header>
+            <Header data-test="header" as='h1' inverted style={{ fontSize: '2.5rem' }}>Wā</Header>
+          </Menu.Item>
+          <Menu.Item as={Link} to='/'>Home</Menu.Item>
+          <Menu.Item as={Link} to='/new'>Mahi</Menu.Item>
+          <Menu.Item position='right'>
+          </Menu.Item>
+        </Container>
+      </Menu>
+    </>
+  )
+}
 
-export default Nav
+export default NavBar
