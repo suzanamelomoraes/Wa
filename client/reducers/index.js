@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 
-export default combineReducers({
+import error from './error'
 
+export default combineReducers({
+  error
 })
