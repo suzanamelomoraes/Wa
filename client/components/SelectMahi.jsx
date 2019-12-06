@@ -9,10 +9,10 @@ const userID = 2 //delete after getting connected to Authenticare
 class SelectMahi extends Component {
 
   handleClick = () => {
-    const { id } = this.props.details
+    const { taskId } = this.props.details
     const { closeModal } = this.props
 
-    selectTask(id, userID)
+    selectTask(taskId, userID)
     closeModal()
   }
 

@@ -1,6 +1,8 @@
 import request from 'superagent'
 
-const apiURL = 'http://localhost:3000'
+const apiURL = 'http://localhost:3000/api/v1/tasks'
+
+const err = 'An unexpected error has occurred and we are looking into it'
 
 export function getTasks () {
   return request.get(apiURL)
@@ -10,6 +12,21 @@ export function getTasks () {
 
 export function completeTask (id) {
   return request.put(apiURL + `/${id}`)
+    .then(res => res.body)
+    .catch(err => { throw new Error(err.message) })
+}
+
+export function addMahi (mahi) {
+  return request.post(apiURL)
+    .send(mahi)
+    .then(res => res.body)
+    .catch(() => { throw new Error(err) })
+}
+
+export function selectTask (id, assignee) {
+  return request
+    .put(apiURL)
+    .send({id, assignee})
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
