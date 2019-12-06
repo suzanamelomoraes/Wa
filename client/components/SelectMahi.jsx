@@ -10,9 +10,10 @@ class SelectMahi extends Component {
 
   handleClick = () => {
     const { id } = this.props.details
+    const { closeModal } = this.props
 
     selectTask(id, userID)
-    console.log(id)
+    closeModal()
   }
 
   render () {

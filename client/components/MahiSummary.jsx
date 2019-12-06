@@ -4,10 +4,20 @@ import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
 import SelectMahi from './SelectMahi'
 
 export class MahiSummary extends Component {
-  state = {}
+  state = {
+    modalVisible: false
+  }
+
+  toggleModalView = () => {
+    this.setState({
+      modalVisible: !this.state.modalVisible
+    })
+  }
 
   render () {
     const { title, category, hours, description, image, assigner } = this.props
+    const { modalVisible } = this.state
+
     return (
       <Card >
         <Card.Content>
@@ -27,8 +37,10 @@ export class MahiSummary extends Component {
         </Card.Content>
         <Card.Content textAlign='center' extra>
           <div >
-            <Modal trigger={<Button basic color='green'>View Detail</Button>}>
-              <SelectMahi details={this.props}/>
+            <Modal 
+              trigger={<Button basic color='green' onClick={this.toggleModalView}>View Detail</Button>}
+              open={modalVisible}>
+              <SelectMahi details={this.props} closeModal={this.toggleModalView}/>
             </Modal>
           </div>
         </Card.Content>
