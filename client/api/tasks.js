@@ -10,6 +10,12 @@ export function getTasks () {
     .catch(err => { throw new Error(err.message) })
 }
 
+export function completeTask (id) {
+  return request.post(apiURL + `/${id}`)
+    .then(res => res.body)
+    .catch(err => { throw new Error(err.message) })
+}
+
 export function addMahi (mahi) {
   return request.post(apiURL)
     .send(mahi)

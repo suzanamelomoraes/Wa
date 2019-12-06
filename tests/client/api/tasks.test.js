@@ -1,7 +1,6 @@
 const nock = require('nock')
-const { getTasks, addMahi } = require('../../../client/api/tasks')
-
-const apiUrl = 'http://localhost:3000/api/v1'
+const apiURL = 'http://localhost:3000/api/v1'
+const { getTasks, completeTask, addMahi } = require('../../../client/api/tasks')
 
 test('Testing for true is truthy', () => {
   expect(true).toBeTruthy()
@@ -11,14 +10,34 @@ describe('Testing tasks api', () => {
   it('getTasks function returns expected array', () => {
     // Arrange
     const expected = [{ name: 'bob' }, { name: 'jones' }]
-    nock(apiUrl)
+    nock(apiURL)
       .get('/tasks')
-      .reply(200, [{ name: 'bob' }, { name: 'jones' }])
+      .reply(200, expected)
 
     // Act & Assert
     return getTasks()
       .then((data) => {
         expect(data).toEqual(expected)
+      })
+      .catch((err) => {
+        expect(err).toBeNull()
+      })
+  })
+})
+
+describe('Test for completeTask function', () => {
+  it('completeTask ', () => {
+    // Arrange
+    const expected = true
+    const id = 5
+    nock(apiURL)
+      .post(`/tasks/${id}`)
+      .reply(200, expected)
+
+    // Act & Assert
+    return completeTask(id)
+      .then((response) => {
+        expect(response).toBe(expected)
       })
       .catch((err) => {
         expect(err).toBeNull()
@@ -45,7 +64,7 @@ describe('Tests for addMahi function', () => {
       description: 'I am moving down the street, please help me pack and label the contents of my home'
     }
 
-    nock(apiUrl)
+    nock(apiURL)
       .post('/tasks', mahi)
       .reply(200, expected)
 
@@ -65,7 +84,7 @@ describe('Tests for addMahi function', () => {
       description: 'I am moving down the street, please help me pack and label the contents of my home'
     }
 
-    nock(apiUrl)
+    nock(apiURL)
       .post('/tasks', mahi)
       .reply(500, err)
 
