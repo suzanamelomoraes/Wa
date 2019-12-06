@@ -10,16 +10,17 @@ beforeEach(() => {
 
 afterEach(() => env.cleanup(testDb))
 
-describe('Taks database tests', () => {
-  it('selectTask returns status 200', () => {
-    expect.assertions(1)
+describe('Tasks database tests', () => {
+  it('selectTask returns the changed object', () => {
+    expect.assertions(2)
 
-    const expected = 3
+    const id = 1
+    const assignee = 2
 
-    return db.getTasks(testDb)
-      .then(tasks => {
-        const actual = tasks.length
-        expect(actual).toBe(expected)
+    return db.selectTask(id, assignee, testDb)
+      .then(task => {
+        expect(task.assignee).toEqual(2)
+        expect(task.status).toMatch('in progress')
       })
   })
 })
