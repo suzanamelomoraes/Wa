@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import { Modal, Form, Header, Button, Dropdown, Image } from 'semantic-ui-react'
 
@@ -120,4 +121,10 @@ export class AddMahi extends Component {
   }
 }
 
-export default AddMahi
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories
+  }
+}
+
+export default connect(mapStateToProps)(AddMahi)
