@@ -37,20 +37,16 @@ describe('<CompleteMahi /> component test', () => {
   it("When popup's buttons are clicked state.showModal becomes false", () => {
     // Arrange
     const component = mount(<CompleteMahi/>)
-    const firstButton = component.find('button#one')
-    console.log('firstButton')
-    console.log(firstButton)
+    const firstButton = component.find('button[data-test="firstBtn"]')
 
     // Act
     firstButton.simulate('click')
-    console.log(1, component.instance().state.showModal)
     const state1 = component.instance().state.showModal
-    const modalButtons = component.find('button#bobbyjones')
-    // console.log(modalButtons)
+    const modalButtons = component.find('button[data-test="secondBtn"]')
     modalButtons.simulate('click')
 
     const state2 = component.instance().state.showModal
-    console.log(2, component.instance().state.showModal)
+
     // Assert
     expect(state1).toBe(true)
     expect(state2).toBe(false)
