@@ -3,7 +3,7 @@ exports.seed = function (knex) {
     .then(function () {
       return knex('categories').insert([
         { id: 1, name: 'Automotive' },
-        { id: 2, name: 'Animails and Pets' },
+        { id: 2, name: 'Animals and Pets' },
         { id: 3, name: 'Building and construction' },
         { id: 4, name: 'Babysitters and nannies services' },
         { id: 5, name: 'Beauty services' },
