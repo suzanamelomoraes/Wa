@@ -9,6 +9,7 @@ exports.up = (knex, Promise) => {
     table.text('address')
     table.integer('latitude')
     table.integer('longitude')
+    table.string('image')
   })
 }
 
