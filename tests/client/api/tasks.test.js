@@ -31,7 +31,7 @@ describe('Test for completeTask function', () => {
     const expected = true
     const id = 5
     nock(apiURL)
-      .post(`/api/v1/tasks/${id}`)
+      .put(`/api/v1/tasks/${id}`)
       .reply(200, expected)
 
     // Act & Assert
