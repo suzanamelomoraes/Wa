@@ -15,7 +15,7 @@ function selectTask ({ id, assignee }, db = connection) {
   return db('tasks')
     .where('tasks.id', id)
     .update({
-      assignee,
+      assignee: assignee,
       status: 'in progress'
     })
 }

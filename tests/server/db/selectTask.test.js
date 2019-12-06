@@ -11,7 +11,7 @@ beforeEach(() => {
 afterEach(() => env.cleanup(testDb))
 
 describe('Taks database tests', () => {
-  it('getTasks returns an array of 3 tasks', () => {
+  it('selectTask returns status 200', () => {
     expect.assertions(1)
 
     const expected = 3
