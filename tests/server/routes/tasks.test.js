@@ -6,6 +6,9 @@ const mockTasks = [
   { id: 1, category: 'Automotive', categoryId: 1, assignerId: 3, title: 'car wash', description: 'Available for a complete car wash, inside and outside', status: 'open', assignerName: 'Don', hours: 2, image: 'image' }
 ]
 
+const mockTask =
+  { id: 1, category: 'Automotive', categoryId: 1, assignerId: 3, title: 'car wash', description: 'Available for a complete car wash, inside and outside', status: 'open', assignerName: 'Don', hours: 2, image: 'image' }
+
 const mockCategories = [
   { id: 1, name: 'Automotive' },
   { id: 2, name: 'Animails and Pets' },
