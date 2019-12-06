@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Container, Header, Menu } from 'semantic-ui-react'
 
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+
 const NavBar = (props) => {
   return (
     <>
@@ -13,7 +15,9 @@ const NavBar = (props) => {
           </Menu.Item>
           <Menu.Item as={Link} to='/'>Home</Menu.Item>
           <Menu.Item as={Link} to='/list'>Mahi</Menu.Item>
-          <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
+          <IfAuthenticated>
+            <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
+          </IfAuthenticated>
           <Menu.Item position='right'>
           </Menu.Item>
         </Container>
