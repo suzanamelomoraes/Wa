@@ -34,7 +34,6 @@ router.post('/newTask/:id', (req, res) => {
 
 router.put('/', (req, res) => {
   const { id, assignee } = req.body
-  console.log(req.body)
 
   db.selectTask(id, assignee)
     .then(task => res.json(task))
