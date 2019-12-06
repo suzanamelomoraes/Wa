@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { addMahi } from '../api/tasks'
+
 import { Modal, Form, Header, Button, Dropdown, Image } from 'semantic-ui-react'
 
 export class AddMahi extends Component {
@@ -17,7 +19,14 @@ export class AddMahi extends Component {
     this.setState({
       modalVisible: false
     })
-    console.log(this.state)
+    const { assigner, title, category, time, description } = this.state
+    addMahi({
+      assigner,
+      title,
+      category,
+      time,
+      description
+    })
   }
 
   handleChange =(e) => {
