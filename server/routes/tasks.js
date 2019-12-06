@@ -32,4 +32,12 @@ router.post('/newTask/:id', (req, res) => {
   }
 })
 
+router.put('/select', (req, res) => {
+  const { id, assignee } = req.body
+
+  db.selectTask(id, assignee)
+    .then(task => res.json(task))
+    .catch(() => sendGenericErrorMessage(res))
+})
+
 module.exports = router

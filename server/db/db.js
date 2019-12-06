@@ -11,6 +11,23 @@ function getTasks (db = connection) {
     .select('tasks.cat_id as categoryId', 'tasks.assigner as assignerId', 'tasks.name as title', 'categories.name as category', 'tasks.description as description', 'status', 'tasks.time as hours', 'users.image as image', 'users.name as assignerName')
 }
 
+function selectTask (id, assignee, db = connection) {
+  return db('tasks')
+    .where('id', id)
+    .update({
+      assignee: assignee,
+      status: 'in progress'
+    })
+    .then(() => getTask(id, db))
+}
+
+function getTask (id, db = connection) {
+  return db('tasks')
+    .where('id', id)
+    .select('id', 'cat_id as categoryId', 'assigner as assignerId', 'name as title', 'description', 'status', 'time as hours', 'assignee as assignee')
+    .first()
+}
+
 function addTask (categoryId, { assignerId, title, description, status, hours }, db = connection) {
   return db('tasks').insert({
     cat_id: categoryId,
@@ -26,5 +43,7 @@ function addTask (categoryId, { assignerId, title, description, status, hours },
 module.exports = {
   getTasks,
   getCategories,
-  addTask
+  selectTask,
+  addTask,
+  getTask
 }
