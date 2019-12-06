@@ -3,7 +3,7 @@ const request = require('supertest')
 const server = require('../../../server/server')
 
 const mockTasks = [
-  { id: 1, title: 'walk with dogs', category: 'Animails and Pets', hours: 1, description: 'walk with dogs', assigner: 'Emily', image: 'avatar01' }
+  { id: 1, category: 'Automotive', categoryId: 1, assignerId: 3, title: 'car wash', description: 'Available for a complete car wash, inside and outside', status: 'open', assignerName: 'Don', hours: 2, image: 'image' }
 ]
 
 const mockCategories = [
@@ -27,6 +27,7 @@ const mockCategories = [
 
 jest.mock('../../../server/db/db', () => ({
   getTasks: () => Promise.resolve(mockTasks),
+  addTask: () => Promise.resolve(mockTasks),
   getCategories: () => Promise.resolve(mockCategories)
 }))
 
@@ -50,12 +51,26 @@ describe('Gets all categories', () => {
   })
 })
 
-describe('Gets all categories', () => {
-  it('GET /categories', () => {
+describe('Add new task', () => {
+  it('POST /tasks/newTask/:id', () => {
+    const newTask = {
+      id: mockTasks.id,
+      category: mockTasks.category,
+      categoryId: mockTasks.categoryId,
+      assignerId: mockTasks.assignerId,
+      title: mockTasks.title,
+      description: mockTasks.description,
+      status: mockTasks.status,
+      assignerName: mockTasks.assignerName,
+      hours: mockTasks.hours,
+      image: mockTasks.image
+    }
+
     return request(server)
-      .get('/api/v1/categories')
+      .post('/api/v1/tasks/newTask/1')
+      .send(newTask)
       .then((res) => {
-        expect(res.body).toEqual(mockCategories)
+        expect(res.body).toEqual(mockTasks)
       })
   })
 })

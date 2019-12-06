@@ -20,6 +20,7 @@ function addTask (categoryId, { assignerId, title, description, status, hours },
     status,
     time: hours
   })
+    .then(() => getTasks(db))
 }
 
 module.exports = {
