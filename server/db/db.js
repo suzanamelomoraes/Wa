@@ -11,15 +11,14 @@ function getTasks (db = connection) {
     .select('tasks.cat_id as categoryId', 'tasks.assigner as assignerId', 'tasks.name as title', 'categories.name as category', 'tasks.description as description', 'status', 'tasks.time as hours', 'users.image as image', 'users.name as assignerName')
 }
 
-function addTask ({ categoryId, assignerId, title, description, status, hours, image }, db = connection) {
+function addTask (categoryId, { assignerId, title, description, status, hours }, db = connection) {
   return db('tasks').insert({
     cat_id: categoryId,
     assigner: assignerId,
     name: title,
     description,
     status,
-    time: hours,
-    image
+    time: hours
   })
 }
 
