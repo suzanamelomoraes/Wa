@@ -10,10 +10,10 @@ class Listing extends Component {
     mahiDetails: []
   }
 
-  componentDidMount() {
+  componentDidMount () {
     getTasks()
       .then(mahiDetails => {
-        this.setState({mahiDetails})
+        this.setState({ mahiDetails })
       })
   }
 
