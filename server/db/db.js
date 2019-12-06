@@ -8,15 +8,15 @@ function getTasks (db = connection) {
   return db('tasks')
     .join('categories', 'tasks.cat_id', 'categories.id')
     .join('users', 'tasks.assigner', 'users.id')
-    .select('tasks.id as id','tasks.name as title', 'categories.name as category', 'tasks.time as hours', 'tasks.description as description', 'users.name as assigner')
+    .select('tasks.id as id', 'tasks.name as title', 'categories.name as category', 'tasks.time as hours', 'tasks.description as description', 'users.name as assigner')
 }
 
-function selectTask ({ id, assignee, status }, db = connection) {
+function selectTask ({ id, assignee }, db = connection) {
   return db('tasks')
-    .where('task.id', id)
+    .where('tasks.id', id)
     .update({
       assignee,
-      status
+      status: 'in progress'
     })
 }
 

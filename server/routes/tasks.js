@@ -16,11 +16,11 @@ router.get('/', (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.put('/selectTask', (req, res) => {
-  const { id, assignee, status } = req.body
+router.put('/', (req, res) => {
+  const { id, assignee } = req.body
 
-  db.selectTask({ id, assignee, status })
-    .then(tasks => res.json(tasks))
+  db.selectTask({ id, assignee })
+    .then(res.sendStatus(200))
     .catch(() => sendGenericErrorMessage(res))
 })
 
