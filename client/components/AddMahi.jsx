@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { addMahi } from '../api/tasks'
 
 import { Modal, Form, Header, Button, Dropdown, Image } from 'semantic-ui-react'
 
@@ -16,7 +19,14 @@ export class AddMahi extends Component {
     this.setState({
       modalVisible: false
     })
-    console.log(this.state)
+    const { assigner, title, category, time, description } = this.state
+    addMahi({
+      assigner,
+      title,
+      category,
+      time,
+      description
+    })
   }
 
   handleChange =(e) => {
@@ -32,15 +42,20 @@ export class AddMahi extends Component {
   }
 
   handleSelect = (e, data) => {
+    const { categories } = this.props
     const selectedCategory = data.value
+    const category = categories.find(category =>
+      category.name === selectedCategory
+    )
     this.setState({
-      category: selectedCategory
+      category: category.id
     })
   }
 
   render () {
     const { modalVisible } = this.state
-    const options = this.props.categories.map(category => ({
+    const { categories } = this.props
+    const options = categories.map(category => ({
       key: category.key,
       value: category.categoryName,
       text: category.categoryName
@@ -120,4 +135,10 @@ export class AddMahi extends Component {
   }
 }
 
-export default AddMahi
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories
+  }
+}
+
+export default connect(mapStateToProps)(AddMahi)
