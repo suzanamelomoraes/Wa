@@ -21,7 +21,7 @@ function selectTask (id, assignee, db = connection) {
     .then(() => getTask(id, db))
 }
 
-function completeTask (id, assignee, db = connection) {
+function completeTask (id,db = connection) {
   return db('tasks')
     .where('id', id)
     .update({
