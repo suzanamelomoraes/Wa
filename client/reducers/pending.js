@@ -15,6 +15,6 @@ export default function (pending = false, action) {
     case SET_ERROR:
       return false
     default:
-      return false
+      return pending
   }
 }
