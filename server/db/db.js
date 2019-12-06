@@ -11,7 +11,17 @@ function getTasks (db = connection) {
     .select('tasks.name as title', 'categories.name as category', 'tasks.time as hours', 'tasks.description as description', 'users.name as assigner', 'image')
 }
 
+function selectTask ({ id, assignee, status }, db = connection) {
+  return db('tasks')
+    .where('task.id', id)
+    .update({
+      assignee,
+      status
+    })
+}
+
 module.exports = {
   getTasks,
-  getCategories
+  getCategories,
+  selectTask
 }

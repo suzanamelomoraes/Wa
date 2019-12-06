@@ -16,4 +16,12 @@ router.get('/', (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
+router.put('/selectTask', (req, res) => {
+  const { id, assignee, status } = req.body
+
+  db.selectTask({ id, assignee, status })
+    .then(tasks => res.json(tasks))
+    .catch(() => sendGenericErrorMessage(res))
+})
+
 module.exports = router
