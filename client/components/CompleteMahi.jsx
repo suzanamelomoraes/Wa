@@ -18,7 +18,8 @@ render () {
   return (
 
     <div data-title="testingtestingtesting" style={{ margin: '5rem' }}>
-      <Modal open={this.state.showModal} trigger={<Button onClick={() => this.setState({ showModal: true })}>Completed</Button>} centered={true}>
+      <Modal open={this.state.showModal} trigger={<Button
+        id="one" data-test="one" onClick={() => this.setState({ showModal: true })}>Completed</Button>} centered={true}>
         <Modal.Header style={{ fontSize: '2rem' }}>Confirm</Modal.Header>
         <Modal.Content image>
           {/* <Image wrapped size='medium' src='/images/avatar01.png' /> */}
@@ -39,6 +40,7 @@ Are you sure your task is completed?
             content="No, I am not"
             size="large"
             onClick={(evt) => this.handleCreateButton(evt)}
+            id="bobbyjones"
           />
           <Button
             positive
