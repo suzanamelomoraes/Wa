@@ -1,5 +1,5 @@
 const nock = require('nock')
-const apiURL = 'http://localhost:3000/api/v1'
+const apiURL = 'http://localhost:3000'
 const { getTasks, completeTask, addMahi } = require('../../../client/api/tasks')
 
 test('Testing for true is truthy', () => {
@@ -11,7 +11,7 @@ describe('Testing tasks api', () => {
     // Arrange
     const expected = [{ name: 'bob' }, { name: 'jones' }]
     nock(apiURL)
-      .get('/tasks')
+      .get('/api/v1/tasks')
       .reply(200, expected)
 
     // Act & Assert
@@ -31,7 +31,7 @@ describe('Test for completeTask function', () => {
     const expected = true
     const id = 5
     nock(apiURL)
-      .post(`/tasks/${id}`)
+      .put(`/api/v1/tasks/${id}`)
       .reply(200, expected)
 
     // Act & Assert
@@ -65,7 +65,7 @@ describe('Tests for addMahi function', () => {
     }
 
     nock(apiURL)
-      .post('/tasks', mahi)
+      .post('/api/v1/tasks', mahi)
       .reply(200, expected)
 
     return addMahi(mahi)
@@ -85,7 +85,7 @@ describe('Tests for addMahi function', () => {
     }
 
     nock(apiURL)
-      .post('/tasks', mahi)
+      .post('/api/v1/tasks', mahi)
       .reply(500, err)
 
     return expect(addMahi(mahi)).rejects.toThrow(err)

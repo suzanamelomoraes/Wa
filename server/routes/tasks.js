@@ -12,7 +12,31 @@ const sendGenericErrorMessage = (res) => {
 
 router.get('/', (req, res) => {
   return db.getTasks()
-    .then(tasks => res.json(tasks))
+    .then(displayTasks)
+    .catch(() => sendGenericErrorMessage(res))
+
+  function displayTasks (tasks) {
+    res.json(tasks)
+  }
+})
+
+router.post('/newTask/:id', (req, res) => {
+  const categoryId = Number(req.params.id)
+  const { assignerId, title, description, status, hours } = req.body
+  db.addTask(categoryId, { assignerId, title, description, status, hours })
+    .then(displayTasks)
+    .catch(() => sendGenericErrorMessage(res))
+
+  function displayTasks (tasks) {
+    res.json(tasks)
+  }
+})
+
+router.put('/select', (req, res) => {
+  const { id, assignee } = req.body
+
+  db.selectTask(id, assignee)
+    .then(task => res.json(task))
     .catch(() => sendGenericErrorMessage(res))
 })
 

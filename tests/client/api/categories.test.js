@@ -1,5 +1,5 @@
 const nock = require('nock')
-// const apiURL = 'http://localhost:3000/api/v1'
+const apiURL = 'http://localhost:3000'
 const { getCategories } = require('../../../client/api/categories')
 
 test('Testing for true is truthy', () => {
@@ -10,7 +10,7 @@ describe('Testing categories api', () => {
   it('getCategories function returns expected array', () => {
     // Arrange
     const expected = [{ name: 'Automotive' }, { name: 'Sports' }]
-    nock('http://localhost:3000')
+    nock(apiURL)
       .get('/api/v1/categories')
       .reply(200, [{ name: 'Automotive' }, { name: 'Sports' }])
 

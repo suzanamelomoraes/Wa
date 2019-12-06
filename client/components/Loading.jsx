@@ -6,7 +6,7 @@ export class Loading extends React.Component {
   render () {
     return (
     <>
-      {this.props.load && <Loader acitve> this is a loader </Loader>}
+      {this.props.load && <Loader active> this is a loader </Loader>}
 
     </>
     )
@@ -15,7 +15,7 @@ export class Loading extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    load: state.loading
+    load: state.pending
   }
 }
 
