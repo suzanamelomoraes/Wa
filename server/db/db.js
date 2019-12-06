@@ -8,18 +8,23 @@ function getTasks (db = connection) {
   return db('tasks')
     .join('categories', 'tasks.cat_id', 'categories.id')
     .join('users', 'tasks.assigner', 'users.id')
-    .select('tasks.name as title', 'categories.name as category', 'tasks.time as hours', 'tasks.description as description', 'users.name as assigner', 'image')
+    .select('tasks.cat_id as categoryId', 'tasks.assigner as assignerId', 'tasks.name as title', 'categories.name as category', 'tasks.description as description', 'status', 'tasks.time as hours', 'users.image as image', 'users.name as assignerName')
 }
 
-function addTask({id, title, category, hours, description, assigner, image}, db = connection) {
+function addTask ({ categoryId, assignerId, title, description, status, hours, image }, db = connection) {
   return db('tasks').insert({
+    cat_id: categoryId,
+    assigner: assignerId,
     name: title,
-    
+    description,
+    status,
+    time: hours,
+    image
   })
 }
 
-
 module.exports = {
   getTasks,
-  getCategories
+  getCategories,
+  addTask
 }
