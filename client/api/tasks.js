@@ -7,3 +7,9 @@ export function getTasks () {
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
+
+export function completeTask (id) {
+  return request.post(apiURL + `/api/v1/tasks/${id}`)
+    .then(res => res.body)
+    .catch(err => { throw new Error(err.message) })
+}
