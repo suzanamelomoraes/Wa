@@ -11,7 +11,7 @@ export function getTasks () {
 }
 
 export function completeTask (id) {
-  return request.post(apiURL + `/${id}`)
+  return request.put(apiURL + `/${id}`)
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
