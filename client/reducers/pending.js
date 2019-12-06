@@ -14,5 +14,7 @@ export default function (pending = false, action) {
     case GET_CATEGORIES_SUCCESS:
     case SET_ERROR:
       return false
+    default:
+      return false
   }
 }
