@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.post('/newtask', (req, res) => {
   const { assigner, title, description, hours, category } = req.body
   const categoryId = category
-  const assignerId = assigner
+  const assignerId = Number(assigner)
   const status = 'open'
   db.addTask(categoryId, { assignerId, title, description, status, hours })
     .then(displayTasks)

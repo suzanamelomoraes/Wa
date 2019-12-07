@@ -9,7 +9,7 @@ import { Modal, Form, Header, Button, Dropdown, Image } from 'semantic-ui-react'
 
 export class AddMahi extends Component {
   state = {
-    assigner: this.props.assigner,
+    assigner: this.props.id,
     title: '',
     category: '',
     hours: 0,
