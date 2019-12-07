@@ -49,10 +49,10 @@ describe('<Add Mahi /> component tests', () => {
     )
     const button = component.find('button#addMahi')
     button.simulate('click')
-    const input = component.find('input#time')
+    const input = component.find('input#hours')
     input.instance().value = '7'
     input.simulate('change')
-    expect(component.state('time')).toMatch('7')
+    expect(component.state('hours')).toMatch('7')
   })
   it('should change render a button', () => {
     

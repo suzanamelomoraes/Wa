@@ -18,10 +18,10 @@ export function completeTask (id) {
 }
 
 export function addMahi (mahi) {
-  return request.post(apiURL)
+  return request.post(apiURL + '/newtask')
     .send(mahi)
     .then(res => res.body)
-    .catch(() => { throw new Error(err) })
+    .catch(err => { throw new Error(err.message) })
 }
 
 export function selectTask (id, assignee) {

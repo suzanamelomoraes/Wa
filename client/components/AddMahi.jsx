@@ -9,10 +9,10 @@ import { Modal, Form, Header, Button, Dropdown, Image } from 'semantic-ui-react'
 
 export class AddMahi extends Component {
   state = {
-    assigner: this.props.assigner,
+    assigner: this.props.id,
     title: '',
     category: '',
-    time: 0,
+    hours: 0,
     description: '',
     modalVisible: false
   }
@@ -25,12 +25,12 @@ export class AddMahi extends Component {
     this.setState({
       modalVisible: false
     })
-    const { assigner, title, category, time, description } = this.state
+    const { assigner, title, category, hours, description } = this.state
     addMahi({
       assigner,
       title,
       category,
-      time,
+      hours,
       description
     })
   }
@@ -121,11 +121,12 @@ export class AddMahi extends Component {
         </Modal.Content>
         <Modal.Content>
           <Form.Input label='Time in Hours'
-            name='time'
-            id='time'
+            name='hours'
+            id='hours'
             onChange={this.handleChange}
             required
             type='number'
+            min='1'
             placeholder='Add the time you need' />
         </Modal.Content>
         <Modal.Actions>
