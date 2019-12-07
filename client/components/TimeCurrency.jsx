@@ -16,9 +16,12 @@ export class TimeCurrency extends Component {
       <>
       <Card style={{ borderRadius: '25px', height: '150px' }}>
         <Card.Content style={centerStyle}>
-          <Header as='h1' textAlign='center' style={{ fontWeight: 'bold' }}>{balance} hours
-            <Header as='h3' textAlign='center' >Total currency: </Header>
-          </Header>
+          <div>
+            <Header as='h1' textAlign='center' style={{ fontWeight: 'bold' }}>{balance} hours
+            </Header>
+            <h3>Total currency</h3>
+
+          </div>
         </Card.Content>
       </Card>
     </>
