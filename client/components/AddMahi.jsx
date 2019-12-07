@@ -35,7 +35,7 @@ export class AddMahi extends Component {
     })
   }
 
-  viewModal = () => {
+  toggleModal = () => {
     this.setState({
       modalVisible: true
     })
@@ -68,7 +68,7 @@ export class AddMahi extends Component {
         open={modalVisible} size="tiny"
         trigger={<Button color='green'
           id='addMahi'
-          onClick={this.viewModal}
+          onClick={this.toggleModal}
         >Add Mahi</Button>}>
 
         <Header as='h1' color='brown'
