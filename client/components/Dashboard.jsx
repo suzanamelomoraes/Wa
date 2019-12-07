@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Menu, Segment } from 'semantic-ui-react'
+
 import Profile from './Profile'
 import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
@@ -21,8 +23,9 @@ export class Dashboard extends Component {
       <div>
         <Profile user={props}/>
         <TimeCurrency props={props}/>
-        <AddMahi/>
-
+        <Segment fixed attached='bottom'>
+          <AddMahi/>
+        </Segment>
       </div>
 
     )
