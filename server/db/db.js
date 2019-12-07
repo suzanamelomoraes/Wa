@@ -8,7 +8,7 @@ function getTasks (db = connection) {
   return db('tasks')
     .join('categories', 'tasks.cat_id', 'categories.id')
     .join('users', 'tasks.assigner', 'users.id')
-    .select('tasks.id as taskId', 'tasks.cat_id as categoryId', 'tasks.assigner as assignerId', 'tasks.name as title', 'categories.name as category', 'tasks.description as description', 'status', 'tasks.time as hours', 'users.image as image', 'users.name as assignerName')
+    .select('tasks.id as taskId', 'tasks.cat_id as categoryId', 'tasks.assigner as assignerId', 'tasks.name as title', 'categories.name as category', 'tasks.description as description', 'status', 'tasks.time as hours', 'users.image as image', 'users.name as assignerName', 'users.latitude as latitude', 'users.longitude as longitude' )
 }
 
 function selectTask (id, assignee, db = connection) {
