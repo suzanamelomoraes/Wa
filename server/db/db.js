@@ -49,11 +49,16 @@ function addTask (categoryId, { assignerId, title, description, status, hours },
     .then(() => getTasks(db))
 }
 
+function getUsers (db = connection) {
+  return db('users')
+}
+
 module.exports = {
   getTasks,
   getCategories,
   selectTask,
   addTask,
   getTask,
-  completeTask
+  completeTask,
+  getUsers
 }

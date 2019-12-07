@@ -2,6 +2,8 @@ import CompleteMahi from '../../../client/components/CompleteMahi'
 import { mount, shallow } from 'enzyme'
 import React from 'react'
 import { Button, Header, Image, Modal, Form, Icon } from 'semantic-ui-react'
+const nock = require('nock')
+const apiURL = 'http://locahost:3000/api/v1/tasks/'
 
 test('truthy test', () => {
   expect(true).toBeTruthy()
@@ -34,7 +36,7 @@ describe('<CompleteMahi /> component test', () => {
     expect(beforeShowModal).toBe(false)
     expect(afterShowModal).toBeTruthy()
   })
-  it("When popup's buttons are clicked state.showModal becomes false", () => {
+  it("When CompletTask Component cancel button clicked state.showModal is false", () => {
     // Arrange
     const component = mount(<CompleteMahi/>)
     const firstButton = component.find('button[data-test="firstBtn"]')
@@ -42,7 +44,7 @@ describe('<CompleteMahi /> component test', () => {
     // Act
     firstButton.simulate('click')
     const state1 = component.instance().state.showModal
-    const modalButtons = component.find('button[data-test="secondBtn"]')
+    const modalButtons = component.find('button[data-test="secondBtnNegative"]')
     modalButtons.simulate('click')
 
     const state2 = component.instance().state.showModal
