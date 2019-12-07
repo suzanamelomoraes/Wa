@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { addMahi } from '../api/tasks'
 
+import { getCategories } from '../actions/categories'
+
 import { Modal, Form, Header, Button, Dropdown, Image } from 'semantic-ui-react'
 
 export class AddMahi extends Component {
@@ -13,6 +15,10 @@ export class AddMahi extends Component {
     time: 0,
     description: '',
     modalVisible: false
+  }
+
+  componentDidMount () {
+    this.props.getCategories()
   }
 
   handleSubmit = () => {
@@ -35,7 +41,7 @@ export class AddMahi extends Component {
     })
   }
 
-  toggleModal = () => {
+  viewModal = () => {
     this.setState({
       modalVisible: true
     })
@@ -56,9 +62,9 @@ export class AddMahi extends Component {
     const { modalVisible } = this.state
     const { categories } = this.props
     const options = categories.map(category => ({
-      key: category.key,
-      value: category.categoryName,
-      text: category.categoryName
+      key: category.id,
+      value: category.name,
+      text: category.name
     }))
 
     return (
@@ -68,7 +74,7 @@ export class AddMahi extends Component {
         open={modalVisible} size="tiny"
         trigger={<Button color='green'
           id='addMahi'
-          onClick={this.toggleModal}
+          onClick={this.viewModal}
         >Add Mahi</Button>}>
 
         <Header as='h1' color='brown'
@@ -140,5 +146,8 @@ const mapStateToProps = (state) => {
     categories: state.categories
   }
 }
+const matchDispatchToProps = {
+  getCategories
+}
 
-export default connect(mapStateToProps)(AddMahi)
+export default connect(mapStateToProps, matchDispatchToProps)(AddMahi)
