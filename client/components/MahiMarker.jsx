@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Icon, Popup, Button } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
+import { Icon, Popup, Button } from 'semantic-ui-react'
 import MahiPopUp from './MahiPopup'
 
 import { selectTask } from '../api/tasks'
+import { changeActiveTask } from '../actions/tasks'
 
-class MahiMarker extends Component {
+export class MahiMarker extends Component {
 
   handleClick = () => {
     const userID = 2 //delete after getting connected to Authenticare
@@ -14,9 +16,13 @@ class MahiMarker extends Component {
     selectTask(taskId, userID)
   }
 
-  render () {
+  handleOpen = () => {
+    const { taskId, changeActiveTask } = this.props
 
-    
+    changeActiveTask(taskId)
+  }
+
+  render () {
     return (
       <Popup
       trigger={
@@ -25,6 +31,7 @@ class MahiMarker extends Component {
         size='big'
       />}
       on='click'
+      onOpen={this.handleOpen}
       >
         <MahiPopUp details={this.props}/>
         <Button
@@ -41,4 +48,8 @@ class MahiMarker extends Component {
   }
 }
 
-export default MahiMarker;
+const mapDispatchToProps = {
+  changeActiveTask
+}
+
+export default connect (null, mapDispatchToProps)(MahiMarker)

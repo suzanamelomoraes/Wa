@@ -8,6 +8,7 @@ import MahiMarker from './MahiMarker'
 
 import { getTasks } from '../api/tasks'
 import { setError } from '../actions/error'
+import { changeActiveTask } from '../actions/tasks'
 
 export class Listing extends Component {
   state = {
@@ -22,7 +23,7 @@ export class Listing extends Component {
         this.setState({ mahiDetails })
       })
       .catch((error) => {
-        setError(error)
+        this.props.setError(error)
       })
   }
 
@@ -32,6 +33,8 @@ export class Listing extends Component {
     this.setState({
       mapVisible: !mapVisible,
     })
+
+    this.props.changeActiveTask(null)
   }
 
   render () {
@@ -69,8 +72,8 @@ export class Listing extends Component {
 
             <Grid.Column width={8}>
               <Map>
-              {mahiDetails.map(mahi => 
-                <MahiMarker key={mahi.taskId} {...mahi} lat={mahi.latitude} lng={mahi.longitude} />)}
+                {mahiDetails.map(mahi => 
+                  <MahiMarker key={mahi.taskId} {...mahi} lat={mahi.latitude} lng={mahi.longitude} />)}
               </Map>
             </Grid.Column>
           </Grid>
@@ -110,4 +113,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Listing)
+const mapDispatchToProps = {
+  setError,
+  changeActiveTask
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Listing)
