@@ -18,6 +18,18 @@ function getTask (id, db = connection) {
     .first()
 }
 
+function getTaskByAssigner (id, db = connection) {
+  return db('tasks')
+    .where('assigner', id)
+    .select('id', 'cat_id as categoryId', 'assigner as assignerId', 'name as title', 'description', 'status', 'time as hours', 'assignee as assignee')
+}
+
+function getTaskByAssignee (id, db = connection) {
+  return db('tasks')
+    .where('assignee', id)
+    .select('id', 'cat_id as categoryId', 'assigner as assignerId', 'name as title', 'description', 'status', 'time as hours', 'assignee as assignee')
+}
+
 function selectTask (id, assignee, db = connection) {
   return db('tasks')
     .where('id', id)
@@ -28,7 +40,7 @@ function selectTask (id, assignee, db = connection) {
     .then(() => getTask(id, db))
 }
 
-function completeTask (id,db = connection) {
+function completeTask (id, db = connection) {
   return db('tasks')
     .where('id', id)
     .update({
@@ -36,7 +48,6 @@ function completeTask (id,db = connection) {
     })
     .then(() => getTask(id, db))
 }
-
 
 function addTask (categoryId, { assignerId, title, description, status, hours }, db = connection) {
   return db('tasks').insert({
@@ -61,5 +72,7 @@ module.exports = {
   addTask,
   getTask,
   completeTask,
-  getUsers
+  getUsers,
+  getTaskByAssignee,
+  getTaskByAssigner
 }
