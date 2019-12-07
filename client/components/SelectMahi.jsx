@@ -6,7 +6,7 @@ import { selectTask } from '../api/tasks'
 
 const userID = 2 //delete after getting connected to Authenticare
 
-class SelectMahi extends Component {
+export class SelectMahi extends Component {
 
   handleClick = () => {
     const { taskId } = this.props.details

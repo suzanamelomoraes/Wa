@@ -40,10 +40,10 @@ export class MahiSummary extends Component {
             {description}
           </Card.Description>
         </Card.Content>
-        
+
         <Card.Content textAlign='center' extra>
           <div >
-            <Modal 
+            <Modal
               trigger={
                 mapVisible 
                 ? <Button 
