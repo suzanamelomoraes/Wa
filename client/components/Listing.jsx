@@ -54,7 +54,7 @@ export class Listing extends Component {
                 onClick={this.toggleMap}
                 style={{ marginTop: 40, marginRight: 25 }}
               >
-                <Button.Content hidden style={{fontSize: '0.8em'}}>Show Map</Button.Content>
+                <Button.Content hidden style={{fontSize: '0.8em'}}>Close Map</Button.Content>
 
                 <Button.Content visible>
                   <Icon name='map outline' />
@@ -117,7 +117,7 @@ export class Listing extends Component {
               <Button.Content 
                 hidden 
                 style={{fontSize: '0.8em'}}>
-                  Show Map
+                  Open Map
               </Button.Content>
 
               <Button.Content visible>
