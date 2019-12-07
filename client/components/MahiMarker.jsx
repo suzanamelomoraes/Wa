@@ -61,4 +61,4 @@ const mapDispatchToProps = {
   changeActiveTask
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(MahiMarker)
+export default connect(mapStateToProps, mapDispatchToProps)(MahiMarker)

@@ -82,4 +82,4 @@ const mapDispatchToProps = {
   changeActiveTask
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(MahiSummary)
+export default connect(mapStateToProps, mapDispatchToProps)(MahiSummary)
