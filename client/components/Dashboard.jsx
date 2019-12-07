@@ -23,7 +23,7 @@ export class Dashboard extends Component {
       <div>
         <Profile user={props}/>
         <TimeCurrency props={props}/>
-        <Segment fixed attached='bottom'>
+        <Segment fixed="true" attached='bottom'>
           <AddMahi/>
         </Segment>
       </div>
