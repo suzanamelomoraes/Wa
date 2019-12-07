@@ -20,6 +20,42 @@ router.get('/', (req, res) => {
   }
 })
 
+router.get('/:id', (req, res) => {
+  const id = Number(req.params.id)
+
+  return db.getTask(id)
+    .then(displayTask)
+    .catch(() => sendGenericErrorMessage(res))
+
+  function displayTask (task) {
+    res.json(task)
+  }
+})
+
+router.get('/assigner/:id', (req, res) => {
+  const id = Number(req.params.id)
+
+  return db.getTaskByAssigner(id)
+    .then(displayTask)
+    .catch(() => sendGenericErrorMessage(res))
+
+  function displayTask (task) {
+    res.json(task)
+  }
+})
+
+router.get('/assignee/:id', (req, res) => {
+  const id = Number(req.params.id)
+
+  return db.getTaskByAssignee(id)
+    .then(displayTask)
+    .catch(() => sendGenericErrorMessage(res))
+
+  function displayTask (task) {
+    res.json(task)
+  }
+})
+
 router.post('/newTask/:id', (req, res) => {
   const categoryId = Number(req.params.id)
   const { assignerId, title, description, status, hours } = req.body
