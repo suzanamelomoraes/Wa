@@ -20,4 +20,12 @@ router.get('/', (req, res) => {
   }
 })
 
+router.get('/:id', (req, res) => {
+  const userId = Number(req.params.id)
+
+  return db.getUserById(userId)
+    .then(user => res.json(user))
+    .catch(() => sendGenericErrorMessage(res))
+})
+
 module.exports = router

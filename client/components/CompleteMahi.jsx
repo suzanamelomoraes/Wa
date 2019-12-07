@@ -13,7 +13,6 @@ handleCreateButton = (event, callAPI) => {
   this.setState({
     showModal: false
   })
-  console.log('callAPI', callAPI)
   if (callAPI) {
     completeTask(1)
   }
