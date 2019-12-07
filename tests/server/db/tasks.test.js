@@ -42,3 +42,16 @@ describe('Tasks database tests', () => {
       })
   })
 })
+
+describe('Tasks database tests', () => {
+  it('completeTask returns the changed object', () => {
+    expect.assertions(1)
+
+    const id = 1
+
+    return db.completeTask(id, testDb)
+      .then(task => {
+        expect(task.status).toMatch('completed')
+      })
+  })
+})
