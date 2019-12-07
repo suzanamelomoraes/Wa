@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
 
 import SelectMahi from './SelectMahi'
+import { changeActiveTask } from '../actions/tasks'
 
 export class MahiSummary extends Component {
   state = {
@@ -15,11 +17,11 @@ export class MahiSummary extends Component {
   }
 
   render () {
-    const { title, category, hours, description, image, assigner } = this.props
+    const { taskId, title, category, hours, description, image, assigner, changeActiveTask } = this.props
     const { modalVisible } = this.state
 
     return (
-      <Card >
+      <Card onClick={() => changeActiveTask(taskId)}>
         <Card.Content>
           <Image
             floated='right'
@@ -60,4 +62,9 @@ export class MahiSummary extends Component {
   }
 }
 
-export default MahiSummary
+
+const mapDispatchToProps = {
+  changeActiveTask
+}
+
+export default connect (null, mapDispatchToProps)(MahiSummary)

@@ -106,8 +106,8 @@ export class Listing extends Component {
 
 const mapStateToProps = state => {
   return {
-    error: state.error,
-    pending: state.pending
+    activeTask: state.activeTask
   }
 }
+
 export default connect(mapStateToProps)(Listing)
