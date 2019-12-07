@@ -9,16 +9,16 @@ const MahiPopup = (props) => {
     <div>
       <h3>{title}</h3>
       <Button
-          negative
-          icon='close'
-          onClick={() => props.closePopUp(null)}
-          size='mini'
-          style={{
-            position: 'absolute',
-            right: '0.75rem',
-            top: '0.75rem',
-            padding: '0.25rem'
-          }}
+        negative
+        icon='close'
+        size='mini'
+        onClick={() => props.closePopup(null)}
+        style={{
+          position: 'absolute',
+          right: '0.75rem',
+          top: '0.75rem',
+          padding: '0.25rem'
+        }}
       />
       <p><Icon name='tag' size='small' /> <strong>Category:</strong> {category}</p>
       <p><Icon name='time' size='small' /> <strong>Hour/s:</strong> {hours}</p>

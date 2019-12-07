@@ -52,26 +52,36 @@ export class Listing extends Component {
                 size='big' 
                 color={buttonColor} 
                 onClick={this.toggleMap}
-                style={{ marginTop: 40, marginRight: 25 }}>
-                  <Button.Content hidden style={{fontSize: '0.8em'}}>Show Map</Button.Content>
-                  <Button.Content visible>
-                    <Icon name='map outline' />
-                  </Button.Content>
+                style={{ marginTop: 40, marginRight: 25 }}
+              >
+                <Button.Content hidden style={{fontSize: '0.8em'}}>Show Map</Button.Content>
+
+                <Button.Content visible>
+                  <Icon name='map outline' />
+                </Button.Content>
               </Button>
 
               <Divider />
-
             </Grid.Column>
           </Grid>
 
           <Grid>
-            <Grid.Column width={8} style={{height: '100vh', width: '100%', overflow: 'scroll'}}>
+            <Grid.Column 
+              width={8} 
+              style={{
+                height: '100vh', 
+                width: '100%', 
+                overflow: 'scroll'
+              }}
+            >
               <Card.Group centered>
                 {mahiDetails.map(mahi =>
                   <MahiSummary 
                     key={mahi.taskId} 
                     {...mahi} 
-                    mapVisible={mapVisible} />)}
+                    mapVisible={mapVisible} 
+                  />
+                )}
               </Card.Group>
             </Grid.Column>
 
@@ -89,8 +99,8 @@ export class Listing extends Component {
             </Grid.Column>
           </Grid>
         </>
-      )}
-
+      )
+    }
       return (
         <Grid>
           <Grid.Column textAlign='right'>
@@ -99,11 +109,20 @@ export class Listing extends Component {
               size='big' 
               color={buttonColor} 
               onClick={this.toggleMap} 
-              style={{ marginTop: 40, marginRight: 25 }}>
-                <Button.Content hidden style={{fontSize: '0.8em'}}>Show Map</Button.Content>
-                <Button.Content visible>
-                  <Icon name='map outline' />
-                </Button.Content>
+              style={{ 
+                marginTop: 40, 
+                marginRight: 25 
+              }}
+            >
+              <Button.Content 
+                hidden 
+                style={{fontSize: '0.8em'}}>
+                  Show Map
+              </Button.Content>
+
+              <Button.Content visible>
+                <Icon name='map outline' />
+              </Button.Content>
             </Button>
 
             <Divider />
@@ -119,7 +138,7 @@ export class Listing extends Component {
             </Card.Group>
           </Grid.Column>
         </Grid>
-    )
+      )
   }
 }
 

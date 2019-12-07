@@ -28,15 +28,16 @@ export class MahiMarker extends Component {
 
     return (
       <Popup
-        trigger={
-          <Icon 
-          name='map marker alternate' 
-          size='big'
-        />}
         onOpen={this.handleOpen}
         open={(taskId === activeIndex) ? true : false}
+        trigger={
+          <Icon 
+            name='map marker alternate' 
+            size='big'
+          />
+        }
       >
-        <MahiPopUp details={this.props} closePopUp={changeActiveTask}/>
+        <MahiPopUp details={this.props} closePopup={changeActiveTask}/>
         <Button
           positive
           icon='smile outline'

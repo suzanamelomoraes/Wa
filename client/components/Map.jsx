@@ -19,7 +19,7 @@ class Map extends React.Component {
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
           >
-          {this.props.children}
+            {this.props.children}
           </GoogleMapReact>
         </div>
       );
