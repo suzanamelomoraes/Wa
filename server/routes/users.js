@@ -10,4 +10,14 @@ const sendGenericErrorMessage = (res) => {
   )
 }
 
+router.get('/', (req, res) => {
+  return db.getUsers()
+    .then(displayUsers)
+    .catch(() => sendGenericErrorMessage(res))
+
+  function displayUsers (users) {
+    res.json(users)
+  }
+})
+
 module.exports = router
