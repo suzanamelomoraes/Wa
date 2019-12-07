@@ -2,7 +2,6 @@ import React from 'react'
 import { mount } from 'enzyme'
 
 import { AddMahi } from '../../../client/components/AddMahi'
-import { ButtonOr } from 'semantic-ui-react'
 
 const categories = [
   { key: 'af', id: 1, categoryName: 'Afghanistan' },

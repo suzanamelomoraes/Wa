@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import Registration from './Registration'
 
 export class Dashboard extends Component {
   state = { }
   render () {
     return (
-      <h1>Dashboard</h1>
+      <div>
+        <h1>Dashboard</h1>
+        <Registration />
+      </div>
     )
   }
 }
