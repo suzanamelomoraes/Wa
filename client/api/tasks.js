@@ -11,7 +11,8 @@ export function getTasks () {
 }
 
 export function completeTask (id) {
-  return request.put(apiURL + `/${id}`)
+  return request.put(apiURL + `/completed`)
+    .send({ id: id })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
@@ -26,7 +27,7 @@ export function addMahi (mahi) {
 export function selectTask (id, assignee) {
   return request
     .put(apiURL)
-    .send({id, assignee})
+    .send({ id, assignee })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }

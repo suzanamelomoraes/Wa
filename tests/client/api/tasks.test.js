@@ -25,13 +25,13 @@ describe('Testing tasks api', () => {
   })
 })
 
-describe('Test for completeTask function', () => {
+describe('Test for completeTask function calls correct route', () => {
   it('completeTask ', () => {
     // Arrange
     const expected = true
     const id = 5
     nock(apiURL)
-      .put(`/api/v1/tasks/${id}`)
+      .put(`/api/v1/tasks/completed`)
       .reply(200, expected)
 
     // Act & Assert
