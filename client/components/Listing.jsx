@@ -60,7 +60,7 @@ export class Listing extends Component {
           </Grid>
 
           <Grid>
-            <Grid.Column width={8}>
+            <Grid.Column width={8} style={{height: '100vh', width: '100%', overflow: 'scroll'}}>
               <Card.Group centered>
                 {mahiDetails.map(mahi =>
                   <MahiSummary key={mahi.taskId} {...mahi} />)}
