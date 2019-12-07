@@ -23,15 +23,17 @@ export class MahiMarker extends Component {
   }
 
   render () {
+    const { taskId, activeIndex } = this.props
+
     return (
       <Popup
-      trigger={
-        <Icon 
-        name='map marker alternate' 
-        size='big'
-      />}
-      on='click'
-      onOpen={this.handleOpen}
+        trigger={
+          <Icon 
+          name='map marker alternate' 
+          size='big'
+        />}
+        onOpen={this.handleOpen}
+        open={(taskId === activeIndex) ? true : false}
       >
         <MahiPopUp details={this.props}/>
         <Button
@@ -48,8 +50,14 @@ export class MahiMarker extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    activeIndex: state.tasks.activeIndex
+  }
+}
+
 const mapDispatchToProps = {
   changeActiveTask
 }
 
-export default connect (null, mapDispatchToProps)(MahiMarker)
+export default connect (mapStateToProps, mapDispatchToProps)(MahiMarker)
