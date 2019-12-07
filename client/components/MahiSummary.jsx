@@ -35,21 +35,21 @@ export class MahiSummary extends Component {
             {description}
           </Card.Description>
         </Card.Content>
-        
+
         <Card.Content textAlign='center' extra>
           <div >
-            <Modal 
+            <Modal
               trigger={
-                <Button 
-                  basic 
-                  color='green' 
+                <Button
+                  basic
+                  color='green'
                   onClick={this.toggleModalView}>
                     View Detail
                 </Button>}
               open={modalVisible}>
 
-              <SelectMahi 
-                details={this.props} 
+              <SelectMahi
+                details={this.props}
                 closeModal={this.toggleModalView}/>
             </Modal>
           </div>
