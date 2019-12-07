@@ -40,4 +40,12 @@ router.put('/', (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
+router.put('/completed', (req, res) => {
+  const { id } = req.body
+
+  db.completeTask(id)
+    .then(task => res.json(task))
+    .catch(() => sendGenericErrorMessage(res))
+})
+
 module.exports = router
