@@ -28,7 +28,7 @@ it('getUserById gets a single user by id', () => {
   const id = 4
   const expected = {
     id: 4,
-    name: 'Jeya',
+    name: 'Testuser4',
     email: 'jess@devacademy.com',
     mobile: 99999999,
     password: 'great',
@@ -36,13 +36,13 @@ it('getUserById gets a single user by id', () => {
     address: '12 Morgan Street, Newmarket, 0600',
     latitude: 1234,
     longitude: 4321,
-    image: 'avatar01'
+    image: 'images/avatar01.png'
   }
 
   return db.getUserById(id, testDb)
     .then(user => {
       const actual = user
-      expect(actual).toBe(expected)
+      expect(actual).toEqual(expected)
     })
     .catch(err => expect(err).toBeNull())
 })
