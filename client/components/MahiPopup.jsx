@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import { Icon } from 'semantic-ui-react'
 
@@ -12,7 +12,6 @@ const MahiPopup = (props) => {
       <p><Icon name='time' size='small' /> <strong>Hour/s:</strong> {hours}</p>
       <p><Icon name='male' size='small' /> <strong>Needed by:</strong> {assignerName}</p>
       <p>{description}</p>
-
     </div>
   )
 }

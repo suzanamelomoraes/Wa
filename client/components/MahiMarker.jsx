@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import { Icon, Popup } from 'semantic-ui-react'
+import { Icon, Popup, Button } from 'semantic-ui-react'
 
 import MahiPopUp from './MahiPopup'
 
-class MahiMarker extends Component {
-  state = {
-    modalVisible: false
-  }
+import { selectTask } from '../api/tasks'
 
-  toggleModalView = () => {
-    this.setState({
-      modalVisible: !this.state.modalVisible
-    })
+class MahiMarker extends Component {
+
+  handleClick = () => {
+    const userID = 2 //delete after getting connected to Authenticare
+    const { taskId } = this.props
+
+    selectTask(taskId, userID)
   }
 
   render () {
@@ -23,11 +23,19 @@ class MahiMarker extends Component {
         <Icon 
         name='map marker alternate' 
         size='big'
-        onClick={this.toggleModalView}
       />}
       on='click'
       >
         <MahiPopUp details={this.props}/>
+        <Button
+            positive
+            icon='smile outline'
+            labelPosition='right'
+            content='Help out!'
+            floated='right'
+            style={{marginTop: '1em'}}
+            onClick={this.handleClick}
+          />
       </Popup>
     )
   }
