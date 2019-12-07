@@ -21,7 +21,7 @@ function selectTask (id, assignee, db = connection) {
     .then(() => getTask(id, db))
 }
 
-function completeTask (id,db = connection) {
+function completeTask (id, db = connection) {
   return db('tasks')
     .where('id', id)
     .update({
@@ -53,6 +53,12 @@ function getUsers (db = connection) {
   return db('users')
 }
 
+function getUserById (id, db = connection) {
+  return db('users')
+    .where('id', id)
+    .first()
+}
+
 module.exports = {
   getTasks,
   getCategories,
@@ -60,5 +66,6 @@ module.exports = {
   addTask,
   getTask,
   completeTask,
-  getUsers
+  getUsers,
+  getUserById
 }

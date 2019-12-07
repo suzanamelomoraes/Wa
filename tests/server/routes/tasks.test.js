@@ -11,7 +11,7 @@ const mockTask =
 
 jest.mock('../../../server/db/db', () => ({
   getTasks: () => Promise.resolve(mockTasks),
-  addTask: () => Promise.resolve(mockTasks)
+  addTask: () => Promise.resolve(mockTask)
 
 }))
 
@@ -26,25 +26,25 @@ describe('Gets all tasks available', () => {
 })
 
 describe('Add new task', () => {
-  it('POST /tasks/newTask/:id', () => {
+  it('POST /tasks/newtask', () => {
     const newTask = {
-      id: mockTasks.id,
-      category: mockTasks.category,
-      categoryId: mockTasks.categoryId,
-      assignerId: mockTasks.assignerId,
-      title: mockTasks.title,
-      description: mockTasks.description,
-      status: mockTasks.status,
-      assignerName: mockTasks.assignerName,
-      hours: mockTasks.hours,
-      image: mockTasks.image
+      id: mockTask.id,
+      category: mockTask.category,
+      categoryId: mockTask.categoryId,
+      assignerId: mockTask.assignerId,
+      title: mockTask.title,
+      description: mockTask.description,
+      status: mockTask.status,
+      assignerName: mockTask.assignerName,
+      hours: mockTask.hours,
+      image: mockTask.image
     }
 
     return request(server)
-      .post('/api/v1/tasks/newTask/1')
+      .post('/api/v1/tasks/newtask')
       .send(newTask)
       .then((res) => {
-        expect(res.body).toEqual(mockTasks)
+        expect(res.body).toEqual(mockTask)
       })
   })
 })
