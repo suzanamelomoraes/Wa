@@ -3,7 +3,7 @@ import { isAuthenticated, register } from 'authenticare/client'
 
 import { Button, Form, Input, Dropdown, Header, Container } from 'semantic-ui-react'
 
-const options = [
+const suburbs = [
   { id: 1, postcode: 632, suburb: 'Albany' },
   { id: 2, postcode: 632, suburb: 'Albany Heights' },
   { id: 3, postcode: 2105, suburb: 'Alfriston' },
@@ -63,6 +63,13 @@ export class Registration extends Component {
   }
 
   render () {
+
+    const options = suburbs.map(suburb => ({
+      key: suburb.id,
+      value: suburb.suburb,
+      text: suburb.suburb
+    }))
+
     return (
       <Container style={{ border: '1px', borderStyle: 'solid', padding: '25px' }}g>
         <Header as='h2' color='green' textAlign='center'>Register</Header>
