@@ -11,7 +11,7 @@ beforeEach(() => {
 afterEach(() => env.cleanup(testDb))
 
 describe('Users database tests', () => {
-  it('getUsers returns an array of users object', () => {
+  it('getUsers returns an array of 4 users object', () => {
     expect.assertions(1)
 
     const expected = 4
@@ -22,4 +22,27 @@ describe('Users database tests', () => {
         expect(actual).toBe(expected)
       })
   })
+})
+
+it('getUserById gets a single user by id', () => {
+  const id = 4
+  const expected = {
+    id: 4,
+    name: 'Jeya',
+    email: 'jess@devacademy.com',
+    mobile: 99999999,
+    password: 'great',
+    balance: 3,
+    address: '12 Morgan Street, Newmarket, 0600',
+    latitude: 1234,
+    longitude: 4321,
+    image: 'avatar01'
+  }
+
+  return db.getUserById(id, testDb)
+    .then(user => {
+      const actual = user
+      expect(actual).toBe(expected)
+    })
+    .catch(err => expect(err).toBeNull())
 })
