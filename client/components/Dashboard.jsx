@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Profile from './Profile'
+import AddMahi from './AddMahi'
 
 // to be removed once there are props passed down
 const profileprops = {
@@ -15,7 +16,10 @@ export class Dashboard extends Component {
   state = { }
   render () {
     return (
-      <Profile user={profileprops}/>
+      <div>
+        <Profile user={profileprops}/>
+        <AddMahi/>
+      </div>
     )
   }
 }
