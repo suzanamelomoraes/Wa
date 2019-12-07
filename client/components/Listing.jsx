@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Card } from 'semantic-ui-react'
+import { Card, Grid, Button, Icon, Divider } from 'semantic-ui-react'
 import MahiSummary from './MahiSummary'
-import Error from './Error'
-import Loading from './Loading'
 import Map from './Map'
 import MahiMarker from './MahiMarker'
 
@@ -14,6 +12,8 @@ import { setError } from '../actions/error'
 export class Listing extends Component {
   state = {
     mahiDetails: [],
+    mapVisible: null,
+    buttonColor: 'olive'
   }
 
   componentDidMount () {
@@ -26,27 +26,80 @@ export class Listing extends Component {
       })
   }
 
+  toggleMap = () => {
+    const { mapVisible } = this.state
+
+    this.setState({
+      mapVisible: !mapVisible,
+    })
+  }
+
   render () {
-    const { mahiDetails } = this.state
-    const { error, pending } = this.props
+    const { mahiDetails, mapVisible, buttonColor } = this.state
     
-    if (error) {
-      return <Error />
-    } else if (pending) {
-      return <Loading />
-    }
+    if (mapVisible) {
       return (
         <>
-          <Card.Group centered style={{ marginTop: 75 }}>
-            {mahiDetails.map(mahi =>
-              <MahiSummary key={mahi.taskId} {...mahi} />)}
-          </Card.Group>
+          <Grid>
+            <Grid.Column textAlign='right'>
+              <Button 
+                animated='fade' 
+                size='big' 
+                color={buttonColor} 
+                onClick={this.toggleMap}
+                style={{ marginTop: 40, marginRight: 25 }}>
+                  <Button.Content hidden style={{fontSize: '0.8em'}}>Show Map</Button.Content>
+                  <Button.Content visible>
+                    <Icon name='map outline' />
+                  </Button.Content>
+              </Button>
 
-          <Map>
-            {mahiDetails.map(mahi => 
-              <MahiMarker key={mahi.taskId} {...mahi} lat={mahi.latitude} lng={mahi.longitude} />)}
-          </Map>
+              <Divider />
+
+            </Grid.Column>
+          </Grid>
+
+          <Grid>
+            <Grid.Column width={8}>
+              <Card.Group centered>
+                {mahiDetails.map(mahi =>
+                  <MahiSummary key={mahi.taskId} {...mahi} />)}
+              </Card.Group>
+            </Grid.Column>
+
+            <Grid.Column width={8}>
+              <Map>
+              {mahiDetails.map(mahi => 
+                <MahiMarker key={mahi.taskId} {...mahi} lat={mahi.latitude} lng={mahi.longitude} />)}
+              </Map>
+            </Grid.Column>
+          </Grid>
         </>
+      )}
+
+      return (
+        <Grid>
+          <Grid.Column textAlign='right'>
+            <Button 
+              animated='fade' 
+              size='big' 
+              color={buttonColor} 
+              onClick={this.toggleMap} 
+              style={{ marginTop: 40, marginRight: 25 }}>
+                <Button.Content hidden style={{fontSize: '0.8em'}}>Show Map</Button.Content>
+                <Button.Content visible>
+                  <Icon name='map outline' />
+                </Button.Content>
+            </Button>
+
+            <Divider />
+
+            <Card.Group centered>
+              {mahiDetails.map(mahi =>
+                <MahiSummary key={mahi.taskId} {...mahi} />)}
+            </Card.Group>
+          </Grid.Column>
+        </Grid>
     )
   }
 }

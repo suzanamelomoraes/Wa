@@ -3,7 +3,7 @@ import React from 'react'
 import { Icon } from 'semantic-ui-react'
 
 const MahiPopup = (props) => {
-  const { title, category, hours, description, assignerName } = props.details
+  const { title, category, hours, description, assignerName, image } = props.details
 
   return (
     <div>
