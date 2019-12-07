@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+import Profile from './Profile'
+
 export class Dashboard extends Component {
   state = { }
   render () {
     return (
-      <h1>Dashboard</h1>
+      <Profile />
     )
   }
 }
