@@ -29,16 +29,18 @@ export class Listing extends Component {
 
   toggleMap = () => {
     const { mapVisible } = this.state
+    const { changeActiveTask } = this.props
 
     this.setState({
       mapVisible: !mapVisible,
     })
 
-    this.props.changeActiveTask(null)
+    changeActiveTask(null)
   }
 
   render () {
     const { mahiDetails, mapVisible, buttonColor } = this.state
+    const { changeActiveTask } = this.props
     
     if (mapVisible) {
       return (

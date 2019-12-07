@@ -17,7 +17,7 @@ class SelectMahi extends Component {
   }
 
   render () {
-    const { details } = this.props
+    const { details, closeModal } = this.props
 
     return (
       <>
@@ -39,6 +39,13 @@ class SelectMahi extends Component {
             labelPosition='right'
             content="Help out!"
             onClick={this.handleClick}
+          />
+          <Button
+            negative
+            icon='close'
+            labelPosition='right'
+            content="Close"
+            onClick={closeModal}
           />
         </Modal.Actions>
       </>

@@ -24,7 +24,7 @@ export class MahiMarker extends Component {
   }
 
   render () {
-    const { taskId, activeIndex } = this.props
+    const { taskId, activeIndex, changeActiveTask } = this.props
 
     return (
       <Popup
@@ -36,16 +36,16 @@ export class MahiMarker extends Component {
         onOpen={this.handleOpen}
         open={(taskId === activeIndex) ? true : false}
       >
-        <MahiPopUp details={this.props}/>
+        <MahiPopUp details={this.props} closePopUp={changeActiveTask}/>
         <Button
-            positive
-            icon='smile outline'
-            labelPosition='right'
-            content='Help out!'
-            floated='right'
-            style={{marginTop: '1em'}}
-            onClick={this.handleClick}
-          />
+          positive
+          icon='smile outline'
+          labelPosition='right'
+          content='Help out!'
+          floated='right'
+          style={{marginTop: '1em'}}
+          onClick={this.handleClick}
+        />
       </Popup>
     )
   }

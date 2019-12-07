@@ -58,8 +58,8 @@ export class MahiSummary extends Component {
                   onClick={this.toggleModalView}>
                     View Detail
                 </Button>}
-              open={modalVisible}>
-
+              open={modalVisible}
+              >
               <SelectMahi 
                 details={this.props} 
                 closeModal={this.toggleModalView}/>
