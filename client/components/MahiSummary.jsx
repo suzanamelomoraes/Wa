@@ -17,11 +17,13 @@ export class MahiSummary extends Component {
   }
 
   render () {
-    const { taskId, title, category, hours, description, image, assigner, changeActiveTask } = this.props
+    const { taskId, title, category, hours, description, image, assigner, changeActiveTask, activeIndex } = this.props
     const { modalVisible } = this.state
 
     return (
-      <Card onClick={() => changeActiveTask(taskId)}>
+      <Card 
+        color={(taskId === activeIndex) ? "orange" : "white"} 
+        onClick={() => changeActiveTask(taskId)}>
         <Card.Content>
           <Image
             floated='right'
@@ -62,9 +64,14 @@ export class MahiSummary extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    activeIndex: state.tasks.activeIndex
+  }
+}
 
 const mapDispatchToProps = {
   changeActiveTask
 }
 
-export default connect (null, mapDispatchToProps)(MahiSummary)
+export default connect (mapStateToProps, mapDispatchToProps)(MahiSummary)

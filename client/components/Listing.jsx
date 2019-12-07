@@ -109,7 +109,7 @@ export class Listing extends Component {
 
 const mapStateToProps = state => {
   return {
-    activeTask: state.activeTask
+    activeIndex: state.tasks.activeIndex
   }
 }
 
