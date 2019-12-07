@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import { Button, Header, Image, Modal, Form, Icon } from 'semantic-ui-react'
 // import { connect } from 'react-redux'
+import { completeTask } from '../api/tasks'
 
 class AcceptMahi extends Component {
 state = {
   showModal: false
 }
 
-handleCreateButton = (event) => {
+handleCreateButton = (event, callAPI) => {
   event.preventDefault()
   this.setState({
     showModal: false
   })
+  if (callAPI) {
+    completeTask(1)
+  }
 }
 
 render () {
@@ -39,8 +43,8 @@ Are you sure your task is completed?
             labelPosition='right'
             content="No, I am not"
             size="large"
-            onClick={(evt) => this.handleCreateButton(evt)}
-            data-test="secondBtn"
+            onClick={(evt) => this.handleCreateButton(evt, 0)}
+            data-test="secondBtnNegative"
           />
           <Button
             positive
@@ -48,7 +52,8 @@ Are you sure your task is completed?
             labelPosition='right'
             content="Yes, I am"
             size="large"
-            onClick={(evt) => this.handleCreateButton(evt)}
+            onClick={(evt) => this.handleCreateButton(evt, 1)}
+            data-test="secondBtnPositive"
           />
         </Modal.Actions>
       </Modal>
