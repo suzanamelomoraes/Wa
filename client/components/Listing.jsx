@@ -66,14 +66,23 @@ export class Listing extends Component {
             <Grid.Column width={8} style={{height: '100vh', width: '100%', overflow: 'scroll'}}>
               <Card.Group centered>
                 {mahiDetails.map(mahi =>
-                  <MahiSummary key={mahi.taskId} {...mahi} />)}
+                  <MahiSummary 
+                    key={mahi.taskId} 
+                    {...mahi} 
+                    mapVisible={mapVisible} />)}
               </Card.Group>
             </Grid.Column>
 
             <Grid.Column width={8}>
               <Map>
                 {mahiDetails.map(mahi => 
-                  <MahiMarker key={mahi.taskId} {...mahi} lat={mahi.latitude} lng={mahi.longitude} />)}
+                  <MahiMarker 
+                    key={mahi.taskId} 
+                    {...mahi} 
+                    lat={mahi.latitude} 
+                    lng={mahi.longitude} 
+                  />
+                )}
               </Map>
             </Grid.Column>
           </Grid>
@@ -99,7 +108,12 @@ export class Listing extends Component {
 
             <Card.Group centered>
               {mahiDetails.map(mahi =>
-                <MahiSummary key={mahi.taskId} {...mahi} />)}
+                <MahiSummary 
+                  key={mahi.taskId} 
+                  {...mahi} 
+                  mapVisible={mapVisible}
+                />
+              )}
             </Card.Group>
           </Grid.Column>
         </Grid>

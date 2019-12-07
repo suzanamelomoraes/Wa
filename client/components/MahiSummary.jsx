@@ -11,19 +11,20 @@ export class MahiSummary extends Component {
   }
 
   toggleModalView = () => {
+    const { modalVisible } = this.state
+
     this.setState({
-      modalVisible: !this.state.modalVisible
+      modalVisible: !modalVisible
     })
+
   }
 
   render () {
-    const { taskId, title, category, hours, description, image, assigner, changeActiveTask, activeIndex } = this.props
+    const { taskId, title, category, hours, description, image, assigner, changeActiveTask, activeIndex, mapVisible } = this.props
     const { modalVisible } = this.state
 
     return (
-      <Card 
-        color={(taskId === activeIndex) ? "orange" : "white"} 
-        onClick={() => changeActiveTask(taskId)}>
+      <Card color={(taskId === activeIndex) ? "orange" : "grey"} >
         <Card.Content>
           <Image
             floated='right'
@@ -44,7 +45,14 @@ export class MahiSummary extends Component {
           <div >
             <Modal 
               trigger={
-                <Button 
+                mapVisible 
+                ? <Button 
+                basic 
+                color='green' 
+                onClick={() => changeActiveTask(taskId)}>
+                  View in Map
+                </Button>
+                : <Button 
                   basic 
                   color='green' 
                   onClick={this.toggleModalView}>

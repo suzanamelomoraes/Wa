@@ -11,9 +11,10 @@ export class MahiMarker extends Component {
 
   handleClick = () => {
     const userID = 2 //delete after getting connected to Authenticare
-    const { taskId } = this.props
+    const { taskId, changeActiveTask } = this.props
 
     selectTask(taskId, userID)
+    changeActiveTask(null)
   }
 
   handleOpen = () => {
