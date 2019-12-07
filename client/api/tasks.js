@@ -22,3 +22,11 @@ export function addMahi (mahi) {
     .then(res => res.body)
     .catch(() => { throw new Error(err) })
 }
+
+export function selectTask (id, assignee) {
+  return request
+    .put(apiURL)
+    .send({id, assignee})
+    .then(res => res.body)
+    .catch(err => { throw new Error(err.message) })
+}

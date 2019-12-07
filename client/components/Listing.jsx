@@ -23,7 +23,7 @@ class Listing extends Component {
     return (
       <Card.Group centered style={{ marginTop: 75 }}>
         {mahiDetails.map(mahi =>
-          <MahiSummary key={mahi.id} {...mahi} />)}
+          <MahiSummary key={mahi.taskId} {...mahi} />)}
       </Card.Group>
     )
   }
