@@ -12,19 +12,13 @@ import { getTasks } from '../actions/tasks'
 
 export class Listing extends Component {
   state = {
-    mahiDetails: [],
     mapVisible: null,
     buttonColor: 'olive'
   }
 
   componentDidMount () {
     this.props.getTasks()
-      .then(mahiDetails => {
-        this.setState({ mahiDetails: mahiDetails.tasks })
-      })
-      .catch((error) => {
-        this.props.setError(error)
-      })
+    this.props.changeActiveTask(null)
   }
 
   toggleMap = () => {
@@ -39,7 +33,8 @@ export class Listing extends Component {
   }
 
   render () {
-    const { mahiDetails, mapVisible, buttonColor } = this.state
+    const { mapVisible, buttonColor } = this.state
+    const { tasks } = this.props
     
     if (mapVisible) {
       return (
@@ -74,7 +69,7 @@ export class Listing extends Component {
               }}
             >
               <Card.Group centered>
-                {mahiDetails.map(mahi =>
+                {tasks.map(mahi =>
                   {if (mahi.status === 'open') {
                     return <MahiSummary 
                     key={mahi.taskId} 
@@ -88,7 +83,7 @@ export class Listing extends Component {
 
             <Grid.Column width={8}>
               <Map>
-                {mahiDetails.map(mahi => 
+                {tasks.map(mahi => 
                   {if (mahi.status === 'open') {
                     return <MahiMarker 
                     key={mahi.taskId} 
@@ -131,7 +126,7 @@ export class Listing extends Component {
             <Divider />
 
             <Card.Group centered>
-              {mahiDetails.map(mahi =>
+              {tasks.map(mahi =>
                 {if (mahi.status === 'open') {
                   return <MahiSummary 
                     key={mahi.taskId} 
@@ -150,6 +145,7 @@ export class Listing extends Component {
 const mapStateToProps = state => {
   return {
     activeIndex: state.activeIndex,
+    tasks: state.tasks
   }
 }
 
