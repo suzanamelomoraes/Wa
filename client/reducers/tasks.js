@@ -1,12 +1,10 @@
-import { CHANGE_ACTIVE_TASK } from '../actions/tasks'
+import { CHANGE_ACTIVE_TASK, GET_TASKS_SUCCESS } from '../actions/tasks'
 
-export default function tasksReducer (state = {activeIndex: null}, action) {
+export default function tasksReducer (state = [], action) {
   switch (action.type) {
-    case CHANGE_ACTIVE_TASK:
-      return { 
-        activeIndex: action.index
-      }
-
+    case GET_TASKS_SUCCESS:
+      return action.tasks
+       
     default:
       return state
   }
