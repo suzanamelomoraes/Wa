@@ -4,6 +4,8 @@ import {
 } from '../actions/categories'
 
 import {
+  GET_VOLUNTEERING_SUCCESS,
+  GET_VOLUNTEERING_PENDING,
   GET_TASKS_PENDING,
   GET_TASKS_SUCCESS,
   GET_OFFERINGS_SUCCESS,
@@ -22,7 +24,7 @@ import {
 export default function (pending = false, action) {
   switch (action.type) {
     case GET_CATEGORIES_PENDING:
-    case GET_TASKS_PENDING:
+    case GET_VOLUNTEERING_PENDING:
     case GET_OFFERINGS_PENDING:
     case GET_USER_PENDING:
       return true
