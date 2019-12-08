@@ -13,7 +13,7 @@ export class SelectOfferingMahi extends Component {
     this.setState({ showModal: false })
   }
   render () {
-    // const { details, closeModal } = this.props
+    const { title, assigner, assignee, assignerId, assigneeId, category, hours, taskId, description } = this.props.data
 
     return (
       <Modal open={this.state.showModal} centered={true} trigger={
@@ -21,15 +21,15 @@ export class SelectOfferingMahi extends Component {
           id="one" data-test="firstBtn" onClick={() => this.setState({ showModal: true })}>View Details</Button>
       }>
 
-        <Modal.Header>CATEGORY</Modal.Header>
+        <Modal.Header>{category}</Modal.Header>
         <Modal.Content image>
           <Image wrapped size='medium' src='/images/avatar01.png' />
           <Modal.Description>
-            <Header as='h1'>TITLE</Header>
+            <Header as='h1'>{title}</Header>
 
-            <p style={{ fontSize: '1.25em' }}>DESCRIPTION</p>
+            <p style={{ fontSize: '1.25em' }}>{description}</p>
 
-            <p style={{ fontSize: '1.25em' }}>You can earn 100000000 hour/s when you help out THEASSIGNERGOESHERE</p>
+            <p style={{ fontSize: '1.25em' }}>You can earn {hours} hour/s when you help out {assignerId}</p>
           </Modal.Description>
         </Modal.Content>
 
