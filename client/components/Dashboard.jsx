@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
-import { Segment } from 'semantic-ui-react'
+import { Segment, Grid } from 'semantic-ui-react'
 
 import Profile from './Profile'
 import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
+import OfferingList from './OfferingList'
 
 // to be removed once there are props passed down
 const props = {
@@ -22,8 +23,21 @@ export class Dashboard extends Component {
   render () {
     return (
       <div>
-        <Profile user={props}/>
-        <TimeCurrency props={props}/>
+        <Grid columns={3}>
+          <Grid.Column>
+            <Profile user={props}/>
+            <TimeCurrency props={props}/>
+
+          </Grid.Column>
+          <Grid.Column>
+            <OfferingList/>
+          </Grid.Column>
+          <Grid.Column>
+            <div>
+              <h1>Recieving</h1>
+            </div>
+          </Grid.Column>
+        </Grid>
         <Segment fixed='true' attached='bottom'>
           <AddMahi id={props.id}/>
         </Segment>

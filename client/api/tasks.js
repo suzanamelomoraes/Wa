@@ -31,3 +31,4 @@ export function selectTask (id, assignee) {
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
+
