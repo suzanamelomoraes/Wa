@@ -80,13 +80,43 @@ function selectTask(id, assignee, db = connection) {
     .then(() => getTask(id, db));
 }
 
-function completeTask(id, db = connection) {
+function completeTask(id, assignerId, assigneeId, time, db = connection) {
   return db("tasks")
     .where("id", id)
     .update({
       status: "completed"
     })
+    .then(() => {
+      return db("users")
+        .where("id", assignerId)
+        .decrement({
+          balance: time
+        });
+    })
+    .then(() => {
+      return db("users")
+        .where("id", assigneeId)
+        .increment({
+          balance: time
+        });
+    })
     .then(() => getTask(id, db));
+}
+
+function getTask(id, db = connection) {
+  return db("tasks")
+    .where("id", id)
+    .select(
+      "id",
+      "cat_id as categoryId",
+      "assigner as assignerId",
+      "name as title",
+      "description",
+      "status",
+      "time as hours",
+      "assignee as assignee"
+    )
+    .first();
 }
 
 function addTask(

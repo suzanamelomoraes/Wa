@@ -14,7 +14,7 @@ handleCreateButton = (event, callAPI) => {
     showModal: false
   })
   if (callAPI) {
-    completeTask(1)
+    completeTask(1, 3, 1, 2)
   }
 }
 
