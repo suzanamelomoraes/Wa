@@ -7,7 +7,7 @@ import Map from './Map'
 import MahiMarker from './MahiMarker'
 
 import { setError } from '../actions/error'
-import { changeActiveTask } from '../actions/activeIndex'
+import { changeActiveTask } from '../actions/tasks'
 import { getTasks } from '../actions/tasks'
 
 export class Listing extends Component {

@@ -5,7 +5,7 @@ import { Icon, Popup, Button } from 'semantic-ui-react'
 import MahiPopUp from './MahiPopup'
 
 import { selectTask } from '../api/tasks'
-import { changeActiveTask } from '../actions/activeIndex'
+import { changeActiveTask } from '../actions/tasks'
 import { getTasks } from '../actions/tasks'
 
 export class MahiMarker extends Component {

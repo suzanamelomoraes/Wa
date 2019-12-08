@@ -5,6 +5,14 @@ export const GET_TASKS_PENDING = 'GET_TASKS_PENDING'
 export const GET_TASKS_SUCCESS = 'GET_TASKS_SUCCESS'
 export const GET_OFFERINGS_PENDING = 'GET_OFFERINGS_PENDING'
 export const GET_OFFERINGS_SUCCESS = 'GET_OFFERINGS_SUCCESS'
+export const CHANGE_ACTIVE_TASK = 'CHANGE_ACTIVE_TASK'
+
+export function changeActiveTask (index) {
+  return {
+    type: CHANGE_ACTIVE_TASK,
+    index
+  }
+}
 
 export function getTasksPending () {
   return {
