@@ -59,6 +59,7 @@ function getTaskByAssignee (id, db = connection) {
   return db('tasks')
     .where('assignee', id)
     .join('users', 'tasks.assigner', 'users.id')
+    .join('categories', 'tasks.cat_id', 'categories.id')
     .select(
       'tasks.id',
       'tasks.cat_id as categoryId',
@@ -68,7 +69,8 @@ function getTaskByAssignee (id, db = connection) {
       'tasks.status',
       'tasks.time as hours',
       'tasks.assignee as assignee',
-      'users.name'
+      'users.name as assignerName',
+      'categories.name as category'
     )
 }
 
