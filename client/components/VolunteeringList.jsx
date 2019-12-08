@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
-import OfferingMahi from './OfferingMahi'
+import VolunterrMahi from './VolunteerMahi'
 
 import { getVolunteering } from '../actions/tasks'
 
@@ -27,7 +27,7 @@ render () {
             <Grid.Column>
               <Card.Group centered>
                 {volunteering.map(volunteer =>
-                  <OfferingMahi
+                  <VolunterrMahi
                     key={volunteer.id}
                     data={volunteer}
                   />
