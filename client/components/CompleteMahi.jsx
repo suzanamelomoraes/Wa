@@ -5,7 +5,11 @@ import { completeTask } from '../api/tasks'
 
 class AcceptMahi extends Component {
 state = {
-  showModal: false
+  showModal: false,
+  assigneeId: '',
+  assignerId: '',
+  taskId: '',
+  hours: ''
 }
 
 handleClickButton = (event, callAPI) => {
@@ -13,12 +17,14 @@ handleClickButton = (event, callAPI) => {
   this.setState({
     showModal: false
   })
-  if (callAPI) {
-    completeTask(1, 3, 1, 2)
+  const {taskId, assignerId, assigneeId, hours} = this.state
+  if (callAPI && assigneeId) {
+    completeTask(taskId, assignerId, assigneeId, hours)
   }
 }
 
 render () {
+  console.log('this.props',this.props.data)
   return (
     <Modal open={this.state.showModal} centered={true} trigger={
       <Button color="green" basic floated='right'
