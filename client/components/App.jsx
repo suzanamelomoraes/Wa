@@ -4,6 +4,8 @@ import Listing from './Listing'
 import Home from './Home'
 import Nav from './Nav'
 import Dashboard from './Dashboard'
+import Registration from './Registration'
+import LogIn from './LogIn'
 import { Loading } from './Loading'
 
 const App = () => (
@@ -13,6 +15,8 @@ const App = () => (
     <Route exact path='/' component={Home}/>
     <Route exact path='/list' component={Listing}/>
     <Route exact path='/dashboard' component={Dashboard}/>
+    <Route exact path='/register' component={Registration}/>
+    <Route exact path='/signin' component={LogIn}/>
   </Router>
 )
 

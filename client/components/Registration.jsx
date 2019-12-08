@@ -14,7 +14,7 @@ const suburbs = [
 
 export class Registration extends Component {
   state ={
-    name: '',
+    username: '',
     email: '',
     password: '',
     mobile: null,
@@ -31,9 +31,9 @@ export class Registration extends Component {
   }
 
   handleSubmit = () => {
-    const { name, email, password, mobile, street, suburb, postcode, city } = this.state
+    const { username, email, password, mobile, street, suburb, postcode, city } = this.state
     register({
-      name: name,
+      username: username,
       email: email,
       password: password,
       mobile: mobile,
@@ -53,7 +53,7 @@ export class Registration extends Component {
 
   handleSelect = (e, data) => {
     const selected = data.value
-    const address = options.find(option =>
+    const address = suburbs.find(option =>
       option.suburb === selected
     )
     this.setState({
@@ -63,7 +63,6 @@ export class Registration extends Component {
   }
 
   render () {
-
     const options = suburbs.map(suburb => ({
       key: suburb.id,
       value: suburb.suburb,
@@ -71,17 +70,19 @@ export class Registration extends Component {
     }))
 
     return (
-      <Container style={{ border: '1px', borderStyle: 'solid', padding: '25px' }}g>
-        <Header as='h2' color='green' textAlign='center'>Register</Header>
+      <Container style={{ marginTop: 75, border: '1px', borderStyle: 'solid', padding: '25px' }}g>
+        <Header as='h2' color='brown' textAlign='center'>
+          <Header.Content>Create a new account</Header.Content>
+        </Header>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Field label='Name'
+          <Form.Field label='Username'
             control={Input}
-            name='name'
-            id='name'
+            name='username'
+            id='username'
             onChange={this.handleChange}
             required
             type='text'
-            placeholder='Name' />
+            placeholder='Username' />
           <Form.Field label='Email'
             control={Input}
             name='email'
