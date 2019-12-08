@@ -6,6 +6,8 @@ import {
 import {
   GET_VOLUNTEERING_SUCCESS,
   GET_VOLUNTEERING_PENDING,
+  GET_TASKS_PENDING,
+  GET_TASKS_SUCCESS,
   GET_OFFERINGS_SUCCESS,
   GET_OFFERINGS_PENDING
 } from '../actions/tasks'
@@ -26,12 +28,14 @@ export default function (pending = false, action) {
     case GET_OFFERINGS_PENDING:
     case GET_USER_PENDING:
       return true
-    case GET_VOLUNTEERING_SUCCESS:
+
     case GET_CATEGORIES_SUCCESS:
+    case GET_TASKS_SUCCESS:
     case GET_OFFERINGS_SUCCESS:
     case GET_USER_SUCCESS:
     case SET_ERROR:
       return false
+
     default:
       return pending
   }
