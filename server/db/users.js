@@ -17,14 +17,14 @@ function createUser (user, db = connection) {
     })
     .then(() => generateHash(user.password))
     .then(passwordHash => {
-      return db('users').insert({ username: user.username, hash: passwordHash })
+      return db('users').insert({ name: user.username, hash: passwordHash })
     })
 }
 
 function userExists (username, db = connection) {
   return db('users')
     .count('id as n')
-    .where('username', username)
+    .where('name', username)
     .then(count => {
       return count[0].n > 0
     })

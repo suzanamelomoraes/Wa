@@ -31,7 +31,7 @@ handleChange = (e, { name, value }) => this.setState({ [name]: value })
     })
       .then((token) => {
         if (isAuthenticated()) {
-          this.props.history.push('/details')
+          this.props.history.push('/')
         }
       })
   }
@@ -51,7 +51,7 @@ handleChange = (e, { name, value }) => this.setState({ [name]: value })
     return (
       <Grid centered={true}>
         <Grid.Column width={6}>
-          <Container style={{ marginTop: 75, border: '1px', borderStyle: 'solid', padding: '25px' }}g>
+          <Container style={{ marginTop: 75, border: '1px', borderStyle: 'solid', padding: '25px' }}>
             <Header as='h2' color='brown' textAlign='center'>
               <Image
                 verticalAlign='middle'

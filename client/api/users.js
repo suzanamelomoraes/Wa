@@ -26,7 +26,7 @@ export function getUser (id) {
     .catch(err => { throw new Error(err.message) })
 }
 
-export function geoCodeAddress (details) {
+export function geocodeAddress (details) {
   const url = 'https://maps.googleapis.com/maps/api/geocode/json?address='
   const APIKey = 'AIzaSyCbv90MWPN7pKFNYbOrbMCSsZGaWYGcc8o'
   const { street, suburb, postcode, city } = details
@@ -41,8 +41,9 @@ export function geoCodeAddress (details) {
     .catch(err => { throw new Error(err.message) })
 }
 
-export function addUserDetails ( details, geocode) {
-  const id = request.user
+export function addUserDetails (details, geocode) {
+  const id = request.user.id
+  console.log(id)
   return request
     .post(`${apiURL}/users/${id}`)
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })

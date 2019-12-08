@@ -13,6 +13,7 @@ const NavBar = () => {
           <Menu.Item as={Link} to='/'>Home</Menu.Item>
           <Menu.Item as={Link} to='/list'>Mahi</Menu.Item>
           <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
+          <Menu.Item position='right'as={Link} to='/signin'>Sign In</Menu.Item>
           <Menu.Item position='right'>
           </Menu.Item>
         </Container>

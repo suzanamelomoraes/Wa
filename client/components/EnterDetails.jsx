@@ -3,6 +3,7 @@ import { isAuthenticated, register } from 'authenticare/client'
 
 import { Button, Form, Input, Dropdown, Header, Container, Image, Grid } from 'semantic-ui-react'
 
+import { geocodeAddress, addUserDetails } from '../api/users'
 const suburbs = [
   { id: 1, postcode: 632, suburb: 'Albany' },
   { id: 2, postcode: 632, suburb: 'Albany Heights' },
@@ -26,14 +27,24 @@ handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleSubmit = () => {
     const { email, mobile, street, suburb, postcode, city } = this.state
-    register({
-      email: email,
-      mobile: mobile,
+    geocodeAddress({
       street: street,
       suburb: suburb,
       postcode: postcode,
       city: city
     })
+      .then(geocode =>
+        addUserDetails({
+          email: email,
+          mobile: mobile,
+          street: street,
+          suburb: suburb,
+          postcode: postcode,
+          city: city
+        }, geocode)
+      )
+      .then(() =>
+        this.props.history.push('/dashboard'))
   }
 
   handleSelect = (e, data) => {
