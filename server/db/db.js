@@ -1,114 +1,118 @@
-const connection = require("./connection");
+const connection = require('./connection')
 
-function getCategories(db = connection) {
-  return db("categories");
+function getCategories (db = connection) {
+  return db('categories')
 }
 
-function getTasks(db = connection) {
-  return db("tasks")
-    .join("categories", "tasks.cat_id", "categories.id")
-    .join("users", "tasks.assigner", "users.id")
+function getTasks (db = connection) {
+  return db('tasks')
+    .join('categories', 'tasks.cat_id', 'categories.id')
+    .join('users', 'tasks.assigner', 'users.id')
     .select(
-      "tasks.id as taskId",
-      "tasks.cat_id as categoryId",
-      "tasks.assigner as assignerId",
-      "tasks.name as title",
-      "categories.name as category",
-      "tasks.description as description",
-      "status",
-      "tasks.time as hours",
-      "users.image as image",
-      "users.name as assignerName",
-      "users.latitude as latitude",
-      "users.longitude as longitude"
-    );
-}
-
-function getTask(id, db = connection) {
-  return db("tasks")
-    .where("id", id)
-    .select(
-      "id",
-      "cat_id as categoryId",
-      "assigner as assignerId",
-      "name as title",
-      "description",
-      "status",
-      "time as hours",
-      "assignee as assignee"
+      'tasks.id as taskId',
+      'tasks.cat_id as categoryId',
+      'tasks.assigner as assignerId',
+      'tasks.name as title',
+      'categories.name as category',
+      'tasks.description as description',
+      'status',
+      'tasks.time as hours',
+      'users.image as image',
+      'users.name as assignerName',
+      'users.latitude as latitude',
+      'users.longitude as longitude'
     )
-    .first();
 }
 
-function getTaskByAssigner(id, db = connection) {
-  return db("tasks")
-    .where("assigner", id)
+function getTask (id, db = connection) {
+  return db('tasks')
+    .where('id', id)
     .select(
-      "id",
-      "cat_id as categoryId",
-      "assigner as assignerId",
-      "name as title",
-      "description",
-      "status",
-      "time as hours",
-      "assignee as assignee"
-    );
+      'id',
+      'cat_id as categoryId',
+      'assigner as assignerId',
+      'name as title',
+      'description',
+      'status',
+      'time as hours',
+      'assignee as assignee'
+    )
+    .first()
 }
 
-function getTaskByAssignee(id, db = connection) {
-  return db("tasks")
-    .where("assignee", id)
+function getTaskByAssigner (id, db = connection) {
+  return db('tasks')
+    .where('assigner', id)
     .select(
-      "id",
-      "cat_id as categoryId",
-      "assigner as assignerId",
-      "name as title",
-      "description",
-      "status",
-      "time as hours",
-      "assignee as assignee"
-    );
+      'id',
+      'cat_id as categoryId',
+      'assigner as assignerId',
+      'name as title',
+      'description',
+      'status',
+      'time as hours',
+      'assignee as assignee'
+    )
 }
 
-function selectTask(id, assignee, db = connection) {
-  return db("tasks")
-    .where("id", id)
+function getTaskByAssignee (id, db = connection) {
+  return db('tasks')
+    .where('assignee', id)
+    .join('users', 'tasks.assigner', 'users.id')
+    .join('categories', 'tasks.cat_id', 'categories.id')
+    .select(
+      'tasks.id',
+      'tasks.cat_id as categoryId',
+      'tasks.assigner as assignerId',
+      'tasks.name as title',
+      'tasks.description',
+      'tasks.status',
+      'tasks.time as hours',
+      'tasks.assignee as assignee',
+      'users.name as assignerName',
+      'categories.name as category'
+    )
+}
+
+function selectTask (id, assignee, db = connection) {
+  return db('tasks')
+    .where('id', id)
     .update({
       assignee: assignee,
-      status: "in progress"
+      status: 'in progress'
     })
-    .then(() => getTask(id, db));
+    .then(() => getTask(id, db))
 }
 
-function completeTask(id, assignerId, assigneeId, time, db = connection) {
-  return db("tasks")
-    .where("id", id)
+function completeTask (id, assignerId, assigneeId, time, db = connection) {
+  return db('tasks')
+    .where('id', id)
     .update({
-      status: "completed"
+      status: 'completed'
     })
     .then(() => {
-      return db("users")
-        .where("id", assignerId)
+      return db('users')
+        .where('id', assignerId)
         .decrement({
           balance: time
-        });
+        })
     })
     .then(() => {
-      return db("users")
-        .where("id", assigneeId)
+      return db('users')
+        .where('id', assigneeId)
         .increment({
           balance: time
-        });
+        })
     })
-    .then(() => getTask(id, db));
+    .then(() => getTask(id, db))
 }
 
-function addTask(
+function addTask (
   categoryId,
   { assignerId, title, description, status, hours },
   db = connection
 ) {
-  return db("tasks")
+  return db('tasks')
     .insert({
       cat_id: categoryId,
       assigner: assignerId,
@@ -117,17 +121,17 @@ function addTask(
       status,
       time: hours
     })
-    .then(() => getTasks(db));
+    .then(() => getTasks(db))
 }
 
-function getUsers(db = connection) {
-  return db("users");
+function getUsers (db = connection) {
+  return db('users')
 }
 
-function getUserById(id, db = connection) {
-  return db("users")
-    .where("id", id)
-    .first();
+function getUserById (id, db = connection) {
+  return db('users')
+    .where('id', id)
+    .first()
 }
 
 module.exports = {
@@ -141,4 +145,4 @@ module.exports = {
   getTaskByAssignee,
   getTaskByAssigner,
   getUserById
-};
+}
