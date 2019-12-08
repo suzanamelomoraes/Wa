@@ -14,9 +14,6 @@ componentDidMount () {
 
 render () {
   const { volunteering } = this.props
-  console.log(this.props)
-  console.log(this.props)
-  console.log(this.props)
   return (
     <Segment style={{ marginTop: 75 }}>
       {volunteering
