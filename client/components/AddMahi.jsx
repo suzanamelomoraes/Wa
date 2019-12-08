@@ -3,28 +3,34 @@ import { connect } from 'react-redux'
 
 import { addMahi } from '../api/tasks'
 
+import { getCategories } from '../actions/categories'
+
 import { Modal, Form, Header, Button, Dropdown, Image } from 'semantic-ui-react'
 
 export class AddMahi extends Component {
   state = {
-    assigner: this.props.assigner,
+    assigner: this.props.id,
     title: '',
     category: '',
-    time: 0,
+    hours: 0,
     description: '',
     modalVisible: false
+  }
+
+  componentDidMount () {
+    this.props.getCategories()
   }
 
   handleSubmit = () => {
     this.setState({
       modalVisible: false
     })
-    const { assigner, title, category, time, description } = this.state
+    const { assigner, title, category, hours, description } = this.state
     addMahi({
       assigner,
       title,
       category,
-      time,
+      hours,
       description
     })
   }
@@ -56,9 +62,9 @@ export class AddMahi extends Component {
     const { modalVisible } = this.state
     const { categories } = this.props
     const options = categories.map(category => ({
-      key: category.key,
-      value: category.categoryName,
-      text: category.categoryName
+      key: category.id,
+      value: category.name,
+      text: category.name
     }))
 
     return (
@@ -115,11 +121,12 @@ export class AddMahi extends Component {
         </Modal.Content>
         <Modal.Content>
           <Form.Input label='Time in Hours'
-            name='time'
-            id='time'
+            name='hours'
+            id='hours'
             onChange={this.handleChange}
             required
             type='number'
+            min='1'
             placeholder='Add the time you need' />
         </Modal.Content>
         <Modal.Actions>
@@ -140,5 +147,8 @@ const mapStateToProps = (state) => {
     categories: state.categories
   }
 }
+const matchDispatchToProps = {
+  getCategories
+}
 
-export default connect(mapStateToProps)(AddMahi)
+export default connect(mapStateToProps, matchDispatchToProps)(AddMahi)

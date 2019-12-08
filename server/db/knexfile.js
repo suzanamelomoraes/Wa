@@ -7,7 +7,14 @@ module.exports = {
     connection: {
       filename: path.join(__dirname, 'dev.sqlite3')
     },
-    useNullAsDefault: true
+    useNullAsDefault: true,
+
+    migrations: {
+      directory: path.join(__dirname, 'migrations')
+    },
+    seeds: {
+      directory: path.join(__dirname, 'seeds')
+    }
   },
 
   test: {
@@ -20,7 +27,7 @@ module.exports = {
       directory: path.join(__dirname, 'migrations')
     },
     seeds: {
-      directory: path.join(__dirname, 'seeds')
+      directory: path.join(__dirname, '../../tests/server/db/seeds')
     }
   },
 
