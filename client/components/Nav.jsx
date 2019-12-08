@@ -12,9 +12,7 @@ const NavBar = () => {
           </Menu.Item>
           <Menu.Item as={Link} to='/'>Home</Menu.Item>
           <Menu.Item as={Link} to='/list'>Mahi</Menu.Item>
-          <IfAuthenticated>
-            <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
-          </IfAuthenticated>
+          <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
           <Menu.Item position='right'>
           </Menu.Item>
         </Container>
