@@ -8,10 +8,11 @@ import Profile from './Profile'
 import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
+import VolunteeringList from './VolunteeringList'
 
 export class Dashboard extends Component {
   state = {
-    id: 1,
+    id: 2,
     user: {}
   }
   componentDidMount () {
@@ -25,7 +26,6 @@ export class Dashboard extends Component {
   }
   render () {
     const { id, user } = this.state
-
     return (
       <div>
         <Grid columns={3}>
@@ -38,9 +38,7 @@ export class Dashboard extends Component {
             <OfferingList id={id}/>
           </Grid.Column>
           <Grid.Column>
-            <div>
-              <h1>Recieving</h1>
-            </div>
+            <VolunteeringList id={id}/>
           </Grid.Column>
         </Grid>
         <Segment fixed='true' attached='bottom'>
