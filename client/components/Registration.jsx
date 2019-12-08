@@ -24,11 +24,7 @@ export class Registration extends Component {
     city: 'Auckland'
   }
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+handleChange = (e, {name,value})=> this.setState({[name]:value})
 
   handleSubmit = () => {
     const { username, email, password, mobile, street, suburb, postcode, city } = this.state
