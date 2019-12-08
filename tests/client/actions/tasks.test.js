@@ -30,10 +30,9 @@ describe('get Offerings action creators', () => {
     const dispatch = jest.fn()
     const id = 1
     nock(apiUrl)
-      .get(`/users/${id}`)
+      .get(`/tasks/assigner/${id}`)
       .reply(200, [
-        { id: 1, name: 'automotive' },
-        { id: 2, name: 'language' }
+        { id: 1, name: 'automotive' }
       ])
 
     return getOfferings(id)(dispatch)
@@ -42,8 +41,7 @@ describe('get Offerings action creators', () => {
         expect(dispatch.mock.calls[0][0].type).toBe(GET_OFFERINGS_PENDING)
         expect(dispatch).toBeCalledWith({
           offerings: [
-            { id: 1, name: 'automotive' },
-            { id: 2, name: 'language' }
+            { id: 1, name: 'automotive' }
           ],
           type: GET_OFFERINGS_SUCCESS })
       })

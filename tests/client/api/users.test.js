@@ -8,7 +8,7 @@ describe('Testing getOfferings api', () => {
     const expected = [{ name: 'bob' }, { name: 'jones' }]
     const id = 2
     nock(apiURL)
-      .get(`/api/v1/users/${id}`)
+      .get(`/api/v1/tasks/assigner/${id}`)
       .reply(200, expected)
 
     return getOfferings(id)
