@@ -11,21 +11,27 @@ import OfferingList from './OfferingList'
 
 export class Dashboard extends Component {
   state = {
-    id: 1
+    id: 1,
+    user: {}
   }
   componentDidMount () {
     const id = 1
     this.props.getUser(id)
+      .then(() =>
+        this.setState({
+          user: this.props.user
+        })
+      )
   }
   render () {
-    const id = this.state.id
+    const { id, user } = this.state
 
     return (
       <div>
         <Grid columns={3}>
           <Grid.Column>
-            <Profile user={this.props.user}/>
-            <TimeCurrency props={this.props.user}/>
+            <Profile user={user}/>
+            <TimeCurrency props={user}/>
 
           </Grid.Column>
           <Grid.Column>

@@ -5,6 +5,7 @@ import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
 import { getOfferings } from '../actions/tasks'
 
 import MahiSummary from './MahiSummary'
+import OfferingMahi from './OfferingMahi' 
 
 export class OfferingList extends Component {
   state = {
@@ -28,9 +29,9 @@ export class OfferingList extends Component {
               <Grid.Column>
                 <Card.Group centered>
                   {offerings.map(offering =>
-                    <MahiSummary
+                    <OfferingMahi
                       key={offering.id}
-                      {...offerings}
+                      data={offering}
                     />
                   )}
                 </Card.Group>
