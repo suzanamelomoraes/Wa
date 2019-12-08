@@ -3,6 +3,13 @@ import { getEncodedToken } from 'authenticare/client'
 
 const apiURL = 'http://localhost:3000/api/v1'
 
+export function getVolunteering (id) {
+  return request
+    .get(`${apiURL}/tasks/assignee/${id}`)
+    .then(res => res.body)
+    .catch(err => { throw new Error(err.message) })
+}
+
 export function getOfferings (id) {
   return request
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })

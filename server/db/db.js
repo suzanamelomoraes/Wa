@@ -58,15 +58,19 @@ function getTaskByAssigner (id, db = connection) {
 function getTaskByAssignee (id, db = connection) {
   return db('tasks')
     .where('assignee', id)
+    .join('users', 'tasks.assigner', 'users.id')
+    .join('categories', 'tasks.cat_id', 'categories.id')
     .select(
-      'id',
-      'cat_id as categoryId',
-      'assigner as assignerId',
-      'name as title',
-      'description',
-      'status',
-      'time as hours',
-      'assignee as assignee'
+      'tasks.id',
+      'tasks.cat_id as categoryId',
+      'tasks.assigner as assignerId',
+      'tasks.name as title',
+      'tasks.description',
+      'tasks.status',
+      'tasks.time as hours',
+      'tasks.assignee as assignee',
+      'users.name as assignerName',
+      'categories.name as category'
     )
 }
 

@@ -4,6 +4,7 @@ import error from './error'
 import categories from './categories'
 import pending from './pending'
 import tasks from './tasks'
+import volunteering from './volunteering'
 import activeIndex from './activeIndex'
 import offerings from './offerings'
 import user from './user'
@@ -13,6 +14,7 @@ export default combineReducers({
   categories,
   pending,
   tasks,
+  volunteering,
   activeIndex,
   offerings,
   user
