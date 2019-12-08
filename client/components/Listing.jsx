@@ -40,7 +40,6 @@ export class Listing extends Component {
 
   render () {
     const { mahiDetails, mapVisible, buttonColor } = this.state
-    const { changeActiveTask } = this.props
     
     if (mapVisible) {
       return (
