@@ -170,7 +170,7 @@ export class AddMahi extends Component {
             icon="close"
             labelPosition="right"
             content="Close"
-            onClick={closeModal}
+            onClick={this.closeModal}
           />
         </Modal.Actions>
       </Modal>
