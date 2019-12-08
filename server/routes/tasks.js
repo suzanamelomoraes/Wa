@@ -12,14 +12,11 @@ const sendGenericErrorMessage = (res) => {
 
 router.get('/', (req, res) => {
   return db.getTasks()
-    .then(displayTasks)
+    .then(tasks => res.json(tasks))
     .catch(() => sendGenericErrorMessage(res))
-
-  function displayTasks (tasks) {
-    res.json(tasks)
-  }
 })
 
+<<<<<<< HEAD
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
 
@@ -59,6 +56,17 @@ router.get('/assignee/:id', (req, res) => {
 router.post('/newTask/:id', (req, res) => {
   const categoryId = Number(req.params.id)
   const { assignerId, title, description, status, hours } = req.body
+||||||| merged common ancestors
+router.post('/newTask/:id', (req, res) => {
+  const categoryId = Number(req.params.id)
+  const { assignerId, title, description, status, hours } = req.body
+=======
+router.post('/newtask', (req, res) => {
+  const { assigner, title, description, hours, category } = req.body
+  const categoryId = category
+  const assignerId = Number(assigner)
+  const status = 'open'
+>>>>>>> 1bd05afd8a96ce526ebf83e122777a127a572b89
   db.addTask(categoryId, { assignerId, title, description, status, hours })
     .then(displayTasks)
     .catch(() => sendGenericErrorMessage(res))

@@ -6,7 +6,7 @@ import { selectTask } from '../api/tasks'
 
 const userID = 2 //delete after getting connected to Authenticare
 
-class SelectMahi extends Component {
+export class SelectMahi extends Component {
 
   handleClick = () => {
     const { taskId } = this.props.details
@@ -17,21 +17,23 @@ class SelectMahi extends Component {
   }
 
   render () {
-    const { details } = this.props
+    const { details, closeModal } = this.props
 
     return (
       <>
         <Modal.Header>{details.category}</Modal.Header>
+        
         <Modal.Content image>
           <Image wrapped size='medium' src={details.image} />
           <Modal.Description>
             <Header as='h1'>{details.title}</Header>
-            <p style={{ fontSize: '1.25em' }}>
-              {details.description}
-            </p>
-            <p style={{ fontSize: '1.25em' }}>You can earn {details.hours} hours when you help out {details.assigner}</p>
+
+            <p style={{ fontSize: '1.25em' }}>{details.description}</p>
+
+            <p style={{ fontSize: '1.25em' }}>You can earn {details.hours} hour/s when you help out {details.assigner}</p>
           </Modal.Description>
         </Modal.Content>
+        
         <Modal.Actions>
           <Button
             positive
@@ -39,6 +41,13 @@ class SelectMahi extends Component {
             labelPosition='right'
             content="Help out!"
             onClick={this.handleClick}
+          />
+          <Button
+            negative
+            icon='close'
+            labelPosition='right'
+            content="Close"
+            onClick={closeModal}
           />
         </Modal.Actions>
       </>

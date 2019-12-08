@@ -8,7 +8,7 @@ function getTasks (db = connection) {
   return db('tasks')
     .join('categories', 'tasks.cat_id', 'categories.id')
     .join('users', 'tasks.assigner', 'users.id')
-    .select('tasks.id as taskId', 'tasks.cat_id as categoryId', 'tasks.assigner as assignerId', 'tasks.name as title', 'categories.name as category', 'tasks.description as description', 'status', 'tasks.time as hours', 'users.image as image', 'users.name as assignerName')
+    .select('tasks.id as taskId', 'tasks.cat_id as categoryId', 'tasks.assigner as assignerId', 'tasks.name as title', 'categories.name as category', 'tasks.description as description', 'status', 'tasks.time as hours', 'users.image as image', 'users.name as assignerName', 'users.latitude as latitude', 'users.longitude as longitude' )
 }
 
 function getTask (id, db = connection) {
@@ -65,6 +65,12 @@ function getUsers (db = connection) {
   return db('users')
 }
 
+function getUserById (id, db = connection) {
+  return db('users')
+    .where('id', id)
+    .first()
+}
+
 module.exports = {
   getTasks,
   getCategories,
@@ -72,7 +78,14 @@ module.exports = {
   addTask,
   getTask,
   completeTask,
+<<<<<<< HEAD
   getUsers,
   getTaskByAssignee,
   getTaskByAssigner
+||||||| merged common ancestors
+  getUsers
+=======
+  getUsers,
+  getUserById
+>>>>>>> 1bd05afd8a96ce526ebf83e122777a127a572b89
 }
