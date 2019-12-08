@@ -21,7 +21,7 @@ export class OfferingList extends Component {
       <Segment style={{ marginTop: 75 }}>
         {offerings
           ? <React.Fragment>
-            <Header as='h2'>
+            <Header as='h3'>
               <Icon name='tasks'/>
               <Header.Content>Currently Offering</Header.Content>
             </Header>
