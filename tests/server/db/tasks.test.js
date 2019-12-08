@@ -60,9 +60,14 @@ describe("Tasks database tests", () => {
     expect.assertions(1);
 
     const id = 1;
+    const assignerId = 1;
+    const assigneeId = 2;
+    const time = 2;
 
-    return db.completeTask(id, testDb).then(task => {
-      expect(task.status).toMatch("completed");
-    });
+    return db
+      .completeTask(id, assignerId, assigneeId, time, testDb)
+      .then(task => {
+        expect(task.status).toMatch("completed");
+      });
   });
 });
