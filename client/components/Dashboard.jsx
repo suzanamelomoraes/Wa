@@ -9,17 +9,6 @@ import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
 
-// to be removed once there are props passed down
-const props = {
-  name: 'Steve Jobs',
-  image: '/images/avatar02.png',
-  about: 'Coding Enthusiast',
-  mobile: '021 456 4445',
-  email: 'steve.jobs@apple.com',
-  address: '12 Morgan Street, Newmarket, Auckland, NewZealand',
-  balance: 8,
-  id: 1
-}
 export class Dashboard extends Component {
   state = {
     id: 1
