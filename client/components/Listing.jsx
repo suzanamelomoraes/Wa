@@ -40,8 +40,7 @@ export class Listing extends Component {
 
   render () {
     const { mahiDetails, mapVisible, buttonColor } = this.state
-    const { changeActiveTask } = this.props
-
+    
     if (mapVisible) {
       return (
         <>
@@ -76,24 +75,28 @@ export class Listing extends Component {
             >
               <Card.Group centered>
                 {mahiDetails.map(mahi =>
-                  <MahiSummary
-                    key={mahi.taskId}
-                    {...mahi}
-                    mapVisible={mapVisible}
-                  />
+                  {if (mahi.status === 'open') {
+                    return <MahiSummary 
+                    key={mahi.taskId} 
+                    {...mahi} 
+                    mapVisible={mapVisible} 
+                    />}
+                  }
                 )}
               </Card.Group>
             </Grid.Column>
 
             <Grid.Column width={8}>
               <Map>
-                {mahiDetails.map(mahi =>
-                  <MahiMarker
-                    key={mahi.taskId}
-                    {...mahi}
-                    lat={mahi.latitude}
-                    lng={mahi.longitude}
-                  />
+                {mahiDetails.map(mahi => 
+                  {if (mahi.status === 'open') {
+                    return <MahiMarker 
+                    key={mahi.taskId} 
+                    {...mahi} 
+                    lat={mahi.latitude} 
+                    lng={mahi.longitude} 
+                  />}
+                  }
                 )}
               </Map>
             </Grid.Column>
@@ -118,27 +121,29 @@ export class Listing extends Component {
               hidden
               style={{ fontSize: '0.8em' }}>
                   Open Map
-            </Button.Content>
+              </Button.Content>
 
-            <Button.Content visible>
-              <Icon name='map outline' />
-            </Button.Content>
-          </Button>
+              <Button.Content visible>
+                <Icon name='map outline' />
+              </Button.Content>
+            </Button>
 
-          <Divider />
+            <Divider />
 
-          <Card.Group centered>
-            {mahiDetails.map(mahi =>
-              <MahiSummary
-                key={mahi.taskId}
-                {...mahi}
-                mapVisible={mapVisible}
-              />
-            )}
-          </Card.Group>
-        </Grid.Column>
-      </Grid>
-    )
+            <Card.Group centered>
+              {mahiDetails.map(mahi =>
+                {if (mahi.status === 'open') {
+                  return <MahiSummary 
+                    key={mahi.taskId} 
+                    {...mahi} 
+                    mapVisible={mapVisible}
+                  />}
+                }
+              )}
+            </Card.Group>
+          </Grid.Column>
+        </Grid>
+      )
   }
 }
 
