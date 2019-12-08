@@ -22,6 +22,7 @@ const mockTask = {
   category: "Automotive",
   categoryId: 1,
   assignerId: 3,
+  assigneeId: 2,
   title: "car wash",
   description: "Available for a complete car wash, inside and outside",
   status: "open",
@@ -33,7 +34,9 @@ const mockTask = {
 jest.mock("../../../server/db/db", () => ({
   getTasks: () => Promise.resolve(mockTasks),
   addTask: () => Promise.resolve(mockTask),
-  getTask: () => Promise.resolve(mockTask)
+  getTask: () => Promise.resolve(mockTask),
+  getTaskByAssigner: () => Promise.resolve(mockTask),
+  getTaskByAssignee: () => Promise.resolve(mockTask)
 }));
 
 describe("Gets all tasks available", () => {
@@ -74,6 +77,26 @@ describe("Gets a task by Id", () => {
   it("GET /:id", () => {
     return request(server)
       .get("/api/v1/tasks/1")
+      .then(res => {
+        expect(res.body).toEqual(mockTask);
+      });
+  });
+});
+
+describe("Gets a task by assigner Id", () => {
+  it("GET /assigner/:id", () => {
+    return request(server)
+      .get("/api/v1/tasks/assigner/3")
+      .then(res => {
+        expect(res.body).toEqual(mockTask);
+      });
+  });
+});
+
+describe("Gets a task by assignee Id", () => {
+  it("GET /assignee/:id", () => {
+    return request(server)
+      .get("/api/v1/tasks/assigner/2")
       .then(res => {
         expect(res.body).toEqual(mockTask);
       });
