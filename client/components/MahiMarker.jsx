@@ -6,15 +6,17 @@ import MahiPopUp from './MahiPopup'
 
 import { selectTask } from '../api/tasks'
 import { changeActiveTask } from '../actions/tasks'
+import { getTasks } from '../actions/tasks'
 
 export class MahiMarker extends Component {
 
   handleClick = () => {
     const userID = 2 //delete after getting connected to Authenticare
-    const { taskId, changeActiveTask } = this.props
+    const { taskId, changeActiveTask, getTasks } = this.props
 
     selectTask(taskId, userID)
     changeActiveTask(null)
+    getTasks()
   }
 
   handleOpen = () => {
@@ -54,12 +56,13 @@ export class MahiMarker extends Component {
 
 const mapStateToProps = state => {
   return {
-    activeIndex: state.tasks.activeIndex
+    activeIndex: state.activeIndex
   }
 }
 
 const mapDispatchToProps = {
-  changeActiveTask
+  changeActiveTask,
+  getTasks
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MahiMarker)

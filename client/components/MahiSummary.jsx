@@ -74,7 +74,7 @@ export class MahiSummary extends Component {
 
 const mapStateToProps = state => {
   return {
-    activeIndex: state.tasks.activeIndex
+    activeIndex: state.activeIndex
   }
 }
 
