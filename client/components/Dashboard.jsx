@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
 import { Segment, Grid } from 'semantic-ui-react'
+
+import { getUser } from '../actions/user'
 
 import Profile from './Profile'
 import TimeCurrency from './TimeCurrency'
@@ -19,18 +21,26 @@ const props = {
   id: 1
 }
 export class Dashboard extends Component {
-  state = { }
+  state = {
+    id: 1
+  }
+  componentDidMount () {
+    const id = 1
+    this.props.getUser(id)
+  }
   render () {
+    const id = this.state.id
+
     return (
       <div>
         <Grid columns={3}>
           <Grid.Column>
-            <Profile user={props}/>
-            <TimeCurrency props={props}/>
+            <Profile user={this.props.user}/>
+            <TimeCurrency props={this.props.user}/>
 
           </Grid.Column>
           <Grid.Column>
-            <OfferingList id={props.id}/>
+            <OfferingList id={id}/>
           </Grid.Column>
           <Grid.Column>
             <div>
@@ -39,7 +49,7 @@ export class Dashboard extends Component {
           </Grid.Column>
         </Grid>
         <Segment fixed='true' attached='bottom'>
-          <AddMahi id={props.id}/>
+          <AddMahi id={id}/>
         </Segment>
       </div>
 
@@ -47,4 +57,14 @@ export class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+const mapDispatchToProps = {
+  getUser
+}
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
