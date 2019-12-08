@@ -32,7 +32,7 @@ export class Listing extends Component {
     const { changeActiveTask } = this.props
 
     this.setState({
-      mapVisible: !mapVisible,
+      mapVisible: !mapVisible
     })
 
     changeActiveTask(null)
@@ -41,20 +41,20 @@ export class Listing extends Component {
   render () {
     const { mahiDetails, mapVisible, buttonColor } = this.state
     const { changeActiveTask } = this.props
-    
+
     if (mapVisible) {
       return (
         <>
           <Grid>
             <Grid.Column textAlign='right'>
-              <Button 
-                animated='fade' 
-                size='big' 
-                color={buttonColor} 
+              <Button
+                animated='fade'
+                size='big'
+                color={buttonColor}
                 onClick={this.toggleMap}
                 style={{ marginTop: 40, marginRight: 25 }}
               >
-                <Button.Content hidden style={{fontSize: '0.8em'}}>Close Map</Button.Content>
+                <Button.Content hidden style={{ fontSize: '0.8em' }}>Close Map</Button.Content>
 
                 <Button.Content visible>
                   <Icon name='map outline' />
@@ -66,20 +66,20 @@ export class Listing extends Component {
           </Grid>
 
           <Grid>
-            <Grid.Column 
-              width={8} 
+            <Grid.Column
+              width={8}
               style={{
-                height: '100vh', 
-                width: '100%', 
+                height: '100vh',
+                width: '100%',
                 overflow: 'scroll'
               }}
             >
               <Card.Group centered>
                 {mahiDetails.map(mahi =>
-                  <MahiSummary 
-                    key={mahi.taskId} 
-                    {...mahi} 
-                    mapVisible={mapVisible} 
+                  <MahiSummary
+                    key={mahi.taskId}
+                    {...mahi}
+                    mapVisible={mapVisible}
                   />
                 )}
               </Card.Group>
@@ -87,12 +87,12 @@ export class Listing extends Component {
 
             <Grid.Column width={8}>
               <Map>
-                {mahiDetails.map(mahi => 
-                  <MahiMarker 
-                    key={mahi.taskId} 
-                    {...mahi} 
-                    lat={mahi.latitude} 
-                    lng={mahi.longitude} 
+                {mahiDetails.map(mahi =>
+                  <MahiMarker
+                    key={mahi.taskId}
+                    {...mahi}
+                    lat={mahi.latitude}
+                    lng={mahi.longitude}
                   />
                 )}
               </Map>
@@ -101,44 +101,44 @@ export class Listing extends Component {
         </>
       )
     }
-      return (
-        <Grid>
-          <Grid.Column textAlign='right'>
-            <Button 
-              animated='fade' 
-              size='big' 
-              color={buttonColor} 
-              onClick={this.toggleMap} 
-              style={{ 
-                marginTop: 40, 
-                marginRight: 25 
-              }}
-            >
-              <Button.Content 
-                hidden 
-                style={{fontSize: '0.8em'}}>
+    return (
+      <Grid>
+        <Grid.Column textAlign='right'>
+          <Button
+            animated='fade'
+            size='big'
+            color={buttonColor}
+            onClick={this.toggleMap}
+            style={{
+              marginTop: 40,
+              marginRight: 25
+            }}
+          >
+            <Button.Content
+              hidden
+              style={{ fontSize: '0.8em' }}>
                   Open Map
-              </Button.Content>
+            </Button.Content>
 
-              <Button.Content visible>
-                <Icon name='map outline' />
-              </Button.Content>
-            </Button>
+            <Button.Content visible>
+              <Icon name='map outline' />
+            </Button.Content>
+          </Button>
 
-            <Divider />
+          <Divider />
 
-            <Card.Group centered>
-              {mahiDetails.map(mahi =>
-                <MahiSummary 
-                  key={mahi.taskId} 
-                  {...mahi} 
-                  mapVisible={mapVisible}
-                />
-              )}
-            </Card.Group>
-          </Grid.Column>
-        </Grid>
-      )
+          <Card.Group centered>
+            {mahiDetails.map(mahi =>
+              <MahiSummary
+                key={mahi.taskId}
+                {...mahi}
+                mapVisible={mapVisible}
+              />
+            )}
+          </Card.Group>
+        </Grid.Column>
+      </Grid>
+    )
   }
 }
 

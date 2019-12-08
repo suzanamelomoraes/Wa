@@ -10,9 +10,9 @@ export function getTasks () {
     .catch(err => { throw new Error(err.message) })
 }
 
-export function completeTask (id) {
+export function completeTask (id, assignerId, assigneeId, time) {
   return request.put(apiURL + `/completed`)
-    .send({ id: id })
+    .send({ id, assignerId, assigneeId, time })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }

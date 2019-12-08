@@ -1,16 +1,58 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
+
+import { getOfferings } from '../actions/tasks'
+import { setError } from '../actions/error'
+
+import MahiSummary from './MahiSummary'
 
 export class OfferingList extends Component {
-  state = { }
+  state = {
+  }
+
+  componentDidMount () {
+    this.props.getOfferings(this.props.id)
+  }
+
   render () {
+    const { offerings } = this.props
     return (
       <Segment style={{ marginTop: 75 }}>
-        <h1>Offering Component</h1>
+        {offerings
+          ? <React.Fragment>
+            <Header as='h2'>
+              <Icon name='tasks'/>
+              <Header.Content>Currently Offering</Header.Content>
+            </Header>
+            <Grid>
+              <Grid.Column>
+                <Card.Group centered>
+                  {offerings.map(offering =>
+                    <MahiSummary
+                      key={offering.id}
+                      {...offerings}
+                    />
+                  )}
+                </Card.Group>
+              </Grid.Column>
+            </Grid>
+          </React.Fragment>
+          : null
+        }
       </Segment>
     )
   }
 }
 
-export default connect()(OfferingList)
+const mapStatetoProps = (state) => {
+  return {
+    offerings: [state.offerings]
+  }
+}
+
+const mapDispatchToProps = {
+  getOfferings,
+  setError
+}
+export default connect(mapStatetoProps, mapDispatchToProps)(OfferingList)

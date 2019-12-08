@@ -39,9 +39,9 @@ router.put('/', (req, res) => {
 })
 
 router.put('/completed', (req, res) => {
-  const { id } = req.body
+  const { id, assignerId, assigneeId, time } = req.body
 
-  db.completeTask(id)
+  db.completeTask(id, assignerId, assigneeId, time)
     .then(task => res.json(task))
     .catch(() => sendGenericErrorMessage(res))
 })

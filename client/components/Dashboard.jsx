@@ -30,7 +30,7 @@ export class Dashboard extends Component {
 
           </Grid.Column>
           <Grid.Column>
-            <OfferingList/>
+            <OfferingList id={props.id}/>
           </Grid.Column>
           <Grid.Column>
             <div>
