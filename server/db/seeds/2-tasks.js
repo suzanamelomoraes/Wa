@@ -9,8 +9,9 @@ exports.seed = function(knex) {
           id: 1,
           cat_id: 4,
           assigner: 5,
-          name: "Look my baby",
-          description: "Need someone to have o look on my baby for two hours",
+          name: "Look at my baby",
+          description:
+            "Need someone to look at my five months baby for two hours",
           status: "open",
           time: "2"
         },
