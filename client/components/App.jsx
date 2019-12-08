@@ -6,6 +6,7 @@ import Nav from './Nav'
 import Dashboard from './Dashboard'
 import Registration from './Registration'
 import LogIn from './LogIn'
+import EnterDetails from './EnterDetails'
 import { Loading } from './Loading'
 
 const App = () => (
@@ -17,6 +18,7 @@ const App = () => (
     <Route exact path='/dashboard' component={Dashboard}/>
     <Route exact path='/register' component={Registration}/>
     <Route exact path='/signin' component={LogIn}/>
+    <Route exact path='/details' component={EnterDetails} />
   </Router>
 )
 
