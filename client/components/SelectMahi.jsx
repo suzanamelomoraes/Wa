@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 import { selectTask } from '../api/tasks'
+import { getTasks } from '../actions/tasks'
 
 const userID = 2 //delete after getting connected to Authenticare
 
@@ -10,10 +12,12 @@ export class SelectMahi extends Component {
 
   handleClick = () => {
     const { taskId } = this.props.details
-    const { closeModal } = this.props
+    const { closeModal, getTasks } = this.props
 
     selectTask(taskId, userID)
+    getTasks()
     closeModal()
+
   }
 
   render () {
@@ -55,4 +59,8 @@ export class SelectMahi extends Component {
   }
 }
 
-export default SelectMahi
+const mapDispatchToProps = {
+  getTasks
+}
+
+export default connect(null, mapDispatchToProps)(SelectMahi)
