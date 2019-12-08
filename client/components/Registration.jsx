@@ -15,11 +15,8 @@ state ={
   city: 'Auckland'
 }
 
-handleChange = (e)=> {
-  this.setState({
-    [e.target.name]: e.target.value
-  })
-}
+handleChange = (e, {name,value})=> this.setState({[name]:value})
+
 
 render() {
     return (
