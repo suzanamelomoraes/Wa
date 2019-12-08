@@ -6,11 +6,7 @@ import Profile from './Profile'
 import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
 
-
-
-import OfferingMahi from './OfferingMahi'     //REMOVE LATER
-
-
+import OfferingMahi from './OfferingMahi' // REMOVE LATER
 
 // to be removed once there are props passed down
 const props = {
@@ -33,7 +29,7 @@ export class Dashboard extends Component {
         <Segment fixed='true' attached='bottom'>
           <AddMahi id={props.id}/>
         </Segment>
-        <OfferingMahi/>
+        {/* <OfferingMahi/> */}
       </div>
 
     )
