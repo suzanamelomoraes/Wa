@@ -75,11 +75,13 @@ export class Listing extends Component {
             >
               <Card.Group centered>
                 {mahiDetails.map(mahi =>
-                  <MahiSummary 
+                  {if (mahi.status === 'open') {
+                    return <MahiSummary 
                     key={mahi.taskId} 
                     {...mahi} 
                     mapVisible={mapVisible} 
-                  />
+                    />}
+                  }
                 )}
               </Card.Group>
             </Grid.Column>
@@ -87,12 +89,14 @@ export class Listing extends Component {
             <Grid.Column width={8}>
               <Map>
                 {mahiDetails.map(mahi => 
-                  <MahiMarker 
+                  {if (mahi.status === 'open') {
+                    return <MahiMarker 
                     key={mahi.taskId} 
                     {...mahi} 
                     lat={mahi.latitude} 
                     lng={mahi.longitude} 
-                  />
+                  />}
+                  }
                 )}
               </Map>
             </Grid.Column>
@@ -128,11 +132,13 @@ export class Listing extends Component {
 
             <Card.Group centered>
               {mahiDetails.map(mahi =>
-                <MahiSummary 
-                  key={mahi.taskId} 
-                  {...mahi} 
-                  mapVisible={mapVisible}
-                />
+                {if (mahi.status === 'open') {
+                  return <MahiSummary 
+                    key={mahi.taskId} 
+                    {...mahi} 
+                    mapVisible={mapVisible}
+                  />}
+                }
               )}
             </Card.Group>
           </Grid.Column>
