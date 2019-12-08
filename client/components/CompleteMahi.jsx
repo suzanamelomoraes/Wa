@@ -17,14 +17,14 @@ handleClickButton = (event, callAPI) => {
   this.setState({
     showModal: false
   })
-  const {taskId, assignerId, assigneeId, hours} = this.state
-  if (callAPI && assigneeId) {
-    completeTask(taskId, assignerId, assigneeId, hours)
+  const { taskId, assignerId, assigneeId, hours } = this.state
+  // Can only COMPELTE task if there's an assignee for that task
+  if (callAPI && 1) {
+    completeTask(taskId, assignerId, 1, hours)
   }
 }
 
 render () {
-  console.log('this.props',this.props.data)
   return (
     <Modal open={this.state.showModal} centered={true} trigger={
       <Button color="green" basic floated='right'

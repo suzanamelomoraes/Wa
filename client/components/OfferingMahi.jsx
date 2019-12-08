@@ -16,9 +16,8 @@ export class OfferingMahi extends Component {
     const taskId = id
 
     const shortDescription = shortenText(description)
-    console.log('hours',hours)
-    console.log('hours',this.props)
-    //
+
+    // Sets categoryName to '' if haven't received this.props.categories. Else set categoryName to a category name
     let categoryName = ''
     if (this.props.categories && this.props.categories.length > 0) {
       const category = this.props.categories.find(category => category.id === categoryId)
@@ -40,8 +39,8 @@ export class OfferingMahi extends Component {
             <Card.Description>{shortDescription}</Card.Description>
           </Card.Content>
           <Card.Content>
-            <CompleteMahi data={{assigneeId,assignerId,taskId,hours}}/>
-            <SelectOfferingMahi data={{ ...this.props.data, assigneeId,categoryName }}/>
+            <CompleteMahi data={{ assigneeId, assignerId, taskId, hours }}/>
+            <SelectOfferingMahi data={{ ...this.props.data, assigneeId, categoryName }}/>
           </Card.Content>
         </Card>
       </>
