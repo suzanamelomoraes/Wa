@@ -32,7 +32,7 @@ export class Listing extends Component {
     const { changeActiveTask } = this.props
 
     this.setState({
-      mapVisible: !mapVisible,
+      mapVisible: !mapVisible
     })
 
     changeActiveTask(null)
@@ -46,14 +46,14 @@ export class Listing extends Component {
         <>
           <Grid>
             <Grid.Column textAlign='right'>
-              <Button 
-                animated='fade' 
-                size='big' 
-                color={buttonColor} 
+              <Button
+                animated='fade'
+                size='big'
+                color={buttonColor}
                 onClick={this.toggleMap}
                 style={{ marginTop: 40, marginRight: 25 }}
               >
-                <Button.Content hidden style={{fontSize: '0.8em'}}>Close Map</Button.Content>
+                <Button.Content hidden style={{ fontSize: '0.8em' }}>Close Map</Button.Content>
 
                 <Button.Content visible>
                   <Icon name='map outline' />
@@ -65,11 +65,11 @@ export class Listing extends Component {
           </Grid>
 
           <Grid>
-            <Grid.Column 
-              width={8} 
+            <Grid.Column
+              width={8}
               style={{
-                height: '100vh', 
-                width: '100%', 
+                height: '100vh',
+                width: '100%',
                 overflow: 'scroll'
               }}
             >
@@ -104,22 +104,22 @@ export class Listing extends Component {
         </>
       )
     }
-      return (
-        <Grid>
-          <Grid.Column textAlign='right'>
-            <Button 
-              animated='fade' 
-              size='big' 
-              color={buttonColor} 
-              onClick={this.toggleMap} 
-              style={{ 
-                marginTop: 40, 
-                marginRight: 25 
-              }}
-            >
-              <Button.Content 
-                hidden 
-                style={{fontSize: '0.8em'}}>
+    return (
+      <Grid>
+        <Grid.Column textAlign='right'>
+          <Button
+            animated='fade'
+            size='big'
+            color={buttonColor}
+            onClick={this.toggleMap}
+            style={{
+              marginTop: 40,
+              marginRight: 25
+            }}
+          >
+            <Button.Content
+              hidden
+              style={{ fontSize: '0.8em' }}>
                   Open Map
               </Button.Content>
 
