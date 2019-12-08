@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const apiURL = 'http://localhost:3000/api/v1/users'
+const apiURL = 'http://localhost:3000/api/v1/tasks/assigner'
 
 export function getOfferings (id) {
   return request

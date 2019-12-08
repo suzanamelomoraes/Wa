@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
 
 import { getOfferings } from '../actions/tasks'
-import { setError } from '../actions/error'
 
 import MahiSummary from './MahiSummary'
 
@@ -47,12 +46,11 @@ export class OfferingList extends Component {
 
 const mapStatetoProps = (state) => {
   return {
-    offerings: [state.offerings]
+    offerings: state.offerings
   }
 }
 
 const mapDispatchToProps = {
-  getOfferings,
-  setError
+  getOfferings
 }
 export default connect(mapStatetoProps, mapDispatchToProps)(OfferingList)

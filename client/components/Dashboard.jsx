@@ -16,7 +16,7 @@ const props = {
   email: 'steve.jobs@apple.com',
   address: '12 Morgan Street, Newmarket, Auckland, NewZealand',
   balance: 8,
-  id: 2
+  id: 1
 }
 export class Dashboard extends Component {
   state = { }
