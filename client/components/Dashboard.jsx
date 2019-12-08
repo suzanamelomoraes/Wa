@@ -1,41 +1,65 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Segment, Grid } from 'semantic-ui-react'
 
-import { Segment } from 'semantic-ui-react'
+import { getUser } from '../actions/user'
 
 import Profile from './Profile'
 import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
-import VolunteeringList from './VolunteeringList'
+import OfferingList from './OfferingList'
 
-import OfferingMahi from './OfferingMahi' // REMOVE LATER
-
-// to be removed once there are props passed down
-const props = {
-  name: 'Steve Jobs',
-  image: '/images/avatar02.png',
-  about: 'Coding Enthusiast',
-  mobile: '021 456 4445',
-  email: 'steve.jobs@apple.com',
-  address: '12 Morgan Street, Newmarket, Auckland, NewZealand',
-  balance: 8,
-  id: 3
-}
 export class Dashboard extends Component {
-  state = { }
+  state = {
+    id: 1,
+    user: {}
+  }
+  componentDidMount () {
+    const id = 1
+    this.props.getUser(id)
+      .then(() =>
+        this.setState({
+          user: this.props.user
+        })
+      )
+  }
   render () {
+    const { id, user } = this.state
+
     return (
       <div>
-        <Profile user={props}/>
-        <TimeCurrency props={props}/>
-        <VolunteeringList id={props.id}/>
+        <Grid columns={3}>
+          <Grid.Column>
+            <Profile user={user}/>
+            <TimeCurrency props={user}/>
+
+          </Grid.Column>
+          <Grid.Column>
+            <OfferingList id={id}/>
+          </Grid.Column>
+          <Grid.Column>
+            <div>
+              <h1>Recieving</h1>
+            </div>
+          </Grid.Column>
+        </Grid>
         <Segment fixed='true' attached='bottom'>
-          <AddMahi id={props.id}/>
+          <AddMahi id={id}/>
         </Segment>
-        {/* <OfferingMahi/> */}
       </div>
 
     )
   }
 }
 
-export default Dashboard
+const mapDispatchToProps = {
+  getUser
+}
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

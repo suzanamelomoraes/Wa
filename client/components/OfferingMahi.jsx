@@ -7,11 +7,6 @@ import SelectOfferingMahi from './SelectOfferingMahi'
 export class OfferingMahi extends Component {
   render () {
     const { title, status, assigner, assignee, assignerId, assigneeId, category, hours, taskId, description } = this.props.data
-    // this.props = testInfo
-    // console.log(this.state.props)
-    // console.log(this.props)
-    // console.log(this.props)
-    console.log(this.props)
 
     const shortDescription = shortenText(description)
 
@@ -26,7 +21,7 @@ export class OfferingMahi extends Component {
             <Card.Meta as="h3">status <Icon name="spinner" size="small"></Icon><br/>{status}</Card.Meta>
             <Card.Meta as='h3'>Category <Icon name='columns' size='small'></Icon><br/><span>{category}</span></Card.Meta>
             <Card.Meta as="h3">Hours <Icon name="time" size="small"></Icon><br/>5 {hours}</Card.Meta>
-            {/* <Card.Image src="/images/avatar01.png"></Card.Image> */}
+
             <Card.Description>{shortDescription}</Card.Description>
           </Card.Content>
           <Card.Content>
@@ -40,9 +35,13 @@ export class OfferingMahi extends Component {
 }
 function shortenText (longText) {
   const string = longText
-  const splitShortenedArray = string.split(' ').slice(0, 35)
-  const shortText = splitShortenedArray.join(' ') + ' ...'
-  return shortText
+  const splitArray = string.split(' ')
+  if (splitArray.length > 10) {
+    const splitShortenedArray = splitArray.slice(0, 10)
+    const shortText = splitShortenedArray.join(' ') + ' ...'
+    return shortText
+  }
+  return longText
 }
 
 export default OfferingMahi
