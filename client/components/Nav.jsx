@@ -1,11 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { Container, Header, Menu } from 'semantic-ui-react'
 
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-
-const NavBar = (props) => {
+const NavBar = () => {
   return (
     <>
       <Menu borderless fixed='top' inverted style = {{ backgroundColor: '#3c1518' }}>

@@ -25,13 +25,13 @@ describe('Testing tasks api', () => {
   })
 })
 
-describe('Test for completeTask function', () => {
+describe('Test for completeTask function calls correct route', () => {
   it('completeTask ', () => {
     // Arrange
     const expected = true
     const id = 5
     nock(apiURL)
-      .put(`/api/v1/tasks/${id}`)
+      .put(`/api/v1/tasks/completed`)
       .reply(200, expected)
 
     // Act & Assert
@@ -65,29 +65,16 @@ describe('Tests for addMahi function', () => {
     }
 
     nock(apiURL)
-      .post('/api/v1/tasks', mahi)
+      .post('/api/v1/tasks/newtask', mahi)
       .reply(200, expected)
 
     return addMahi(mahi)
       .then(addedMahi => {
         expect(addedMahi).toEqual(expected)
       })
-  })
-  it('should throw error for status 500', () => {
-    const err = 'An unexpected error has occurred and we are looking into it'
-
-    const mahi = {
-      assigner: 2,
-      title: 'help me move',
-      category: 5,
-      time: 5,
-      description: 'I am moving down the street, please help me pack and label the contents of my home'
-    }
-
-    nock(apiURL)
-      .post('/api/v1/tasks', mahi)
-      .reply(500, err)
-
-    return expect(addMahi(mahi)).rejects.toThrow(err)
+      .catch((err) => {
+        expect(err).toBeNull()
+      })
   })
 })
+

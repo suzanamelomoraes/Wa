@@ -10,15 +10,25 @@ export function getTasks () {
     .catch(err => { throw new Error(err.message) })
 }
 
-export function completeTask (id) {
-  return request.put(apiURL + `/${id}`)
+export function completeTask (id, assignerId, assigneeId, time) {
+  return request.put(apiURL + `/completed`)
+    .send({ id, assignerId, assigneeId, time })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
 
 export function addMahi (mahi) {
-  return request.post(apiURL)
+  return request.post(apiURL + '/newtask')
     .send(mahi)
     .then(res => res.body)
-    .catch(() => { throw new Error(err) })
+    .catch(err => { throw new Error(err.message) })
 }
+
+export function selectTask (id, assignee) {
+  return request
+    .put(apiURL)
+    .send({ id, assignee })
+    .then(res => res.body)
+    .catch(err => { throw new Error(err.message) })
+}
+
