@@ -2,7 +2,7 @@ import request from 'superagent'
 
 const apiURL = 'http://localhost:3000/api/v1/users'
 
-export function getVolunteer (id) {
+export function getVolunteering (id) {
   return request
     .get(`${apiURL}/${id}`)
     .then(res => res.body)
