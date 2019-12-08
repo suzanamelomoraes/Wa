@@ -6,9 +6,9 @@ import MahiSummary from './MahiSummary'
 import Map from './Map'
 import MahiMarker from './MahiMarker'
 
-import { getTasks } from '../api/tasks'
 import { setError } from '../actions/error'
-import { changeActiveTask } from '../actions/tasks'
+import { changeActiveTask } from '../actions/activeIndex'
+import { getTasks } from '../actions/tasks'
 
 export class Listing extends Component {
   state = {
@@ -18,9 +18,9 @@ export class Listing extends Component {
   }
 
   componentDidMount () {
-    getTasks()
+    this.props.getTasks()
       .then(mahiDetails => {
-        this.setState({ mahiDetails })
+        this.setState({ mahiDetails: mahiDetails.tasks })
       })
       .catch((error) => {
         this.props.setError(error)
@@ -149,13 +149,14 @@ export class Listing extends Component {
 
 const mapStateToProps = state => {
   return {
-    activeIndex: state.tasks.activeIndex
+    activeIndex: state.activeIndex,
   }
 }
 
 const mapDispatchToProps = {
   setError,
-  changeActiveTask
+  changeActiveTask,
+  getTasks
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listing)

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
 
 import SelectMahi from './SelectMahi'
-import { changeActiveTask } from '../actions/tasks'
+import { changeActiveTask } from '../actions/activeIndex'
 
 export class MahiSummary extends Component {
   state = {
@@ -74,7 +74,7 @@ export class MahiSummary extends Component {
 
 const mapStateToProps = state => {
   return {
-    activeIndex: state.tasks.activeIndex
+    activeIndex: state.activeIndex
   }
 }
 

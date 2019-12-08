@@ -5,7 +5,7 @@ import { Icon, Popup, Button } from 'semantic-ui-react'
 import MahiPopUp from './MahiPopup'
 
 import { selectTask } from '../api/tasks'
-import { changeActiveTask } from '../actions/tasks'
+import { changeActiveTask } from '../actions/activeIndex'
 
 export class MahiMarker extends Component {
 
@@ -54,7 +54,7 @@ export class MahiMarker extends Component {
 
 const mapStateToProps = state => {
   return {
-    activeIndex: state.tasks.activeIndex
+    activeIndex: state.activeIndex
   }
 }
 
