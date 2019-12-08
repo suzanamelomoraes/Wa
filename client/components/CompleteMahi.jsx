@@ -19,8 +19,10 @@ handleClickButton = (event, callAPI) => {
   })
   const { taskId, assignerId, assigneeId, hours } = this.state
   // Can only COMPELTE task if there's an assignee for that task
-  if (callAPI && 1) {
+
+  if (callAPI && assigneeId !== '') {
     completeTask(taskId, assignerId, 1, hours)
+    // TESTING VERSION:   completeTask(1, 3, 1, 2)  <--  THIS WORKS
   }
 }
 
