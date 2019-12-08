@@ -5,11 +5,13 @@ import categories from './categories'
 import pending from './pending'
 import tasks from './tasks'
 import offerings from './offerings'
+import user from './user'
 
 export default combineReducers({
   error,
   categories,
   pending,
   tasks,
-  offerings
+  offerings,
+  user
 })

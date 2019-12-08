@@ -1,0 +1,28 @@
+import { setError } from './error'
+import * as api from '../api/users'
+
+export const GET_USER_PENDING = 'GET_USER_PENDING'
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS'
+
+export function getUserPending () {
+  return {
+    type: GET_USER_PENDING
+  }
+}
+
+export function getUserSuccess (user) {
+  return {
+    type: GET_USER_SUCCESS,
+    user
+  }
+}
+
+export function getUser (id) {
+  return dispatch => {
+    dispatch(getUserPending())
+
+    return api.getUser(id)
+      .then(offerings => dispatch(getUserSuccess(offerings)))
+      .catch(err => dispatch(setError(err.message)))
+  }
+}
