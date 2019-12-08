@@ -1,5 +1,6 @@
 import { setError } from './error'
-import * as api from '../api/tasks'
+import * as apiTask from '../api/tasks'
+import * as apiUser from '../api/users'
 
 export const GET_TASKS_PENDING = 'GET_TASKS_PENDING'
 export const GET_TASKS_SUCCESS = 'GET_TASKS_SUCCESS'
@@ -31,7 +32,7 @@ export function getTasks () {
   return dispatch => {
     dispatch(getTasksPending())
 
-    return api.getTasks()
+    return apiTask.getTasks()
       .then(tasks => dispatch(getTasksSuccess(tasks)))
       .catch(err => dispatch(setError(err.message)))
   }
@@ -54,7 +55,7 @@ export function getOfferings (id) {
   return dispatch => {
     dispatch(getOfferingsPending())
 
-    return api.getOfferings(id)
+    return apiUser.getOfferings(id)
       .then(offerings => dispatch(getOfferingsSuccess(offerings)))
       .catch(err => dispatch(setError(err.message)))
   }
