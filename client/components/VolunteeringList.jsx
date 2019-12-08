@@ -1,43 +1,71 @@
 import React from 'react'
-import { Header, Segment } from 'semantic-ui-react'
-import { getVolunteering } from '../api/users'
 import { connect } from 'react-redux'
+import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
 
-export class Volunteeringlist extends React.Component {
+import { getVolunteering } from '../actions/tasks'
+import { setError } from '../actions/error'
+
+import MahiSummary from './MahiSummary'
+
+const props = {
+  name: 'Steve Jobs',
+  image: '/images/avatar02.png',
+  about: 'Coding Enthusiast',
+  mobile: '021 456 4445',
+  email: 'steve.jobs@apple.com',
+  address: '12 Morgan Street, Newmarket, Auckland, NewZealand',
+  balance: 8,
+  id: 3
+}
+
+export class VolunteeringList extends React.Component {
   state = {
-    volunteering: []
   }
 
   componentDidMount () {
-    getVolunteering()
-      .then(res => {
-        this.setState({
-          volunteering: res.body
-        })
-      })
-      .catch(err => {
-        this.setState({
-          message: err.message
-        })
-      })
+    this.props.getVolunteering(this.props.id)
   }
 
   render () {
+    const { volunteering } = this.props
     return (
-      <Segment >
-        <Header>
-      volunteering List
-        </Header>
-
+      <Segment style={{ marginTop: 75 }}>
+        {volunteering
+          ? <React.Fragment>
+            <Header as='h3'>
+              <Icon name='calendar alternate outline'/>
+              <Header.Content>Currently Volunteering</Header.Content>
+            </Header>
+            <Grid>
+              <Grid.Column>
+                <Card.Group centered>
+                  {/* {volunteering.map(volunteer =>
+                    <MahiSummary
+                      key={volunteer.id}
+                      {...volunteering}
+                      props={props}
+                    />
+                  )} */}
+                  
+                </Card.Group>
+              </Grid.Column>
+            </Grid>
+          </React.Fragment>
+          : null
+        }
       </Segment>
     )
   }
 }
 
-function mapStateToProps (state) {
+const mapStatetoProps = (state) => {
   return {
-    volunteering: state.volunteering
+    volunteering: [state.volunteering]
   }
 }
 
-export default connect(mapStateToProps)(Volunteeringlist)
+const mapDispatchToProps = {
+  getVolunteering,
+  setError
+}
+export default connect(mapStatetoProps, mapDispatchToProps)(VolunteeringList)

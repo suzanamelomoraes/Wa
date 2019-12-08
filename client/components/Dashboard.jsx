@@ -5,6 +5,7 @@ import { Segment } from 'semantic-ui-react'
 import Profile from './Profile'
 import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
+import VolunteeringList from './VolunteeringList'
 
 // to be removed once there are props passed down
 const props = {
@@ -15,7 +16,7 @@ const props = {
   email: 'steve.jobs@apple.com',
   address: '12 Morgan Street, Newmarket, Auckland, NewZealand',
   balance: 8,
-  id: 2
+  id: 3
 }
 export class Dashboard extends Component {
   state = { }
@@ -24,6 +25,7 @@ export class Dashboard extends Component {
       <div>
         <Profile user={props}/>
         <TimeCurrency props={props}/>
+        <VolunteeringList id={props.id}/>
         <Segment fixed='true' attached='bottom'>
           <AddMahi id={props.id}/>
         </Segment>
