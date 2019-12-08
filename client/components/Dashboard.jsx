@@ -12,7 +12,7 @@ import VolunteeringList from './VolunteeringList'
 
 export class Dashboard extends Component {
   state = {
-    id: 1,
+    id: 2,
     user: {}
   }
   componentDidMount () {

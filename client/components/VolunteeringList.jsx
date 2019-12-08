@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
-import VolunterrMahi from './VolunteerMahi'
+import VolunteerMahi from './VolunteerMahi'
 
 import { getVolunteering } from '../actions/tasks'
 
@@ -14,7 +14,9 @@ componentDidMount () {
 
 render () {
   const { volunteering } = this.props
-
+  console.log(this.props)
+  console.log(this.props)
+  console.log(this.props)
   return (
     <Segment style={{ marginTop: 75 }}>
       {volunteering
@@ -27,7 +29,7 @@ render () {
             <Grid.Column>
               <Card.Group centered>
                 {volunteering.map(volunteer =>
-                  <VolunterrMahi
+                  <VolunteerMahi
                     key={volunteer.id}
                     data={volunteer}
                   />
