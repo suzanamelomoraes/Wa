@@ -1,8 +1,9 @@
+import { setError } from './error'
+import * as api from '../api/users'
+
 export const CHANGE_ACTIVE_TASK = 'CHANGE_ACTIVE_TASK'
 export const GET_OFFERINGS_PENDING = 'GET_OFFERINGS_PENDING'
 export const GET_OFFERINGS_SUCCESS = 'GET_OFFERINGS_SUCCESS'
-
-import  { setError } from './error'
 
 export function changeActiveTask (index) {
   return {
@@ -24,8 +25,12 @@ export function getOfferingsSuccess (offerings) {
   }
 }
 
-export function getOfferings() {
+export function getOfferings (id) {
   return dispatch => {
     dispatch(getOfferingsPending())
+
+    return api.getOfferings(id)
+      .then(offerings => dispatch(getOfferingsSuccess(offerings)))
+      .catch(err => dispatch(setError(err.message)))
   }
 }
