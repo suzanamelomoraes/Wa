@@ -40,7 +40,7 @@ render () {
     <>
       <Modal open={this.state.showModal} centered={true} trigger={
         <Button basic floated='right' color={completeBtnColor}
-          id="one" data-test="firstBtn" onClick={() => { this.setState({ showModal: this.state.assigneeId !== '' }) }}>Completed</Button>
+          id="one" data-test="firstBtn" onClick={() => { this.setState({ showModal: this.state.assigneeId !== '' }) }}>Complete</Button>
       }>
 
         <Modal.Header style={{ fontSize: '2rem' }}>Confirm</Modal.Header>
