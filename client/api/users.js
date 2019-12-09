@@ -5,17 +5,18 @@ const apiURL = 'http://localhost:3000/api/v1'
 
 export function getVolunteering () {
   return request
-    .get(`${apiURL}/tasks/assignee/`)
+    .get(`${apiURL}/tasks/assignee`)
     .set({ 'Accept': 'application/json' })
+    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
 
 export function getOfferings () {
   return request
+    .get(`${apiURL}/tasks/assigner`)
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-    .get(`${apiURL}/tasks/assigner/`)
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }

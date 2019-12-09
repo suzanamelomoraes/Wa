@@ -6,18 +6,14 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 import { selectTask } from '../api/tasks'
 import { getTasks } from '../actions/tasks'
 
-const userID = 2 //delete after getting connected to Authenticare
-
 export class SelectMahi extends Component {
-
   handleClick = () => {
     const { taskId } = this.props.details
     const { closeModal, getTasks } = this.props
 
-    selectTask(taskId, userID)
+    selectTask(taskId)
     getTasks()
     closeModal()
-
   }
 
   render () {
@@ -26,7 +22,7 @@ export class SelectMahi extends Component {
     return (
       <>
         <Modal.Header>{details.category}</Modal.Header>
-        
+
         <Modal.Content image>
           <Image wrapped size='medium' src={details.image} />
           <Modal.Description>
@@ -37,7 +33,7 @@ export class SelectMahi extends Component {
             <p style={{ fontSize: '1.25em' }}>You can earn {details.hours} hour/s when you help out {details.assignerName}</p>
           </Modal.Description>
         </Modal.Content>
-        
+
         <Modal.Actions>
           <Button
             negative

@@ -28,8 +28,8 @@ class DeselectUser extends React.Component {
           <Modal.Description>
             <div style={{ fontSize: '1.25rem' }}>
               <p>
-  Are you sure you want to leave this mahi?<br></br>
-  The mahi will be added back to the list for the community
+                Are you sure you want to leave this mahi?<br></br>
+                The mahi will be added back to the list for the community
               </p>
             </div>
           </Modal.Description>

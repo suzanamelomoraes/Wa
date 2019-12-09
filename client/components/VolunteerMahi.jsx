@@ -7,7 +7,7 @@ import DeselectUser from './DeselectUser'
 
 export class VolunteerMahi extends Component {
   componentDidMount () {
-    this.props.getUser(this.props.data.assignerId)
+    this.props.getUser()
   }
 
   render () {

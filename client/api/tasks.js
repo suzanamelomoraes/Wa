@@ -10,11 +10,11 @@ export function getTasks () {
     .catch(err => { throw new Error(err.message) })
 }
 
-export function completeTask (id, assignerId, assigneeId, time) {
+export function completeTask (id, assigneeId, time) {
   return request.put(apiURL + `/completed`)
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-    .send({ id, assignerId, assigneeId, time })
+    .send({ id, assigneeId, time })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
@@ -28,19 +28,22 @@ export function addMahi (mahi) {
     .catch(err => { throw new Error(err.message) })
 }
 
-export function selectTask (id, assignee) {
+export function selectTask (id) {
   return request
+    .put(apiURL)
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-    .put(apiURL)
-    .send({ id, assignee })
+    .send({ id })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
 
 export function deselectTask (id) {
   return request
-    .put(`${apiURL}/assignee/${id}`)
+    .put(`${apiURL}/assignee`)
+    .set({ 'Accept': 'application/json' })
+    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
+    .send({ id })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }

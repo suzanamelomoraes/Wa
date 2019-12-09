@@ -12,7 +12,7 @@ export class OfferingList extends Component {
   }
 
   componentDidMount () {
-    this.props.getOfferings(this.props.id)
+    this.props.getOfferings()
   }
 
   render () {

@@ -26,7 +26,7 @@ export class Dashboard extends Component {
   }
 
   render () {
-    const { id, user } = this.state
+    const { user } = this.state
     return (
       <div>
         <Grid columns={3}>
@@ -36,14 +36,14 @@ export class Dashboard extends Component {
 
           </Grid.Column>
           <Grid.Column>
-            {/* <OfferingList id={id}/> */}
+            <OfferingList id={user.id}/>
           </Grid.Column>
           <Grid.Column>
-            {/* <VolunteeringList id={id}/> */}
+            <VolunteeringList id={user.id}/>
           </Grid.Column>
         </Grid>
         <Segment fixed='true' attached='bottom'>
-          {/* <AddMahi id={id}/> */}
+          <AddMahi id={user.id}/>
         </Segment>
       </div>
 
