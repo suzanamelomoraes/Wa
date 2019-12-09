@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Header, Image, Modal, Form, Icon } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 import { deselectTask } from '../api/tasks'
 
 class DeselectUser extends React.Component {
@@ -18,7 +18,6 @@ class DeselectUser extends React.Component {
     }
   }
   render () {
-    console.log(this.props)
     return (
       <Modal open={this.state.showModal} centered={true} trigger={
         <Button color="red" basic floated='right'
@@ -26,9 +25,7 @@ class DeselectUser extends React.Component {
       }>
         <Modal.Header style={{ fontSize: '2rem' }}>Confirm</Modal.Header>
         <Modal.Content image>
-          {/* <Image wrapped size='medium' src='/images/avatar01.png' /> */}
           <Modal.Description>
-            {/* <Header style={{ fontSize: '2rem' }}>Teach me to swim</Header> */}
             <div style={{ fontSize: '1.25rem' }}>
               <p>
   Are you sure you want to leave this mahi?<br></br>

@@ -11,7 +11,7 @@ export class SelectVolunteerMahi extends Component {
     this.setState({ showModal: false })
   }
   render () {
-    const { title, assigner, assignee, assignerId, assigneeId, category, hours, taskId, description } = this.props.data
+    const { title, assignerId, category, hours, description } = this.props.data
 
     return (
       <Modal open={this.state.showModal} centered={true} trigger={
