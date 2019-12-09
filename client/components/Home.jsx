@@ -70,9 +70,7 @@ const Home = () => {
         <Header as='h3' attached='top' textAlign='center' size='huge' style={{ backgroundColor: '#123b26', color: 'white' }} >
         Mahi
         </Header>
-        <Container style={{ width: '100%',
-          height: '100%'
-        }}>
+        <Container style={{ width: '100%' }}>
           <Image src='images/placeholder.jpg' fluid
             style={{ opacity: 0.5 }}
           />
@@ -81,8 +79,9 @@ const Home = () => {
 
         <Segment attached size='huge' textAlign='center'>
           <br></br>
-
-        in literal sense mahi is the act of working/perfomring, Wa uses Mahi as a concept of offering a task doing what the people need and helping the commuity
+          <p>
+            in literal sense mahi is the act of working/perfomring, Wa uses Mahi as a concept of offering a task doing what the people need and helping the commuity hauiahauih
+          </p>
         </Segment>
       </Grid.Column>
 
@@ -103,8 +102,10 @@ const Home = () => {
         </Container>
 
         <Segment attached size='huge' textAlign='center'>
-          Wa is very communtiy based platform as it aims to build a strong connection with those around you, become more aware of the skills you have and what others have to offer
-        Contribute to the community by helping complete mahi
+          <p>
+            a is very communtiy based platform as it aims to build a strong connection with those around you, become more aware of the skills you have and what others have to offer
+            Contribute to the community by helping complete mahi
+          </p>
         </Segment>
       </Grid.Column>
 
@@ -125,13 +126,15 @@ const Home = () => {
         </Container>
 
         <Segment attached size='huge' textAlign='center'>
-        using your time to do the things that really matter
+          <p>      
+            using your time to do the things that really matter
 
-        exchaning time to do what you want to and doing the things that you cant do
+            exchaning time to do what you want to and doing the things that you cant do
 
-        by offering an alternative to apprecaite and empower the communities
+            by offering an alternative to apprecaite and empower the communities
 
-        Once mahi has been completed you exchange Wa/time with
+            Once mahi has been completed you exchange Wa/time with
+          </p>
         </Segment>
       </Grid.Column>
     </Grid>
