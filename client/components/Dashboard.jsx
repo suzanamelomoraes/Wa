@@ -40,11 +40,11 @@ export class Dashboard extends Component {
             <VolunteeringList id={user.id}/>
           </Grid.Column>
         </Grid>
-        <Sticky>
-          <Segment fixed='true' attached='bottom'>
-            <AddMahi id={user.id} balance={user.balance}/>
-          </Segment>
-        </Sticky>
+
+        <AddMahi
+          id={user.id}
+          balance={user.balance}
+        />
 
       </div>
 
