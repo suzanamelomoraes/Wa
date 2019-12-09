@@ -74,6 +74,7 @@ function getTaskByAssignee (id, db = connection) {
     )
 }
 
+
 function selectTask (id, assignee, db = connection) {
   return db('tasks')
     .where('id', id)
