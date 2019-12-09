@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Button, Header, Image, Modal, Form, Icon } from 'semantic-ui-react'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { completeTask } from '../api/tasks'
 
+import { getOfferings } from '../actions/tasks'
 
-class AcceptMahi extends Component {
+export class AcceptMahi extends Component {
 state = {
   showModal: false,
   assigneeId: '',
@@ -24,6 +25,7 @@ handleClickButton = (event, callAPI) => {
   if (callAPI) {
     const { taskId, assigneeId, hours } = this.state
     completeTask(taskId, assigneeId, hours)
+      .then(this.props.getOfferings())
     // TESTING VERSION:   completeTask(1, 3, 1, 2)  <--  THIS WORKS
   }
 }
@@ -78,7 +80,8 @@ Are you sure your task is completed?
   )
 }
 }
+const mapDispatchToProps = {
+  getOfferings
+}
 
-export default AcceptMahi
-
-// connect()()
+export default connect(null, mapDispatchToProps)(AcceptMahi)

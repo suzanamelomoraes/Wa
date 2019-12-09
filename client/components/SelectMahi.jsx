@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
+import { IfAuthenticated } from './Authenticated'
+
 import { selectTask } from '../api/tasks'
 import { getTasks } from '../actions/tasks'
 
@@ -35,6 +37,7 @@ export class SelectMahi extends Component {
         </Modal.Content>
 
         <Modal.Actions>
+
           <Button
             negative
             icon='close'
@@ -42,13 +45,15 @@ export class SelectMahi extends Component {
             content="Close"
             onClick={closeModal}
           />
-          <Button
-            positive
-            icon='smile outline'
-            labelPosition='right'
-            content="Help out!"
-            onClick={this.handleClick}
-          />
+          <IfAuthenticated>
+            <Button
+              positive
+              icon='smile outline'
+              labelPosition='right'
+              content="Help out!"
+              onClick={this.handleClick}
+            />
+          </IfAuthenticated>
         </Modal.Actions>
       </>
     )

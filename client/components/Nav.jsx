@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Header, Menu } from 'semantic-ui-react'
+import { logOff } from 'authenticare/client'
+
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 const NavBar = () => {
   return (
@@ -12,12 +15,19 @@ const NavBar = () => {
           </Menu.Item>
           <Menu.Item as={Link} to='/'>Home</Menu.Item>
           <Menu.Item as={Link} to='/list'>Mahi</Menu.Item>
-          <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
+          <IfAuthenticated>
+            <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
+          </IfAuthenticated>
           <Menu.Item position='right'>
-            <Menu.Item as={Link} to='./register'>Register</Menu.Item>
-            <Menu.Item as={Link} to='/signin'>Sign In</Menu.Item>
+            <IfNotAuthenticated>
+              <Menu.Item as={Link} to='./register'>Register</Menu.Item>
+              <Menu.Item as={Link} to='/signin'>Sign In</Menu.Item>
+            </IfNotAuthenticated>
+            <IfAuthenticated>
+              <Menu.Item as={Link} onClick={logOff} to='#'>Sign Out</Menu.Item>
+            </IfAuthenticated>
           </Menu.Item>
-          
+
         </Container>
       </Menu>
     </>

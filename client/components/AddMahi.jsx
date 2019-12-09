@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { addMahi } from '../api/tasks'
 
 import { getCategories } from '../actions/categories'
+import { getOfferings } from '../actions/tasks'
 
 import {
   Modal,
@@ -50,6 +51,7 @@ export class AddMahi extends Component {
       hours,
       description
     })
+      .then(this.props.getOfferings())
   };
 
   handleChange = e => {
@@ -185,7 +187,8 @@ const mapStateToProps = state => {
   }
 }
 const matchDispatchToProps = {
-  getCategories
+  getCategories,
+  getOfferings
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(AddMahi)
