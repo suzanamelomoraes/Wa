@@ -14,7 +14,7 @@ export class VolunteeringList extends React.Component {
     const { volunteering } = this.props
     return (
       <Segment style={{ marginTop: 75 }}>
-        {volunteering
+        {volunteering.length
           ? <React.Fragment>
             <Header as='h3'>
               <Icon name='calendar alternate outline'/>
@@ -33,7 +33,32 @@ export class VolunteeringList extends React.Component {
               </Grid.Column>
             </Grid>
           </React.Fragment>
-          : null
+          : <React.Fragment>
+            <Header as='h3'>
+              <Icon name='calendar alternate outline'/>
+              <Header.Content>Currently Volunteering</Header.Content>
+            </Header>
+            <Grid>
+              <Grid.Column>
+                <Card.Group centered>
+                  <Card style={{
+                    backgroundColor: '#ededed',
+                    height: '375px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexWrap: 'wrap' }}>
+                    <Header textAlign='center'
+                      style={{
+                        color: '#b5b5b5'
+                      }}>
+      You are currently not volunteering yet.
+                    </Header>
+                  </Card>
+                </Card.Group>
+              </Grid.Column>
+            </Grid>
+          </React.Fragment>
         }
       </Segment>
     )

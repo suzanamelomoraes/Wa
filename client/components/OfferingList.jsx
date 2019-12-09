@@ -4,11 +4,9 @@ import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
 
 import { getOfferings } from '../actions/tasks'
 
-import OfferingMahi from './OfferingMahi' 
+import OfferingMahi from './OfferingMahi'
 
 export class OfferingList extends Component {
-  
-
   componentDidMount () {
     this.props.getOfferings()
   }
@@ -17,7 +15,7 @@ export class OfferingList extends Component {
     const { offerings } = this.props
     return (
       <Segment style={{ marginTop: 75 }}>
-        {offerings
+        {offerings.length
           ? <React.Fragment>
             <Header as='h3'>
               <Icon name='tasks'/>
@@ -36,7 +34,37 @@ export class OfferingList extends Component {
               </Grid.Column>
             </Grid>
           </React.Fragment>
-          : null
+          : <React.Fragment>
+            <Header as='h3'>
+              <Icon name='calendar alternate outline'/>
+              <Header.Content>Currently Offering</Header.Content>
+            </Header>
+            <Grid>
+              <Grid.Column>
+                <Card.Group centered>
+                  <Card style={{
+                    backgroundColor: '#ededed',
+                    height: '375px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexWrap: 'wrap' }}>
+                    <Header textAlign='center'
+                      style={{
+                        color: '#b5b5b5'
+                      }}>
+                      <p>
+    You are currently not offering yet.
+                      </p>
+                      <p>
+    To get started click "Add Mahi"
+                      </p>
+                    </Header>
+                  </Card>
+                </Card.Group>
+              </Grid.Column>
+            </Grid>
+          </React.Fragment>
         }
       </Segment>
     )
