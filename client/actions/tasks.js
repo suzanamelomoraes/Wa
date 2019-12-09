@@ -76,11 +76,11 @@ export function getOfferingsSuccess (offerings) {
   }
 }
 
-export function getOfferings (id) {
+export function getOfferings () {
   return dispatch => {
     dispatch(getOfferingsPending())
 
-    return apiUser.getOfferings(id)
+    return apiUser.getOfferings()
       .then(offerings => dispatch(getOfferingsSuccess(offerings)))
       .catch(err => dispatch(setError(err.message)))
   }

@@ -65,7 +65,7 @@ function getTaskByAssignee (id, db = connection) {
       'tasks.cat_id as categoryId',
       'tasks.assigner as assignerId',
       'tasks.name as title',
-      'tasks.description', 
+      'tasks.description',
       'tasks.status',
       'tasks.time as hours',
       'tasks.assignee as assignee',
@@ -98,7 +98,8 @@ function completeTask (id, assignerId, assigneeId, time, db = connection) {
   return db('tasks')
     .where('id', id)
     .update({
-      status: 'completed'
+      status: 'completed',
+      assigner: null
     })
     .then(() => {
       return db('users')

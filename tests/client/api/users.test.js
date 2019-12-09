@@ -6,12 +6,12 @@ const { getOfferings } = require('../../../client/api/users')
 describe('Testing getOfferings api', () => {
   it('get Offerings function returns expected array', () => {
     const expected = [{ name: 'bob' }, { name: 'jones' }]
-    const id = 2
+
     nock(apiURL)
-      .get(`/api/v1/tasks/assigner/${id}`)
+      .get(`/api/v1/tasks/assigner`)
       .reply(200, expected)
 
-    return getOfferings(id)
+    return getOfferings()
       .then((data) => {
         expect(data).toEqual(expected)
       })
