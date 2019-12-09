@@ -14,7 +14,7 @@ export class NavBar extends Component {
   render () {
     return (
       <>
-      <Menu borderless fixed='top' inverted style = {{ backgroundColor: '#3c1518' }}>
+      <Menu borderless fixed='top' inverted style = {{ backgroundColor: '#123b26' }}>
         <Container>
           <Menu.Item as={Link} to='/' header>
             <Header data-test="header" as='h1' inverted style={{ fontSize: '2.5rem' }}>Wā</Header>
