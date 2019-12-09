@@ -5,7 +5,7 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
   <Container
     style={
       Object {
-        "marginTop": 75,
+        "marginTop": 60,
         "width": "100%",
       }
     }
@@ -14,7 +14,7 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
       className="ui container"
       style={
         Object {
-          "marginTop": 75,
+          "marginTop": 60,
           "width": "100%",
         }
       }
@@ -25,14 +25,13 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
         style={
           Object {
             "alignItems": "center",
-            "backgroundImage": "url(images/placeholder.jpg)",
+            "backgroundImage": "url(images/waitangi.jpg)",
             "backgroundSize": "cover",
             "display": "flex",
-            "fontWeight": "normal",
+            "flexWrap": "wrap",
             "height": 720,
             "justifyContent": "center",
             "margin": 0,
-            "marginBottom": 0,
             "opacity": 0.5,
             "padding": 0,
             "poistion": "absolute",
@@ -46,14 +45,13 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
           style={
             Object {
               "alignItems": "center",
-              "backgroundImage": "url(images/placeholder.jpg)",
+              "backgroundImage": "url(images/waitangi.jpg)",
               "backgroundSize": "cover",
               "display": "flex",
-              "fontWeight": "normal",
+              "flexWrap": "wrap",
               "height": 720,
               "justifyContent": "center",
               "margin": 0,
-              "marginBottom": 0,
               "opacity": 0.5,
               "padding": 0,
               "poistion": "absolute",
@@ -63,11 +61,24 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
         >
           <div>
             <Header
-              as="h1"
+              style={
+                Object {
+                  "color": "#ffffff",
+                  "fontSize": "30px",
+                  "textShadow": "1px 1px #000000",
+                }
+              }
               textAlign="center"
             >
-              <h1
+              <div
                 className="ui center aligned header"
+                style={
+                  Object {
+                    "color": "#ffffff",
+                    "fontSize": "30px",
+                    "textShadow": "1px 1px #000000",
+                  }
+                }
               >
                 <HeaderContent>
                   <div
@@ -80,7 +91,7 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
                     kia ora ai te iwi
                   </div>
                 </HeaderContent>
-              </h1>
+              </div>
             </Header>
             <Divider
               inverted={true}
@@ -90,11 +101,24 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
               />
             </Divider>
             <Header
-              as="h1"
+              style={
+                Object {
+                  "color": "#ffffff",
+                  "fontSize": "30px",
+                  "textShadow": "1px 1px #000000",
+                }
+              }
               textAlign="center"
             >
-              <h1
+              <div
                 className="ui center aligned header"
+                style={
+                  Object {
+                    "color": "#ffffff",
+                    "fontSize": "30px",
+                    "textShadow": "1px 1px #000000",
+                  }
+                }
               >
                 <HeaderContent>
                   <div
@@ -107,13 +131,20 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
                     the people will thrive
                   </div>
                 </HeaderContent>
-              </h1>
+              </div>
             </Header>
           </div>
         </div>
       </Image>
     </div>
   </Container>
+  <Divider
+    inverted={true}
+  >
+    <div
+      className="ui inverted divider"
+    />
+  </Divider>
   <Header
     size="huge"
     style={
@@ -136,9 +167,16 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
         }
       }
     >
-       What to do? 
+       Getting Started 
     </div>
   </Header>
+  <Divider
+    inverted={true}
+  >
+    <div
+      className="ui inverted divider"
+    />
+  </Divider>
   <Grid
     colums="equal"
     style={
@@ -173,20 +211,115 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
           <Header
             as="h3"
             attached="top"
+            size="huge"
+            style={
+              Object {
+                "backgroundColor": "#123b26",
+                "color": "white",
+              }
+            }
+            textAlign="center"
           >
             <h3
-              className="ui top attached header"
+              className="ui huge top attached center aligned header"
+              style={
+                Object {
+                  "backgroundColor": "#123b26",
+                  "color": "white",
+                }
+              }
             >
-              This is the top
+              Mahi
             </h3>
           </Header>
-          <Segment
+          <Container
             attached={true}
           >
             <div
-              className="ui attached segment"
+              attached={true}
+              className="ui container"
             >
-              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <Image
+                as="img"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundImage": "url(images/placeholder.jpg)",
+                    "backgroundRepeat": "no-repeat",
+                    "backgroundSize": "cover",
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "height": "250px",
+                    "justifyContent": "center",
+                    "opacity": 0.5,
+                    "width": "100%",
+                  }
+                }
+                ui={true}
+              >
+                <div
+                  className="ui image"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundImage": "url(images/placeholder.jpg)",
+                      "backgroundRepeat": "no-repeat",
+                      "backgroundSize": "cover",
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                      "height": "250px",
+                      "justifyContent": "center",
+                      "opacity": 0.5,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <div>
+                    <Header
+                      style={
+                        Object {
+                          "color": "#ffffff",
+                          "fontSize": "30px",
+                          "textShadow": "1px 1px #000000",
+                        }
+                      }
+                      textAlign="center"
+                    >
+                      <div
+                        className="ui center aligned header"
+                        style={
+                          Object {
+                            "color": "#ffffff",
+                            "fontSize": "30px",
+                            "textShadow": "1px 1px #000000",
+                          }
+                        }
+                      >
+                        <HeaderContent>
+                          <div
+                            className="content"
+                          >
+                            taking and offering mahi
+                          </div>
+                        </HeaderContent>
+                      </div>
+                    </Header>
+                  </div>
+                </div>
+              </Image>
+            </div>
+          </Container>
+          <Segment
+            attached={true}
+            size="huge"
+            textAlign="center"
+          >
+            <div
+              className="ui huge attached center aligned segment"
+            >
+              <p>
+                In literal sense mahi is the act of working or doing, Wa uses Mahi as a concept of offering a task. we need 5 lines here bruh.  we need 5 lines here bruh.  we need 5 lines here bruh.
+              </p>
             </div>
           </Segment>
         </div>
@@ -202,20 +335,115 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
           <Header
             as="h3"
             attached="top"
+            size="huge"
+            style={
+              Object {
+                "backgroundColor": "#123b26",
+                "color": "white",
+              }
+            }
+            textAlign="center"
           >
             <h3
-              className="ui top attached header"
+              className="ui huge top attached center aligned header"
+              style={
+                Object {
+                  "backgroundColor": "#123b26",
+                  "color": "white",
+                }
+              }
             >
-              This is the top
+              Community
             </h3>
           </Header>
-          <Segment
+          <Container
             attached={true}
           >
             <div
-              className="ui attached segment"
+              attached={true}
+              className="ui container"
             >
-              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <Image
+                as="img"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundImage": "url(images/hands.jpg)",
+                    "backgroundRepeat": "no-repeat",
+                    "backgroundSize": "cover",
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "height": "250px",
+                    "justifyContent": "center",
+                    "opacity": 0.5,
+                    "width": "100%",
+                  }
+                }
+                ui={true}
+              >
+                <div
+                  className="ui image"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundImage": "url(images/hands.jpg)",
+                      "backgroundRepeat": "no-repeat",
+                      "backgroundSize": "cover",
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                      "height": "250px",
+                      "justifyContent": "center",
+                      "opacity": 0.5,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <div>
+                    <Header
+                      style={
+                        Object {
+                          "color": "#ffffff",
+                          "fontSize": "30px",
+                          "textShadow": "1px 1px #000000",
+                        }
+                      }
+                      textAlign="center"
+                    >
+                      <div
+                        className="ui center aligned header"
+                        style={
+                          Object {
+                            "color": "#ffffff",
+                            "fontSize": "30px",
+                            "textShadow": "1px 1px #000000",
+                          }
+                        }
+                      >
+                        <HeaderContent>
+                          <div
+                            className="content"
+                          >
+                            empowering communities
+                          </div>
+                        </HeaderContent>
+                      </div>
+                    </Header>
+                  </div>
+                </div>
+              </Image>
+            </div>
+          </Container>
+          <Segment
+            attached={true}
+            size="huge"
+            textAlign="center"
+          >
+            <div
+              className="ui huge attached center aligned segment"
+            >
+              <p>
+                communtiy based platform that aims to build a strong connection with those around you, become more aware of the skills you have and what others have to offer
+              </p>
             </div>
           </Segment>
         </div>
@@ -231,20 +459,115 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
           <Header
             as="h3"
             attached="top"
+            size="huge"
+            style={
+              Object {
+                "backgroundColor": "#123b26",
+                "color": "white",
+              }
+            }
+            textAlign="center"
           >
             <h3
-              className="ui top attached header"
+              className="ui huge top attached center aligned header"
+              style={
+                Object {
+                  "backgroundColor": "#123b26",
+                  "color": "white",
+                }
+              }
             >
-              This is the top
+              Exchange
             </h3>
           </Header>
-          <Segment
+          <Container
             attached={true}
           >
             <div
-              className="ui attached segment"
+              attached={true}
+              className="ui container"
             >
-              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <Image
+                as="img"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundImage": "url(images/tomatoes.jpg)",
+                    "backgroundRepeat": "no-repeat",
+                    "backgroundSize": "cover",
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "height": "250px",
+                    "justifyContent": "center",
+                    "opacity": 0.5,
+                    "width": "100%",
+                  }
+                }
+                ui={true}
+              >
+                <div
+                  className="ui image"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundImage": "url(images/tomatoes.jpg)",
+                      "backgroundRepeat": "no-repeat",
+                      "backgroundSize": "cover",
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                      "height": "250px",
+                      "justifyContent": "center",
+                      "opacity": 0.5,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <div>
+                    <Header
+                      style={
+                        Object {
+                          "color": "#ffffff",
+                          "fontSize": "30px",
+                          "textShadow": "1px 1px #000000",
+                        }
+                      }
+                      textAlign="center"
+                    >
+                      <div
+                        className="ui center aligned header"
+                        style={
+                          Object {
+                            "color": "#ffffff",
+                            "fontSize": "30px",
+                            "textShadow": "1px 1px #000000",
+                          }
+                        }
+                      >
+                        <HeaderContent>
+                          <div
+                            className="content"
+                          >
+                            Using Wa/Time as a currency
+                          </div>
+                        </HeaderContent>
+                      </div>
+                    </Header>
+                  </div>
+                </div>
+              </Image>
+            </div>
+          </Container>
+          <Segment
+            attached={true}
+            size="huge"
+            textAlign="center"
+          >
+            <div
+              className="ui huge attached center aligned segment"
+            >
+              <p>
+                using your time to do the things that really matter time to do what you want to and doing the things that you cant do Once mahi has been completed you exchange Wa/time with
+              </p>
             </div>
           </Segment>
         </div>
