@@ -5,7 +5,7 @@ import { Segment, Grid } from 'semantic-ui-react'
 import { getUser } from '../actions/user'
 
 import Profile from './Profile'
-import TimeCurrency from './TimeCurrency'
+// import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
 import VolunteeringList from './VolunteeringList'
@@ -31,7 +31,7 @@ export class Dashboard extends Component {
         <Grid columns={3}>
           <Grid.Column>
             <Profile user={user}/>
-            <TimeCurrency props={user}/>
+            {/* <TimeCurrency props={user}/> */}
 
           </Grid.Column>
           <Grid.Column>

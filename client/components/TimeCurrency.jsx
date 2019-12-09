@@ -5,7 +5,7 @@ export class TimeCurrency extends Component {
   state = { }
 
   render () {
-    const balance = this.props.props.balance
+    // const balance = this.props.props.balance
     const centerStyle = {
       display: 'flex',
       justifyContent: 'center',
@@ -14,13 +14,12 @@ export class TimeCurrency extends Component {
 
     return (
       <>
-      <Card style={{ borderRadius: '25px', height: '150px' }}>
+      <Card style={{ borderRadius: '25px', backgroundColor: '#123b26', color: 'white', width: '150px' }}>
         <Card.Content style={centerStyle}>
           <div>
-            <Header as='h1' textAlign='center' style={{ fontWeight: 'bold' }}>{balance} hours
+            <Header as='h1' textAlign='center' style={{ fontWeight: 'bold', color: 'white' }}>5 hours
             </Header>
             <h3>Total currency</h3>
-
           </div>
         </Card.Content>
       </Card>
