@@ -36,17 +36,17 @@ class DeselectUser extends React.Component {
         </Modal.Content>
         <Modal.Actions>
           <Button
-            positive
-            icon='smile outline'
+            negative
+            icon='times'
             labelPosition='right'
-            content="No, I am not"
+            content="Close"
             size="large"
             onClick={(evt) => this.handleClickButton(evt, 0)}
             data-test="secondBtnNegative"
           />
           <Button
-            negative
-            icon='frown outline'
+            positive
+            icon='check'
             labelPosition='right'
             content="Yes, I am"
             size="large"
