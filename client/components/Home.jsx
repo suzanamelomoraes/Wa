@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Header, Divider, Image, Grid, Segment } from 'semantic-ui-react'
 
 const inlineText = <div >
-  <Header textAlign='center' style={{ fontSize: '30px', textShadow: '1px 1px #000000', color: '#ffffff'}}>
+  <Header textAlign='center' style={{ fontSize: '30px', textShadow: '1px 1px #000000', color: '#ffffff' }}>
     <Header.Content>
     Nou te rourou <br/>
     Naku te rourou <br/>
@@ -48,9 +48,10 @@ const Home = () => {
         // backgroundImage: `url(${'images/handHearts.jpg'})`,
         backgroundImage: `url(${'images/waitangi.jpg'})`,
         backgroundSize: 'cover',
-        paddingLeft: 500,
         display: 'flex',
-        alignItems: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexWrap: 'wrap'
       }}
     >
       {inlineText}
@@ -69,8 +70,19 @@ const Home = () => {
         <Header as='h3' attached='top' textAlign='center' size='huge' style={{ backgroundColor: '#123b26', color: 'white' }} >
         Mahi
         </Header>
+        <Container style={{ width: '100%',
+          height: '100%'
+        }}>
+          <Image src='images/placeholder.jpg' fluid
+            style={{ opacity: 0.5 }}
+          />
+
+        </Container>
+
         <Segment attached size='huge' textAlign='center'>
-        Create a mahi to share with your community and select a mahi to help out
+          <br></br>
+
+        in literal sense mahi is the act of working/perfomring, Wa uses Mahi as a concept of offering a task doing what the people need and helping the commuity
         </Segment>
       </Grid.Column>
 
@@ -78,7 +90,20 @@ const Home = () => {
         <Header as='h3' attached='top' textAlign='center' size='huge' style={{ backgroundColor: '#123b26', color: 'white' }} >
         Community
         </Header>
+
+        <Container style={{ width: '100%',
+          height: '100%'
+        }}>
+          <Image src='images/hands.jpg' fluid
+            style={{ opacity: 0.5 }}
+          />
+          {/* Create a mahi to share with your community and select a mahi to help out.
+          </Image> */}
+
+        </Container>
+
         <Segment attached size='huge' textAlign='center'>
+          Wa is very communtiy based platform as it aims to build a strong connection with those around you, become more aware of the skills you have and what others have to offer
         Contribute to the community by helping complete mahi
         </Segment>
       </Grid.Column>
@@ -87,7 +112,25 @@ const Home = () => {
         <Header as='h3' attached='top' textAlign='center' size='huge' style={{ backgroundColor: '#123b26', color: 'white' }} >
         Exchange
         </Header>
+
+        <Container style={{ width: '100%',
+          height: '100%'
+        }}>
+          <Image src='images/tomatoes.jpg' fluid
+            style={{ opacity: 0.5 }}
+          />
+          {/* Create a mahi to share with your community and select a mahi to help out.
+          </Image> */}
+
+        </Container>
+
         <Segment attached size='huge' textAlign='center'>
+        using your time to do the things that really matter
+
+        exchaning time to do what you want to and doing the things that you cant do
+
+        by offering an alternative to apprecaite and empower the communities
+
         Once mahi has been completed you exchange Wa/time with
         </Segment>
       </Grid.Column>
