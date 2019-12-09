@@ -232,11 +232,8 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
               Mahi
             </h3>
           </Header>
-          <Container
-            attached={true}
-          >
+          <Container>
             <div
-              attached={true}
               className="ui container"
             >
               <Image
@@ -310,12 +307,11 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
             </div>
           </Container>
           <Segment
-            attached={true}
             size="huge"
             textAlign="center"
           >
             <div
-              className="ui huge attached center aligned segment"
+              className="ui huge center aligned segment"
             >
               <p>
                 In literal sense mahi is the act of working or doing, Wa uses Mahi as a concept of offering a task. we need 5 lines here bruh.  we need 5 lines here bruh.  we need 5 lines here bruh.
@@ -356,11 +352,8 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
               Community
             </h3>
           </Header>
-          <Container
-            attached={true}
-          >
+          <Container>
             <div
-              attached={true}
               className="ui container"
             >
               <Image
@@ -434,12 +427,11 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
             </div>
           </Container>
           <Segment
-            attached={true}
             size="huge"
             textAlign="center"
           >
             <div
-              className="ui huge attached center aligned segment"
+              className="ui huge center aligned segment"
             >
               <p>
                 communtiy based platform that aims to build a strong connection with those around you, become more aware of the skills you have and what others have to offer
@@ -480,11 +472,8 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
               Exchange
             </h3>
           </Header>
-          <Container
-            attached={true}
-          >
+          <Container>
             <div
-              attached={true}
               className="ui container"
             >
               <Image
@@ -558,12 +547,11 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
             </div>
           </Container>
           <Segment
-            attached={true}
             size="huge"
             textAlign="center"
           >
             <div
-              className="ui huge attached center aligned segment"
+              className="ui huge center aligned segment"
             >
               <p>
                 using your time to do the things that really matter time to do what you want to and doing the things that you cant do Once mahi has been completed you exchange Wa/time with

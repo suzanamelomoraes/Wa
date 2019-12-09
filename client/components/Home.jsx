@@ -96,7 +96,7 @@ const Home = () => {
         <Header as='h3' attached='top' textAlign='center' size='huge' style={{ backgroundColor: '#123b26', color: 'white' }} >
         Mahi
         </Header>
-        <Container attached>
+        <Container >
           <Image
             style={{ opacity: 0.5,
               width: '100%',
@@ -111,7 +111,7 @@ const Home = () => {
             {mahiText}
           </Image>
         </Container>
-        <Segment attached size='huge' textAlign='center'>
+        <Segment size='huge' textAlign='center'>
           <p>
             In literal sense mahi is the act of working or doing, Wa uses Mahi as a concept of offering a task. we need 5 lines here bruh.  we need 5 lines here bruh.  we need 5 lines here bruh.  
           </p>
@@ -123,7 +123,7 @@ const Home = () => {
         Community
         </Header>
 
-        <Container attached >
+        <Container >
           <Image
             style={{ opacity: 0.5,
               width: '100%',
@@ -142,7 +142,7 @@ const Home = () => {
 
         </Container>
 
-        <Segment attached size='huge' textAlign='center'>
+        <Segment size='huge' textAlign='center'>
           <p>
             communtiy based platform that aims to build a strong connection with those around you, become more aware of the skills you have and what others have to offer
           </p>
@@ -154,7 +154,7 @@ const Home = () => {
         Exchange
         </Header>
 
-        <Container attached>
+        <Container >
           <Image
             style={{ opacity: 0.5,
               width: '100%',
@@ -173,7 +173,7 @@ const Home = () => {
 
         </Container>
 
-        <Segment attached size='huge' textAlign='center'>
+        <Segment size='huge' textAlign='center'>
           <p>
             using your time to do the things that really matter
             time to do what you want to and doing the things that you cant do
