@@ -5,7 +5,6 @@ import { Card, Grid, Button, Icon, Divider } from "semantic-ui-react";
 import MahiSummary from "./MahiSummary";
 import Map from "./Map";
 import MahiMarker from "./MahiMarker";
-import NotificationAddMahi from "./NotificationAddMahi";
 
 import { setError } from "../actions/error";
 import { changeActiveTask } from "../actions/tasks";
@@ -32,12 +31,6 @@ export class Listing extends Component {
     });
 
     changeActiveTask(null);
-  };
-
-  showNotification = () => {
-    this.setState({
-      notificationVisible: true
-    });
   };
 
   render() {
@@ -115,8 +108,8 @@ export class Listing extends Component {
     }
     return (
       <Grid>
-        <NotificationAddMahi />
         <Grid.Column textAlign="right">
+          <NotificationAddMahi />
           <Button
             animated="fade"
             size="big"
@@ -128,7 +121,7 @@ export class Listing extends Component {
             }}
           >
             <Button.Content hidden style={{ fontSize: "0.8em" }}>
-              Open Map.showNotification} />
+              Open Map
             </Button.Content>
 
             <Button.Content visible>
@@ -146,7 +139,6 @@ export class Listing extends Component {
                     key={mahi.taskId}
                     {...mahi}
                     mapVisible={mapVisible}
-                    showNotification={this.showNotification}
                   />
                 );
               }

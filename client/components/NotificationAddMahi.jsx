@@ -4,10 +4,13 @@ import { Message, Container } from "semantic-ui-react";
 
 export class NotificationAddMahi extends Component {
   render() {
+    console.log(this.props.notification);
     return (
       //<Container>
       <Message positive floating style={{ marginTop: 40, height: 50 }}>
-        <Message.Header>Mahi has been added to your dashboard</Message.Header>
+        <Message.Header>
+          This Mahi has been added to your dashboard
+        </Message.Header>
         <p>{this.props.notification}</p>
       </Message>
       //</Container>

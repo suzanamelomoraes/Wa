@@ -11,12 +11,11 @@ const userID = 2; //delete after getting connected to Authenticare
 export class SelectMahi extends Component {
   handleClick = () => {
     const { taskId } = this.props.details;
-    const { closeModal, getTasks, showNotification } = this.props;
+    const { closeModal, getTasks } = this.props;
 
     selectTask(taskId, userID);
     getTasks();
     closeModal();
-    showNotification();
   };
 
   render() {

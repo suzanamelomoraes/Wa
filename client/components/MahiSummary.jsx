@@ -29,8 +29,7 @@ export class MahiSummary extends Component {
       assignerName,
       changeActiveTask,
       activeIndex,
-      mapVisible,
-      showNotification
+      mapVisible
     } = this.props;
     const { modalVisible } = this.state;
 
@@ -87,7 +86,6 @@ export class MahiSummary extends Component {
               <SelectMahi
                 details={this.props}
                 closeModal={this.toggleModalView}
-                showNotification={showNotification}
               />
             </Modal>
           </div>
