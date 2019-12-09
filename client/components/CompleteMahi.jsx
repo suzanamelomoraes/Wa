@@ -3,11 +3,13 @@ import { Button, Header, Image, Modal, Form, Icon } from 'semantic-ui-react'
 // import { connect } from 'react-redux'
 import { completeTask } from '../api/tasks'
 
+
 class AcceptMahi extends Component {
 state = {
   showModal: false,
   assigneeId: '',
   assignerId: '',
+  assigneeName: '',
   taskId: '',
   hours: ''
 }
@@ -17,13 +19,18 @@ handleClickButton = (event, callAPI) => {
   this.setState({
     showModal: false
   })
-  const { taskId, assignerId, assigneeId, hours } = this.state
   // Can only COMPELTE task if there's an assignee for that task
 
   if (callAPI) {
+    const { taskId, assignerId, assigneeId, hours } = this.state
     completeTask(taskId, assignerId, assigneeId, hours)
     // TESTING VERSION:   completeTask(1, 3, 1, 2)  <--  THIS WORKS
   }
+}
+
+componentDidMount () {
+  const { taskId, assignerId, assigneeId, hours } = this.props.data
+  this.setState({ taskId, assignerId, assigneeId, hours })
 }
 
 render () {

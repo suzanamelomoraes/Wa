@@ -13,7 +13,7 @@ export class SelectOfferingMahi extends Component {
     this.setState({ showModal: false })
   }
   render () {
-    const { title, assigner, assignee, assignerId, assigneeId, categoryName, hours, taskId, description } = this.props.data
+    const { title, assigner, assignee, assignerId, assigneeId, categoryName, hours, taskId, description, assigneeName } = this.props.data
 
     return (
       <Modal open={this.state.showModal} centered={true} trigger={
@@ -27,7 +27,7 @@ export class SelectOfferingMahi extends Component {
           <Modal.Description>
             <Header as='h1'>{title}</Header>
             <p style={{ fontSize: '1.25em' }}>{description}</p>
-            <p style={{ fontSize: '1.25em' }}>You can earn {hours} hour/s when you help out {assignerId}</p>
+            <p style={{ fontSize: '1.25em' }}>You can earn {hours} hour/s when you help out {assigneeName}</p>
           </Modal.Description>
         </Modal.Content>
 
