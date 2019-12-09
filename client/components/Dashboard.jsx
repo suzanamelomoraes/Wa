@@ -42,7 +42,7 @@ export class Dashboard extends Component {
           </Grid.Column>
         </Grid>
         <Segment fixed='true' attached='bottom'>
-          <AddMahi id={id}/>
+          <AddMahi id={id} user={user}/>
         </Segment>
       </div>
 
