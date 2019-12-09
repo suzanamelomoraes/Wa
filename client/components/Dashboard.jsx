@@ -42,7 +42,7 @@ export class Dashboard extends Component {
         </Grid>
         <Sticky>
           <Segment fixed='true' attached='bottom'>
-            <AddMahi id={user.id}/>
+            <AddMahi id={user.id} balance={user.balance}/>
           </Segment>
         </Sticky>
 

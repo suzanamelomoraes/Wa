@@ -86,6 +86,8 @@ export class AddMahi extends Component {
       text: category.name
     }))
 
+    const balance = this.props.balance
+
     return (
       <Modal
         as={Form}
@@ -155,6 +157,7 @@ export class AddMahi extends Component {
             required
             type="number"
             min="1"
+            max={balance}
             placeholder="Add the time you need"
           />
         </Modal.Content>
