@@ -13,8 +13,12 @@ export class OfferingMahi extends Component {
   componentDidMount () {
     const { assignee } = this.props.data
     getUser(assignee).then(user => {
-      const assigneeName = user.name
-      this.setState({ assigneeName: assigneeName })
+      if (user) {
+        const assigneeName = user.name
+        this.setState({ assigneeName: assigneeName })
+      } else {
+        this.setState({ assigneeName: '' })
+      }
     })
   }
 
