@@ -42,9 +42,6 @@ export function geocodeAddress (details) {
 }
 
 export function addUserDetails (details, geocode) {
-  // const user = getDecodedToken()
-
-  // console.log(user.id)
   return request
     .post(`${apiURL}/users`)
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })

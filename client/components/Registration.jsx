@@ -32,7 +32,6 @@ handleChange = (e, { name, value }) => this.setState({ [name]: value })
           this.props.history.push('/details')
         }
       })
-    // this.props.history.push('/details')
   }
 
   handleSelect = (e, data) => {

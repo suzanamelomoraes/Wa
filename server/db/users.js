@@ -40,13 +40,13 @@ function getUserById (id, db = connection) {
 function updateUserDetails (id, details, geocode, db = connection) {
   return db('users')
     .where('id', id)
-    .insert({
+    .update({
       email: details.email,
       mobile: details.mobile,
       balance: 3,
-      address: details.address,
-      latitude: geocode.latitude,
-      longitude: geocode.longitude,
+      address: details.street + ', ' + details.suburb + ', ' + details.city + ' ' + details.postcode + ' New Zealand',
+      latitude: geocode.lat,
+      longitude: geocode.lng,
       image: '/images/avatar01.png'
     })
     .then(getUserById(id, db))

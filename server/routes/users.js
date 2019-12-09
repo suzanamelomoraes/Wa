@@ -25,8 +25,8 @@ router.get('/', (req, res) => {
 })
 
 // change the get route to the one set by auth routes
-router.get('/:id', (req, res) => {
-  const userId = Number(req.params.id)
+router.get('/', decodeToken, (req, res) => {
+  const userId = Number(req.user.id)
 
   return db.getUserById(userId)
     .then(user => res.json(user))
@@ -34,8 +34,11 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', decodeToken, (req, res) => {
-  const id = req.user.id
+  const id = Number(req.user.id)
   const { details, geocode } = req.body
+  console.log('body', req.body)
+  console.log('user', req.user)
+
   return dbUser.updateUserDetails(id, details, geocode)
     .then(user => res.json(user))
     .catch(() => sendGenericErrorMessage(res))

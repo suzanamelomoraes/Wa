@@ -45,7 +45,7 @@ handleChange = (e, { name, value }) => this.setState({ [name]: value })
         }, geocode)
       )
       .then(() =>
-        this.props.history.push('/dashboard'))
+        this.props.history.push('/'))
   }
 
   handleSelect = (e, data) => {
