@@ -16,8 +16,7 @@ export class Dashboard extends Component {
     user: {}
   }
   componentDidMount () {
-    const id = 1
-    this.props.getUser(id)
+    this.props.getUser()
       .then(() =>
         this.setState({
           user: this.props.user

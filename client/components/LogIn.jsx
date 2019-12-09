@@ -3,7 +3,7 @@ import { isAuthenticated, signIn } from 'authenticare/client'
 
 import { Button, Form, Input, Header, Container, Image, Grid } from 'semantic-ui-react'
 
-export class Registration extends Component {
+export class LogIn extends Component {
   state ={
     username: '',
     password: ''
@@ -21,8 +21,6 @@ export class Registration extends Component {
     signIn({
       username: username,
       password: password
-    }, {
-      baseUrl: process.env.BASE_API_URL
     })
       .then((token) => {
         if (isAuthenticated()) {
@@ -79,4 +77,4 @@ export class Registration extends Component {
   }
 }
 
-export default Registration
+export default LogIn

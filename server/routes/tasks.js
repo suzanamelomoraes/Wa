@@ -12,14 +12,14 @@ const sendGenericErrorMessage = res => {
     .send("An unexpected error has occurred and we're looking into it")
 }
 
-router.get('/', (req, res) => {
+router.get('/', decodeToken,(req, res) => {
   return db
     .getTasks()
     .then(tasks => res.json(tasks))
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', decodeToken, (req, res) => {
   const id = Number(req.params.id)
 
   return db
@@ -33,8 +33,8 @@ router.get('/:id', (req, res) => {
 })
 
 // move these routes to users
-router.get('/assigner/:id', decodeToken, (req, res) => {
-  const id = Number(req.params.id)
+router.get('/assigner', decodeToken, (req, res) => {
+  const id = Number(req.user.id)
 
   return db
     .getTaskByAssigner(id)
@@ -46,8 +46,8 @@ router.get('/assigner/:id', decodeToken, (req, res) => {
   }
 })
 
-router.get('/assignee/:id', decodeToken, (req, res) => {
-  const id = Number(req.params.id)
+router.get('/assignee', (req, res) => {
+  const id = Number(req.user.id)
 
   return db
     .getTaskByAssignee(id)
@@ -59,7 +59,7 @@ router.get('/assignee/:id', decodeToken, (req, res) => {
   }
 })
 
-router.post('/newtask', decodeToken, (req, res) => {
+router.post('/newtask', (req, res) => {
   const { assigner, title, description, hours, category } = req.body
   const categoryId = category
   const assignerId = Number(assigner)
@@ -73,7 +73,7 @@ router.post('/newtask', decodeToken, (req, res) => {
   }
 })
 
-router.put('/', decodeToken, (req, res) => {
+router.put('/', (req, res) => {
   const { id, assignee } = req.body
 
   db.selectTask(id, assignee)
@@ -81,7 +81,7 @@ router.put('/', decodeToken, (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.put('/completed', decodeToken, (req, res) => {
+router.put('/completed', (req, res) => {
   const { id, assignerId, assigneeId, time } = req.body
 
   db.completeTask(id, assignerId, assigneeId, time)
