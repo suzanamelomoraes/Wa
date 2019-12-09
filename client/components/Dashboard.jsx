@@ -27,7 +27,7 @@ export class Dashboard extends Component {
   render () {
     const { id, user } = this.state
     return (
-      <div  style={{marginTop: 75}}>
+      <div style={{ marginTop: 30 }}>
         <Grid columns={3}>
           <Grid.Column>
             <Profile user={user}/>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Header, Divider, Image, Grid, Segment } from 'semantic-ui-react'
 
 const inlineText = <div >
-  <Header textAlign='center' style={{ fontSize: '40px', textShadow: '1px 1px #000000', color: '#123b26' }}>
+  <Header textAlign='center' style={{ fontSize: '30px', textShadow: '1px 1px #000000', color: '#ffffff'}}>
     <Header.Content>
     Nou te rourou <br/>
     Naku te rourou <br/>
@@ -10,7 +10,7 @@ const inlineText = <div >
     </Header.Content>
   </Header>
   <Divider inverted />
-  <Header textAlign='center' style={{ fontSize: '40px', textShadow: '1px 1px #000000', color: '#123b26' }}>
+  <Header textAlign='center' style={{ fontSize: '30px', textShadow: '1px 1px #000000', color: '#ffffff' }}>
     <Header.Content>
       With your food basket  <br/>
       and my food basket <br/>
@@ -30,7 +30,7 @@ const Home = () => {
   <>
   <Container
     style={{ width: '100%',
-      marginTop: 75
+      marginTop: 60
     }}
   >
     <Image
