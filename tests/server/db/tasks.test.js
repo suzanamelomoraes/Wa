@@ -31,7 +31,7 @@ describe("Tasks database tests", () => {
       assignerId: 3,
       title: "Walk with dog",
       description: "Take the dog to walk",
-      status: "completed",
+      status: "Completed",
       hours: 1
     };
 
@@ -50,7 +50,7 @@ describe("Tasks database tests", () => {
 
     return db.selectTask(id, assignee, testDb).then(task => {
       expect(task.assignee).toEqual(2);
-      expect(task.status).toMatch("in progress");
+      expect(task.status).toMatch("In progress");
     });
   });
 });
@@ -67,7 +67,7 @@ describe("Tasks database tests", () => {
     return db
       .completeTask(id, assignerId, assigneeId, time, testDb)
       .then(task => {
-        expect(task.status).toMatch("completed");
+        expect(task.status).toMatch("Completed");
       });
   });
 });

@@ -68,7 +68,7 @@ router.post('/newtask', getTokenDecoder(), (req, res) => {
 
   const categoryId = category
   const assignerId = Number(req.user.id)
-  const status = 'open'
+  const status = 'Open'
 
   db.addTask(categoryId, { assignerId, title, description, status, hours })
     .then(displayTasks)
