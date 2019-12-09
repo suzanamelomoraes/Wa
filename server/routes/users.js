@@ -14,20 +14,9 @@ const sendGenericErrorMessage = (res) => {
   )
 }
 
-router.get('/', (req, res) => {
-  return db.getUsers()
-    .then(displayUsers)
-    .catch(() => sendGenericErrorMessage(res))
-
-  function displayUsers (users) {
-    res.json(users)
-  }
-})
-
 // change the get route to the one set by auth routes
-router.get('/', decodeToken, (req, res) => {
-  const userId = Number(req.user.id)
-
+router.get('/', getTokenDecoder(), (req, res) => {
+  const userId = req.user.id
   return db.getUserById(userId)
     .then(user => res.json(user))
     .catch(() => sendGenericErrorMessage(res))

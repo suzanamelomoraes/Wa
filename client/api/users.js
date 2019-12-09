@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { getEncodedToken, getDecodedToken } from 'authenticare/client'
+import { getEncodedToken, getAuthorizationHeader, getDecodedToken } from 'authenticare/client'
 
 const apiURL = 'http://localhost:3000/api/v1'
 
@@ -22,9 +22,9 @@ export function getOfferings () {
 
 export function getUser () {
   return request
+    .get(`${apiURL}/users`)
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-    .get(`${apiURL}/users/`)
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }

@@ -59,6 +59,15 @@ router.get('/assignee', (req, res) => {
   }
 })
 
+router.put('/assignee/:id', (req, res) => {
+  const id = Number(req.params.id)
+
+  return db
+    .deselectTask(id)
+    .then(task => res.json(task))
+    .catch(() => sendGenericErrorMessage(res))
+})
+
 router.post('/newtask', (req, res) => {
   const { assigner, title, description, hours, category } = req.body
   const categoryId = category

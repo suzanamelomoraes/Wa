@@ -65,7 +65,7 @@ function getTaskByAssignee (id, db = connection) {
       'tasks.cat_id as categoryId',
       'tasks.assigner as assignerId',
       'tasks.name as title',
-      'tasks.description',
+      'tasks.description', 
       'tasks.status',
       'tasks.time as hours',
       'tasks.assignee as assignee',
@@ -80,6 +80,16 @@ function selectTask (id, assignee, db = connection) {
     .update({
       assignee: assignee,
       status: 'in progress'
+    })
+    .then(() => getTask(id, db))
+}
+
+function deselectTask (id, db = connection) {
+  return db('tasks')
+    .where('id', id)
+    .update({
+      assignee: null,
+      status: 'open'
     })
     .then(() => getTask(id, db))
 }
@@ -145,5 +155,6 @@ module.exports = {
   getUsers,
   getTaskByAssignee,
   getTaskByAssigner,
-  getUserById
+  getUserById,
+  deselectTask
 }
