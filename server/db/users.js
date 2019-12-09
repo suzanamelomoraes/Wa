@@ -5,7 +5,8 @@ module.exports = {
   createUser,
   userExists,
   getUserById,
-  updateUserDetails
+  updateUserDetails,
+  getUserByName
 }
 
 function createUser (user, db = connection) {
@@ -17,7 +18,7 @@ function createUser (user, db = connection) {
     })
     .then(() => generateHash(user.password))
     .then(passwordHash => {
-      return db('users').insert({ name: user.username, hash: passwordHash })
+      return db('users').insert({ name: user.username, password: passwordHash })
     })
 }
 
@@ -36,7 +37,6 @@ function getUserById (id, db = connection) {
     .first()
 }
 
-
 function updateUserDetails (id, details, geocode, db = connection) {
   return db('users')
     .where('id', id)
@@ -50,4 +50,11 @@ function updateUserDetails (id, details, geocode, db = connection) {
       image: '/images/avatar01.png'
     })
     .then(getUserById(id, db))
+}
+
+function getUserByName (username, db = connection) {
+  return db('users')
+    .select()
+    .where('name', username)
+    .first()
 }

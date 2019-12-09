@@ -35,7 +35,7 @@ export class Registration extends Component {
     return (
       <Grid centered={true}>
         <Grid.Column width={6}>
-          <Container style={{ marginTop: 75, border: '1px', borderStyle: 'solid', padding: '25px' }}g>
+          <Container style={{ marginTop: 75, border: '1px', borderStyle: 'solid', padding: '25px' }}>
             <Header as='h2' color='brown' textAlign='center'>
               <Image
                 verticalAlign='middle'

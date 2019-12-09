@@ -10,7 +10,8 @@ const suburbs = [
   { id: 3, postcode: 2105, suburb: 'Alfriston' },
   { id: 4, postcode: 2022, suburb: 'Auckland Airport' },
   { id: 5, postcode: 1010, suburb: 'Auckland Central' },
-  { id: 6, postcode: 1011, suburb: 'Auckland Central Fringe' }
+  { id: 6, postcode: 1011, suburb: 'Auckland Central Fringe' },
+  { id: 7, postcode: 1023, suburb: 'Newmarket' }
 ]
 
 export class Registration extends Component {
@@ -68,7 +69,7 @@ handleChange = (e, { name, value }) => this.setState({ [name]: value })
     return (
       <Grid centered={true}>
         <Grid.Column width={6}>
-          <Container style={{ marginTop: 75, border: '1px', borderStyle: 'solid', padding: '25px' }}g>
+          <Container style={{ marginTop: 75, border: '1px', borderStyle: 'solid', padding: '25px' }}>
             <Header as='h2' color='brown' textAlign='center'>
               <Image
                 verticalAlign='middle'
