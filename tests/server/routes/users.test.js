@@ -8,7 +8,7 @@ const mockUsers = [
     name: 'Don',
     email: 'don@devacademy.com',
     mobile: 99999999,
-    password: 'lacucaracha',
+    hash: 'lacucaracha',
     balance: 3,
     'address': '12 Morgan Street, Newmarket, 0600',
     latitude: 1234,
@@ -20,7 +20,7 @@ const mockUsers = [
     name: 'Bryce',
     email: 'bryce@devacademy.com',
     mobile: 99999999,
-    password: 'potatoes',
+    hash: 'potatoes',
     balance: 3,
     address: '12 Morgan Street, Newmarket, 0600',
     latitude: 1234,
@@ -34,7 +34,7 @@ const mockUser =
     name: 'Don',
     email: 'don@devacademy.com',
     mobile: 99999999,
-    password: 'lacucaracha',
+    hash: 'lacucaracha',
     balance: 3,
     address: '12 Morgan Street, Newmarket, 0600',
     latitude: 1234,
@@ -46,23 +46,3 @@ jest.mock('../../../server/db/db', () => ({
   getUserById: () => Promise.resolve(mockUser)
 
 }))
-
-describe('Gets all users', () => {
-  it('GET /users', () => {
-    return request(server)
-      .get('/api/v1/users')
-      .then((res) => {
-        expect(res.body).toEqual(mockUsers)
-      })
-  })
-})
-
-describe('Gets a user by Id', () => {
-  it('GET /:id', () => {
-    return request(server)
-      .get('/api/v1/users/1')
-      .then((res) => {
-        expect(res.body).toEqual(mockUser)
-      })
-  })
-})

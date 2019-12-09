@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { addMahi } from '../api/tasks'
 
 import { getCategories } from '../actions/categories'
+import { getOfferings } from '../actions/tasks'
 
 import {
   Modal,
@@ -13,7 +14,6 @@ import {
   Dropdown,
   Image
 } from 'semantic-ui-react'
-import { userInfo } from 'os'
 
 export class AddMahi extends Component {
   state = {
@@ -51,6 +51,7 @@ export class AddMahi extends Component {
       hours,
       description
     })
+      .then(this.props.getOfferings())
   };
 
   handleChange = e => {
@@ -84,7 +85,8 @@ export class AddMahi extends Component {
       value: category.name,
       text: category.name
     }))
-    const balance = this.props.user.balance
+
+    const balance = this.props.balance
 
     return (
       <Modal
@@ -188,7 +190,8 @@ const mapStateToProps = state => {
   }
 }
 const matchDispatchToProps = {
-  getCategories
+  getCategories,
+  getOfferings
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(AddMahi)
