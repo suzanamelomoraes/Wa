@@ -84,6 +84,16 @@ function selectTask (id, assignee, db = connection) {
     .then(() => getTask(id, db))
 }
 
+function deselectTask (id, db = connection) {
+  return db('tasks')
+    .where('id', id)
+    .update({
+      assignee: null,
+      status: 'open'
+    })
+    .then(() => getTask(id, db))
+}
+
 function completeTask (id, assignerId, assigneeId, time, db = connection) {
   return db('tasks')
     .where('id', id)
@@ -144,5 +154,6 @@ module.exports = {
   getUsers,
   getTaskByAssignee,
   getTaskByAssigner,
-  getUserById
+  getUserById,
+  deselectTask
 }

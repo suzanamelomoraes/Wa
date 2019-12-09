@@ -32,3 +32,9 @@ export function selectTask (id, assignee) {
     .catch(err => { throw new Error(err.message) })
 }
 
+export function deselectTask (id) {
+  return request
+    .put(`${apiURL}/assignee/${id}`)
+    .then(res => res.body)
+    .catch(err => { throw new Error(err.message) })
+}
