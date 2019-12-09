@@ -34,7 +34,6 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
             "margin": 0,
             "opacity": 0.5,
             "padding": 0,
-            "poistion": "absolute",
             "width": "100%",
           }
         }
@@ -54,7 +53,6 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
               "margin": 0,
               "opacity": 0.5,
               "padding": 0,
-              "poistion": "absolute",
               "width": "100%",
             }
           }
@@ -178,7 +176,6 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
     />
   </Divider>
   <Grid
-    colums="equal"
     style={
       Object {
         "alignItems": "center",
@@ -190,7 +187,6 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
   >
     <div
       className="ui grid"
-      colums="equal"
       style={
         Object {
           "alignItems": "center",
@@ -296,7 +292,9 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
                           <div
                             className="content"
                           >
-                            taking and offering mahi
+                            Taking and 
+                            <br />
+                             Offering Mahi
                           </div>
                         </HeaderContent>
                       </div>
@@ -308,13 +306,30 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
           </Container>
           <Segment
             size="huge"
+            style={
+              Object {
+                "fontSize": "1.25rem",
+                "height": "14em",
+                "marginBottom": "2em",
+              }
+            }
             textAlign="center"
           >
             <div
               className="ui huge center aligned segment"
+              style={
+                Object {
+                  "fontSize": "1.25rem",
+                  "height": "14em",
+                  "marginBottom": "2em",
+                }
+              }
             >
               <p>
-                In literal sense mahi is the act of working or doing, Wa uses Mahi as a concept of offering a task. we need 5 lines here bruh.  we need 5 lines here bruh.  we need 5 lines here bruh.
+                Taking its literal meaning, mahi is the act of working or doing.
+              </p>
+              <p>
+                Wā uses Mahi to facilitate the give and take between people in the community — members exchange wā/time when a mahi is offered or completed.
               </p>
             </div>
           </Segment>
@@ -416,7 +431,7 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
                           <div
                             className="content"
                           >
-                            empowering communities
+                            Empowering communities
                           </div>
                         </HeaderContent>
                       </div>
@@ -428,13 +443,30 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
           </Container>
           <Segment
             size="huge"
+            style={
+              Object {
+                "fontSize": "1.25rem",
+                "height": "14em",
+                "marginBottom": "2em",
+              }
+            }
             textAlign="center"
           >
             <div
               className="ui huge center aligned segment"
+              style={
+                Object {
+                  "fontSize": "1.25rem",
+                  "height": "14em",
+                  "marginBottom": "2em",
+                }
+              }
             >
               <p>
-                communtiy based platform that aims to build a strong connection with those around you, become more aware of the skills you have and what others have to offer
+                Wā is a community-based platform aiming to build strong connections between people.
+              </p>
+              <p>
+                Become more aware of the skills you have and what you can offer and discover what people around you can offer in return.
               </p>
             </div>
           </Segment>
@@ -548,13 +580,30 @@ exports[`Test <Home /> component (Shallow) render unchanged from previous snapsh
           </Container>
           <Segment
             size="huge"
+            style={
+              Object {
+                "fontSize": "1.25rem",
+                "height": "14em",
+                "marginBottom": "2em",
+              }
+            }
             textAlign="center"
           >
             <div
               className="ui huge center aligned segment"
+              style={
+                Object {
+                  "fontSize": "1.25rem",
+                  "height": "14em",
+                  "marginBottom": "2em",
+                }
+              }
             >
               <p>
-                using your time to do the things that really matter time to do what you want to and doing the things that you cant do Once mahi has been completed you exchange Wa/time with
+                Exchange the gift of time with people in your community.
+              </p>
+              <p>
+                Use your time to do the things that really matter to the people around you and make your life richer by letting other people give you their time.
               </p>
             </div>
           </Segment>
