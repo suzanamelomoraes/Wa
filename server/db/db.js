@@ -65,7 +65,7 @@ function getTaskByAssignee (id, db = connection) {
       'tasks.cat_id as categoryId',
       'tasks.assigner as assignerId',
       'tasks.name as title',
-      'tasks.description',
+      'tasks.description', 
       'tasks.status',
       'tasks.time as hours',
       'tasks.assignee as assignee',
