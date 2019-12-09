@@ -9,6 +9,6 @@ describe('<Registration /> component tests', () => {
     const component = mount(
       <Registration />
     )
-    expect(component.containsMatchingElement(<Form/>)).toBe(true)
+    expect(component.containsMatchingElement(Form)).toBe(true)
   })
 })

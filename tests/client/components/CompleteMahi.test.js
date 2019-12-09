@@ -1,4 +1,4 @@
-import CompleteMahi from '../../../client/components/CompleteMahi'
+import { CompleteMahi } from '../../../client/components/CompleteMahi'
 import { mount, shallow } from 'enzyme'
 import React from 'react'
 import { Button, Header, Image, Modal, Form, Icon } from 'semantic-ui-react'

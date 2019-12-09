@@ -41,19 +41,6 @@ router.get('/assigner', getTokenDecoder(), (req, res) => {
   }
 })
 
-// router.get('/:id', decodeToken, (req, res) => {
-//   const id = Number(req.params.id)
-
-//   return db
-//     .getTask(id)
-//     .then(displayTask)
-//     .catch(() => sendGenericErrorMessage(res))
-
-//   function displayTask (task) {
-//     res.json(task)
-//   }
-// })
-
 router.get('/assignee', getTokenDecoder(), (req, res) => {
   const id = Number(req.user.id)
 

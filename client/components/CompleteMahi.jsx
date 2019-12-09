@@ -5,7 +5,7 @@ import { completeTask } from '../api/tasks'
 
 import { getOfferings } from '../actions/tasks'
 
-export class AcceptMahi extends Component {
+export class CompleteMahi extends Component {
 state = {
   showModal: false,
   assigneeId: '',
@@ -84,4 +84,4 @@ const mapDispatchToProps = {
   getOfferings
 }
 
-export default connect(null, mapDispatchToProps)(AcceptMahi)
+export default connect(null, mapDispatchToProps)(CompleteMahi)
