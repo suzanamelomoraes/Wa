@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
 import SelectVolunteerMahi from './SelectVolunteerMahi'
 import { getUser } from '../actions/user'
+import DeselectUser from './DeselectUser'
 
 export class VolunteerMahi extends Component {
   componentDidMount () {
@@ -30,6 +31,7 @@ export class VolunteerMahi extends Component {
           </Card.Content>
           <Card.Content>
             <SelectVolunteerMahi data={this.props.data}/>
+            <DeselectUser id={this.props.data.id}/>
           </Card.Content>
         </Card>
       </>
