@@ -35,7 +35,10 @@ export class MahiSummary extends Component {
     const { modalVisible } = this.state;
 
     return (
-      <Card color={taskId === activeIndex ? "orange" : "grey"}>
+      <Card
+        color={taskId === activeIndex ? "orange" : "grey"}
+        style={{ textAlign: "left" }}
+      >
         <Card.Content>
           <Image floated="right" size="small" src={image} id="mahiImage" />
           <Card.Header as="h1" id="mahiTitle">
