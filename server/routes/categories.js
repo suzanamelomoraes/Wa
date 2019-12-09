@@ -1,4 +1,6 @@
 const express = require('express')
+const { getTokenDecoder } = require('authenticare/server')
+const decodeToken = getTokenDecoder(false)
 
 const db = require('../db/db')
 
@@ -10,7 +12,7 @@ const sendGenericErrorMessage = (res) => {
   )
 }
 
-router.get('/', (req, res) => {
+router.get('/', decodeToken, (req, res) => {
   return db.getCategories()
     .then(categories => res.json(categories))
     .catch(() => sendGenericErrorMessage(res))

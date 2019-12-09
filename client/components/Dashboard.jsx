@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid } from 'semantic-ui-react'
+import { Segment, Grid, Ref, Sticky } from 'semantic-ui-react'
 
 import { getUser } from '../actions/user'
 
 import Profile from './Profile'
-import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
 import VolunteeringList from './VolunteeringList'
@@ -15,35 +14,38 @@ export class Dashboard extends Component {
     id: 2,
     user: {}
   }
+
   componentDidMount () {
-    const id = 1
-    this.props.getUser(id)
+    this.props.getUser()
       .then(() =>
         this.setState({
           user: this.props.user
         })
       )
   }
+
+  contextRef = createRef()
   render () {
-    const { id, user } = this.state
+    const { user } = this.state
     return (
       <div>
-        <Grid columns={3}>
-          <Grid.Column>
+        <Grid stackable={true} columns={3}>
+          <Grid.Column width={5}>
             <Profile user={user}/>
-            <TimeCurrency props={user}/>
-
           </Grid.Column>
-          <Grid.Column>
-            <OfferingList id={id}/>
+          <Grid.Column width={5}>
+            <OfferingList id={user.id}/>
           </Grid.Column>
-          <Grid.Column>
-            <VolunteeringList id={id}/>
+          <Grid.Column width={5}>
+            <VolunteeringList id={user.id}/>
           </Grid.Column>
         </Grid>
-        <Segment fixed='true' attached='bottom'>
-          <AddMahi id={id}/>
-        </Segment>
+        <Sticky>
+          <Segment fixed='true' attached='bottom'>
+            <AddMahi id={user.id}/>
+          </Segment>
+        </Sticky>
+
       </div>
 
     )

@@ -28,14 +28,14 @@ describe('get Offerings action creators', () => {
   })
   it('getOfferings dispatches GET_OFFERINGS_PENDING & GET_OFFERINGS_SUCCESS', () => {
     const dispatch = jest.fn()
-    const id = 1
+  
     nock(apiUrl)
-      .get(`/tasks/assigner/${id}`)
+      .get(`/tasks/assigner`)
       .reply(200, [
         { id: 1, name: 'automotive' }
       ])
 
-    return getOfferings(id)(dispatch)
+    return getOfferings()(dispatch)
       .then(() => {
         expect(dispatch.mock.calls.length).toBe(2)
         expect(dispatch.mock.calls[0][0].type).toBe(GET_OFFERINGS_PENDING)
