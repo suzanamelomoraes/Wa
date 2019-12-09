@@ -98,7 +98,8 @@ function completeTask (id, assignerId, assigneeId, time, db = connection) {
   return db('tasks')
     .where('id', id)
     .update({
-      status: 'completed'
+      status: 'completed',
+      assigner: null
     })
     .then(() => {
       return db('users')

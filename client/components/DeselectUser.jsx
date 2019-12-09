@@ -1,8 +1,10 @@
 import React from 'react'
 import { Button, Modal } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 import { deselectTask } from '../api/tasks'
+import { getVolunteering } from '../actions/tasks'
 
-class DeselectUser extends React.Component {
+export class DeselectUser extends React.Component {
   state = {
     showModal: false,
     id: 2
@@ -15,6 +17,7 @@ class DeselectUser extends React.Component {
     })
     if (callAPI) {
       deselectTask(this.props.id)
+        .then(this.props.getVolunteering())
     }
   }
   render () {
@@ -28,25 +31,25 @@ class DeselectUser extends React.Component {
           <Modal.Description>
             <div style={{ fontSize: '1.25rem' }}>
               <p>
-  Are you sure you want to leave this mahi?<br></br>
-  The mahi will be added back to the list for the community
+                Are you sure you want to leave this mahi?<br></br>
+                The mahi will be added back to the list for the community
               </p>
             </div>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
           <Button
-            positive
-            icon='smile outline'
+            negative
+            icon='times'
             labelPosition='right'
-            content="No, I am not"
+            content="Close"
             size="large"
             onClick={(evt) => this.handleClickButton(evt, 0)}
             data-test="secondBtnNegative"
           />
           <Button
-            negative
-            icon='frown outline'
+            positive
+            icon='check'
             labelPosition='right'
             content="Yes, I am"
             size="large"
@@ -59,4 +62,7 @@ class DeselectUser extends React.Component {
   }
 }
 
-export default DeselectUser
+const mapDispatchToProps = {
+  getVolunteering
+}
+export default connect(null, mapDispatchToProps)(DeselectUser)

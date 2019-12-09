@@ -4,15 +4,13 @@ import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
 
 import { getOfferings } from '../actions/tasks'
 
-import MahiSummary from './MahiSummary'
 import OfferingMahi from './OfferingMahi' 
 
 export class OfferingList extends Component {
-  state = {
-  }
+  
 
   componentDidMount () {
-    this.props.getOfferings(this.props.id)
+    this.props.getOfferings()
   }
 
   render () {

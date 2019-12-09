@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import { addMahi } from "../api/tasks";
+import { addMahi } from '../api/tasks'
 
-import { getCategories } from "../actions/categories";
+import { getCategories } from '../actions/categories'
+import { getOfferings } from '../actions/tasks'
 
 import {
   Modal,
@@ -12,77 +13,80 @@ import {
   Button,
   Dropdown,
   Image
-} from "semantic-ui-react";
+} from 'semantic-ui-react'
 
 export class AddMahi extends Component {
   state = {
     assigner: this.props.id,
-    title: "",
-    category: "",
+    title: '',
+    category: '',
     hours: 0,
-    description: "",
+    description: '',
     modalVisible: false
   };
 
-  componentDidMount() {
-    this.props.getCategories();
+  componentDidMount () {
+    this.props.getCategories()
   }
 
   closeModal = () => {
     this.setState({
-      title: "",
-      category: "",
+      title: '',
+      category: '',
       hours: 0,
-      description: "",
+      description: '',
       modalVisible: false
-    });
+    })
   };
 
   handleSubmit = () => {
     this.setState({
       modalVisible: false
-    });
-    const { assigner, title, category, hours, description } = this.state;
+    })
+    const { assigner, title, category, hours, description } = this.state
     addMahi({
       assigner,
       title,
       category,
       hours,
       description
-    });
+    })
+      .then(this.props.getOfferings())
   };
 
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
-    });
+    })
   };
 
   viewModal = () => {
     this.setState({
       modalVisible: true
-    });
+    })
   };
 
   handleSelect = (e, data) => {
-    const { categories } = this.props;
-    const selectedCategory = data.value;
+    const { categories } = this.props
+    const selectedCategory = data.value
     const category = categories.find(
       category => category.name === selectedCategory
-    );
+    )
     this.setState({
       category: category.id
-    });
+    })
   };
 
-  render() {
-    const { modalVisible } = this.state;
-    const { categories } = this.props;
+  render () {
+    const { modalVisible } = this.state
+    const { categories } = this.props
     const options = categories.map(category => ({
       key: category.id,
       value: category.name,
       text: category.name
-    }));
+    }))
+
+    const balance = this.props.balance
 
     return (
       <Modal
@@ -153,18 +157,11 @@ export class AddMahi extends Component {
             required
             type="number"
             min="1"
+            max={balance}
             placeholder="Add the time you need"
           />
         </Modal.Content>
         <Modal.Actions>
-          <Button
-            onSubmit={this.handleSubmit}
-            id="submit"
-            type="submit"
-            color="green"
-            icon="time"
-            content="Add Mahi"
-          />
           <Button
             negative
             icon="close"
@@ -172,19 +169,29 @@ export class AddMahi extends Component {
             content="Close"
             onClick={this.closeModal}
           />
+          <Button
+            onSubmit={this.handleSubmit}
+            id="submit"
+            type="submit"
+            labelPosition="right"
+            color="green"
+            icon='smile outline'
+            content="Add Mahi"
+          />
         </Modal.Actions>
       </Modal>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     categories: state.categories
-  };
-};
+  }
+}
 const matchDispatchToProps = {
-  getCategories
-};
+  getCategories,
+  getOfferings
+}
 
-export default connect(mapStateToProps, matchDispatchToProps)(AddMahi);
+export default connect(mapStateToProps, matchDispatchToProps)(AddMahi)

@@ -1,9 +1,10 @@
-import CompleteMahi from '../../../client/components/CompleteMahi'
+import { CompleteMahi } from '../../../client/components/CompleteMahi'
 import { mount, shallow } from 'enzyme'
 import React from 'react'
 import { Button, Header, Image, Modal, Form, Icon } from 'semantic-ui-react'
 const nock = require('nock')
 const apiURL = 'http://locahost:3000/api/v1/tasks/'
+const completeMahiData = { taskId: 1, assignerId: 1, assigneeId: 1, hours: 1 }
 
 test('truthy test', () => {
   expect(true).toBeTruthy()
@@ -12,7 +13,7 @@ test('truthy test', () => {
 describe('<CompleteMahi /> component test', () => {
   it('Contains <Button/>', () => {
     // Arrange
-    const wrapper = mount(<CompleteMahi/>)
+    const wrapper = mount(<CompleteMahi data={completeMahiData}/>)
     const childComponent = Button
     const expected = true
 
@@ -24,7 +25,7 @@ describe('<CompleteMahi /> component test', () => {
   })
   it('When Button is clicked, state.showModal changes from false to true', () => {
     // Arrange
-    const component = mount(<CompleteMahi/>)
+    const component = mount(<CompleteMahi data={completeMahiData}/>)
     const button = component.find('button')
 
     // Act
@@ -36,9 +37,9 @@ describe('<CompleteMahi /> component test', () => {
     expect(beforeShowModal).toBe(false)
     expect(afterShowModal).toBeTruthy()
   })
-  it("When CompletTask Component cancel button clicked state.showModal is false", () => {
+  it('When CompletTask Component cancel button clicked state.showModal is false', () => {
     // Arrange
-    const component = mount(<CompleteMahi/>)
+    const component = mount(<CompleteMahi data={completeMahiData}/>)
     const firstButton = component.find('button[data-test="firstBtn"]')
 
     // Act
