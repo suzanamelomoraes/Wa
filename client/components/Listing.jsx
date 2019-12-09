@@ -9,7 +9,7 @@ import MahiMarker from './MahiMarker'
 import { setError } from '../actions/error'
 import { changeActiveTask, getTasks } from '../actions/tasks';
 
-import NotificationAddMahi from './NotificationAddMahi'
+import Notification from './Notification'
 
 export class Listing extends Component {
   state = {
@@ -110,7 +110,7 @@ export class Listing extends Component {
     return (
       <Grid>
         <Grid.Column textAlign="right">
-          <NotificationAddMahi />
+          <Notification />
           <Button
             animated="fade"
             size="big"

@@ -4,7 +4,6 @@ import { Message } from 'semantic-ui-react'
 
 export class NotificationAddMahi extends Component {
   render () {
-    console.log(this.props.notification)
     return (
       <>
 
