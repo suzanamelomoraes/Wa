@@ -158,19 +158,20 @@ export class AddMahi extends Component {
         </Modal.Content>
         <Modal.Actions>
           <Button
-            onSubmit={this.handleSubmit}
-            id="submit"
-            type="submit"
-            color="green"
-            icon="time"
-            content="Add Mahi"
-          />
-          <Button
             negative
             icon="close"
             labelPosition="right"
             content="Close"
             onClick={this.closeModal}
+          />
+          <Button
+            onSubmit={this.handleSubmit}
+            id="submit"
+            type="submit"
+            labelPosition="right"
+            color="green"
+            icon='smile outline'
+            content="Add Mahi"
           />
         </Modal.Actions>
       </Modal>

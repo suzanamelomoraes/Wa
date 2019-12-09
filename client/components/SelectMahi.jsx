@@ -40,19 +40,18 @@ export class SelectMahi extends Component {
 
         <Modal.Actions>
           <Button
-            positive
-            icon="smile outline"
-            labelPosition="right"
-            content="Help out!"
-            onClick={this.handleClick}
-          />
-
-          <Button
             negative
             icon="close"
             labelPosition="right"
             content="Close"
             onClick={closeModal}
+          />
+          <Button
+            positive
+            icon="smile outline"
+            labelPosition="right"
+            content="Help out!"
+            onClick={this.handleClick}
           />
         </Modal.Actions>
       </>

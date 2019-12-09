@@ -3,30 +3,56 @@ import React, { Component } from 'react'
 import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
 import CompleteMahi from './CompleteMahi'
 import SelectOfferingMahi from './SelectOfferingMahi'
+import { connect } from 'react-redux'
+import { getUser } from '../api/users'
 
 export class OfferingMahi extends Component {
+  state = {
+    assigneeName: ''
+  }
+  componentDidMount () {
+    const { assignee } = this.props.data
+    getUser(assignee).then(user => {
+      if (user) {
+        const assigneeName = user.name
+        this.setState({ assigneeName: assigneeName })
+      } else {
+        this.setState({ assigneeName: '' })
+      }
+    })
+  }
+
   render () {
-    const { title, status, assigner, assignee, assignerId, assigneeId, category, hours, taskId, description } = this.props.data
+    const { title, status, assigner, assignee, assignerId, categoryId, hours, id, description } = this.props.data
+    const assigneeId = assignee
+    const taskId = id
+    const assigneeName = this.state.assigneeName
 
     const shortDescription = shortenText(description)
+
+    // Sets categoryName to '' if haven't received this.props.categories. Else set categoryName to a category name
+    let categoryName = ''
+    if (this.props.categories && this.props.categories.length > 0) {
+      const category = this.props.categories.find(category => category.id === categoryId)
+      categoryName = category.name
+    }
 
     return (
       <>
         <Card>
           <Card.Content size="huge">
             <Image src="/images/avatar01.png" size="small" floated="right" ></Image>
-
             <Card.Header as='h1'>{title}</Card.Header>
-            <Card.Meta as="h3">assignee <Icon name="user" size="small"></Icon><br/>{assignee}</Card.Meta>
-            <Card.Meta as="h3">status <Icon name="spinner" size="small"></Icon><br/>{status}</Card.Meta>
-            <Card.Meta as='h3'>Category <Icon name='columns' size='small'></Icon><br/><span>{category}</span></Card.Meta>
-            <Card.Meta as="h3">Hours <Icon name="time" size="small"></Icon><br/>5 {hours}</Card.Meta>
+            <Card.Meta as="h3">Assignee <Icon name="user" size="small"></Icon><br/>{this.state.assigneeName || 'Not Assigned'}</Card.Meta>
+            <Card.Meta as="h3">Status <Icon name="spinner" size="small"></Icon><br/>{status}</Card.Meta>
+            <Card.Meta as='h3'>Category <Icon name='columns' size='small'></Icon><br/>{categoryName && categoryName}</Card.Meta>
+            <Card.Meta as="h3">Hours <Icon name="time" size="small"></Icon><br/>{hours}</Card.Meta>
 
             <Card.Description>{shortDescription}</Card.Description>
           </Card.Content>
           <Card.Content>
-            <CompleteMahi />
-            <SelectOfferingMahi data={this.props.data}/>
+            <CompleteMahi data={{ assigneeId, assignerId, taskId, hours }}/>
+            <SelectOfferingMahi data={{ ...this.props.data, assigneeId, categoryName, assigneeName }}/>
           </Card.Content>
         </Card>
       </>
@@ -44,4 +70,10 @@ function shortenText (longText) {
   return longText
 }
 
-export default OfferingMahi
+const mapStateToProps = state => {
+  return ({
+    categories: state.categories
+  })
+}
+
+export default connect(mapStateToProps)(OfferingMahi)
