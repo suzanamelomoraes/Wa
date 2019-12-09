@@ -25,8 +25,6 @@ router.get('/', getTokenDecoder(), (req, res) => {
 router.post('/', decodeToken, (req, res) => {
   const id = Number(req.user.id)
   const { details, geocode } = req.body
-  console.log('body', req.body)
-  console.log('user', req.user)
 
   return dbUser.updateUserDetails(id, details, geocode)
     .then(user => res.json(user))
