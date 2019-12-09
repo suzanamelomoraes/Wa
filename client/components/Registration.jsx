@@ -26,8 +26,6 @@ handleChange = (e, { name, value }) => this.setState({ [name]: value })
     register({
       username: username,
       password: password
-    }, {
-      baseUrl: process.env.BASE_API_URL
     })
       .then((token) => {
         if (isAuthenticated()) {

@@ -12,7 +12,7 @@ server.use(express.json())
 server.use('/api/v1/tasks', tasks)
 server.use('/api/v1/categories', categories)
 server.use('/api/v1/users', users)
-server.use('/api/v1', auth)
+server.use('/', auth)
 server.use(express.static(path.join(__dirname, './public')))
 
 server.get('*', (req, res) => {

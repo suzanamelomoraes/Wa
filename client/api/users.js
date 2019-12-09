@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { getEncodedToken } from 'authenticare/client'
+import { getEncodedToken, getDecodedToken } from 'authenticare/client'
 
 const apiURL = 'http://localhost:3000/api/v1'
 
@@ -42,12 +42,13 @@ export function geocodeAddress (details) {
 }
 
 export function addUserDetails (details, geocode) {
-  const id = request.user.id
-  console.log(id)
+  // const user = getDecodedToken()
+
+  // console.log(user.id)
   return request
-    .post(`${apiURL}/users/${id}`)
+    .post(`${apiURL}/users`)
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-    .send(details, geocode)
+    .send({ details, geocode })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }

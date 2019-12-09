@@ -3,6 +3,9 @@ const express = require('express')
 const db = require('../db/db')
 const dbUser = require('../db/users')
 
+const { getTokenDecoder } = require('authenticare/server')
+const decodeToken = getTokenDecoder(false)
+
 const router = express.Router()
 
 const sendGenericErrorMessage = (res) => {
@@ -30,8 +33,9 @@ router.get('/:id', (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.post('/', (res, req) => {
-  const { id, details, geocode } = req.body
+router.post('/', decodeToken, (req, res) => {
+  const id = req.user.id
+  const { details, geocode } = req.body
   return dbUser.updateUserDetails(id, details, geocode)
     .then(user => res.json(user))
     .catch(() => sendGenericErrorMessage(res))
