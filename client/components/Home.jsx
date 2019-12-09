@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container, Header, Divider, Image, Grid, Segment } from 'semantic-ui-react'
 
-const inlineText = <div>
-  <Header as='h1' textAlign='center'>
+const inlineText = <div >
+  <Header textAlign='center' style={{ fontSize: '40px', textShadow: '1px 1px #000000', color: '#123b26'}}>
     <Header.Content>
     Nou te rourou <br/>
     Naku te rourou <br/>
@@ -10,11 +10,11 @@ const inlineText = <div>
     </Header.Content>
   </Header>
   <Divider inverted />
-  <Header as='h1' textAlign='center'>
+  <Header textAlign='center' style={{ fontSize: '40px', textShadow: '1px 1px #000000', color: '#123b26'}}>
     <Header.Content>
       With your food basket  <br/>
       and my food basket <br/>
-      the people will thrive
+      the people will thrive test
     </Header.Content>
   </Header>
 </div>
@@ -24,7 +24,8 @@ const Home = () => {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexWrap: 'wrap' }
+    flexWrap: 'wrap',
+    }
   return (
   <>
   <Container
@@ -43,53 +44,47 @@ const Home = () => {
         opacity: 0.5,
         backgroundImage: `url(${'images/placeholder.jpg'})`,
         backgroundSize: 'cover',
-        fontWeight: 'normal',
-        marginBottom: 0,
+        paddingLeft: 500,
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center'
       }}
     >
       {inlineText}
     </Image>
   </Container>
-<Header style={centerStyle} size='huge'> What to do? </Header>
+
+  <Divider inverted />
+
+  <Header style={centerStyle} size='huge'> Getting started </Header>
+
+  <Divider inverted />
 
     <Grid colums='equal' style={centerStyle}>
 
       <Grid.Column mobile={12} tablet={8} computer={4}>
-        <Header as='h3' attached='top' >
-            This is the top
+        <Header as='h3' attached='top' textAlign='center' size='huge' style={{backgroundColor: '#123b26', color: 'white' }} >
+        Mahi
         </Header>
-        <Segment attached>
-        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        <Segment attached size='huge' textAlign='center'>
+        Create a mahi to share with your community and select a mahi to help out
         </Segment>
       </Grid.Column>
 
       <Grid.Column mobile={12} tablet={8} computer={4}>
-        <Header as='h3' attached='top' >
-This is the top
+        <Header as='h3' attached='top' textAlign='center' size='huge' style={{backgroundColor: '#123b26', color: 'white'}} >
+        Community
         </Header>
-        <Segment attached>
-      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
+        <Segment attached size='huge' textAlign='center'>
+        Contribute to the community by helping complete mahi 
         </Segment>
       </Grid.Column>
 
       <Grid.Column mobile={12} tablet={8} computer={4}>
-        <Header as='h3' attached='top' >
-This is the top
+        <Header as='h3' attached='top' textAlign='center' size='huge' style={{backgroundColor: '#123b26', color: 'white'}} >
+        Exchange
         </Header>
-        <Segment attached>
-      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
+        <Segment attached size='huge' textAlign='center'>
+        Once mahi has been completed you exchange Wa/time with 
         </Segment>
       </Grid.Column>
     </Grid>

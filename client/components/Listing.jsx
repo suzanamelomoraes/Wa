@@ -46,7 +46,7 @@ export class Listing extends Component {
                 size='big'
                 color={buttonColor}
                 onClick={this.toggleMap}
-                style={{ marginTop: 40, marginRight: 25 }}
+                style={{ marginTop: 70, Right: 25 }}
               >
                 <Button.Content hidden style={{ fontSize: '0.8em' }}>Close Map</Button.Content>
 
@@ -108,7 +108,7 @@ export class Listing extends Component {
             color={buttonColor}
             onClick={this.toggleMap}
             style={{
-              marginTop: 40,
+              marginTop: 75,
               marginRight: 25
             }}
           >

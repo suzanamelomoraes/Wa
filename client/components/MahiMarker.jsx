@@ -46,7 +46,7 @@ export class MahiMarker extends Component {
           labelPosition='right'
           content='Help out!'
           floated='right'
-          style={{marginTop: '1em'}}
+          style={{marginTop: 75}}
           onClick={this.handleClick}
         />
       </Popup>
