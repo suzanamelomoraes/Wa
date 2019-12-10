@@ -21,7 +21,10 @@ export class VolunteeringList extends React.Component {
               <Header.Content>Currently Volunteering</Header.Content>
             </Header>
             <Grid>
-              <Grid.Column>
+              <Grid.Column style={{
+                height: '75vh',
+                overflow: 'scroll'
+              }}>
                 <Card.Group centered>
                   {volunteering.map(volunteer =>
                     <VolunteerMahi

@@ -22,7 +22,10 @@ export class OfferingList extends Component {
               <Header.Content>Currently Offering</Header.Content>
             </Header>
             <Grid>
-              <Grid.Column>
+              <Grid.Column style={{
+                height: '75vh',
+                overflow: 'scroll'
+              }}>
                 <Card.Group centered>
                   {offerings.map(offering =>
                     <OfferingMahi
