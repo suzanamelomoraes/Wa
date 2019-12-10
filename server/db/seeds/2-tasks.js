@@ -7,21 +7,21 @@ exports.seed = function(knex) {
       return knex("tasks").insert([
         {
           id: 1,
-          cat_id: 4,
+          cat_id: 5,
           assigner: 23,
-          name: "Look at my baby",
+          name: "Look after my baby",
           description:
-            "Need someone to look at my five months baby for two hours",
-          status: "open",
-          time: "2"
+            "Need someone to look after my five-month old baby on weekdays from 1pm to 5pm.",
+          status: "Open",
+          time: "4"
         },
         {
           id: 2,
           cat_id: 3,
           assigner: 4,
-          name: "Plaster",
-          description: "Need help to fix a small damage in my bedroom",
-          status: "open",
+          name: "Plaster over small hole",
+          description: "Need help to fix a small damage in my bedroom.",
+          status: "Open",
           time: "1"
         },
         {
@@ -30,27 +30,27 @@ exports.seed = function(knex) {
           assigner: 24,
           name: "Feed my cats",
           description:
-            "I am going to do a short trip. I need someone to feed my cats",
-          status: "open",
-          time: "1"
+            "I am going to go on a short trip the whole of February. I need someone to feed my cats.",
+          status: "Open",
+          time: "5"
         },
         {
           id: 4,
           cat_id: 1,
           assigner: 16,
-          name: "Replace battery",
-          description: "I need help to replace battery of my car",
-          status: "open",
+          name: "Replace car battery",
+          description: "I need help to replace the battery of my car.",
+          status: "Open",
           time: "1"
         },
         {
           id: 5,
           cat_id: 16,
           assigner: 8,
-          name: "Meditation teacher",
+          name: "Wanted: Meditation teacher",
           description:
-            "My community centre group and I are looking for a meditation teacher to give us a class",
-          status: "open",
+            "My community centre group and I are looking for a meditation teacher to give one class on 15 January.",
+          status: "Open",
           time: "1"
         },
         {
@@ -58,37 +58,37 @@ exports.seed = function(knex) {
           cat_id: 15,
           assigner: 7,
           name: "Water leak",
-          description: "I have water leak in my kitchen and I need help",
-          status: "open",
-          time: "1"
+          description: "I have a water leak in my kitchen and I need help.",
+          status: "Open",
+          time: "2"
         },
         {
           id: 7,
           cat_id: 14,
           assigner: 12,
-          name: "Lawn mower",
-          description: "Need help to clean my garden",
-          status: "open",
-          time: "1"
+          name: "I need a lawn mower",
+          description: "Want to borrow a lawn mower for two hours.",
+          status: "Open",
+          time: "2"
         },
         {
           id: 8,
           cat_id: 13,
           assigner: 19,
-          name: "Christmas BBQ",
+          name: "Staff at Christmas BBQ",
           description:
-            "I am organising a Christmas BBQ and I need someone that can help me as waiter",
-          status: "open",
-          time: "1"
+            "I am organising a Christmas BBQ and I need someone to help serve food.",
+          status: "Open",
+          time: "4"
         },
         {
           id: 9,
           cat_id: 12,
           assigner: 5,
-          name: "Surf",
-          description: "Looking for someone that can help me to learn surf",
-          status: "open",
-          time: "1"
+          name: "Surfing lessons needed",
+          description: "Looking for someone that can help me learn how to surf over the weekends this summer.",
+          status: "Open",
+          time: "6"
         },
         {
           id: 10,
@@ -96,122 +96,122 @@ exports.seed = function(knex) {
           assigner: 25,
           name: "Moving house",
           description:
-            "Need someone to help to move to a new house. Pretty close, not too much stuff",
-          status: "open",
-          time: "1"
+            "Need someone to help me move to a new house. Pretty close, not too much stuff. Will throw in a six-pack and pizza too.",
+          status: "Open",
+          time: "3"
         },
         {
           id: 11,
           cat_id: 10,
           assigner: 4,
-          name: "English classes",
+          name: "IELTS tutor wanted",
           description:
-            "I am looking for someone that can help to study to my IELTS test",
-          status: "open",
+            "I am looking for someone to help me study for my IELTS test in January!",
+          status: "Open",
           time: "1"
         },
         {
           id: 12,
           cat_id: 9,
           assigner: 13,
-          name: "Change bandage",
-          description: "I suffered an accident. Need help to change bandages",
-          status: "open",
-          time: "1"
+          name: "Need assistance after injury",
+          description: "I broke my ankle. Need some help with things around the house for two weeks.",
+          status: "Open",
+          time: "4"
         },
         {
           id: 13,
           cat_id: 8,
           assigner: 9,
-          name: "IRD",
+          name: "IRD help",
           description:
-            "Looking for someone that can help me with my IRD. Lots of questions",
-          status: "open",
+            "Looking for someone that can answer some questions I have.",
+          status: "Open",
           time: "1"
         },
         {
           id: 14,
           cat_id: 7,
           assigner: 1,
-          name: "JavaScript classes",
-          description: "JavaScript classes with React, Redux",
-          status: "open",
-          time: "1"
+          name: "Help with Javascript homework",
+          description: "Specifically React and Redux.",
+          status: "Open",
+          time: "2"
         },
         {
           id: 15,
           cat_id: 6,
           assigner: 22,
           name: "Cleaning house",
-          description: "Broken arm. Need help to clean my house",
-          status: "open",
-          time: "1"
+          description: "Need someone to deep clean my house over the weekend since I'm moving out.",
+          status: "Open",
+          time: "5"
         },
         {
           id: 16,
-          cat_id: 5,
+          cat_id: 4,
           assigner: 8,
-          name: "Makeup",
+          name: "Makeup help",
           description:
-            "I have an wedding party and no knowledge about makeups. Looking for help",
-          status: "open",
+            "I'm attending a wedding and need someone to do my makeup.",
+          status: "Open",
           time: "1"
         },
         {
           id: 17,
-          cat_id: 4,
+          cat_id: 5,
           assigner: 11,
-          name: "Afternoon with two kid",
+          name: "Afternoon with two kids",
           description:
-            "Looking for someone that can stay Saturday afternoon with 2 and 4 years kids",
-          status: "open",
-          time: "2"
+            "Looking for someone to stay every Saturday afternoon for a month with 2 and 4-year old kids for two hours. Can renew the mahi every month.",
+          status: "Open",
+          time: "8"
         },
         {
           id: 18,
           cat_id: 3,
           assigner: 6,
-          name: "Painting",
-          description: "Need to help to painting my living room",
-          status: "open",
-          time: "1"
+          name: "Paint my living room",
+          description: "Need help painting my living room. All materials and tools are provided.",
+          status: "Open",
+          time: "5"
         },
         {
           id: 19,
           cat_id: 2,
           assigner: 3,
-          name: "Walk with dogs",
-          description: "Looking for someone to walk with my dogs",
-          status: "open",
-          time: "1"
+          name: "Walk my dogs",
+          description: "Looking for someone to walk my dogs at 5pm on weekdays this month. Have one dachshund and one samoyed.",
+          status: "Open",
+          time: "4"
         },
         {
           id: 20,
           cat_id: 1,
           assigner: 4,
           name: "Replace tires",
-          description: "I need help to replace tires of my car",
-          status: "open",
-          time: "1"
+          description: "I need help to replace the tires of my car. Toyota Corolla 2013, already have the tires.",
+          status: "Open",
+          time: "2"
         },
         {
           id: 21,
           cat_id: 2,
           assigner: 25,
           name: "Feeding my dogs",
-          description: "Going out this weekend. Need someone to feed my dogs",
-          status: "open",
+          description: "Going on a short trip next weekend. Need someone to feed my dogs every morning.",
+          status: "Open",
           time: "1"
         },
         {
           id: 22,
           cat_id: 10,
           assigner: 26,
-          name: "Guittar lessons",
+          name: "Guitar lessons needed",
           description:
-            "Looking for someone that can help me with my guittar lessons",
-          status: "open",
-          time: "1"
+            "Beginner guitar player looking for someone to help me improve. I'm free in the evenings and weekends.",
+          status: "Open",
+          time: "3"
         }
       ]);
     });
