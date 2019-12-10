@@ -13,7 +13,7 @@ import { changeActiveTask, getTasks } from '../actions/tasks'
 const MapToggleButton = ({ text, onClick }) => (
   <Button
     animated='fade'
-    size='big'
+    size='huge'
     color='olive'
     onClick={onClick}
     style={{ marginTop: 40, marginRight: 25 }}
@@ -32,9 +32,9 @@ export class Listing extends Component {
     mapVisible: null
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getTasks()
-    this.props.changeActiveTask(null)
+      .then(() => this.props.changeActiveTask(null))
   }
 
   toggleMap = () => {
@@ -48,25 +48,29 @@ export class Listing extends Component {
     changeActiveTask(null)
   }
 
-  render() {
+  render () {
     const { mapVisible } = this.state
     const { tasks } = this.props
 
     return (
       <React.Fragment>
         <Grid>
-          <Grid.Row>
-            <Grid.Column textAlign='left'>
-              <Notification />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column textAlign='right'>
-              <MapToggleButton text={mapVisible ? 'Close Map' : 'Open Map'} onClick={this.toggleMap}/>
-              <Divider />
-            </Grid.Column>
-          </Grid.Row>
+          <Grid.Column
+            textAlign='left'
+            width={6}
+          >
+            <Notification />
+          </Grid.Column>
+
+          <Grid.Column
+            textAlign='right'
+            width={10}
+          >
+            <MapToggleButton text={mapVisible ? 'Close Map' : 'Open Map'} onClick={this.toggleMap}/>
+          </Grid.Column>
         </Grid>
+
+        <Divider />
 
         <Grid>
           <Grid.Column
@@ -91,7 +95,7 @@ export class Listing extends Component {
               })}
             </Card.Group>
           </Grid.Column>
-          
+
           {mapVisible &&
             <Grid.Column width={8}>
               <Map>

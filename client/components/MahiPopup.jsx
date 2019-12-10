@@ -30,7 +30,7 @@ export class MahiPopup extends Component {
           <Icon name="tag" size="small" /> <strong>Category:</strong> {category}
         </p>
         <p>
-          <Icon name="time" size="small" /> <strong>Hour/s:</strong> {hours}
+          <Icon name="time" size="small" /> <strong>Hour(s):</strong> {hours}
         </p>
         <p>
           <Icon name="male" size="small" /> <strong>Needed by:</strong>{" "}

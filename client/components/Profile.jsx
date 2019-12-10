@@ -5,12 +5,11 @@ import { Card, Icon, Image, Table, Header, Segment } from 'semantic-ui-react'
 
 import TimeCurrency from './TimeCurrency'
 
-class Profile extends Component {
+export class Profile extends Component {
   
   render () {
     const { name, image, about, mobile, email, address, balance } = this.props.user
     const hold = this.props.offerings.reduce((a, { hours: b }) => (a + b), 0)
-    console.log(hold)
     return (
       <Segment compact style={{ marginTop: 100, size: 'small' }}>
         <Card fluid>
@@ -19,10 +18,11 @@ class Profile extends Component {
               floated='right'
               size='small'
               src={image}
+              style={{ marginTop: '2em' }}
             />
             <Card.Header>{name}</Card.Header>
             <Card.Meta>{about}</Card.Meta>
-            <TimeCurrency balance={balance}/>
+            <TimeCurrency balance={balance} hold={hold}/>
           </Card.Content>
         </Card>
         <Table basic padded >
