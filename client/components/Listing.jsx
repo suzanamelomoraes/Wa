@@ -41,13 +41,10 @@ export class Listing extends Component {
         {mapVisible ? (
           <React.Fragment>
             <Grid>
-              <Grid.Row>
-                <Grid.Column textAlign="left">
+                <Grid.Column textAlign="left" width={10}>
                   <Notification />
                 </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column textAlign="right">
+                <Grid.Column textAlign="right" width={6}>
                   <Button
                     animated="fade"
                     size="big"
@@ -64,9 +61,8 @@ export class Listing extends Component {
                     </Button.Content>
                   </Button>
 
-                  <Divider />
+                  <Divider style={{marginTop: 15}}/>
                 </Grid.Column>
-              </Grid.Row>
             </Grid>
 
             <Grid>
