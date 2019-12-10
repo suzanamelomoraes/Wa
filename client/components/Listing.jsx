@@ -41,26 +41,32 @@ export class Listing extends Component {
       return (
         <>
           <Grid>
-            <Grid.Column textAlign="right">
-              <Notification />
-              <Button
-                animated="fade"
-                size="big"
-                color={buttonColor}
-                onClick={this.toggleMap}
-                style={{ marginTop: 40, marginRight: 25 }}
-              >
-                <Button.Content hidden style={{ fontSize: "0.8em" }}>
-                  Close Map
-                </Button.Content>
+            <Grid.Row>
+              <Grid.Column textAlign="left">
+                <Notification />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column textAlign="right">
+                <Button
+                  animated="fade"
+                  size="big"
+                  color={buttonColor}
+                  onClick={this.toggleMap}
+                  style={{ marginTop: 40, marginRight: 25 }}
+                >
+                  <Button.Content hidden style={{ fontSize: "0.8em" }}>
+                    Close Map
+                  </Button.Content>
 
-                <Button.Content visible>
-                  <Icon name="map outline" />
-                </Button.Content>
-              </Button>
+                  <Button.Content visible>
+                    <Icon name="map outline" />
+                  </Button.Content>
+                </Button>
 
-              <Divider />
-            </Grid.Column>
+                <Divider />
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
 
           <Grid>
@@ -109,43 +115,49 @@ export class Listing extends Component {
     }
     return (
       <Grid>
-        <Grid.Column textAlign="right">
-          <Notification />
-          <Button
-            animated="fade"
-            size="big"
-            color={buttonColor}
-            onClick={this.toggleMap}
-            style={{
-              marginTop: 40,
-              marginRight: 25
-            }}
-          >
-            <Button.Content hidden style={{ fontSize: "0.8em" }}>
-              Open Map
-            </Button.Content>
+        <Grid.Row>
+          <Grid.Column textAlign="left">
+            <Notification />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column textAlign="right">
+            <Button
+              animated="fade"
+              size="big"
+              color={buttonColor}
+              onClick={this.toggleMap}
+              style={{
+                marginTop: 40,
+                marginRight: 25
+              }}
+            >
+              <Button.Content hidden style={{ fontSize: "0.8em" }}>
+                Open Map
+              </Button.Content>
 
-            <Button.Content visible>
-              <Icon name="map outline" />
-            </Button.Content>
-          </Button>
+              <Button.Content visible>
+                <Icon name="map outline" />
+              </Button.Content>
+            </Button>
 
-          <Divider />
+            <Divider />
 
-          <Card.Group centered>
-            {tasks.map(mahi => {
-              if (mahi.status === "open") {
-                return (
-                  <MahiSummary
-                    key={mahi.taskId}
-                    {...mahi}
-                    mapVisible={mapVisible}
-                  />
-                );
-              }
-            })}
-          </Card.Group>
-        </Grid.Column>
+            <Card.Group centered>
+              {tasks.map(mahi => {
+                if (mahi.status === "open") {
+                  return (
+                    <MahiSummary
+                      key={mahi.taskId}
+                      {...mahi}
+                      mapVisible={mapVisible}
+                    />
+                  );
+                }
+              })}
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     );
   }
