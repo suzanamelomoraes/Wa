@@ -55,18 +55,22 @@ export class Listing extends Component {
     return (
       <React.Fragment>
         <Grid>
-          <Grid.Row>
-            <Grid.Column textAlign='left'>
+            <Grid.Column 
+              textAlign='left'
+              width={10}
+            >
               <Notification />
             </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column textAlign='right'>
+
+            <Grid.Column 
+              textAlign='right'
+              width={6}
+            >
               <MapToggleButton text={mapVisible ? 'Close Map' : 'Open Map'} onClick={this.toggleMap}/>
-              <Divider />
             </Grid.Column>
-          </Grid.Row>
         </Grid>
+
+        <Divider />
 
         <Grid>
           <Grid.Column
