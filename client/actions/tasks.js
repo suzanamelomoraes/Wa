@@ -3,6 +3,7 @@ import * as apiTask from '../api/tasks'
 import * as apiUser from '../api/users'
 
 export const CHANGE_ACTIVE_TASK = 'CHANGE_ACTIVE_TASK'
+export const CHANGE_MAP_CENTER = 'CHANGE_MAP_CENTER'
 export const GET_VOLUNTEERING_PENDING = 'GET_VOLUNTEERING_PENDING'
 export const GET_VOLUNTEERING_SUCCESS = 'GET_VOLUNTEERING_SUCCESS'
 export const GET_TASKS_PENDING = 'GET_TASKS_PENDING'
@@ -14,6 +15,13 @@ export function changeActiveTask (index) {
   return {
     type: CHANGE_ACTIVE_TASK,
     index
+  }
+}
+
+export function changeMapCenter (center) {
+  return {
+    type: CHANGE_MAP_CENTER,
+    center
   }
 }
 
