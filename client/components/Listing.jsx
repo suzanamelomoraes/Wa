@@ -84,7 +84,7 @@ export class Listing extends Component {
             <Grid.Column width={8}>
               <Map>
                 {tasks.map(mahi => {
-                  if (mahi.status === 'open') {
+                  if (mahi.status === 'Open') {
                     return <MahiMarker
                       key={mahi.taskId}
                       {...mahi}
@@ -128,7 +128,7 @@ export class Listing extends Component {
 
           <Card.Group centered>
             {tasks.map(mahi => {
-              if (mahi.status === 'open') {
+              if (mahi.status === 'Open') {
                 return <MahiSummary
                   key={mahi.taskId}
                   {...mahi}
