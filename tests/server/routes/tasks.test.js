@@ -11,7 +11,7 @@ const mockTasks = [
     assignerId: 3,
     title: 'car wash',
     description: 'Available for a complete car wash, inside and outside',
-    status: 'open',
+    status: 'Open',
     assignerName: 'Don',
     hours: 2,
     image: 'image'
@@ -26,7 +26,7 @@ const mockTask = {
   assigneeId: 2,
   title: 'car wash',
   description: 'Available for a complete car wash, inside and outside',
-  status: 'open',
+  status: 'Open',
   assignerName: 'Don',
   hours: 2,
   image: 'image'

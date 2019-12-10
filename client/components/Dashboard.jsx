@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid, Ref, Sticky } from 'semantic-ui-react'
+import { Segment, Grid, Sticky } from 'semantic-ui-react'
 
 import { getUser } from '../actions/user'
 
@@ -40,11 +40,11 @@ export class Dashboard extends Component {
             <VolunteeringList id={user.id}/>
           </Grid.Column>
         </Grid>
-        <Sticky>
-          <Segment fixed='true' attached='bottom'>
-            <AddMahi id={user.id} balance={user.balance}/>
-          </Segment>
-        </Sticky>
+
+        <AddMahi
+          id={user.id}
+          balance={user.balance}
+        />
 
       </div>
 

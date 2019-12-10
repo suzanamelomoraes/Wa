@@ -96,7 +96,17 @@ export class AddMahi extends Component {
         open={modalVisible}
         size="tiny"
         trigger={
-          <Button color="green" id="addMahi" onClick={this.viewModal}>
+          <Button
+            color="green"
+            id="addMahi"
+            size='massive'
+            style={{
+              position: 'fixed',
+              bottom: '10px',
+              padding: '10px',
+              margin: '10px',
+              backgroundColor: '#123b26' }}
+            onClick={this.viewModal}>
             Add Mahi
           </Button>
         }

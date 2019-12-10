@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Message } from 'semantic-ui-react'
+import { Card, Header } from 'semantic-ui-react'
 
 export class TimeCurrency extends Component {
   state = { }
@@ -12,12 +12,26 @@ export class TimeCurrency extends Component {
 
     return (
       <>
-      <Message style={centerStyle}>
-        <Message.Header>{balance} hours</Message.Header>
-        <Message.Content>
-           Total currency
-        </Message.Content>
-      </Message>
+      <Card style={{
+        borderRadius: '25px',
+        backgroundColor: '#123b26',
+        color: 'white',
+        width: '150px' }}>
+        <Card.Content style={centerStyle}>
+          <div>
+            <Header
+              as='h1'
+              textAlign='center'
+              style={{
+                fontWeight: 'bold',
+                color: 'white'
+              }}>
+              {balance} hours
+            </Header>
+            <h3>Total currency</h3>
+          </div>
+        </Card.Content>
+      </Card>
     </>
     )
   }

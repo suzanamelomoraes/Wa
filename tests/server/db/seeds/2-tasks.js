@@ -12,7 +12,7 @@ exports.seed = function(knex) {
           assignee: 2,
           name: "walk with dogs",
           description: "walk with dogs",
-          status: "open",
+          status: "Open",
           time: "1"
         },
         {
@@ -21,7 +21,7 @@ exports.seed = function(knex) {
           assigner: 4,
           name: "JavaScript classes",
           description: "JavaScript classes with React, Redux",
-          status: "open",
+          status: "Open",
           time: "1"
         },
         {
@@ -30,7 +30,7 @@ exports.seed = function(knex) {
           assigner: 1,
           name: "surf",
           description: "surf on Piha beach",
-          status: "open",
+          status: "Open",
           time: "1"
         }
       ]);

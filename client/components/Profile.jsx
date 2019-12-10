@@ -18,8 +18,6 @@ export class Profile extends Component {
             />
             <Card.Header>{name}</Card.Header>
             <Card.Meta>{about}</Card.Meta>
-          </Card.Content>
-          <Card.Content extra textAlign='center'>
             <TimeCurrency balance={balance}/>
           </Card.Content>
         </Card>

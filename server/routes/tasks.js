@@ -68,12 +68,20 @@ router.post('/newtask', getTokenDecoder(), (req, res) => {
 
   const categoryId = category
   const assignerId = Number(req.user.id)
-  const status = 'open'
+  const status = 'Open'
 
-  db.addTask(categoryId, { assignerId, title, description, status, hours })
-    .then(displayTasks)
-    .catch(() => sendGenericErrorMessage(res))
-
+  db.getUserById(assignerId)
+    .then(user => {
+      if (user.balance < hours) {
+        // If user doesn't have enough balance to create task
+        res.json('Not enough balance')
+      } else {
+        // If user DOES have enough balance to create task
+        db.addTask(categoryId, { assignerId, title, description, status, hours })
+          .then(displayTasks)
+          .catch(() => sendGenericErrorMessage(res))
+      }
+    })
   function displayTasks (tasks) {
     res.json(tasks)
   }
