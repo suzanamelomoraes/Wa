@@ -19,10 +19,10 @@ exports.seed = function(knex) {
           id: 2,
           cat_id: 3,
           assigner: 4,
-          name: "Plaster over small hole",
-          description: "Need help to fix a small damage in my bedroom.",
+          name: "Fix roof gutter",
+          description: "There's a hole in it and it's almost falling off",
           status: "Open",
-          time: "1"
+          time: "3"
         },
         {
           id: 3,
