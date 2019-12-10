@@ -24,7 +24,7 @@ export class LogIn extends Component {
     })
       .then((token) => {
         if (isAuthenticated()) {
-          this.props.history.push('/list')
+          this.props.history.push('/dashboard')
         }
       })
   }

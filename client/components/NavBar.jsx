@@ -8,17 +8,9 @@ import { getUser } from '../actions/user'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 export class NavBar extends Component {
-  state = {
-    user: {}
-  }
 
   componentDidMount () {
     this.props.getUser()
-      .then(() =>
-        this.setState({
-          user: this.props.user
-        })
-      )
   }
   
   logOff = () => {
@@ -27,10 +19,10 @@ export class NavBar extends Component {
   }
 
   render () {
-    const { user } = this.state
+    const { user } = this.props
     return (
       <>
-      <Menu borderless fixed='top' inverted style = {{ backgroundColor: '#123b26'}} >
+      <Menu borderless fixed='top' inverted style = {{ backgroundColor: '#123b26', height: '80px'}} >
         <Container>
           <Menu.Item style = {{ marginLeft: '-300px'}} as={Link} to='/' header >
             <Header data-test="header" as='h1' inverted style={{ fontSize: '2.5rem' }}>Wā</Header>
