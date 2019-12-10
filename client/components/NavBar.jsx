@@ -25,6 +25,7 @@ export class NavBar extends Component {
     this.props.history.push('/list')
     logOff()
   }
+
   render () {
     const { user } = this.state
     return (
@@ -34,8 +35,11 @@ export class NavBar extends Component {
           <Menu.Item style = {{ marginLeft: '-300px'}} as={Link} to='/' header >
             <Header data-test="header" as='h1' inverted style={{ fontSize: '2.5rem' }}>Wā</Header>
           </Menu.Item>
+
           <Menu.Item as={Link} to='/'>Home</Menu.Item>
+
           <Menu.Item as={Link} to='/list'>Mahi</Menu.Item>
+
           <IfAuthenticated>
             <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
           </IfAuthenticated>
@@ -54,7 +58,7 @@ export class NavBar extends Component {
             </Menu.Item>
         </Container>
       </Menu>
-    </>
+      </>
     )
   }
 }

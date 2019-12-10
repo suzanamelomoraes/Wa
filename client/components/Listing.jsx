@@ -5,17 +5,34 @@ import { Card, Grid, Button, Icon, Divider } from 'semantic-ui-react'
 import MahiSummary from './MahiSummary'
 import Map from './Map'
 import MahiMarker from './MahiMarker'
+import Notification from './Notification'
 
 import { setError } from '../actions/error'
 import { changeActiveTask, getTasks } from '../actions/tasks'
 
+const MapToggleButton = ({ text, onClick }) => (
+  <Button
+    animated='fade'
+    size='big'
+    color='olive'
+    onClick={onClick}
+    style={{ marginTop: 40, marginRight: 25 }}
+  >
+    <Button.Content hidden style={{ fontSize: '0.8em' }}>
+      {text}
+    </Button.Content>
+    <Button.Content visible>
+      <Icon name='map outline' />
+    </Button.Content>
+  </Button>
+)
+
 export class Listing extends Component {
   state = {
-    mapVisible: null,
-    buttonColor: 'olive'
+    mapVisible: null
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.getTasks()
     this.props.changeActiveTask(null)
   }
@@ -31,115 +48,70 @@ export class Listing extends Component {
     changeActiveTask(null)
   }
 
-  render () {
-    const { mapVisible, buttonColor } = this.state
+  render() {
+    const { mapVisible } = this.state
     const { tasks } = this.props
 
-    if (mapVisible) {
-      return (
-        <>
-          <Grid>
+    return (
+      <React.Fragment>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column textAlign='left'>
+              <Notification />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
             <Grid.Column textAlign='right'>
-              <Button
-                animated='fade'
-                size='big'
-                color={buttonColor}
-                onClick={this.toggleMap}
-                style={{ marginTop: 40, marginRight: 25 }}
-              >
-                <Button.Content hidden style={{ fontSize: '0.8em' }}>Close Map</Button.Content>
-
-                <Button.Content visible>
-                  <Icon name='map outline' />
-                </Button.Content>
-              </Button>
-
+              <MapToggleButton text={mapVisible ? 'Close Map' : 'Open Map'} onClick={this.toggleMap}/>
               <Divider />
             </Grid.Column>
-          </Grid>
+          </Grid.Row>
+        </Grid>
 
-          <Grid>
-            <Grid.Column
-              width={8}
-              style={{
-                height: '100vh',
-                width: '100%',
-                overflow: 'scroll'
-              }}
-            >
-              <Card.Group centered>
-                {tasks.map(mahi => {
-                  if (mahi.status === 'Open') {
-                    return <MahiSummary
+        <Grid>
+          <Grid.Column
+            width={mapVisible ? 8 : 16}
+            style={{
+              height: '100vh',
+              width: '100%',
+              overflow: 'scroll'
+            }}
+          >
+            <Card.Group centered>
+              {tasks.map(mahi => {
+                if (mahi.status === 'Open') {
+                  return (
+                    <MahiSummary
                       key={mahi.taskId}
                       {...mahi}
                       mapVisible={mapVisible}
                     />
-                  }
+                  )
                 }
-                )}
-              </Card.Group>
-            </Grid.Column>
-
+              })}
+            </Card.Group>
+          </Grid.Column>
+          
+          {mapVisible &&
             <Grid.Column width={8}>
               <Map>
                 {tasks.map(mahi => {
                   if (mahi.status === 'Open') {
-                    return <MahiMarker
-                      key={mahi.taskId}
-                      {...mahi}
-                      lat={mahi.latitude}
-                      lng={mahi.longitude}
-                    />
+                    return (
+                      <MahiMarker
+                        key={mahi.taskId}
+                        {...mahi}
+                        lat={mahi.latitude}
+                        lng={mahi.longitude}
+                      />
+                    )
                   }
-                }
-                )}
+                })}
               </Map>
             </Grid.Column>
-          </Grid>
-        </>
-      )
-    }
-    return (
-      <Grid>
-        <Grid.Column textAlign='right'>
-          <Button
-            animated='fade'
-            size='big'
-            color={buttonColor}
-            onClick={this.toggleMap}
-            style={{
-              marginTop: 40,
-              marginRight: 25
-            }}
-          >
-            <Button.Content
-              hidden
-              style={{ fontSize: '0.8em' }}>
-                  Open Map
-            </Button.Content>
-
-            <Button.Content visible>
-              <Icon name='map outline' />
-            </Button.Content>
-          </Button>
-
-          <Divider />
-
-          <Card.Group centered>
-            {tasks.map(mahi => {
-              if (mahi.status === 'Open') {
-                return <MahiSummary
-                  key={mahi.taskId}
-                  {...mahi}
-                  mapVisible={mapVisible}
-                />
-              }
-            }
-            )}
-          </Card.Group>
-        </Grid.Column>
-      </Grid>
+          }
+        </Grid>
+      </React.Fragment>
     )
   }
 }

@@ -3,12 +3,7 @@ import { connect } from 'react-redux'
 import { Segment, Grid, Header, Icon, Card, Divider } from 'semantic-ui-react'
 import VolunteerMahi from './VolunteerMahi'
 
-import { getVolunteering } from '../actions/tasks'
-
 export class VolunteeringList extends React.Component {
-  componentDidMount () {
-    this.props.getVolunteering()
-  }
 
   render () {
     const { volunteering } = this.props
@@ -23,7 +18,7 @@ export class VolunteeringList extends React.Component {
             <Divider />
             <Grid>
               <Grid.Column style={{
-                height: '60vh',
+                height: '80vh',
                 overflow: 'scroll'
               }}>
                 <Card.Group centered>
@@ -57,7 +52,7 @@ export class VolunteeringList extends React.Component {
                       style={{
                         color: '#b5b5b5'
                       }}>
-      You are currently not volunteering yet.
+                      You are currently not volunteering for any mahi.
                     </Header>
                   </Card>
                 </Card.Group>
@@ -76,8 +71,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = {
-  getVolunteering
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(VolunteeringList)
+export default connect(mapStateToProps)(VolunteeringList)

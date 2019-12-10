@@ -4,18 +4,19 @@ import { connect } from 'react-redux'
 import { Icon, Popup, Button } from 'semantic-ui-react'
 import MahiPopUp from './MahiPopup'
 
-import { IfAuthenticated } from './Authenticated'
-
 import { selectTask } from '../api/tasks'
+import { showNotification } from '../actions/notification'
+import { IfAuthenticated } from './Authenticated'
 import { changeActiveTask, getTasks } from '../actions/tasks'
 
 export class MahiMarker extends Component {
   handleClick = () => {
-    const { taskId, changeActiveTask, getTasks } = this.props
+    const { taskId, changeActiveTask, getTasks, showNotification } = this.props
 
     selectTask(taskId)
-    changeActiveTask(null)
-    getTasks()
+      .then(() => getTasks())
+      .then(() => showNotification('This Mahi has been added to your dashboard'))
+      .then(() => changeActiveTask(null))
   }
 
   handleOpen = () => {
@@ -23,22 +24,16 @@ export class MahiMarker extends Component {
     changeActiveTask(taskId)
   }
 
-  render () {
+  render() {
     const { taskId, activeIndex, changeActiveTask } = this.props
 
     return (
       <Popup
         onOpen={this.handleOpen}
-        open={(taskId === activeIndex)}
-
-        trigger={
-          <Icon
-            name='map marker alternate'
-            size='big'
-          />
-        }
+        open={taskId === activeIndex}
+        trigger={<Icon name='map marker alternate' size='big' />}
       >
-        <MahiPopUp details={this.props} closePopup={changeActiveTask}/>
+        <MahiPopUp details={this.props} closePopup={changeActiveTask} />
         <IfAuthenticated>
           <Button
             positive
@@ -63,7 +58,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   changeActiveTask,
-  getTasks
+  getTasks,
+  showNotification
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MahiMarker)

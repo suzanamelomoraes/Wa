@@ -24,57 +24,82 @@ export class MahiSummary extends Component {
       lat: latitude,
       lng: longitude
     }
+
     runMapActions(center, taskId)
   }
-  render () {
-    const { taskId, title, category, hours, description, image, assignerName, activeIndex, mapVisible } = this.props
+
+  render() {
+    const {
+      taskId,
+      title,
+      category,
+      hours,
+      description,
+      image,
+      assignerName,
+      activeIndex,
+      mapVisible
+    } = this.props
     const { modalVisible } = this.state
 
     return (
-      <Card color={(taskId === activeIndex) ? 'orange' : 'grey'} style={{ textAlign: 'left' }} >
+      <Card
+        color={taskId === activeIndex ? 'orange' : 'grey'}
+        style={{ textAlign: 'left' }}
+      >
         <Card.Content>
-          <Image
-            floated='right'
-            size='small'
-            src={image}
-            id='mahiImage'
-          />
-          <Card.Header as='h1' id='mahiTitle'>{title}</Card.Header>
-          <Card.Meta as='h3'id='mahiCategory'><u>Category</u> <Icon name='columns' size='small'></Icon><br/><span>{category}</span></Card.Meta>
-          <Card.Meta as='h3'><u>Hours</u><Icon name='time' size='small'></Icon><br/><span id='mahiHours'>{hours} hours</span></Card.Meta>
-          <Card.Meta as='h3'id='mahiAssigner'><u>Needed by</u><br/><span>{assignerName}</span></Card.Meta>
+          <Image floated='right' size='small' src={image} id='mahiImage' />
+
+          <Card.Header as='h1' id='mahiTitle'>
+            {title}
+          </Card.Header>
+
+          <Card.Meta as='h3' id='mahiCategory'>
+            <u>Category</u> <Icon name='columns' size='small'></Icon>
+            <br />
+            <span>{category}</span>
+          </Card.Meta>
+
+          <Card.Meta as='h3'>
+            <u>Hours</u>
+            <Icon name='time' size='small'></Icon>
+            <br />
+            <span id='mahiHours'>{hours} hours</span>
+          </Card.Meta>
+
+          <Card.Meta as='h3' id='mahiAssigner'>
+            <u>Needed by</u>
+            <br />
+            <span>{assignerName}</span>
+          </Card.Meta>
+
           <Card.Description id='mahiDescription'>
             {description}
           </Card.Description>
         </Card.Content>
 
         <Card.Content textAlign='center' extra>
-          <div >
-            <Modal
-              trigger={
-                mapVisible
-                  ? <Button
-                    basic
-                    color='green'
-                    onClick={this.handleClick}>
+          <Modal
+            trigger={
+              mapVisible ? (
+                <Button basic color='green' onClick={this.handleClick}>
                   View in Map
-                  </Button>
-                  : <Button
-                    basic
-                    color='green'
-                    onClick={this.toggleModalView}>
-                    View Detail
-                  </Button>}
-              open={modalVisible}
-            >
-              <SelectMahi
-                details={this.props}
-                closeModal={this.toggleModalView}/>
-            </Modal>
-          </div>
+                </Button>
+              ) : (
+                <Button basic color='green' onClick={this.toggleModalView}>
+                  View Detail
+                </Button>
+              )
+            }
+            open={modalVisible}
+          >
+            <SelectMahi
+              details={this.props}
+              closeModal={this.toggleModalView}
+            />
+          </Modal>
         </Card.Content>
       </Card>
-
     )
   }
 }

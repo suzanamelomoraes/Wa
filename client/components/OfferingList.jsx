@@ -2,15 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Segment, Grid, Header, Icon, Card, Divider } from 'semantic-ui-react'
 
-import { getOfferings } from '../actions/tasks'
-
 import OfferingMahi from './OfferingMahi'
 
 export class OfferingList extends Component {
-  componentDidMount () {
-    this.props.getOfferings()
-  }
-
   render () {
     const { offerings } = this.props
     return (
@@ -24,7 +18,7 @@ export class OfferingList extends Component {
             <Divider />
             <Grid>
               <Grid.Column style={{
-                height: '60vh',
+                height: '80vh',
                 overflow: 'scroll'
               }}>
                 <Card.Group centered>
@@ -59,10 +53,10 @@ export class OfferingList extends Component {
                         color: '#b5b5b5'
                       }}>
                       <p>
-    You are currently not offering yet.
+                        You are currently not offering any mahi.
                       </p>
                       <p>
-    To get started click "Add Mahi"
+                        To get started, click "Add Mahi"
                       </p>
                     </Header>
                   </Card>
@@ -78,11 +72,9 @@ export class OfferingList extends Component {
 
 const mapStatetoProps = (state) => {
   return {
-    offerings: state.offerings
+    offerings: state.offerings,
+    user: state.user
   }
 }
 
-const mapDispatchToProps = {
-  getOfferings
-}
-export default connect(mapStatetoProps, mapDispatchToProps)(OfferingList)
+export default connect(mapStatetoProps)(OfferingList)

@@ -53,15 +53,15 @@ describe('Gets all tasks available', () => {
 describe('Add new task', () => {
   it('POST /tasks/newtask', () => {
     const newTask = {
-      // id: mockTask.id,
-      // category: mockTask.category,
-      // categoryId: mockTask.categoryId,
-      // title: mockTask.title,
-      // description: mockTask.description,
-      // status: mockTask.status,
-      // assignerName: mockTask.assignerName,
-      // hours: mockTask.hours,
-      // image: mockTask.image
+      id: mockTask.id,
+      category: mockTask.category,
+      categoryId: mockTask.categoryId,
+      title: mockTask.title,
+      description: mockTask.description,
+      status: mockTask.status,
+      assignerName: mockTask.assignerName,
+      hours: mockTask.hours,
+      image: mockTask.image
     }
 
     authTesting.allowTokens(true) // the default

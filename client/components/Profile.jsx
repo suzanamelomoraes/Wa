@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import { Card, Icon, Image, Table, Header, Segment } from 'semantic-ui-react'
 
 import TimeCurrency from './TimeCurrency'
 
-export class Profile extends Component {
-  state = { }
+class Profile extends Component {
+  
   render () {
     const { name, image, about, mobile, email, address, balance } = this.props.user
+    const hold = this.props.offerings.reduce((a, { hours: b }) => (a + b), 0)
+    console.log(hold)
     return (
       <Segment compact style={{ marginTop: 100, size: 'small' }}>
         <Card fluid>
@@ -73,4 +77,10 @@ export class Profile extends Component {
   }
 }
 
-export default Profile
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    offerings: state.offerings
+  }
+}
+export default connect(mapStateToProps)(Profile)

@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid, Sticky } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 import { getUser } from '../actions/user'
 
@@ -9,56 +9,61 @@ import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
 import VolunteeringList from './VolunteeringList'
 
+import { getOfferings, getVolunteering } from '../actions/tasks'
+
 export class Dashboard extends Component {
   state = {
-    id: 2,
-    user: {}
+    isLoaded: false,
+    user: null
   }
 
   componentDidMount () {
     this.props.getUser()
-      .then(() =>
+      .then(() => this.props.getOfferings())
+      .then(() => this.props.getVolunteering())
+      .then(() => {
         this.setState({
+          isLoaded: true,
           user: this.props.user
         })
-      )
+      })
   }
 
-  contextRef = createRef()
   render () {
-    const { user } = this.state
-    return (
-      <div>
-        <Grid stackable={true} columns={3}>
-          <Grid.Column width={5}>
-            <Profile user={user}/>
-          </Grid.Column>
-          <Grid.Column width={5}>
-            <OfferingList id={user.id}/>
-          </Grid.Column>
-          <Grid.Column width={5}>
-            <VolunteeringList id={user.id}/>
-          </Grid.Column>
-        </Grid>
+    const { isLoaded, user } = this.state
 
-        <AddMahi
-          id={user.id}
-          balance={user.balance}
-        />
+    if (!isLoaded || !user) return null
+      return (
+        <div>
+          <Grid stackable={true} columns={3}>
+            <Grid.Column width={5}>
+              <Profile />
+            </Grid.Column>
+            <Grid.Column width={5}>
+              <OfferingList />
+            </Grid.Column>
+            <Grid.Column width={5}>
+              <VolunteeringList />
+            </Grid.Column>
+          </Grid>
 
-      </div>
-
-    )
+          <AddMahi id={user.id} balance={user.balance} />
+        </div>
+      )
   }
 }
 
 const mapDispatchToProps = {
-  getUser
+  getUser,
+  getOfferings,
+  getVolunteering
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    offerings: state.offerings,
+    volunteering: state.volunteering
   }
 }
 

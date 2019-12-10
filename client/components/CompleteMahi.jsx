@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Button, Header, Image, Modal, Form, Icon } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { completeTask } from '../api/tasks'
 
 import { getOfferings } from '../actions/tasks'
+import { getUser } from '../actions/user'
 
 export class CompleteMahi extends Component {
 state = {
@@ -26,6 +27,7 @@ handleClickButton = (event, callAPI) => {
     const { taskId, assigneeId, hours } = this.state
     completeTask(taskId, assigneeId, hours)
       .then(this.props.getOfferings())
+      .then(this.props.getUser())
     // TESTING VERSION:   completeTask(1, 3, 1, 2)  <--  THIS WORKS
   }
 }
@@ -81,7 +83,8 @@ Are you sure your task is completed?
 }
 }
 const mapDispatchToProps = {
-  getOfferings
+  getOfferings,
+  getUser
 }
 
 export default connect(null, mapDispatchToProps)(CompleteMahi)
