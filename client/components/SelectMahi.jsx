@@ -35,7 +35,7 @@ export class SelectMahi extends Component {
             <p style={{ fontSize: '1.25em' }}>{details.description}</p>
 
             <p style={{ fontSize: '1.25em' }}>
-              You can earn {details.hours} hour(s) when you help out {details.assignerName}
+              You can earn <b><u>{details.hours} hour(s)</u></b> when you help out {details.assignerName}
             </p>
           </Modal.Description>
         </Modal.Content>
