@@ -101,13 +101,13 @@ function completeTask (id, assignerId, assigneeId, time, db = connection) {
       status: 'completed',
       assigner: null
     })
-    .then(() => {
-      return db('users')
-        .where('id', assignerId)
-        .decrement({
-          balance: time
-        })
-    })
+    // .then(() => {
+    //   return db('users')
+    //     .where('id', assignerId)
+    //     .decrement({
+    //       balance: time
+    //     })
+    // })
     .then(() => {
       return db('users')
         .where('id', assigneeId)
@@ -123,6 +123,13 @@ function addTask (
   { assignerId, title, description, status, hours },
   db = connection
 ) {
+  console.log('!@#!@#!@#!@#!@#')
+  db('users')
+    .where('id', assignerId)
+    .decrement({
+      balance: hours
+    }).then(() => console.log('I DECREASE IT'))
+
   return db('tasks')
     .insert({
       cat_id: categoryId,
