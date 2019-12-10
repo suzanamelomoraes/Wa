@@ -22,6 +22,13 @@ router.get('/', getTokenDecoder(), (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
+router.get('/:id', getTokenDecoder(), (req, res) => {
+  const userId = req.params.id
+  return db.getUserById(userId)
+    .then(user => res.json(user))
+    .catch(() => sendGenericErrorMessage(res))
+})
+
 router.post('/', decodeToken, (req, res) => {
   const id = Number(req.user.id)
   const { details, geocode } = req.body

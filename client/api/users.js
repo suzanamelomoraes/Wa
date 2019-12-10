@@ -30,6 +30,15 @@ export function getUser () {
     .catch(err => { throw new Error(err.message) })
 }
 
+export function getUserById (userId) {
+  return request
+    .get(`${apiURL}/users/${userId}`)
+    .set({ 'Accept': 'application/json' })
+    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
+    .then(res => res.body)
+    .catch(err => { throw new Error(err.message) })
+}
+
 export function geocodeAddress (details) {
   const url = 'https://maps.googleapis.com/maps/api/geocode/json?address='
   const APIKey = 'AIzaSyCbv90MWPN7pKFNYbOrbMCSsZGaWYGcc8o'
