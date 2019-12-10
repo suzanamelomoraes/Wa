@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { getEncodedToken, getAuthorizationHeader, getDecodedToken } from 'authenticare/client'
+import { getEncodedToken } from 'authenticare/client'
 
 const apiURL = 'http://localhost:3000/api/v1'
 
