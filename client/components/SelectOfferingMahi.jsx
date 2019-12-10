@@ -26,7 +26,7 @@ export class SelectOfferingMahi extends Component {
           <Modal.Description>
             <Header as='h1'>{title}</Header>
             <p style={{ fontSize: '1.25em' }}>{description}</p>
-            <p style={{ fontSize: '1.25em' }}>You can earn <b><u>{hours} hour/s</u></b> when you help out <b><u>{this.props.user.name}</u></b></p>
+            <p style={{ fontSize: '1.25em' }}>You are offering <b><u>{hours} hour/s</u></b> for this mahi.</p>
           </Modal.Description>
         </Modal.Content>
 

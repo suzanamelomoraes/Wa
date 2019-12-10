@@ -1,69 +1,65 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import { Icon, Popup, Button } from 'semantic-ui-react'
-import MahiPopUp from './MahiPopup'
+import { Icon, Popup, Button } from "semantic-ui-react";
+import MahiPopUp from "./MahiPopup";
 
-import { IfAuthenticated } from './Authenticated'
-
-import { selectTask } from '../api/tasks'
-import { changeActiveTask, getTasks } from '../actions/tasks'
+import { selectTask } from "../api/tasks";
+import { showNotification } from "../actions/notification";
+import { IfAuthenticated } from "./Authenticated";
+import { changeActiveTask, getTasks } from "../actions/tasks";
 
 export class MahiMarker extends Component {
   handleClick = () => {
-    const { taskId, changeActiveTask, getTasks } = this.props
+    const { taskId, changeActiveTask, getTasks, showNotification } = this.props;
 
-    selectTask(taskId)
-    changeActiveTask(null)
-    getTasks()
-  }
+    selectTask(taskId);
+    changeActiveTask(null);
+    getTasks();
+    showNotification("This Mahi has been added to your dashboard");
+  };
 
   handleOpen = () => {
-    const { taskId, changeActiveTask } = this.props
-    changeActiveTask(taskId)
-  }
+    const { taskId, changeActiveTask } = this.props;
+    changeActiveTask(taskId);
+  };
 
-  render () {
-    const { taskId, activeIndex, changeActiveTask } = this.props
+  render() {
+    const { taskId, activeIndex, changeActiveTask } = this.props;
 
     return (
       <Popup
         onOpen={this.handleOpen}
-        open={(taskId === activeIndex)}
-
-        trigger={
-          <Icon
-            name='map marker alternate'
-            size='big'
-          />
-        }
+        open={taskId === activeIndex}
+        trigger={<Icon name="map marker alternate" size="big" />}
       >
-        <MahiPopUp details={this.props} closePopup={changeActiveTask}/>
+        <MahiPopUp details={this.props} closePopup={changeActiveTask} />
         <IfAuthenticated>
           <Button
             positive
-            icon='smile outline'
-            labelPosition='right'
-            content='Help out!'
-            floated='right'
-            style={{ marginTop: '1em' }}
+            icon="smile outline"
+            labelPosition="right"
+            content="Help out!"
+            floated="right"
+            style={{ marginTop: "1em" }}
             onClick={this.handleClick}
           />
         </IfAuthenticated>
       </Popup>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
     activeIndex: state.activeIndex
-  }
-}
+  };
+};
 
 const mapDispatchToProps = {
   changeActiveTask,
-  getTasks
-}
+  getTasks,
+  showNotification
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(MahiMarker)
+export default connect(mapStateToProps, mapDispatchToProps)(MahiMarker);

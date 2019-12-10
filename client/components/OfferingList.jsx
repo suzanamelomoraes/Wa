@@ -18,7 +18,7 @@ export class OfferingList extends Component {
             <Divider />
             <Grid>
               <Grid.Column style={{
-                height: '60vh',
+                height: '80vh',
                 overflow: 'scroll'
               }}>
                 <Card.Group centered>
@@ -53,10 +53,10 @@ export class OfferingList extends Component {
                         color: '#b5b5b5'
                       }}>
                       <p>
-    You are currently not offering yet.
+                        You are currently not offering any mahi.
                       </p>
                       <p>
-    To get started click "Add Mahi"
+                        To get started, click "Add Mahi"
                       </p>
                     </Header>
                   </Card>
