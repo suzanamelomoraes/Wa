@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
 
 import SelectMahi from './SelectMahi'
-import { changeActiveTask, changeMapCenter } from '../actions/tasks'
+import { runMapActions } from '../actions/tasks'
 
 export class MahiSummary extends Component {
   state = {
@@ -19,13 +19,12 @@ export class MahiSummary extends Component {
   }
 
   handleClick = () => {
-    const { taskId, latitude, longitude, changeActiveTask, changeMapCenter } = this.props
+    const { taskId, latitude, longitude, runMapActions } = this.props
     const center = {
       lat: latitude,
       lng: longitude
     }
-    changeMapCenter(center)
-    changeActiveTask(taskId)
+    runMapActions(center, taskId)
   }
   render () {
     const { taskId, title, category, hours, description, image, assignerName, activeIndex, mapVisible } = this.props
@@ -87,8 +86,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  changeActiveTask,
-  changeMapCenter
+  runMapActions
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MahiSummary)

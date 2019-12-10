@@ -28,6 +28,7 @@ export class MahiMarker extends Component {
       <Popup
         onOpen={this.handleOpen}
         open={(taskId === activeIndex)}
+
         trigger={
           <Icon
             name='map marker alternate'

@@ -4,7 +4,7 @@ import { Icon, Button } from 'semantic-ui-react'
 
 export class MahiPopup extends Component {
   render () {
-    const { title, category, hours, description, assignerName } = props.details
+    const { title, category, hours, description, assignerName } = this.props.details
 
     return (
       <div>
@@ -13,7 +13,7 @@ export class MahiPopup extends Component {
           negative
           icon='close'
           size='mini'
-          onClick={() => props.closePopup(null)}
+          onClick={() => this.props.closePopup(null)}
           style={{
             position: 'absolute',
             right: '0.75rem',

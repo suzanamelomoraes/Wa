@@ -25,6 +25,17 @@ export function changeMapCenter (center) {
   }
 }
 
+export function runMapActions (center, index) {
+  return dispatch => {
+    dispatch(changeActiveTask(null))
+    dispatch(changeMapCenter(center))
+    // give the map time to recenter due to map loading
+    setTimeout(() => {
+      dispatch(changeActiveTask(index))
+    }, 800)
+  }
+}
+
 export function getVolunteeringPending () {
   return {
     type: GET_VOLUNTEERING_PENDING
