@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
+import { Segment, Grid, Header, Icon, Card, Divider } from 'semantic-ui-react'
 
 import { getOfferings } from '../actions/tasks'
 
@@ -21,9 +21,10 @@ export class OfferingList extends Component {
               <Icon name='tasks'/>
               <Header.Content>Currently Offering</Header.Content>
             </Header>
+            <Divider />
             <Grid>
               <Grid.Column style={{
-                height: '75vh',
+                height: '60vh',
                 overflow: 'scroll'
               }}>
                 <Card.Group centered>
@@ -42,6 +43,7 @@ export class OfferingList extends Component {
               <Icon name='calendar alternate outline'/>
               <Header.Content>Currently Offering</Header.Content>
             </Header>
+            <Divider />
             <Grid>
               <Grid.Column>
                 <Card.Group centered>

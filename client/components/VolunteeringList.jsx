@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
+import { Segment, Grid, Header, Icon, Card, Divider } from 'semantic-ui-react'
 import VolunteerMahi from './VolunteerMahi'
 
 import { getVolunteering } from '../actions/tasks'
@@ -20,9 +20,10 @@ export class VolunteeringList extends React.Component {
               <Icon name='calendar alternate outline'/>
               <Header.Content>Currently Volunteering</Header.Content>
             </Header>
+            <Divider />
             <Grid>
               <Grid.Column style={{
-                height: '75vh',
+                height: '60vh',
                 overflow: 'scroll'
               }}>
                 <Card.Group centered>
@@ -41,6 +42,7 @@ export class VolunteeringList extends React.Component {
               <Icon name='calendar alternate outline'/>
               <Header.Content>Currently Volunteering</Header.Content>
             </Header>
+            <Divider />
             <Grid>
               <Grid.Column>
                 <Card.Group centered>
