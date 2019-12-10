@@ -3,20 +3,14 @@ const authTesting = require('authenticare/testing/server')
 
 const server = require('../../../server/server')
 
-const mockTasks = [
-  {
-    id: 1,
-    category: 'Automotive',
-    categoryId: 1,
-    assignerId: 3,
-    title: 'car wash',
-    description: 'Available for a complete car wash, inside and outside',
-    status: 'Open',
-    assignerName: 'Don',
-    hours: 2,
-    image: 'image'
-  }
-]
+jest.mock('../../../server/db/db', () => ({
+  getTasks: () => Promise.resolve(mockTasks),
+  addTask: () => Promise.resolve(mockTasks),
+  getTask: () => Promise.resolve(mockTask),
+  getTaskByAssigner: () => Promise.resolve(mockTask),
+  getTaskByAssignee: () => Promise.resolve(mockTask),
+  getUserById: () => Promise.resolve(mockUser)
+}))
 
 const mockTask = {
   id: 1,
@@ -31,16 +25,12 @@ const mockTask = {
   hours: 2,
   image: 'image'
 }
+const mockTasks = [ mockTask ]
+const mockUser = { id: 3, balance: 5 }
 
-jest.mock('../../../server/db/db', () => ({
-  getTasks: () => Promise.resolve(mockTasks),
-  addTask: () => Promise.resolve(mockTask),
-  getTask: () => Promise.resolve(mockTask),
-  getTaskByAssigner: () => Promise.resolve(mockTask),
-  getTaskByAssignee: () => Promise.resolve(mockTask)
-}))
+describe('Tasks route tests', () => {
+  const token = authTesting.createTestToken({ id: 55, username: 'test-user' })
 
-describe('Gets all tasks available', () => {
   it('GET /tasks', () => {
     return request(server)
       .get('/api/v1/tasks')
@@ -48,9 +38,7 @@ describe('Gets all tasks available', () => {
         expect(res.body).toEqual(mockTasks)
       })
   })
-})
 
-describe('Add new task', () => {
   it('POST /tasks/newtask', () => {
     const newTask = {
       id: mockTask.id,
@@ -64,40 +52,28 @@ describe('Add new task', () => {
       image: mockTask.image
     }
 
-    authTesting.allowTokens(true) // the default
     return request(server)
       .post('/api/v1/tasks/newtask')
+      .set({ authorization: `Bearer ${token}` })
       .send(newTask)
       .then(res => {
-        expect(res.body).toEqual(mockTask)
+        expect(res.body).toEqual(mockTasks)
       })
   })
-})
 
-describe('Gets a task by Id', () => {
-  it('GET /', () => {
-    return request(server)
-      .get('/api/v1/tasks')
-      .then(res => {
-        expect(res.body).toEqual(mockTask)
-      })
-  })
-})
-
-describe('Gets a task by assigner Id', () => {
   it('GET /assigner', () => {
     return request(server)
       .get('/api/v1/tasks/assigner')
+      .set({ authorization: `Bearer ${token}` })
       .then(res => {
         expect(res.body).toEqual(mockTask)
       })
   })
-})
 
-describe('Gets a task by assignee Id', () => {
   it('GET /assignee', () => {
     return request(server)
       .get('/api/v1/tasks/assigner')
+      .set({ authorization: `Bearer ${token}` })
       .then(res => {
         expect(res.body).toEqual(mockTask)
       })
