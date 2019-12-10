@@ -10,10 +10,26 @@ import Notification from './Notification'
 import { setError } from '../actions/error'
 import { changeActiveTask, getTasks } from '../actions/tasks'
 
+const MapToggleButton = ({ text, onClick }) => (
+  <Button
+    animated='fade'
+    size='big'
+    color='olive'
+    onClick={onClick}
+    style={{ marginTop: 40, marginRight: 25 }}
+  >
+    <Button.Content hidden style={{ fontSize: '0.8em' }}>
+      {text}
+    </Button.Content>
+    <Button.Content visible>
+      <Icon name='map outline' />
+    </Button.Content>
+  </Button>
+)
+
 export class Listing extends Component {
   state = {
-    mapVisible: null,
-    buttonColor: 'olive'
+    mapVisible: null
   }
 
   componentDidMount() {
@@ -48,22 +64,7 @@ export class Listing extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign='right'>
-                  <Button
-                    animated='fade'
-                    size='big'
-                    color={buttonColor}
-                    onClick={this.toggleMap}
-                    style={{ marginTop: 40, marginRight: 25 }}
-                  >
-                    <Button.Content hidden style={{ fontSize: '0.8em' }}>
-                      Close Map
-                    </Button.Content>
-
-                    <Button.Content visible>
-                      <Icon name='map outline' />
-                    </Button.Content>
-                  </Button>
-
+                  <MapToggleButton text='Close Map' onClick={this.toggleMap}/>
                   <Divider />
                 </Grid.Column>
               </Grid.Row>
@@ -121,24 +122,7 @@ export class Listing extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign='right'>
-                  <Button
-                    animated='fade'
-                    size='big'
-                    color={buttonColor}
-                    onClick={this.toggleMap}
-                    style={{
-                      marginTop: 40,
-                      marginRight: 25
-                    }}
-                  >
-                    <Button.Content hidden style={{ fontSize: '0.8em' }}>
-                      Open Map
-                    </Button.Content>
-
-                    <Button.Content visible>
-                      <Icon name='map outline' />
-                    </Button.Content>
-                  </Button>
+                  <MapToggleButton text='Open Map' onClick={this.toggleMap}/>
 
                   <Divider />
 
