@@ -14,9 +14,9 @@ export class MahiMarker extends Component {
     const { taskId, changeActiveTask, getTasks, showNotification } = this.props
 
     selectTask(taskId)
-    changeActiveTask(null)
-    getTasks()
-    showNotification('This Mahi has been added to your dashboard')
+      .then(() => getTasks())
+      .then(() => showNotification('This Mahi has been added to your dashboard'))
+      .then(() => changeActiveTask(null))
   }
 
   handleOpen = () => {
