@@ -14,7 +14,6 @@ export class SelectOfferingMahi extends Component {
   }
   render () {
     const { title, categoryName, hours, description } = this.props.data
-    console.log('this.props.user', this.props.user)
     return (
       <Modal open={this.state.showModal} centered={true} trigger={
         <Button color="green" basic floated='left'
