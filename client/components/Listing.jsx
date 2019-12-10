@@ -32,9 +32,9 @@ export class Listing extends Component {
     mapVisible: null
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getTasks()
-    this.props.changeActiveTask(null)
+      .then(() => this.props.changeActiveTask(null))
   }
 
   toggleMap = () => {
@@ -48,7 +48,7 @@ export class Listing extends Component {
     changeActiveTask(null)
   }
 
-  render() {
+  render () {
     const { mapVisible } = this.state
     const { tasks } = this.props
 
@@ -91,7 +91,7 @@ export class Listing extends Component {
               })}
             </Card.Group>
           </Grid.Column>
-          
+
           {mapVisible &&
             <Grid.Column width={8}>
               <Map>
