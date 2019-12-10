@@ -51,7 +51,7 @@ export class OfferingMahi extends Component {
             <Card.Description>{shortDescription}</Card.Description>
           </Card.Content>
           <Card.Content>
-            <CompleteMahi data={{ assigneeId, assignerId, taskId, hours }}/>
+            <CompleteMahi data={{ assigneeId, assignerId, taskId, hours, assignee }}/>
             <SelectOfferingMahi data={{ ...this.props.data, assigneeId, categoryName, assigneeName }}/>
           </Card.Content>
         </Card>
@@ -59,6 +59,7 @@ export class OfferingMahi extends Component {
     )
   }
 }
+
 function shortenText (longText) {
   const string = longText
   const splitArray = string.split(' ')

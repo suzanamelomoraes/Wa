@@ -27,7 +27,7 @@ export class SelectVolunteerMahi extends Component {
 
             <p style={{ fontSize: '1.25em' }}>{description}</p>
 
-            <p style={{ fontSize: '1.25em' }}>You will earn <b><u>{hours} hour/s</u></b> when you complete this mahi for <b><u>{assignerName}</u></b></p>
+            <p style={{ fontSize: '1.25em' }}>You will earn <b><u>{hours} hour(s)</u></b> when you complete this mahi for <b><u>{assignerName}</u></b></p>
             <br/>
             <p style={{ fontSize: '1.25em', margin: '0px' }}> Get in touch </p>
             <Icon name="call" style={{ fontSize: '1.25em' }}/>: <strong>{assignerMobile}</strong>

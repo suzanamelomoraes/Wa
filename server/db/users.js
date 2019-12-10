@@ -43,7 +43,7 @@ function updateUserDetails (id, details, geocode, db = connection) {
     .update({
       email: details.email,
       mobile: details.mobile,
-      balance: 3,
+      balance: 5,
       address: details.street + ', ' + details.suburb + ', ' + details.city + ' ' + details.postcode + ' New Zealand',
       latitude: geocode.lat,
       longitude: geocode.lng,

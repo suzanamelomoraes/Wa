@@ -5,7 +5,7 @@ import { addMahi } from '../api/tasks'
 
 import { getCategories } from '../actions/categories'
 import { getOfferings } from '../actions/tasks'
-
+import { getUser } from '../actions/user'
 import {
   Modal,
   Form,
@@ -51,6 +51,7 @@ export class AddMahi extends Component {
       hours,
       description
     })
+      .then(() => this.props.getUser())
       .then(() => this.props.getOfferings())
   }
 
@@ -104,8 +105,7 @@ export class AddMahi extends Component {
               position: 'fixed',
               bottom: '10px',
               padding: '10px',
-              margin: '10px',
-              backgroundColor: '#123b26' }}
+              margin: '10px' }}
             onClick={this.viewModal}>
             Add Mahi
           </Button>
@@ -201,7 +201,8 @@ const mapStateToProps = state => {
 }
 const matchDispatchToProps = {
   getCategories,
-  getOfferings
+  getOfferings,
+  getUser
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(AddMahi)
