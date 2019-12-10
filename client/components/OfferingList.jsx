@@ -16,7 +16,7 @@ export class OfferingList extends Component {
   render () {
     const { offerings } = this.props
     return (
-      <Segment style={{ marginTop: 75 }}>
+      <Segment style={{ marginTop: 100 }}>
         {offerings
           ? <React.Fragment>
             <Header as='h3'>
