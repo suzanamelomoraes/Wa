@@ -31,7 +31,7 @@ export class NavBar extends Component {
       <>
       <Menu borderless fixed='top' inverted style = {{ backgroundColor: '#123b26'}} >
         <Container>
-          <Menu.Item as={Link} to='/' header >
+          <Menu.Item style = {{ marginLeft: '-300px'}} as={Link} to='/' header >
             <Header data-test="header" as='h1' inverted style={{ fontSize: '2.5rem' }}>Wā</Header>
           </Menu.Item>
           <Menu.Item as={Link} to='/'>Home</Menu.Item>
@@ -39,7 +39,7 @@ export class NavBar extends Component {
           <IfAuthenticated>
             <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
           </IfAuthenticated>
-          <Menu.Item position='right'>
+          <Menu.Item style = {{ marginLeft: '1000px'}}>
             <IfNotAuthenticated>
               <Menu.Item as={Link} to='./register'>Register</Menu.Item>
               <Menu.Item as={Link} to='/signin'>Sign In</Menu.Item>
