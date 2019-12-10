@@ -8,7 +8,7 @@ export class Profile extends Component {
   render () {
     const { name, image, about, mobile, email, address, balance } = this.props.user
     return (
-      <Segment compact style={{ marginTop: 75, size: 'small' }}>
+      <Segment compact style={{ marginTop: 100, size: 'small' }}>
         <Card fluid>
           <Card.Content>
             <Image
