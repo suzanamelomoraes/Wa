@@ -8,6 +8,7 @@ import volunteering from './volunteering'
 import activeIndex from './activeIndex'
 import offerings from './offerings'
 import user from './user'
+import center from './changeMapCenter'
 
 export default combineReducers({
   error,
@@ -17,5 +18,6 @@ export default combineReducers({
   volunteering,
   activeIndex,
   offerings,
-  user
+  user,
+  center
 })

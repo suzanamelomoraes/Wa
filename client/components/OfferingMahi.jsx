@@ -13,10 +13,8 @@ export class OfferingMahi extends Component {
   componentDidMount () {
     const { assignee } = this.props.data
     getUserById(assignee).then(user => {
-      console.log('then', user)
       if (user) {
         const assigneeName = user.name
-        console.log('then', assigneeName)
         this.setState({ assigneeName: assigneeName })
       } else {
         this.setState({ assigneeName: '' })
@@ -25,7 +23,6 @@ export class OfferingMahi extends Component {
   }
 
   render () {
-    console.log('data', this.props.data)
     const { title, status, assigner, assignee, assignerId, categoryId, hours, id, description } = this.props.data
     const assigneeId = assignee
     const taskId = id
