@@ -7,15 +7,17 @@ import MahiPopUp from "./MahiPopup";
 import { selectTask } from "../api/tasks";
 import { changeActiveTask } from "../actions/tasks";
 import { getTasks } from "../actions/tasks";
+import { showNotification } from "../actions/notification";
 
 export class MahiMarker extends Component {
   handleClick = () => {
     const userID = 2; //delete after getting connected to Authenticare
-    const { taskId, changeActiveTask, getTasks } = this.props;
+    const { taskId, changeActiveTask, getTasks, showNotification } = this.props;
 
     selectTask(taskId, userID);
     changeActiveTask(null);
     getTasks();
+    showNotification("This Mahi has been added to your dashboard");
   };
 
   handleOpen = () => {
@@ -56,7 +58,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   changeActiveTask,
-  getTasks
+  getTasks,
+  showNotification
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MahiMarker);
