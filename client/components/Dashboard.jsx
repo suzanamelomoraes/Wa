@@ -2,12 +2,12 @@ import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 
-import { getUser } from "../actions/user";
+import { getUser } from '../actions/user'
 
-import Profile from "./Profile";
-import AddMahi from "./AddMahi";
-import OfferingList from "./OfferingList";
-import VolunteeringList from "./VolunteeringList";
+import Profile from './Profile'
+import AddMahi from './AddMahi'
+import OfferingList from './OfferingList'
+import VolunteeringList from './VolunteeringList'
 
 import { getOfferings, getVolunteering } from '../actions/tasks'
 
@@ -30,7 +30,7 @@ export class Dashboard extends Component {
   }
 
   render () {
-    const { isLoaded , user } = this.state
+    const { isLoaded, user } = this.state
     if (!isLoaded || !user) return null
     return (
       <div>
@@ -66,4 +66,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

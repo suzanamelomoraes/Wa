@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
-import { selectTask } from '../api/tasks';
-import { getTasks } from '../actions/tasks';
-import { showNotification } from '../actions/notification';
-import { IfAuthenticated } from './Authenticated';
+import { selectTask } from '../api/tasks'
+import { getTasks } from '../actions/tasks'
+import { showNotification } from '../actions/notification'
+import { IfAuthenticated } from './Authenticated'
 
 export class SelectMahi extends Component {
   handleClick = () => {
