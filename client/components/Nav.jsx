@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Menu } from 'semantic-ui-react'
+import { Container, Header, Menu, Image } from 'semantic-ui-react'
 import { logOff } from 'authenticare/client'
 import { connect } from 'react-redux'
 import { getUser } from '../actions/user'
@@ -29,9 +29,9 @@ export class NavBar extends Component {
     const { user } = this.state
     return (
       <>
-      <Menu borderless fixed='top' inverted style = {{ backgroundColor: '#123b26' }}>
+      <Menu borderless fixed='top' inverted style = {{ backgroundColor: '#123b26'}} >
         <Container>
-          <Menu.Item as={Link} to='/' header>
+          <Menu.Item as={Link} to='/' header >
             <Header data-test="header" as='h1' inverted style={{ fontSize: '2.5rem' }}>Wā</Header>
           </Menu.Item>
           <Menu.Item as={Link} to='/'>Home</Menu.Item>
@@ -45,7 +45,8 @@ export class NavBar extends Component {
               <Menu.Item as={Link} to='/signin'>Sign In</Menu.Item>
             </IfNotAuthenticated>
             <IfAuthenticated>
-              <Menu.Item> Balance <br/> {user.balance} Hours</Menu.Item>
+              <Menu.Item> Balance <br/>{user.balance} Hours</Menu.Item>
+                 <Image style={{  width: '8%', height: '70%' }} src={user.image}/> 
               <Menu.Item as={Link} onClick={this.logOff} to='#'>Sign Out</Menu.Item>
             </IfAuthenticated>
           </Menu.Item>
