@@ -6,15 +6,14 @@ import { Button, Header, Image, Modal } from "semantic-ui-react";
 import { selectTask } from "../api/tasks";
 import { getTasks } from "../actions/tasks";
 import { showNotification } from "../actions/notification";
-
-const userID = 2; // delete after getting connected to Authenticare
+import { IfAuthenticated } from "./Authenticated";
 
 export class SelectMahi extends Component {
   handleClick = () => {
     const { taskId } = this.props.details;
     const { closeModal, getTasks, showNotification } = this.props;
 
-    selectTask(taskId, userID);
+    selectTask(taskId);
     getTasks();
     showNotification("This Mahi has been added to your dashboard");
     closeModal();
@@ -48,13 +47,15 @@ export class SelectMahi extends Component {
             content="Close"
             onClick={closeModal}
           />
-          <Button
-            positive
-            icon="smile outline"
-            labelPosition="right"
-            content="Help out!"
-            onClick={this.handleClick}
-          />
+          <IfAuthenticated>
+            <Button
+              positive
+              icon="smile outline"
+              labelPosition="right"
+              content="Help out!"
+              onClick={this.handleClick}
+            />
+          </IfAuthenticated>
         </Modal.Actions>
       </>
     );

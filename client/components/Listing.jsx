@@ -5,11 +5,10 @@ import { Card, Grid, Button, Icon, Divider } from "semantic-ui-react";
 import MahiSummary from "./MahiSummary";
 import Map from "./Map";
 import MahiMarker from "./MahiMarker";
+import Notification from "./Notification";
 
 import { setError } from "../actions/error";
 import { changeActiveTask, getTasks } from "../actions/tasks";
-
-import Notification from "./Notification";
 
 export class Listing extends Component {
   state = {
@@ -81,7 +80,7 @@ export class Listing extends Component {
               >
                 <Card.Group centered>
                   {tasks.map(mahi => {
-                    if (mahi.status === "open") {
+                    if (mahi.status === "Open") {
                       return (
                         <MahiSummary
                           key={mahi.taskId}
@@ -97,7 +96,7 @@ export class Listing extends Component {
               <Grid.Column width={8}>
                 <Map>
                   {tasks.map(mahi => {
-                    if (mahi.status === "open") {
+                    if (mahi.status === "Open") {
                       return (
                         <MahiMarker
                           key={mahi.taskId}
@@ -145,7 +144,7 @@ export class Listing extends Component {
 
                   <Card.Group centered>
                     {tasks.map(mahi => {
-                      if (mahi.status === "open") {
+                      if (mahi.status === "Open") {
                         return (
                           <MahiSummary
                             key={mahi.taskId}

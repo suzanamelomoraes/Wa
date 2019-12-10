@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Modal, Card, Image, Button, Icon } from "semantic-ui-react";
 
 import SelectMahi from "./SelectMahi";
-import { changeActiveTask } from "../actions/tasks";
+import { runMapActions } from "../actions/tasks";
 
 export class MahiSummary extends Component {
   state = {
@@ -18,6 +18,14 @@ export class MahiSummary extends Component {
     });
   };
 
+  handleClick = () => {
+    const { taskId, latitude, longitude, runMapActions } = this.props;
+    const center = {
+      lat: latitude,
+      lng: longitude
+    };
+    runMapActions(center, taskId);
+  };
   render() {
     const {
       taskId,
@@ -27,7 +35,6 @@ export class MahiSummary extends Component {
       description,
       image,
       assignerName,
-      changeActiveTask,
       activeIndex,
       mapVisible
     } = this.props;
@@ -44,17 +51,18 @@ export class MahiSummary extends Component {
             {title}
           </Card.Header>
           <Card.Meta as="h3" id="mahiCategory">
-            Category <Icon name="columns" size="small"></Icon>
+            <u>Category</u> <Icon name="columns" size="small"></Icon>
             <br />
             <span>{category}</span>
           </Card.Meta>
           <Card.Meta as="h3">
-            Hours <Icon name="time" size="small"></Icon>
+            <u>Hours</u>
+            <Icon name="time" size="small"></Icon>
             <br />
             <span id="mahiHours">{hours} hours</span>
           </Card.Meta>
           <Card.Meta as="h3" id="mahiAssigner">
-            Needed by
+            <u>Needed by</u>
             <br />
             <span>{assignerName}</span>
           </Card.Meta>
@@ -68,11 +76,7 @@ export class MahiSummary extends Component {
             <Modal
               trigger={
                 mapVisible ? (
-                  <Button
-                    basic
-                    color="green"
-                    onClick={() => changeActiveTask(taskId)}
-                  >
+                  <Button basic color="green" onClick={this.handleClick}>
                     View in Map
                   </Button>
                 ) : (
@@ -102,7 +106,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  changeActiveTask
+  runMapActions
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MahiSummary);

@@ -1,22 +1,24 @@
 import request from "superagent";
+import { getEncodedToken } from "authenticare/client";
 
 const apiURL = "http://localhost:3000/api/v1/tasks";
-
-const err = "An unexpected error has occurred and we are looking into it";
 
 export function getTasks() {
   return request
     .get(apiURL)
+    .set({ Accept: "application/json" })
     .then(res => res.body)
     .catch(err => {
       throw new Error(err.message);
     });
 }
 
-export function completeTask(id, assignerId, assigneeId, time) {
+export function completeTask(id, assigneeId, time) {
   return request
     .put(apiURL + `/completed`)
-    .send({ id, assignerId, assigneeId, time })
+    .set({ Accept: "application/json" })
+    .set({ Authorization: `Bearer ${getEncodedToken()}` })
+    .send({ id, assigneeId, time })
     .then(res => res.body)
     .catch(err => {
       throw new Error(err.message);
@@ -26,6 +28,8 @@ export function completeTask(id, assignerId, assigneeId, time) {
 export function addMahi(mahi) {
   return request
     .post(apiURL + "/newtask")
+    .set({ Accept: "application/json" })
+    .set({ Authorization: `Bearer ${getEncodedToken()}` })
     .send(mahi)
     .then(res => res.body)
     .catch(err => {
@@ -33,10 +37,12 @@ export function addMahi(mahi) {
     });
 }
 
-export function selectTask(id, assignee) {
+export function selectTask(id) {
   return request
     .put(apiURL)
-    .send({ id, assignee })
+    .set({ Accept: "application/json" })
+    .set({ Authorization: `Bearer ${getEncodedToken()}` })
+    .send({ id })
     .then(res => res.body)
     .catch(err => {
       throw new Error(err.message);
@@ -45,7 +51,10 @@ export function selectTask(id, assignee) {
 
 export function deselectTask(id) {
   return request
-    .put(`${apiURL}/assignee/${id}`)
+    .put(`${apiURL}/assignee`)
+    .set({ Accept: "application/json" })
+    .set({ Authorization: `Bearer ${getEncodedToken()}` })
+    .send({ id })
     .then(res => res.body)
     .catch(err => {
       throw new Error(err.message);

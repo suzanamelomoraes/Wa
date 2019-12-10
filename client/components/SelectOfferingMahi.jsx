@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
-import { selectTask } from '../api/tasks'
+import { connect } from 'react-redux'
 
 export class SelectOfferingMahi extends Component {
   state = {
@@ -13,8 +13,7 @@ export class SelectOfferingMahi extends Component {
     this.setState({ showModal: false })
   }
   render () {
-    const { title, assigner, assignee, assignerId, assigneeId, categoryName, hours, taskId, description, assigneeName } = this.props.data
-
+    const { title, categoryName, hours, description } = this.props.data
     return (
       <Modal open={this.state.showModal} centered={true} trigger={
         <Button color="green" basic floated='left'
@@ -27,7 +26,7 @@ export class SelectOfferingMahi extends Component {
           <Modal.Description>
             <Header as='h1'>{title}</Header>
             <p style={{ fontSize: '1.25em' }}>{description}</p>
-            <p style={{ fontSize: '1.25em' }}>You can earn {hours} hour/s when you help out {assigneeName}</p>
+            <p style={{ fontSize: '1.25em' }}>You can earn <b><u>{hours} hour/s</u></b> when you help out <b><u>{this.props.user.name}</u></b></p>
           </Modal.Description>
         </Modal.Content>
 
@@ -44,4 +43,10 @@ export class SelectOfferingMahi extends Component {
   }
 }
 
-export default SelectOfferingMahi
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(SelectOfferingMahi)
