@@ -7,80 +7,76 @@ import { getOfferings } from '../actions/tasks'
 import { getUser } from '../actions/user'
 
 export class CompleteMahi extends Component {
-state = {
-  showModal: false,
-  assigneeId: '',
-  assignerId: '',
-  assigneeName: '',
-  taskId: '',
-  hours: ''
-}
+	state = {
+	  showModal: false,
+	  assigneeId: '',
+	  taskId: '',
+	  hours: ''
+	}
 
-handleClickButton = (event, callAPI) => {
-  event.preventDefault()
-  this.setState({
-    showModal: false
-  })
-  // Can only COMPELTE task if there's an assignee for that task
+	handleClickButton = (event, callAPI) => {
+	  event.preventDefault()
+	  this.setState({
+	    showModal: false
+	  })
 
-  if (callAPI) {
-    const { taskId, assigneeId, hours } = this.state
-    completeTask(taskId, assigneeId, hours)
-      .then(this.props.getOfferings())
-      .then(this.props.getUser())
-    // TESTING VERSION:   completeTask(1, 3, 1, 2)  <--  THIS WORKS
-  }
-}
+	  if (callAPI) {
+	    const { taskId, assigneeId, hours } = this.state
+	    completeTask(taskId, assigneeId, hours)
+	      .then(() => this.props.getUser())
+	      .then(() => this.props.getOfferings())
+	  }
+	}
 
-componentDidMount () {
-  const { taskId, assignerId, assigneeId, hours } = this.props.data
-  this.setState({ taskId, assignerId, assigneeId, hours })
-}
+	componentDidMount () {
+	  const { taskId, assigneeId, hours } = this.props.data
+	  this.setState({ taskId, assigneeId, hours })
+	}
 
-render () {
-  const completeBtnColor = this.state.assigneeId === '' ? 'grey' : 'green'
-  return (
+	render () {
+	  const completeBtnColor = this.props.data.assigneeId === null ? 'grey' : 'green'
+	  return (
 
-    <>
-      <Modal open={this.state.showModal} centered={true} trigger={
-        <Button basic floated='right' color={completeBtnColor}
-          id="one" data-test="firstBtn" onClick={() => { this.setState({ showModal: this.state.assigneeId !== '' }) }}>Complete</Button>
-      }>
+			<>
+				<Modal open={this.state.showModal} centered={true} trigger={
+				  <Button basic floated='right' color={completeBtnColor}
+				    id="one" data-test="firstBtn" onClick={() => { this.setState({ showModal: this.props.data.assigneeId !== null }) }}>Complete</Button>
+				}>
 
-        <Modal.Header style={{ fontSize: '2rem' }}>Confirm</Modal.Header>
-        <Modal.Content image>
-          <Modal.Description>
-            <div style={{ fontSize: '1.25rem' }}>
-              <p>
-Are you sure your task is completed?
-              </p>
-            </div>
-          </Modal.Description>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button
-            negative
-            icon='frown outline'
-            labelPosition='right'
-            content="No, I am not"
-            size="large"
-            onClick={(evt) => this.handleClickButton(evt, 0)}
-            data-test="secondBtnNegative"
-          />
-          <Button
-            positive
-            icon='smile outline'
-            labelPosition='right'
-            content="Yes, I am"
-            size="large"
-            onClick={(evt) => this.handleClickButton(evt, 1)}
-            data-test="secondBtnPositive"
-          />
-        </Modal.Actions>
-      </Modal>
-    </>
-  )
-}
+				  <Modal.Header style={{ fontSize: '2rem' }}>Confirm</Modal.Header>
+				  <Modal.Content image>
+				    <Modal.Description>
+				      <div style={{ fontSize: '1.25rem' }}>
+				        <p>
+	Are you sure your task is completed?
+				        </p>
+				      </div>
+				    </Modal.Description>
+				  </Modal.Content>
+				  <Modal.Actions>
+				    <Button
+				      negative
+				      icon='frown outline'
+				      labelPosition='right'
+				      content="No, I am not"
+				      size="large"
+				      onClick={(evt) => this.handleClickButton(evt, 0)}
+				      data-test="secondBtnNegative"
+				    />
+				    <Button
+				      positive
+				      icon='smile outline'
+				      labelPosition='right'
+				      content="Yes, I am"
+				      size="large"
+				      onClick={(evt) => this.handleClickButton(evt, 1)}
+				      data-test="secondBtnPositive"
+				    />
+				  </Modal.Actions>
+				</Modal>
+			</>
+	  )
+	}
 }
 const mapDispatchToProps = {
   getOfferings,
