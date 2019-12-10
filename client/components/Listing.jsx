@@ -64,9 +64,7 @@ export class Listing extends Component {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column textAlign='right'>
-              <MapToggleButton text={mapVisible
-                ? 'Close Map' : 'Open Map'} onClick={this.toggleMap}/>
-              <Loading />
+              <MapToggleButton text={mapVisible ? 'Close Map' : 'Open Map'} onClick={this.toggleMap}/>
               <Divider />
             </Grid.Column>
           </Grid.Row>
@@ -98,7 +96,6 @@ export class Listing extends Component {
                 </Card.Group>)
             }
           </Grid.Column>
-
           {mapVisible &&
             <Grid.Column width={8}>
               <Map>

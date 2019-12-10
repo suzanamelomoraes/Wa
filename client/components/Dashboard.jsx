@@ -9,6 +9,7 @@ import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
 import VolunteeringList from './VolunteeringList'
 import Error from './Error'
+import Loading from './Loading'
 
 import { getOfferings, getVolunteering } from '../actions/tasks'
 
@@ -36,7 +37,7 @@ export class Dashboard extends Component {
     if (!isLoaded || !user) return null
     return (
       <div>
-
+        <Loading />
         {this.props.error
           ? <Error />
           : <>
@@ -71,7 +72,8 @@ const mapStateToProps = state => {
     user: state.user,
     offerings: state.offerings,
     volunteering: state.volunteering,
-    error: state.error
+    error: state.error,
+    load: state.pending
   }
 }
 
