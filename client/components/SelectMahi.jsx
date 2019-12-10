@@ -25,16 +25,17 @@ export class SelectMahi extends Component {
     return (
       <>
         <Modal.Header>{details.category}</Modal.Header>
+
         <Modal.Content image>
-          <Image wrapped size="medium" src={details.image} />
+          <Image wrapped size='medium' src={details.image} />
+
           <Modal.Description>
-            <Header as="h1">{details.title}</Header>
+            <Header as='h1'>{details.title}</Header>
 
             <p style={{ fontSize: '1.25em' }}>{details.description}</p>
 
             <p style={{ fontSize: '1.25em' }}>
-              You can earn {details.hours} hour/s when you help out{' '}
-              {details.assignerName}
+              You can earn {details.hours} hour/s when you help out {details.assignerName}
             </p>
           </Modal.Description>
         </Modal.Content>
@@ -42,17 +43,18 @@ export class SelectMahi extends Component {
         <Modal.Actions>
           <Button
             negative
-            icon="close"
-            labelPosition="right"
-            content="Close"
+            icon='close'
+            labelPosition='right'
+            content='Close'
             onClick={closeModal}
           />
+
           <IfAuthenticated>
             <Button
               positive
-              icon="smile outline"
-              labelPosition="right"
-              content="Help out!"
+              icon='smile outline'
+              labelPosition='right'
+              content='Help out!'
               onClick={this.handleClick}
             />
           </IfAuthenticated>
