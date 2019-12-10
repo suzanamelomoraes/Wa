@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Message } from "semantic-ui-react";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Message } from 'semantic-ui-react'
 
 export class Notification extends Component {
-  render() {
+  render () {
     return (
       <>
         {this.props.notification ? (
@@ -12,14 +12,14 @@ export class Notification extends Component {
           </Message>
         ) : null}
       </>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     notification: state.notification
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps)(Notification);
+export default connect(mapStateToProps)(Notification)

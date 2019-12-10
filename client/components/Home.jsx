@@ -2,13 +2,13 @@ import React from 'react'
 import { Container, Header, Divider, Image, Grid, Segment } from 'semantic-ui-react'
 
 const HeaderText = ({ children }) => (
-  <Header 
-    textAlign='center' 
-    style={{ 
-      fontSize: '30px', 
-      textShadow: '1px 1px #000000', 
+  <Header
+    textAlign='center'
+    style={{
+      fontSize: '30px',
+      textShadow: '1px 1px #000000',
       color: '#ffffff' }}
-    >
+  >
     <Header.Content>
       {children}
     </Header.Content>
@@ -23,7 +23,7 @@ const Description = ({ title, imageURL, imageText, children }) => (
 
     <Container >
       <Image
-        style={{ 
+        style={{
           opacity: 0.5,
           width: '100%',
           height: '250px',
@@ -39,13 +39,13 @@ const Description = ({ title, imageURL, imageText, children }) => (
       </Image>
     </Container>
 
-    <Segment size='huge' textAlign='center' style={{fontSize:'1.25rem', height:'14em', marginBottom:'2em'}}>
+    <Segment size='huge' textAlign='center' style={{ fontSize: '1.25rem', height: '14em', marginBottom: '2em' }}>
       {children}
     </Segment>
   </>
 )
 
-const inlineText = 
+const inlineText =
   <div >
     <HeaderText>
       Nou te rourou <br/>
@@ -103,7 +103,7 @@ const Home = () => (
   <Divider inverted />
     <Grid style={centerStyle}>
       <Grid.Column mobile={12} tablet={8} computer={4}>
-        <Description 
+        <Description
           title='Mahi'
           imageURL='images/placeholder.jpg'
           imageText={mahiText}
@@ -135,7 +135,7 @@ const Home = () => (
         >
           <p>Exchange the gift of time with people in your community.</p>
           <p>
-            Use your time to do the things that really matter to the people around you 
+            Use your time to do the things that really matter to the people around you
             and make your life richer by letting other people give you their time.
           </p>
         </Description>

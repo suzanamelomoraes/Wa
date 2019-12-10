@@ -27,6 +27,7 @@ export default function (pending = false, action) {
     case GET_VOLUNTEERING_PENDING:
     case GET_OFFERINGS_PENDING:
     case GET_USER_PENDING:
+    case GET_TASKS_PENDING:
       return true
 
     case GET_CATEGORIES_SUCCESS:
@@ -34,6 +35,7 @@ export default function (pending = false, action) {
     case GET_OFFERINGS_SUCCESS:
     case GET_USER_SUCCESS:
     case SET_ERROR:
+    case GET_VOLUNTEERING_SUCCESS:
       return false
 
     default:
