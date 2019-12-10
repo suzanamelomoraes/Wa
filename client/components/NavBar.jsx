@@ -39,7 +39,6 @@ export class NavBar extends Component {
           <IfAuthenticated>
             <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
           </IfAuthenticated>
-          {/* <Menu.Item style = {{ marginLeft: '1100px'}}> */}
             <IfNotAuthenticated>
             <Menu.Item style = {{ marginLeft: '1200px'}}>
               <Menu.Item as={Link} to='./register'>Register</Menu.Item>
