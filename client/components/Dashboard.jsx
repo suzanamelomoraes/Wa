@@ -31,24 +31,25 @@ export class Dashboard extends Component {
 
   render () {
     const { isLoaded, user } = this.state
-    if (!isLoaded || !user) return null
-    return (
-      <div>
-        <Grid stackable={true} columns={3}>
-          <Grid.Column width={5}>
-            <Profile />
-          </Grid.Column>
-          <Grid.Column width={5}>
-            <OfferingList />
-          </Grid.Column>
-          <Grid.Column width={5}>
-            <VolunteeringList />
-          </Grid.Column>
-        </Grid>
 
-        <AddMahi id={user.id} balance={user.balance} />
-      </div>
-    )
+    if (!isLoaded || !user) return null
+      return (
+        <div>
+          <Grid stackable={true} columns={3}>
+            <Grid.Column width={5}>
+              <Profile />
+            </Grid.Column>
+            <Grid.Column width={5}>
+              <OfferingList />
+            </Grid.Column>
+            <Grid.Column width={5}>
+              <VolunteeringList />
+            </Grid.Column>
+          </Grid>
+
+          <AddMahi id={user.id} balance={user.balance} />
+        </div>
+      )
   }
 }
 
