@@ -14,9 +14,8 @@ import { getOfferings, getVolunteering } from '../actions/tasks'
 export class Dashboard extends Component {
   state = {
     id: 2,
-    user: null,
-    offerings: null,
-    volunteering: null
+    isLoaded: false,
+    user: null
   }
 
   componentDidMount () {
@@ -25,16 +24,15 @@ export class Dashboard extends Component {
       .then(() => this.props.getVolunteering())
       .then(() => {
         this.setState({
-          user: this.props.user,
-          offerings: this.props.offerings,
-          volunteering: this.props.volunteering
+          isLoaded: true,
+          user: this.props.user
         })
       })
   }
 
   render () {
-    const { user, offerings, volunteering } = this.props
-    if (!user || !offerings || !volunteering) return null
+    const { isLoaded , user } = this.state
+    if (!isLoaded || !user) return null
     return (
       <div>
         <Grid stackable={true} columns={3}>
@@ -42,10 +40,10 @@ export class Dashboard extends Component {
             <Profile />
           </Grid.Column>
           <Grid.Column width={5}>
-            <OfferingList offerings={offerings} id={user.id}/>
+            <OfferingList />
           </Grid.Column>
           <Grid.Column width={5}>
-            <VolunteeringList volunteering={volunteering} id={user.id}/>
+            <VolunteeringList />
           </Grid.Column>
         </Grid>
 
