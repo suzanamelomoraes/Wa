@@ -104,8 +104,7 @@ export class AddMahi extends Component {
               position: 'fixed',
               bottom: '10px',
               padding: '10px',
-              margin: '10px',
-              backgroundColor: '#123b26' }}
+              margin: '10px' }}
             onClick={this.viewModal}>
             Add Mahi
           </Button>
