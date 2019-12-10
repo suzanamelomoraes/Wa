@@ -49,7 +49,7 @@ export class Listing extends Component {
   }
 
   render() {
-    const { mapVisible, buttonColor } = this.state
+    const { mapVisible } = this.state
     const { tasks } = this.props
 
     return (
