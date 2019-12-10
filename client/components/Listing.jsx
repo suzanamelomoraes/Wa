@@ -1,40 +1,40 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import { Card, Grid, Button, Icon, Divider } from "semantic-ui-react";
-import MahiSummary from "./MahiSummary";
-import Map from "./Map";
-import MahiMarker from "./MahiMarker";
-import Notification from "./Notification";
+import { Card, Grid, Button, Icon, Divider } from 'semantic-ui-react'
+import MahiSummary from './MahiSummary'
+import Map from './Map'
+import MahiMarker from './MahiMarker'
+import Notification from './Notification'
 
-import { setError } from "../actions/error";
-import { changeActiveTask, getTasks } from "../actions/tasks";
+import { setError } from '../actions/error'
+import { changeActiveTask, getTasks } from '../actions/tasks'
 
 export class Listing extends Component {
   state = {
     mapVisible: null,
-    buttonColor: "olive"
-  };
+    buttonColor: 'olive'
+  }
 
   componentDidMount() {
-    this.props.getTasks();
-    this.props.changeActiveTask(null);
+    this.props.getTasks()
+    this.props.changeActiveTask(null)
   }
 
   toggleMap = () => {
-    const { mapVisible } = this.state;
-    const { changeActiveTask } = this.props;
+    const { mapVisible } = this.state
+    const { changeActiveTask } = this.props
 
     this.setState({
       mapVisible: !mapVisible
-    });
+    })
 
-    changeActiveTask(null);
-  };
+    changeActiveTask(null)
+  }
 
   render() {
-    const { mapVisible, buttonColor } = this.state;
-    const { tasks } = this.props;
+    const { mapVisible, buttonColor } = this.state
+    const { tasks } = this.props
 
     return (
       <React.Fragment>
@@ -42,25 +42,25 @@ export class Listing extends Component {
           <React.Fragment>
             <Grid>
               <Grid.Row>
-                <Grid.Column textAlign="left">
+                <Grid.Column textAlign='left'>
                   <Notification />
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
-                <Grid.Column textAlign="right">
+                <Grid.Column textAlign='right'>
                   <Button
-                    animated="fade"
-                    size="big"
+                    animated='fade'
+                    size='big'
                     color={buttonColor}
                     onClick={this.toggleMap}
                     style={{ marginTop: 40, marginRight: 25 }}
                   >
-                    <Button.Content hidden style={{ fontSize: "0.8em" }}>
+                    <Button.Content hidden style={{ fontSize: '0.8em' }}>
                       Close Map
                     </Button.Content>
 
                     <Button.Content visible>
-                      <Icon name="map outline" />
+                      <Icon name='map outline' />
                     </Button.Content>
                   </Button>
 
@@ -73,21 +73,21 @@ export class Listing extends Component {
               <Grid.Column
                 width={8}
                 style={{
-                  height: "100vh",
-                  width: "100%",
-                  overflow: "scroll"
+                  height: '100vh',
+                  width: '100%',
+                  overflow: 'scroll'
                 }}
               >
                 <Card.Group centered>
                   {tasks.map(mahi => {
-                    if (mahi.status === "Open") {
+                    if (mahi.status === 'Open') {
                       return (
                         <MahiSummary
                           key={mahi.taskId}
                           {...mahi}
                           mapVisible={mapVisible}
                         />
-                      );
+                      )
                     }
                   })}
                 </Card.Group>
@@ -96,7 +96,7 @@ export class Listing extends Component {
               <Grid.Column width={8}>
                 <Map>
                   {tasks.map(mahi => {
-                    if (mahi.status === "Open") {
+                    if (mahi.status === 'Open') {
                       return (
                         <MahiMarker
                           key={mahi.taskId}
@@ -104,7 +104,7 @@ export class Listing extends Component {
                           lat={mahi.latitude}
                           lng={mahi.longitude}
                         />
-                      );
+                      )
                     }
                   })}
                 </Map>
@@ -115,15 +115,15 @@ export class Listing extends Component {
           <React.Fragment>
             <Grid>
               <Grid.Row>
-                <Grid.Column textAlign="left">
+                <Grid.Column textAlign='left'>
                   <Notification />
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
-                <Grid.Column textAlign="right">
+                <Grid.Column textAlign='right'>
                   <Button
-                    animated="fade"
-                    size="big"
+                    animated='fade'
+                    size='big'
                     color={buttonColor}
                     onClick={this.toggleMap}
                     style={{
@@ -131,12 +131,12 @@ export class Listing extends Component {
                       marginRight: 25
                     }}
                   >
-                    <Button.Content hidden style={{ fontSize: "0.8em" }}>
+                    <Button.Content hidden style={{ fontSize: '0.8em' }}>
                       Open Map
                     </Button.Content>
 
                     <Button.Content visible>
-                      <Icon name="map outline" />
+                      <Icon name='map outline' />
                     </Button.Content>
                   </Button>
 
@@ -144,14 +144,14 @@ export class Listing extends Component {
 
                   <Card.Group centered>
                     {tasks.map(mahi => {
-                      if (mahi.status === "Open") {
+                      if (mahi.status === 'Open') {
                         return (
                           <MahiSummary
                             key={mahi.taskId}
                             {...mahi}
                             mapVisible={mapVisible}
                           />
-                        );
+                        )
                       }
                     })}
                   </Card.Group>
@@ -161,7 +161,7 @@ export class Listing extends Component {
           </React.Fragment>
         )}
       </React.Fragment>
-    );
+    )
   }
 }
 
@@ -169,13 +169,13 @@ const mapStateToProps = state => {
   return {
     activeIndex: state.activeIndex,
     tasks: state.tasks
-  };
-};
+  }
+}
 
 const mapDispatchToProps = {
   setError,
   changeActiveTask,
   getTasks
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Listing);
+export default connect(mapStateToProps, mapDispatchToProps)(Listing)
