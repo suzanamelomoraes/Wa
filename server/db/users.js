@@ -44,7 +44,7 @@ function updateUserDetails (id, details, geocode, db = connection) {
       email: details.email,
       mobile: details.mobile,
       balance: 3,
-      address: details.street + ', ' + details.suburb + ', ' + details.city + ' ' + details.postcode + ' New Zealand',
+      address: details.street + ', ' + details.suburb + ', ' + details.city + ' New Zealand',
       latitude: geocode.lat,
       longitude: geocode.lng,
       image: '/images/avatar01.png'

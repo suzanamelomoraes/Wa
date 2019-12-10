@@ -27,11 +27,10 @@ export class Registration extends Component {
 handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleSubmit = () => {
-    const { email, mobile, street, suburb, postcode, city } = this.state
+    const { email, mobile, street, suburb, city } = this.state
     geocodeAddress({
       street: street,
       suburb: suburb,
-      postcode: postcode,
       city: city
     })
       .then(geocode =>
@@ -40,7 +39,6 @@ handleChange = (e, { name, value }) => this.setState({ [name]: value })
           mobile: mobile,
           street: street,
           suburb: suburb,
-          postcode: postcode,
           city: city
         }, geocode)
       )
