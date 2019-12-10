@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
 
 import SelectMahi from './SelectMahi'
-import { changeActiveTask } from '../actions/tasks'
+import { runMapActions } from '../actions/tasks'
 
 export class MahiSummary extends Component {
   state = {
@@ -16,15 +16,22 @@ export class MahiSummary extends Component {
     this.setState({
       modalVisible: !modalVisible
     })
-
   }
 
+  handleClick = () => {
+    const { taskId, latitude, longitude, runMapActions } = this.props
+    const center = {
+      lat: latitude,
+      lng: longitude
+    }
+    runMapActions(center, taskId)
+  }
   render () {
-    const { taskId, title, category, hours, description, image, assignerName, changeActiveTask, activeIndex, mapVisible } = this.props
+    const { taskId, title, category, hours, description, image, assignerName, activeIndex, mapVisible } = this.props
     const { modalVisible } = this.state
 
     return (
-      <Card color={(taskId === activeIndex) ? "orange" : "grey"} style={{textAlign: 'left'}} >
+      <Card color={(taskId === activeIndex) ? 'orange' : 'grey'} style={{ textAlign: 'left' }} >
         <Card.Content>
           <Image
             floated='right'
@@ -45,23 +52,23 @@ export class MahiSummary extends Component {
           <div >
             <Modal
               trigger={
-                mapVisible 
-                ? <Button 
-                basic 
-                color='green' 
-                onClick={() => changeActiveTask(taskId)}>
+                mapVisible
+                  ? <Button
+                    basic
+                    color='green'
+                    onClick={this.handleClick}>
                   View in Map
-                </Button>
-                : <Button 
-                  basic 
-                  color='green' 
-                  onClick={this.toggleModalView}>
+                  </Button>
+                  : <Button
+                    basic
+                    color='green'
+                    onClick={this.toggleModalView}>
                     View Detail
-                </Button>}
+                  </Button>}
               open={modalVisible}
-              >
-              <SelectMahi 
-                details={this.props} 
+            >
+              <SelectMahi
+                details={this.props}
                 closeModal={this.toggleModalView}/>
             </Modal>
           </div>
@@ -79,7 +86,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  changeActiveTask
+  runMapActions
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MahiSummary)

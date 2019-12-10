@@ -37,6 +37,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.3",
     "pg": "^7.14.0",
+    "react-google-maps-addons": "^1.0.2",
     "sqlite3": "^4.1.0",
     "superagent": "^5.1.2"
   },
