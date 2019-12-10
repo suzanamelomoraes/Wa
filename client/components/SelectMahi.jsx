@@ -14,8 +14,8 @@ export class SelectMahi extends Component {
     const { closeModal, getTasks } = this.props
 
     selectTask(taskId)
-    getTasks()
-    closeModal()
+      .then(() => getTasks())
+      .then(() => closeModal())
   }
 
   render () {
