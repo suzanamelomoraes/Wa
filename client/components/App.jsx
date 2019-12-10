@@ -11,7 +11,6 @@ import { Loading } from './Loading'
 
 const App = () => (
   <Router>
-    <Route path='/' component={Loading}/>
     <Route path='/' component={Nav}/>
     <Route exact path='/' component={Home}/>
     <Route exact path='/list' component={Listing}/>
