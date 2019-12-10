@@ -6,8 +6,9 @@ import MahiSummary from './MahiSummary'
 import Map from './Map'
 import MahiMarker from './MahiMarker'
 import Notification from './Notification'
+import Error from './Error'
+import Loading from './Loading'
 
-import { setError } from '../actions/error'
 import { changeActiveTask, getTasks } from '../actions/tasks'
 
 const MapToggleButton = ({ text, onClick }) => (
@@ -32,7 +33,7 @@ export class Listing extends Component {
     mapVisible: null
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getTasks()
     this.props.changeActiveTask(null)
   }
@@ -48,12 +49,13 @@ export class Listing extends Component {
     changeActiveTask(null)
   }
 
-  render() {
+  render () {
     const { mapVisible } = this.state
     const { tasks } = this.props
 
     return (
       <React.Fragment>
+        <Loading />
         <Grid>
           <Grid.Row>
             <Grid.Column textAlign='left'>
@@ -62,7 +64,9 @@ export class Listing extends Component {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column textAlign='right'>
-              <MapToggleButton text={mapVisible ? 'Close Map' : 'Open Map'} onClick={this.toggleMap}/>
+              <MapToggleButton text={mapVisible
+                ? 'Close Map' : 'Open Map'} onClick={this.toggleMap}/>
+              <Loading />
               <Divider />
             </Grid.Column>
           </Grid.Row>
@@ -77,21 +81,24 @@ export class Listing extends Component {
               overflow: 'scroll'
             }}
           >
-            <Card.Group centered>
-              {tasks.map(mahi => {
-                if (mahi.status === 'Open') {
-                  return (
-                    <MahiSummary
-                      key={mahi.taskId}
-                      {...mahi}
-                      mapVisible={mapVisible}
-                    />
-                  )
-                }
-              })}
-            </Card.Group>
+            {this.props.error
+              ? <Error /> : (
+                <Card.Group centered>
+                  {tasks.map(mahi => {
+                    if (mahi.status === 'Open') {
+                      return (
+                        <MahiSummary
+                          key={mahi.taskId}
+                          {...mahi}
+                          mapVisible={mapVisible}
+                        />
+                      )
+                    }
+                  })}
+                </Card.Group>)
+            }
           </Grid.Column>
-          
+
           {mapVisible &&
             <Grid.Column width={8}>
               <Map>
@@ -107,6 +114,7 @@ export class Listing extends Component {
                     )
                   }
                 })}
+
               </Map>
             </Grid.Column>
           }
@@ -119,12 +127,13 @@ export class Listing extends Component {
 const mapStateToProps = state => {
   return {
     activeIndex: state.activeIndex,
-    tasks: state.tasks
+    tasks: state.tasks,
+    error: state.error,
+    load: state.pending
   }
 }
 
 const mapDispatchToProps = {
-  setError,
   changeActiveTask,
   getTasks
 }
