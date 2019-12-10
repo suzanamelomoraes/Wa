@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
+import { Segment, Grid, Header, Icon, Card, Divider } from 'semantic-ui-react'
 import VolunteerMahi from './VolunteerMahi'
 
 import { getVolunteering } from '../actions/tasks'
@@ -14,14 +14,18 @@ export class VolunteeringList extends React.Component {
     const { volunteering } = this.props
     return (
       <Segment style={{ marginTop: 75 }}>
-        {volunteering
+        {volunteering.length
           ? <React.Fragment>
             <Header as='h3'>
               <Icon name='calendar alternate outline'/>
               <Header.Content>Currently Volunteering</Header.Content>
             </Header>
+            <Divider />
             <Grid>
-              <Grid.Column>
+              <Grid.Column style={{
+                height: '60vh',
+                overflow: 'scroll'
+              }}>
                 <Card.Group centered>
                   {volunteering.map(volunteer =>
                     <VolunteerMahi
@@ -33,7 +37,33 @@ export class VolunteeringList extends React.Component {
               </Grid.Column>
             </Grid>
           </React.Fragment>
-          : null
+          : <React.Fragment>
+            <Header as='h3'>
+              <Icon name='calendar alternate outline'/>
+              <Header.Content>Currently Volunteering</Header.Content>
+            </Header>
+            <Divider />
+            <Grid>
+              <Grid.Column>
+                <Card.Group centered>
+                  <Card style={{
+                    backgroundColor: '#ededed',
+                    height: '375px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexWrap: 'wrap' }}>
+                    <Header textAlign='center'
+                      style={{
+                        color: '#b5b5b5'
+                      }}>
+      You are currently not volunteering yet.
+                    </Header>
+                  </Card>
+                </Card.Group>
+              </Grid.Column>
+            </Grid>
+          </React.Fragment>
         }
       </Segment>
     )

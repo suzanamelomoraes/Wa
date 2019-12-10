@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid, Header, Icon, Card } from 'semantic-ui-react'
+import { Segment, Grid, Header, Icon, Card, Divider } from 'semantic-ui-react'
 
 import { getOfferings } from '../actions/tasks'
 
-import OfferingMahi from './OfferingMahi' 
+import OfferingMahi from './OfferingMahi'
 
 export class OfferingList extends Component {
-  
-
   componentDidMount () {
     this.props.getOfferings()
   }
@@ -17,14 +15,18 @@ export class OfferingList extends Component {
     const { offerings } = this.props
     return (
       <Segment style={{ marginTop: 75 }}>
-        {offerings
+        {offerings.length
           ? <React.Fragment>
             <Header as='h3'>
               <Icon name='tasks'/>
               <Header.Content>Currently Offering</Header.Content>
             </Header>
+            <Divider />
             <Grid>
-              <Grid.Column>
+              <Grid.Column style={{
+                height: '60vh',
+                overflow: 'scroll'
+              }}>
                 <Card.Group centered>
                   {offerings.map(offering =>
                     <OfferingMahi
@@ -36,7 +38,38 @@ export class OfferingList extends Component {
               </Grid.Column>
             </Grid>
           </React.Fragment>
-          : null
+          : <React.Fragment>
+            <Header as='h3'>
+              <Icon name='calendar alternate outline'/>
+              <Header.Content>Currently Offering</Header.Content>
+            </Header>
+            <Divider />
+            <Grid>
+              <Grid.Column>
+                <Card.Group centered>
+                  <Card style={{
+                    backgroundColor: '#ededed',
+                    height: '375px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexWrap: 'wrap' }}>
+                    <Header textAlign='center'
+                      style={{
+                        color: '#b5b5b5'
+                      }}>
+                      <p>
+    You are currently not offering yet.
+                      </p>
+                      <p>
+    To get started click "Add Mahi"
+                      </p>
+                    </Header>
+                  </Card>
+                </Card.Group>
+              </Grid.Column>
+            </Grid>
+          </React.Fragment>
         }
       </Segment>
     )
