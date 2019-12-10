@@ -57,7 +57,7 @@ export class VolunteeringList extends React.Component {
                       style={{
                         color: '#b5b5b5'
                       }}>
-                      You are currently not volunteering for any mahi yet.
+                      You are currently not volunteering for any mahi.
                     </Header>
                   </Card>
                 </Card.Group>

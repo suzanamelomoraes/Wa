@@ -1,14 +1,15 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
 
-import error from './error'
-import categories from './categories'
-import pending from './pending'
-import tasks from './tasks'
-import volunteering from './volunteering'
-import activeIndex from './activeIndex'
-import offerings from './offerings'
-import user from './user'
-import center from './changeMapCenter'
+import error from "./error";
+import categories from "./categories";
+import pending from "./pending";
+import tasks from "./tasks";
+import volunteering from "./volunteering";
+import activeIndex from "./activeIndex";
+import offerings from "./offerings";
+import user from "./user";
+import notification from "./notification";
+import center from "./changeMapCenter";
 
 export default combineReducers({
   error,
@@ -19,5 +20,6 @@ export default combineReducers({
   activeIndex,
   offerings,
   user,
+  notification,
   center
-})
+});
