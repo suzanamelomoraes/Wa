@@ -54,96 +54,63 @@ export class Listing extends Component {
 
     return (
       <React.Fragment>
-        {mapVisible ? (
-          <React.Fragment>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column textAlign='left'>
-                  <Notification />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column textAlign='right'>
-                  <MapToggleButton text='Close Map' onClick={this.toggleMap}/>
-                  <Divider />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column textAlign='left'>
+              <Notification />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column textAlign='right'>
+              <MapToggleButton text={mapVisible ? 'Close Map' : 'Open Map'} onClick={this.toggleMap}/>
+              <Divider />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
 
-            <Grid>
-              <Grid.Column
-                width={8}
-                style={{
-                  height: '100vh',
-                  width: '100%',
-                  overflow: 'scroll'
-                }}
-              >
-                <Card.Group centered>
-                  {tasks.map(mahi => {
-                    if (mahi.status === 'Open') {
-                      return (
-                        <MahiSummary
-                          key={mahi.taskId}
-                          {...mahi}
-                          mapVisible={mapVisible}
-                        />
-                      )
-                    }
-                  })}
-                </Card.Group>
-              </Grid.Column>
-
-              <Grid.Column width={8}>
-                <Map>
-                  {tasks.map(mahi => {
-                    if (mahi.status === 'Open') {
-                      return (
-                        <MahiMarker
-                          key={mahi.taskId}
-                          {...mahi}
-                          lat={mahi.latitude}
-                          lng={mahi.longitude}
-                        />
-                      )
-                    }
-                  })}
-                </Map>
-              </Grid.Column>
-            </Grid>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column textAlign='left'>
-                  <Notification />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column textAlign='right'>
-                  <MapToggleButton text='Open Map' onClick={this.toggleMap}/>
-
-                  <Divider />
-
-                  <Card.Group centered>
-                    {tasks.map(mahi => {
-                      if (mahi.status === 'Open') {
-                        return (
-                          <MahiSummary
-                            key={mahi.taskId}
-                            {...mahi}
-                            mapVisible={mapVisible}
-                          />
-                        )
-                      }
-                    })}
-                  </Card.Group>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </React.Fragment>
-        )}
+        <Grid>
+          <Grid.Column
+            width={mapVisible ? 8 : 16}
+            style={{
+              height: '100vh',
+              width: '100%',
+              overflow: 'scroll'
+            }}
+          >
+            <Card.Group centered>
+              {tasks.map(mahi => {
+                if (mahi.status === 'Open') {
+                  return (
+                    <MahiSummary
+                      key={mahi.taskId}
+                      {...mahi}
+                      mapVisible={mapVisible}
+                    />
+                  )
+                }
+              })}
+            </Card.Group>
+          </Grid.Column>
+          
+          {mapVisible &&
+            <Grid.Column width={8}>
+              <Map>
+                {tasks.map(mahi => {
+                  if (mahi.status === 'Open') {
+                    return (
+                      <MahiMarker
+                        key={mahi.taskId}
+                        {...mahi}
+                        lat={mahi.latitude}
+                        lng={mahi.longitude}
+                      />
+                    )
+                  }
+                })}
+              </Map>
+            </Grid.Column>
+          }
+        </Grid>
       </React.Fragment>
     )
   }
