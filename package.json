@@ -31,7 +31,7 @@
     ]
   },
   "dependencies": {
-    "authenticare": "^0.4.5",
+    "authenticare": "^0.4.6",
     "express": "^4.17.1",
     "google-map-react": "^1.1.5",
     "jsonwebtoken": "^8.5.1",

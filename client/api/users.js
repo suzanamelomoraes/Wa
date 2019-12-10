@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { getEncodedToken, getAuthorizationHeader, getDecodedToken } from 'authenticare/client'
+import { getEncodedToken } from 'authenticare/client'
 
 const apiURL = 'http://localhost:3000/api/v1'
 
@@ -42,12 +42,12 @@ export function getUserById (userId) {
 export function geocodeAddress (details) {
   const url = 'https://maps.googleapis.com/maps/api/geocode/json?address='
   const APIKey = 'AIzaSyCbv90MWPN7pKFNYbOrbMCSsZGaWYGcc8o'
-  const { street, suburb, postcode, city } = details
+  const { street, suburb, city } = details
 
   const trimmedStreet = street.trim().split(' ').join('+')
 
   return request
-    .get(`${url}${trimmedStreet}+${suburb}+${city}+${postcode}+New+Zealand&key=${APIKey}`)
+    .get(`${url}${trimmedStreet}+${suburb}+${city}+New+Zealand&key=${APIKey}`)
     .then(res => {
       return res.body.results[0].geometry.location
     })

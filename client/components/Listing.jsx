@@ -35,7 +35,7 @@ export class Listing extends Component {
 
   componentDidMount () {
     this.props.getTasks()
-    this.props.changeActiveTask(null)
+      .then(() => this.props.changeActiveTask(null))
   }
 
   toggleMap = () => {
