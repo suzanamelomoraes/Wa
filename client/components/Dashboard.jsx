@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid, Sticky } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 import { getUser } from '../actions/user'
 
@@ -9,35 +9,43 @@ import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
 import VolunteeringList from './VolunteeringList'
 
+import { getOfferings, getVolunteering } from '../actions/tasks'
+
 export class Dashboard extends Component {
   state = {
     id: 2,
-    user: {}
+    user: null,
+    offerings: null,
+    volunteering: null
   }
 
   componentDidMount () {
     this.props.getUser()
-      .then(() =>
+      .then(() => this.props.getOfferings())
+      .then(() => this.props.getVolunteering())
+      .then(() => {
         this.setState({
-          user: this.props.user
+          user: this.props.user,
+          offerings: this.props.offerings,
+          volunteering: this.props.volunteering
         })
-      )
+      })
   }
 
-  contextRef = createRef()
   render () {
-    const { user } = this.state
+    const { user, offerings, volunteering } = this.props
+    if (!user || !offerings || !volunteering) return null
     return (
       <div>
         <Grid stackable={true} columns={3}>
           <Grid.Column width={5}>
-            <Profile user={user}/>
+            <Profile />
           </Grid.Column>
           <Grid.Column width={5}>
-            <OfferingList id={user.id}/>
+            <OfferingList offerings={offerings} id={user.id}/>
           </Grid.Column>
           <Grid.Column width={5}>
-            <VolunteeringList id={user.id}/>
+            <VolunteeringList volunteering={volunteering} id={user.id}/>
           </Grid.Column>
         </Grid>
 
@@ -47,18 +55,21 @@ export class Dashboard extends Component {
         />
 
       </div>
-
     )
   }
 }
 
 const mapDispatchToProps = {
-  getUser
+  getUser,
+  getOfferings,
+  getVolunteering
 }
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    offerings: state.offerings,
+    volunteering: state.volunteering
   }
 }
 
