@@ -40,9 +40,9 @@ export class MahiSummary extends Component {
             id='mahiImage'
           />
           <Card.Header as='h1' id='mahiTitle'>{title}</Card.Header>
-          <Card.Meta as='h3'id='mahiCategory'>Category <Icon name='columns' size='small'></Icon><br/><span>{category}</span></Card.Meta>
-          <Card.Meta as='h3'>Hours <Icon name='time' size='small'></Icon><br/><span id='mahiHours'>{hours} hours</span></Card.Meta>
-          <Card.Meta as='h3'id='mahiAssigner'>Needed by<br/><span>{assignerName}</span></Card.Meta>
+          <Card.Meta as='h3'id='mahiCategory'><u>Category</u> <Icon name='columns' size='small'></Icon><br/><span>{category}</span></Card.Meta>
+          <Card.Meta as='h3'><u>Hours</u><Icon name='time' size='small'></Icon><br/><span id='mahiHours'>{hours} hours</span></Card.Meta>
+          <Card.Meta as='h3'id='mahiAssigner'><u>Needed by</u><br/><span>{assignerName}</span></Card.Meta>
           <Card.Description id='mahiDescription'>
             {description}
           </Card.Description>

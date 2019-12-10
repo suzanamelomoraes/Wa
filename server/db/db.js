@@ -79,7 +79,7 @@ function selectTask (id, assignee, db = connection) {
     .where('id', id)
     .update({
       assignee: assignee,
-      status: 'in progress'
+      status: 'In progress'
     })
     .then(() => getTask(id, db))
 }
@@ -89,7 +89,7 @@ function deselectTask (id, db = connection) {
     .where('id', id)
     .update({
       assignee: null,
-      status: 'open'
+      status: 'Open'
     })
     .then(() => getTask(id, db))
 }
@@ -98,7 +98,7 @@ function completeTask (id, assignerId, assigneeId, time, db = connection) {
   return db('tasks')
     .where('id', id)
     .update({
-      status: 'completed',
+      status: 'Completed',
       assigner: null
     })
     .then(() => {
