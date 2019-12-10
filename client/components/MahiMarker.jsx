@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { Icon, Popup, Button } from 'semantic-ui-react'
 import MahiPopUp from './MahiPopup'
 
+import { IfAuthenticated } from './Authenticated'
+
 import { selectTask } from '../api/tasks'
 import { changeActiveTask, getTasks } from '../actions/tasks'
 
@@ -37,15 +39,17 @@ export class MahiMarker extends Component {
         }
       >
         <MahiPopUp details={this.props} closePopup={changeActiveTask}/>
-        <Button
-          positive
-          icon='smile outline'
-          labelPosition='right'
-          content='Help out!'
-          floated='right'
-          style={{ marginTop: '1em' }}
-          onClick={this.handleClick}
-        />
+        <IfAuthenticated>
+          <Button
+            positive
+            icon='smile outline'
+            labelPosition='right'
+            content='Help out!'
+            floated='right'
+            style={{ marginTop: '1em' }}
+            onClick={this.handleClick}
+          />
+        </IfAuthenticated>
       </Popup>
     )
   }
