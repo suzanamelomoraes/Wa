@@ -22,7 +22,9 @@ export function getUser () {
     dispatch(getUserPending())
 
     return api.getUser()
-      .then(offerings => dispatch(getUserSuccess(offerings)))
+      .then(user => {
+			 return dispatch(getUserSuccess(user))
+      })
       .catch(err => dispatch(setError(err.message)))
   }
 }

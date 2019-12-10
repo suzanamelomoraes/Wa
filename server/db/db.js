@@ -125,23 +125,23 @@ function addTask (
   { assignerId, title, description, status, hours },
   db = connection
 ) {
-
-  db('users')
+  return db('users')
     .where('id', assignerId)
     .decrement({
       balance: hours
     })
-
-  return db('tasks')
-    .insert({
-      cat_id: categoryId,
-      assigner: assignerId,
-      name: title,
-      description,
-      status,
-      time: hours
-    })
-    .then(() => getTasks(db))
+    .then(() =>
+      db('tasks')
+        .insert({
+          cat_id: categoryId,
+          assigner: assignerId,
+          name: title,
+          description,
+          status,
+          time: hours
+        })
+        .then(() => getTasks(db))
+    )
 }
 
 function getUsers (db = connection) {
