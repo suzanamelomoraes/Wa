@@ -8,6 +8,7 @@ import Profile from './Profile'
 import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
 import VolunteeringList from './VolunteeringList'
+import Error from './Error'
 
 import { getOfferings, getVolunteering } from '../actions/tasks'
 
@@ -33,23 +34,29 @@ export class Dashboard extends Component {
     const { isLoaded, user } = this.state
 
     if (!isLoaded || !user) return null
-      return (
-        <div>
-          <Grid stackable={true} columns={3}>
-            <Grid.Column width={5}>
-              <Profile />
-            </Grid.Column>
-            <Grid.Column width={5}>
-              <OfferingList />
-            </Grid.Column>
-            <Grid.Column width={5}>
-              <VolunteeringList />
-            </Grid.Column>
-          </Grid>
+    return (
+      <div>
 
-          <AddMahi id={user.id} balance={user.balance} />
-        </div>
-      )
+        {this.props.error
+          ? <Error />
+          : <>
+        <Grid stackable={true} columns={3}>
+          <Grid.Column width={5}>
+            <Profile />
+          </Grid.Column>
+          <Grid.Column width={5}>
+            <OfferingList />
+          </Grid.Column>
+          <Grid.Column width={5}>
+            <VolunteeringList />
+          </Grid.Column>
+        </Grid>
+
+        <AddMahi id={user.id} balance={user.balance} />
+        </>
+        }
+      </div>
+    )
   }
 }
 
@@ -63,7 +70,8 @@ const mapStateToProps = state => {
   return {
     user: state.user,
     offerings: state.offerings,
-    volunteering: state.volunteering
+    volunteering: state.volunteering,
+    error: state.error
   }
 }
 
