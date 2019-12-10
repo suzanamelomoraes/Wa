@@ -39,18 +39,20 @@ export class NavBar extends Component {
           <IfAuthenticated>
             <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
           </IfAuthenticated>
-          <Menu.Item style = {{ marginLeft: '1000px'}}>
+          {/* <Menu.Item style = {{ marginLeft: '1100px'}}> */}
             <IfNotAuthenticated>
+            <Menu.Item style = {{ marginLeft: '1200px'}}>
               <Menu.Item as={Link} to='./register'>Register</Menu.Item>
               <Menu.Item as={Link} to='/signin'>Sign In</Menu.Item>
+              </Menu.Item>
             </IfNotAuthenticated>
+            <Menu.Item style = {{ marginLeft: '1100px'}}>
             <IfAuthenticated>
               <Menu.Item> Balance <br/>{user.balance} Hours</Menu.Item>
                  <Image style={{  width: '8%', height: '70%' }} src={user.image}/> 
               <Menu.Item as={Link} onClick={this.logOff} to='#'>Sign Out</Menu.Item>
             </IfAuthenticated>
-          </Menu.Item>
-
+            </Menu.Item>
         </Container>
       </Menu>
     </>
