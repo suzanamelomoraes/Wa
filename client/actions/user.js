@@ -17,11 +17,11 @@ export function getUserSuccess (user) {
   }
 }
 
-export function getUser (id) {
+export function getUser () {
   return dispatch => {
     dispatch(getUserPending())
 
-    return api.getUser(id)
+    return api.getUser()
       .then(offerings => dispatch(getUserSuccess(offerings)))
       .catch(err => dispatch(setError(err.message)))
   }

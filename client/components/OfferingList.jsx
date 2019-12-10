@@ -2,15 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Segment, Grid, Header, Icon, Card, Divider } from 'semantic-ui-react'
 
-import { getOfferings } from '../actions/tasks'
-
 import OfferingMahi from './OfferingMahi'
 
 export class OfferingList extends Component {
-  componentDidMount () {
-    this.props.getOfferings()
-  }
-
   render () {
     const { offerings } = this.props
     return (
@@ -78,11 +72,9 @@ export class OfferingList extends Component {
 
 const mapStatetoProps = (state) => {
   return {
-    offerings: state.offerings
+    offerings: state.offerings,
+    user: state.user
   }
 }
 
-const mapDispatchToProps = {
-  getOfferings
-}
-export default connect(mapStatetoProps, mapDispatchToProps)(OfferingList)
+export default connect(mapStatetoProps)(OfferingList)

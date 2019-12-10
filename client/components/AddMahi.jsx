@@ -37,7 +37,7 @@ export class AddMahi extends Component {
       description: '',
       modalVisible: false
     })
-  };
+  }
 
   handleSubmit = () => {
     this.setState({
@@ -51,20 +51,20 @@ export class AddMahi extends Component {
       hours,
       description
     })
-      .then(this.props.getOfferings())
-  };
+      .then(() => this.props.getOfferings())
+  }
 
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     })
-  };
+  }
 
   viewModal = () => {
     this.setState({
       modalVisible: true
     })
-  };
+  }
 
   handleSelect = (e, data) => {
     const { categories } = this.props
@@ -75,7 +75,7 @@ export class AddMahi extends Component {
     this.setState({
       category: category.id
     })
-  };
+  }
 
   render () {
     const { modalVisible } = this.state

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 import { selectTask } from '../api/tasks'
@@ -13,12 +14,12 @@ export class SelectMahi extends Component {
     const { closeModal, getTasks, showNotification } = this.props
 
     selectTask(taskId)
-    getTasks()
-    showNotification('This Mahi has been added to your dashboard')
-    closeModal()
+      .then(() => getTasks())
+      .then(() => showNotification('This Mahi has been added to your dashboard'))
+      .then(() => closeModal())
   }
 
-  render() {
+  render () {
     const { details, closeModal } = this.props
 
     return (
