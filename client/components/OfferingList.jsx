@@ -9,7 +9,7 @@ export class OfferingList extends Component {
     const { offerings } = this.props
     return (
       <Segment style={{ marginTop: 100 }}>
-        {offerings
+        {offerings.length
           ? <React.Fragment>
             <Header as='h3'>
               <Icon name='tasks'/>

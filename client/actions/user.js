@@ -23,7 +23,7 @@ export function getUser () {
 
     return api.getUser()
       .then(user => {
-			 return dispatch(getUserSuccess(user))
+        return dispatch(getUserSuccess(user))
       })
       .catch(err => dispatch(setError(err.message)))
   }

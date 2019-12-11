@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Menu, Image } from 'semantic-ui-react'
+import { Header, Menu, Image } from 'semantic-ui-react'
 import { logOff } from 'authenticare/client'
 import { connect } from 'react-redux'
 import { getUser } from '../actions/user'
@@ -9,7 +9,9 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 export class NavBar extends Component {
   componentDidMount () {
-    this.props.getUser()
+    if (this.props.user.length !== 0) {
+      return this.props.getUser()
+    }
   }
 
   logOff = () => {

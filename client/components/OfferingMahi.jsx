@@ -76,7 +76,7 @@ function shortenText (longText) {
 
 const mapStateToProps = state => {
   return ({
-    categories: state.categories,
+    categories: state.categories
 
   })
 }
