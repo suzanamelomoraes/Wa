@@ -8,30 +8,27 @@ import { getOfferings } from '../actions/tasks'
 import { getUser } from '../actions/user'
 import { deleteMahi } from '../api/tasks'
 
-export class SelectOfferingMahi extends Component {
-_isMounted = false
-constructor (props) {
-  super(props)
-  this.state = {
+class SelectOfferingMahi extends Component {
+  state = {
     showModal: false
   }
-}
-componentDidMount () {
-  this._isMounted = true
-}
 
-  toggleModal =() => {
+  hideModal = () => {
     this.setState({ showModal: false })
   }
 
+  showModal = () => {
+    this.setState({ showModal: true })
+  }
+
   handleClick = () => {
-    if (this._isMounted === true) {
-      const { id, assignerId, hours } = this.props.data
-      deleteMahi({ id, assignerId, hours })
-        .then(() => this.props.getUser())
-        .then(() => this.props.getOfferings())
-        .then(() => this.toggleModal())
-    }
+    const { id, assignerId, hours } = this.props.data
+    const { getUser, getOfferings } = this.props
+
+    deleteMahi({ id, assignerId, hours })
+      .then(getUser)
+      .then(this.hideModal)
+      .then(getOfferings)
   }
 
   render () {
@@ -39,7 +36,7 @@ componentDidMount () {
     return (
       <Modal open={this.state.showModal} centered={true} trigger={
         <Button color="green" basic floated='left'
-          id="one" data-test="firstBtn" onClick={() => this.setState({ showModal: true })}>View Details</Button>
+          id="one" data-test="firstBtn" onClick={this.showModal}>View Details</Button>
       }>
 
         <Modal.Header>{categoryName}</Modal.Header>
@@ -57,13 +54,13 @@ componentDidMount () {
             basic
             color ="red"
             content="Delete"
-            onClick={() => this.handleClick()}>
+            onClick={this.handleClick}>
           </Button>
           <Button
             basic
             color ="green"
             content="Close"
-            onClick={() => this.toggleModal()}>
+            onClick={this.hideModal}>
           </Button>
         </Modal.Actions>
       </Modal>
