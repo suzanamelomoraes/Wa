@@ -104,21 +104,14 @@ function completeTask (id, assignerId, assigneeId, time, db = connection) {
       status: 'Completed',
       assigner: null
     })
-    // .then(() => {
-    //   return db('users')
-    //     .where('id', assignerId)
-    //     .decrement({
-    //       balance: time
-    //     })
-    // })
     .then(() => {
       return db('users')
         .where('id', assigneeId)
         .increment({
           balance: time
         })
+        .then(() => getTask(id, db))
     })
-    .then(() => getTask(id, db))
 }
 
 function addTask (
@@ -131,8 +124,8 @@ function addTask (
     .decrement({
       balance: hours
     })
-    .then(() =>
-      db('tasks')
+    .then(() => {
+      return db('tasks')
         .insert({
           cat_id: categoryId,
           assigner: assignerId,
@@ -142,7 +135,21 @@ function addTask (
           time: hours
         })
         .then(() => getTasks(db))
-    )
+    })
+}
+
+function deleteTask ({ id, assignerId, hours }, db = connection) {
+  return db('users')
+    .where('id', assignerId)
+    .increment({
+      balance: hours
+    })
+    .then(() => {
+      return db('tasks')
+        .where('id', id)
+        .del()
+        .then(() => getTasks(db))
+    })
 }
 
 function getUsers (db = connection) {
@@ -166,5 +173,6 @@ module.exports = {
   getTaskByAssignee,
   getTaskByAssigner,
   getUserById,
-  deselectTask
+  deselectTask,
+  deleteTask
 }
