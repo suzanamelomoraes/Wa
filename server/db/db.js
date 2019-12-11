@@ -72,6 +72,7 @@ function getTaskByAssignee (id, db = connection) {
       'users.name as assignerName',
       'users.mobile as assignerMobile',
       'users.email as assignerEmail',
+      'users.image as assignerImage',
       'categories.name as category'
     )
 }
