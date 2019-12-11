@@ -28,7 +28,7 @@ export class MahiSummary extends Component {
     runMapActions(center, taskId)
   }
 
-  render() {
+  render () {
     const {
       taskId,
       title,

@@ -20,7 +20,7 @@ export class SelectMahi extends Component {
   }
 
   render () {
-    const { details, closeModal } = this.props
+    const { details, closeModal, userId } = this.props
 
     return (
       <>
@@ -50,17 +50,27 @@ export class SelectMahi extends Component {
           />
 
           <IfAuthenticated>
-            <Button
-              positive
-              icon='smile outline'
-              labelPosition='right'
-              content='Help out!'
-              onClick={this.handleClick}
-            />
+            {(userId === details.assignerId)
+              ? <p>You created this mahi</p>
+              : <Button
+                positive
+                icon='smile outline'
+                labelPosition='right'
+                content='Help out!'
+                onClick={this.handleClick}
+              />
+            }
+
           </IfAuthenticated>
         </Modal.Actions>
       </>
     )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    userId: state.user.id
   }
 }
 
@@ -69,4 +79,4 @@ const mapDispatchToProps = {
   showNotification
 }
 
-export default connect(null, mapDispatchToProps)(SelectMahi)
+export default connect(mapStateToProps, mapDispatchToProps)(SelectMahi)

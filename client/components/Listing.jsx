@@ -6,8 +6,10 @@ import MahiSummary from './MahiSummary'
 import Map from './Map'
 import MahiMarker from './MahiMarker'
 import Notification from './Notification'
+import Loading from './Loading'
 
 import { setError } from '../actions/error'
+import { getUser } from '../actions/user'
 import { changeActiveTask, getTasks } from '../actions/tasks'
 
 const MapToggleButton = ({ text, onClick }) => (
@@ -33,7 +35,8 @@ export class Listing extends Component {
   }
 
   componentDidMount () {
-    this.props.getTasks()
+    this.props.getUser()
+      .then(() => this.props.getTasks())
       .then(() => this.props.changeActiveTask(null))
   }
 
@@ -73,6 +76,7 @@ export class Listing extends Component {
         <Divider />
 
         <Grid>
+          <Loading />
           <Grid.Column
             width={mapVisible ? 8 : 16}
             style={{
@@ -130,7 +134,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   setError,
   changeActiveTask,
-  getTasks
+  getTasks,
+  getUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listing)
