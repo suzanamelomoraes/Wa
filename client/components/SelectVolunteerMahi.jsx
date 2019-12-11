@@ -10,6 +10,7 @@ export class SelectVolunteerMahi extends Component {
   handleClick = () => {
     this.setState({ showModal: false })
   }
+
   render () {
     const { title, assignerName, category, hours, description, assignerMobile, assignerEmail } = this.props.data
 

@@ -12,6 +12,7 @@ export class SelectOfferingMahi extends Component {
   handleClick = () => {
     this.setState({ showModal: false })
   }
+
   render () {
     const { title, categoryName, hours, description } = this.props.data
     return (
