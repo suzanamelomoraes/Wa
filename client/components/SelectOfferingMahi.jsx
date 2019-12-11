@@ -4,20 +4,39 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 import { connect } from 'react-redux'
 
-export class SelectOfferingMahi extends Component {
+import { getOfferings } from '../actions/tasks'
+import { getUser } from '../actions/user'
+import { deleteMahi } from '../api/tasks'
+
+class SelectOfferingMahi extends Component {
   state = {
     showModal: false
   }
 
-  handleClick = () => {
+  hideModal = () => {
     this.setState({ showModal: false })
   }
+
+  showModal = () => {
+    this.setState({ showModal: true })
+  }
+
+  handleClick = () => {
+    const { id, assignerId, hours } = this.props.data
+    const { getUser, getOfferings } = this.props
+
+    deleteMahi({ id, assignerId, hours })
+      .then(getUser)
+      .then(this.hideModal)
+      .then(getOfferings)
+  }
+
   render () {
     const { title, categoryName, hours, description } = this.props.data
     return (
       <Modal open={this.state.showModal} centered={true} trigger={
         <Button color="green" basic floated='left'
-          id="one" data-test="firstBtn" onClick={() => this.setState({ showModal: true })}>View Details</Button>
+          id="one" data-test="firstBtn" onClick={this.showModal}>View Details</Button>
       }>
 
         <Modal.Header>{categoryName}</Modal.Header>
@@ -33,9 +52,15 @@ export class SelectOfferingMahi extends Component {
         <Modal.Actions>
           <Button
             basic
+            color ="red"
+            content="Delete"
+            onClick={this.handleClick}>
+          </Button>
+          <Button
+            basic
             color ="green"
             content="Close"
-            onClick={this.handleClick}>
+            onClick={this.hideModal}>
           </Button>
         </Modal.Actions>
       </Modal>
@@ -49,4 +74,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(SelectOfferingMahi)
+const mapDispatchToProps = {
+  getOfferings,
+  getUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectOfferingMahi)

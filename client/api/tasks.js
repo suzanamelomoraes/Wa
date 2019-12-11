@@ -60,3 +60,15 @@ export function deselectTask (id) {
       throw new Error(err.message)
     })
 }
+
+export function deleteMahi (mahi) {
+  return request
+    .delete(apiURL)
+    .set({ Accept: 'application/json' })
+    .set({ Authorization: `Bearer ${getEncodedToken()}` })
+    .send(mahi)
+    .then(res => res.body)
+    .catch(err => {
+      throw new Error(err.message)
+    })
+}
