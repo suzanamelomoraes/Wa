@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
+import { Card, Image, Icon } from 'semantic-ui-react'
 import CompleteMahi from './CompleteMahi'
+import Loading from './Loading'
 import SelectOfferingMahi from './SelectOfferingMahi'
 import { connect } from 'react-redux'
 import { getUserById } from '../api/users'
@@ -10,8 +11,10 @@ export class OfferingMahi extends Component {
   state = {
     assigneeName: ''
   }
+
   componentDidMount () {
     const { assignee } = this.props.data
+
     getUserById(assignee).then(user => {
       if (user) {
         const assigneeName = user.name
@@ -23,14 +26,13 @@ export class OfferingMahi extends Component {
   }
 
   render () {
-    const { title, status, assigner, assignee, assignerId, categoryId, hours, id, description } = this.props.data
+    const { title, status, assignee, assignerId, categoryId, hours, id, description } = this.props.data
     const assigneeId = assignee
     const taskId = id
     const assigneeName = this.state.assigneeName
 
     const shortDescription = shortenText(description)
 
-    // Sets categoryName to '' if haven't received this.props.categories. Else set categoryName to a category name
     let categoryName = ''
     if (this.props.categories && this.props.categories.length > 0) {
       const category = this.props.categories.find(category => category.id === categoryId)
@@ -39,6 +41,7 @@ export class OfferingMahi extends Component {
 
     return (
       <>
+        <Loading />
         <Card>
           <Card.Content size="huge">
             <Image src="/images/avatar01.png" size="small" floated="right" ></Image>
@@ -73,7 +76,8 @@ function shortenText (longText) {
 
 const mapStateToProps = state => {
   return ({
-    categories: state.categories
+    categories: state.categories,
+
   })
 }
 

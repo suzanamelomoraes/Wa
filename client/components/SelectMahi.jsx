@@ -20,7 +20,7 @@ export class SelectMahi extends Component {
   }
 
   render () {
-    const { details, closeModal, assignerId, userId } = this.props
+    const { details, closeModal } = this.props
 
     return (
       <>
