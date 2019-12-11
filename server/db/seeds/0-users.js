@@ -291,7 +291,7 @@ exports.seed = function(knex) {
           address: "424 Khyber Pass Road, Newmarket, 0600",
           latitude: -36.86723,
           longitude: 174.77686,
-          image: "/images/users/24Phonenix.png"
+          image: "/images/users/24Phoenix.png"
         },
         {
           id: 25,
