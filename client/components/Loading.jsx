@@ -6,7 +6,7 @@ export class Loading extends React.Component {
   render () {
     return (
     <>
-      {this.props.load && <Loader active />}
+      {this.props.load && <Loader active> loading  </Loader>}
     </>
     )
   }
