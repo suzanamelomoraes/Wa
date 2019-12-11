@@ -28,6 +28,12 @@ router.put('/', getTokenDecoder(), (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
+router.delete('/', getTokenDecoder(), (req, res) => {
+  db.deleteTask(req.body)
+    .then(tasks => res.json(tasks))
+    .catch(() => sendGenericErrorMessage(res))
+})
+
 // move these routes to users
 router.get('/assigner', getTokenDecoder(), (req, res) => {
   const id = Number(req.user.id)

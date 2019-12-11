@@ -4,14 +4,34 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 import { connect } from 'react-redux'
 
+import { getOfferings } from '../actions/tasks'
+import { getUser } from '../actions/user'
+import { deleteMahi } from '../api/tasks'
+
 export class SelectOfferingMahi extends Component {
-  state = {
-    showModal: false
+  constructor (props) {
+    super(props)
+    this.state = {
+      showModal: false
+    }
+    this.toggleModal = this.toggleModal.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick = () => {
+  toggleModal () {
+    this._isMounted = true
     this.setState({ showModal: false })
   }
+
+  handleClick () {
+    this._isMounted = true
+    const { id, assignerId, hours } = this.props.data
+    deleteMahi({ id, assignerId, hours })
+      .then(() => this.props.getUser())
+      .then(() => this.props.getOfferings())
+      .then(() => this.toggleModal())
+  }
+
   render () {
     const { title, categoryName, hours, description } = this.props.data
     return (
@@ -33,9 +53,15 @@ export class SelectOfferingMahi extends Component {
         <Modal.Actions>
           <Button
             basic
+            color ="red"
+            content="Delete"
+            onClick={this.handleClick}>
+          </Button>
+          <Button
+            basic
             color ="green"
             content="Close"
-            onClick={this.handleClick}>
+            onClick={this.toggleModal}>
           </Button>
         </Modal.Actions>
       </Modal>
@@ -49,4 +75,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(SelectOfferingMahi)
+const mapDispatchToProps = {
+  getOfferings,
+  getUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectOfferingMahi)

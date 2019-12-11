@@ -103,13 +103,6 @@ function completeTask (id, assignerId, assigneeId, time, db = connection) {
       status: 'Completed',
       assigner: null
     })
-    // .then(() => {
-    //   return db('users')
-    //     .where('id', assignerId)
-    //     .decrement({
-    //       balance: time
-    //     })
-    // })
     .then(() => {
       return db('users')
         .where('id', assigneeId)
@@ -125,7 +118,6 @@ function addTask (
   { assignerId, title, description, status, hours },
   db = connection
 ) {
-
   db('users')
     .where('id', assignerId)
     .decrement({
@@ -141,6 +133,19 @@ function addTask (
       status,
       time: hours
     })
+    .then(() => getTasks(db))
+}
+
+function deleteTask ({ id, assignerId, hours }, db = connection) {
+  db('users')
+    .where('id', assignerId)
+    .increment({
+      balance: hours
+    })
+
+  return db('tasks')
+    .where('id', id)
+    .del()
     .then(() => getTasks(db))
 }
 
@@ -165,5 +170,6 @@ module.exports = {
   getTaskByAssignee,
   getTaskByAssigner,
   getUserById,
-  deselectTask
+  deselectTask,
+  deleteTask
 }
