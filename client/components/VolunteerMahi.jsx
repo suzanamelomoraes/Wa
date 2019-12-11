@@ -7,10 +7,6 @@ import DeselectUser from './DeselectUser'
 import Loading from './Loading'
 
 export class VolunteerMahi extends Component {
-  componentDidMount () {
-    this.props.getUser()
-  }
-
   render () {
     const { title, status, assignerName, category, hours, description } = this.props.data
 

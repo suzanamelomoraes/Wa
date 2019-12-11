@@ -60,7 +60,6 @@ export class SelectMahi extends Component {
                 onClick={this.handleClick}
               />
             }
-
           </IfAuthenticated>
         </Modal.Actions>
       </>
