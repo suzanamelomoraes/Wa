@@ -33,7 +33,6 @@ export class Dashboard extends Component {
 
   render () {
     const { isLoaded, user } = this.state
-
     if (!isLoaded || !user) return <Error/>
     return (
       <div>
@@ -53,7 +52,7 @@ export class Dashboard extends Component {
           </Grid.Column>
         </Grid>
 
-        <AddMahi id={user.id} balance={user.balance} />
+        <AddMahi id={user.id} />
         </>
           )
         }

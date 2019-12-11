@@ -87,7 +87,7 @@ export class AddMahi extends Component {
       text: category.name
     }))
 
-    const balance = this.props.balance
+    const balance = this.props.user.balance
 
     return (
       <Modal
@@ -196,7 +196,8 @@ export class AddMahi extends Component {
 
 const mapStateToProps = state => {
   return {
-    categories: state.categories
+    categories: state.categories,
+    user: state.user
   }
 }
 const matchDispatchToProps = {
