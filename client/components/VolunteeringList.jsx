@@ -9,7 +9,7 @@ export class VolunteeringList extends React.Component {
     const { volunteering } = this.props
     return (
       <Segment style={{ marginTop: 100 }}>
-        {volunteering
+        {volunteering.length
           ? <React.Fragment>
             <Header as='h3'>
               <Icon name='calendar alternate outline'/>
