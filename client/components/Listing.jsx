@@ -16,7 +16,7 @@ const MapToggleButton = ({ text, onClick }) => (
     size='huge'
     color='olive'
     onClick={onClick}
-    style={{ marginTop: 40, marginRight: 25 }}
+    style={{ marginTop: 50, marginRight: 25 }}
   >
     <Button.Content hidden style={{ fontSize: '0.8em' }}>
       {text}
