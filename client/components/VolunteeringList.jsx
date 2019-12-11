@@ -8,8 +8,8 @@ export class VolunteeringList extends React.Component {
   render () {
     const { volunteering } = this.props
     return (
-      <Segment style={{ marginTop: 75 }}>
-        {volunteering.length
+      <Segment style={{ marginTop: 100 }}>
+        {volunteering
           ? <React.Fragment>
             <Header as='h3'>
               <Icon name='calendar alternate outline'/>
