@@ -7,7 +7,7 @@ export class Notification extends Component {
     return (
       <>
         {this.props.notification ? (
-          <Message positive size='large' style={{ marginLeft: 25, marginTop: 40, height: 50 }}>
+          <Message positive size='large' style={{ marginLeft: 25, marginTop: 50, height: 50 }}>
             <Message.Header>{this.props.notification}</Message.Header>
           </Message>
         ) : null}

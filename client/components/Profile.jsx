@@ -6,7 +6,7 @@ import { Card, Icon, Image, Table, Header, Segment } from 'semantic-ui-react'
 import TimeCurrency from './TimeCurrency'
 
 export class Profile extends Component {
-  
+
   render () {
     const { name, image, about, mobile, email, address, balance } = this.props.user
     const hold = this.props.offerings.reduce((a, { hours: b }) => (a + b), 0)

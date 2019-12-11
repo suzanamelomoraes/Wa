@@ -9,6 +9,9 @@ import Notification from './Notification'
 import Error from './Error'
 import Loading from './Loading'
 
+// import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+
+import { setError } from '../actions/error'
 import { getUser } from '../actions/user'
 import { changeActiveTask, getTasks } from '../actions/tasks'
 
@@ -35,8 +38,7 @@ export class Listing extends Component {
   }
 
   componentDidMount () {
-    this.props.getUser()
-      .then(() => this.props.getTasks())
+    this.props.getTasks()
       .then(() => this.props.changeActiveTask(null))
   }
 
@@ -140,8 +142,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   changeActiveTask,
-  getTasks,
-  getUser
+  getTasks
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listing)

@@ -14,9 +14,9 @@ export class SelectMahi extends Component {
     const { closeModal, getTasks, showNotification } = this.props
 
     selectTask(taskId)
-      .then(() => getTasks())
-      .then(() => showNotification('This Mahi has been added to your dashboard'))
       .then(() => closeModal())
+      .then(() => showNotification('This Mahi has been added to your dashboard'))
+      .then(() => getTasks())
   }
 
   render () {
@@ -60,7 +60,6 @@ export class SelectMahi extends Component {
                 onClick={this.handleClick}
               />
             }
-
           </IfAuthenticated>
         </Modal.Actions>
       </>
