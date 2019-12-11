@@ -25,7 +25,7 @@ export class VolunteerMahi extends Component {
             <Card.Description>{shortDescription}</Card.Description>
           </Card.Content>
           <Card.Content>
-            <SelectVolunteerMahi data={this.props.data}/>
+            <SelectVolunteerMahi data={{ ...this.props.data, assignerImage }}/>
             <DeselectUser id={this.props.data.id}/>
           </Card.Content>
         </Card>

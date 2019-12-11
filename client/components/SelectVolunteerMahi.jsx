@@ -12,7 +12,7 @@ export class SelectVolunteerMahi extends Component {
   }
 
   render () {
-    const { title, assignerName, category, hours, description, assignerMobile, assignerEmail } = this.props.data
+    const { title, assignerName, category, hours, description, assignerMobile, assignerEmail,assignerImage } = this.props.data
 
     return (
       <Modal open={this.state.showModal} centered={true} trigger={
@@ -22,7 +22,7 @@ export class SelectVolunteerMahi extends Component {
 
         <Modal.Header>{category}</Modal.Header>
         <Modal.Content image>
-          <Image wrapped size='medium' src='/images/avatar01.png' />
+          <Image wrapped size='medium' src={assignerImage} />
           <Modal.Description>
             <Header as='h1' icon>{title}</Header>
 
