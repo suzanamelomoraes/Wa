@@ -37,16 +37,16 @@ function getUserById (id, db = connection) {
     .first()
 }
 
-function updateUserDetails (id, details, geocode, db = connection) {
+function updateUserDetails (id, email, mobile, addressDetails, db = connection) {
   return db('users')
     .where('id', id)
     .update({
-      email: details.email,
-      mobile: details.mobile,
+      email: email,
+      mobile: mobile,
       balance: 5,
-      address: details.street + ', ' + details.suburb + ', ' + details.city + ' New Zealand',
-      latitude: geocode.lat,
-      longitude: geocode.lng,
+      address: addressDetails.address,
+      latitude: addressDetails.geolocation.lat,
+      longitude: addressDetails.geolocation.lng,
       image: '/images/avatar01.png'
     })
     .then(getUserById(id, db))

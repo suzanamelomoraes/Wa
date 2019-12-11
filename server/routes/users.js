@@ -31,9 +31,9 @@ router.get('/:id', getTokenDecoder(), (req, res) => {
 
 router.post('/', decodeToken, (req, res) => {
   const id = Number(req.user.id)
-  const { details, geocode } = req.body
+  const { addressDetails, mobile, email } = req.body
 
-  return dbUser.updateUserDetails(id, details, geocode)
+  return dbUser.updateUserDetails(id, email, mobile, addressDetails)
     .then(user => res.json(user))
     .catch(() => sendGenericErrorMessage(res))
 })
