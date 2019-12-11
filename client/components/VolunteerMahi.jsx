@@ -8,8 +8,7 @@ import Loading from './Loading'
 
 export class VolunteerMahi extends Component {
   render () {
-    const { title, status, assignerName, category, hours, description } = this.props.data
-
+    const { title, status, assignerName, category, hours, description, assignerImage } = this.props.data
     const shortDescription = shortenText(description)
 
     return (
@@ -17,7 +16,7 @@ export class VolunteerMahi extends Component {
         <Loading />
         <Card>
           <Card.Content size="huge">
-            <Image src="/images/avatar01.png" size="small" floated="right" ></Image>
+            <Image src={assignerImage} size="small" floated="right" ></Image>
             <Card.Header as='h1'>{title}</Card.Header>
             <Card.Meta as="h3"><u>Assigner</u> <Icon name="user" size="small"></Icon><br/>{assignerName}</Card.Meta>
             <Card.Meta as="h3"><u>Status</u> <Icon name="spinner" size="small"></Icon><br/>{status}</Card.Meta>
