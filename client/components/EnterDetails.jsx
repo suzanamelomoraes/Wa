@@ -42,8 +42,8 @@ const suburbs = [
   { id: 36, suburb: 'Sandringham' },
   { id: 39, suburb: 'Stonefields' },
   { id: 38, suburb: 'Three Kings' },
-  { id: 39, suburb: 'Waterview' },
-  { id: 40, suburb: 'Western Springs' }
+  { id: 40, suburb: 'Western Springs' },
+  { id: 41, suburb: 'Waterview' }
 ]
 
 export class Registration extends Component {

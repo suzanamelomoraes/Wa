@@ -1,11 +1,11 @@
-import { SET_NOTIFICATION } from "../actions/notification";
+import { SET_NOTIFICATION } from '../actions/notification'
 
-export default function notification(state = null, action) {
+export default function notification (state = null, action) {
   switch (action.type) {
     case SET_NOTIFICATION:
-      return action.message;
+      return action.message
 
     default:
-      return state;
+      return state
   }
 }

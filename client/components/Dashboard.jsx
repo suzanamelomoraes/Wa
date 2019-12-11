@@ -8,13 +8,15 @@ import Profile from './Profile'
 import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
 import VolunteeringList from './VolunteeringList'
+import Error from './Error'
+import Loading from './Loading'
 
 import { getOfferings, getVolunteering } from '../actions/tasks'
 
 export class Dashboard extends Component {
   state = {
     isLoaded: false,
-    user: null
+    user: {}
   }
 
   componentDidMount () {
@@ -32,9 +34,13 @@ export class Dashboard extends Component {
   render () {
     const { isLoaded, user } = this.state
 
-    if (!isLoaded || !user) return null
+    if (!isLoaded || !user) return <Error/>
     return (
       <div>
+        <Loading />
+        {this.props.error
+          ? <Error />
+          : (<>
         <Grid stackable={true} columns={3}>
           <Grid.Column width={5}>
             <Profile />
@@ -48,6 +54,9 @@ export class Dashboard extends Component {
         </Grid>
 
         <AddMahi id={user.id} balance={user.balance} />
+        </>
+          )
+        }
       </div>
     )
   }
@@ -63,7 +72,9 @@ const mapStateToProps = state => {
   return {
     user: state.user,
     offerings: state.offerings,
-    volunteering: state.volunteering
+    volunteering: state.volunteering,
+    error: state.error,
+    load: state.pending
   }
 }
 
