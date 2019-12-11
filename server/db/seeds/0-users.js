@@ -15,7 +15,7 @@ exports.seed = function(knex) {
           address: "12 Morgan Street, Newmarket, 0600",
           latitude: -36.8645,
           longitude: 174.77673,
-          image: "/images/avatar01.png"
+          image: "/images/users/1Don.png"
         },
         {
           id: 2,
@@ -27,7 +27,7 @@ exports.seed = function(knex) {
           address: "1 George Street, Newmarket, 0600",
           latitude: -36.8644,
           longitude: 174.77502,
-          image: "/images/avatar01.png"
+          image: "/images/users/2Bryce.png"
         },
         {
           id: 3,
@@ -39,7 +39,7 @@ exports.seed = function(knex) {
           address: "98 Carlton Gore Road, Newmarket, 0600",
           latitude: -36.8649,
           longitude: 174.77572,
-          image: "/images/avatar01.png"
+          image: "/images/users/3Emily.png"
         },
         {
           id: 4,
@@ -51,7 +51,7 @@ exports.seed = function(knex) {
           address: "424 Khyber Pass Road, Newmarket, 0600",
           latitude: -36.86723,
           longitude: 174.77686,
-          image: "/images/avatar01.png"
+          image: "/images/users/4Jess.png"
         },
         {
           id: 5,
@@ -63,7 +63,7 @@ exports.seed = function(knex) {
           address: "40 Gillies Avenue, Epsom, Auckland 1023",
           latitude: -36.87165,
           longitude: 174.77458,
-          image: "/images/avatar01.png"
+          image: "/images/users/5Piha.png"
         },
         {
           id: 6,
@@ -75,7 +75,7 @@ exports.seed = function(knex) {
           address: "Puhi Huia Road, Mount Eden, Auckland 1024",
           latitude: -36.87601,
           longitude: 174.76431,
-          image: "/images/avatar01.png"
+          image: "/images/users/6Andria.png"
         },
         {
           id: 7,
@@ -87,7 +87,7 @@ exports.seed = function(knex) {
           address: "217 Green Lane West, Greenlane, Epsom, Auckland 105124",
           latitude: -36.89282,
           longitude: 174.78202,
-          image: "/images/avatar01.png"
+          image: "/images/users/7Jeya.png"
         },
         {
           id: 8,
@@ -99,7 +99,7 @@ exports.seed = function(knex) {
           address: "1 Kauri Glen Road, Northcote, Auckland 0627",
           latitude: -36.80966,
           longitude: 174.73372,
-          image: "/images/avatar01.png"
+          image: "/images/users/8Marina.png"
         },
         {
           id: 9,
@@ -111,7 +111,7 @@ exports.seed = function(knex) {
           address: "5-11 Averill Avenue, Kohimarama, Auckland 1071",
           latitude: -36.85106,
           longitude: 174.84217,
-          image: "/images/avatar01.png"
+          image: "/images/users/9Sam.png"
         },
         {
           id: 10,
@@ -123,7 +123,7 @@ exports.seed = function(knex) {
           address: "340 Blockhouse Bay Road, Blockhouse Bay, Auckland 0600",
           latitude: -36.91005,
           longitude: 174.70206,
-          image: "/images/avatar01.png"
+          image: "/images/users/10Suzana.png"
         },
         {
           id: 11,
@@ -135,7 +135,7 @@ exports.seed = function(knex) {
           address: "24 Kerr Street, Devonport, Auckland 0624",
           latitude: -36.8281,
           longitude: 174.7982,
-          image: "/images/avatar01.png"
+          image: "/images/users/11Jill.png"
         },
         {
           id: 12,
@@ -147,7 +147,7 @@ exports.seed = function(knex) {
           address: "9 The Strand, Takapuna, Auckland 0622",
           latitude: -36.78741,
           longitude: 174.77434,
-          image: "/images/avatar01.png"
+          image: "/images/users/12Roman.png"
         },
         {
           id: 13,
@@ -159,7 +159,7 @@ exports.seed = function(knex) {
           address: "202 Onewa Road, Birkenhead, Auckland 0626",
           latitude: -36.81026,
           longitude: 174.73114,
-          image: "/images/avatar01.png"
+          image: "/images/users/13Adam.png"
         },
         {
           id: 14,
@@ -171,7 +171,7 @@ exports.seed = function(knex) {
           address: "348 Ponsonby Road, Ponsonby, Auckland 1011",
           latitude: -36.84745,
           longitude: 174.7439,
-          image: "/images/avatar01.png"
+          image: "/images/users/14Ash.png"
         },
         {
           id: 15,
@@ -183,7 +183,7 @@ exports.seed = function(knex) {
           address: "477 New North Road, Kingsland, Auckland 1021",
           latitude: -36.87192,
           longitude: 174.74457,
-          image: "/images/avatar01.png"
+          image: "/images/users/15Elly.png"
         },
         {
           id: 16,
@@ -195,7 +195,7 @@ exports.seed = function(knex) {
           address: "1/55 Sainsbury Road, Mount Albert, Auckland 1025",
           latitude: -36.87755,
           longitude: 174.72987,
-          image: "/images/avatar01.png"
+          image: "/images/users/16Jackie.png"
         },
         {
           id: 17,
@@ -207,7 +207,7 @@ exports.seed = function(knex) {
           address: "4 Owairaka Avenue, Mount Albert, Owairaka 1025",
           latitude: -36.89406,
           longitude: 174.72701,
-          image: "/images/avatar01.png"
+          image: "/images/users/17Peter.png"
         },
         {
           id: 18,
@@ -219,7 +219,7 @@ exports.seed = function(knex) {
           address: "150 Lansford Crescent, Avondale, Auckland 0600",
           latitude: -36.90597,
           longitude: 174.69917,
-          image: "/images/avatar01.png"
+          image: "/images/users/18Sunny.png"
         },
         {
           id: 19,
@@ -231,19 +231,19 @@ exports.seed = function(knex) {
           address: "151 Arthur Street, Onehunga, Auckland 1061",
           latitude: -36.921181,
           longitude: 174.786591,
-          image: "/images/avatar01.png"
+          image: "/images/users/19Carolyn.png"
         },
         {
           id: 20,
-          name: "Doug",
-          email: "doug@email.com",
+          name: "Dougal",
+          email: "dougal@email.com",
           mobile: 2020202,
           password: "tatooine",
           balance: 3,
           address: "434 Church Street East, Penrose, Auckland 1061",
           latitude: -36.91909,
           longitude: 174.82429,
-          image: "/images/avatar01.png"
+          image: "/images/users/20Dougal.png"
         },
         {
           id: 21,
@@ -255,31 +255,31 @@ exports.seed = function(knex) {
           address: "12 Morgan Street, Newmarket, 0600",
           latitude: -36.8645,
           longitude: 174.77673,
-          image: "/images/avatar01.png"
+          image: "/images/users/21Anita.png"
         },
         {
           id: 22,
-          name: "Ham",
-          email: "ham@email.com",
+          name: "Han",
+          email: "han@email.com",
           mobile: 0202020,
           password: "r2d2",
           balance: 3,
           address: "1 George Street, Newmarket, 0600",
           latitude: -36.8644,
           longitude: 174.77502,
-          image: "/images/avatar01.png"
+          image: "/images/users/22Han.png"
         },
         {
           id: 23,
-          name: "Sarah",
-          email: "sarah@email.com",
+          name: "Sarrah",
+          email: "sarrah@email.com",
           mobile: 2323232,
           password: "leia",
           balance: 3,
           address: "98 Carlton Gore Road, Newmarket, 0600",
           latitude: -36.8649,
           longitude: 174.77572,
-          image: "/images/avatar01.png"
+          image: "/images/users/23Sarrah.png"
         },
         {
           id: 24,
@@ -291,19 +291,19 @@ exports.seed = function(knex) {
           address: "424 Khyber Pass Road, Newmarket, 0600",
           latitude: -36.86723,
           longitude: 174.77686,
-          image: "/images/avatar01.png"
+          image: "/images/users/24Phonenix.png"
         },
         {
           id: 25,
-          name: "Kristie",
-          email: "kristie@email.com",
+          name: "Kirstie",
+          email: "kirstie@email.com",
           mobile: 2525252,
           password: "vader",
           balance: 3,
           address: "130 Point England Road, Point England, Auckland 1072",
           latitude: -36.88292,
           longitude: 174.86689,
-          image: "/images/avatar01.png"
+          image: "/images/users/25Kirstie.png"
         },
         {
           id: 26,
@@ -315,7 +315,7 @@ exports.seed = function(knex) {
           address: "172 West Tamaki Road, Glen Innes, Auckland 1072",
           latitude: -36.86987,
           longitude: 174.86399,
-          image: "/images/avatar01.png"
+          image: "/images/users/26Josh.png"
         }
       ]);
     });
