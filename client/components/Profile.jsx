@@ -1,23 +1,28 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import { Card, Icon, Image, Table, Header, Segment } from 'semantic-ui-react'
 
+import TimeCurrency from './TimeCurrency'
+
 export class Profile extends Component {
-  state = { }
+  
   render () {
-    const { name, image, about, mobile, email, address } = this.props.user
+    const { name, image, about, mobile, email, address, balance } = this.props.user
+    const hold = this.props.offerings.reduce((a, { hours: b }) => (a + b), 0)
     return (
-      <Segment compact style={{ marginTop: 75, size: 'small' }}>
+      <Segment compact style={{ marginTop: 100, size: 'small' }}>
         <Card fluid>
           <Card.Content>
             <Image
               floated='right'
               size='small'
               src={image}
+              style={{ marginTop: '2em' }}
             />
             <Card.Header>{name}</Card.Header>
             <Card.Meta>{about}</Card.Meta>
-          </Card.Content>
-          <Card.Content extra textAlign='center'>
+            <TimeCurrency balance={balance} hold={hold}/>
           </Card.Content>
         </Card>
         <Table basic padded >
@@ -72,4 +77,10 @@ export class Profile extends Component {
   }
 }
 
-export default Profile
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    offerings: state.offerings
+  }
+}
+export default connect(mapStateToProps)(Profile)

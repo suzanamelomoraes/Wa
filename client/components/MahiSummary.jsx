@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
 
 import SelectMahi from './SelectMahi'
-import { changeActiveTask } from '../actions/tasks'
+import { runMapActions } from '../actions/tasks'
 
 export class MahiSummary extends Component {
   state = {
@@ -16,58 +16,90 @@ export class MahiSummary extends Component {
     this.setState({
       modalVisible: !modalVisible
     })
-
   }
 
-  render () {
-    const { taskId, title, category, hours, description, image, assignerName, changeActiveTask, activeIndex, mapVisible } = this.props
+  handleClick = () => {
+    const { taskId, latitude, longitude, runMapActions } = this.props
+    const center = {
+      lat: latitude,
+      lng: longitude
+    }
+
+    runMapActions(center, taskId)
+  }
+
+  render() {
+    const {
+      taskId,
+      title,
+      category,
+      hours,
+      description,
+      image,
+      assignerName,
+      activeIndex,
+      mapVisible
+    } = this.props
     const { modalVisible } = this.state
 
     return (
-      <Card color={(taskId === activeIndex) ? "orange" : "grey"} style={{textAlign: 'left'}} >
+      <Card
+        color={taskId === activeIndex ? 'orange' : 'grey'}
+        style={{ textAlign: 'left' }}
+      >
         <Card.Content>
-          <Image
-            floated='right'
-            size='small'
-            src={image}
-            id='mahiImage'
-          />
-          <Card.Header as='h1' id='mahiTitle'>{title}</Card.Header>
-          <Card.Meta as='h3'id='mahiCategory'>Category <Icon name='columns' size='small'></Icon><br/><span>{category}</span></Card.Meta>
-          <Card.Meta as='h3'>Hours <Icon name='time' size='small'></Icon><br/><span id='mahiHours'>{hours} hours</span></Card.Meta>
-          <Card.Meta as='h3'id='mahiAssigner'>Needed by<br/><span>{assignerName}</span></Card.Meta>
+          <Image floated='right' size='small' src={image} id='mahiImage' />
+
+          <Card.Header as='h1' id='mahiTitle'>
+            {title}
+          </Card.Header>
+
+          <Card.Meta as='h3' id='mahiCategory'>
+            <u>Category</u> <Icon name='columns' size='small'></Icon>
+            <br />
+            <span>{category}</span>
+          </Card.Meta>
+
+          <Card.Meta as='h3'>
+            <u>Hours</u>
+            <Icon name='time' size='small'></Icon>
+            <br />
+            <span id='mahiHours'>{hours} hours</span>
+          </Card.Meta>
+
+          <Card.Meta as='h3' id='mahiAssigner'>
+            <u>Needed by</u>
+            <br />
+            <span>{assignerName}</span>
+          </Card.Meta>
+
           <Card.Description id='mahiDescription'>
             {description}
           </Card.Description>
         </Card.Content>
 
         <Card.Content textAlign='center' extra>
-          <div >
-            <Modal
-              trigger={
-                mapVisible 
-                ? <Button 
-                basic 
-                color='green' 
-                onClick={() => changeActiveTask(taskId)}>
+          <Modal
+            trigger={
+              mapVisible ? (
+                <Button basic color='green' onClick={this.handleClick}>
                   View in Map
                 </Button>
-                : <Button 
-                  basic 
-                  color='green' 
-                  onClick={this.toggleModalView}>
-                    View Detail
-                </Button>}
-              open={modalVisible}
-              >
-              <SelectMahi 
-                details={this.props} 
-                closeModal={this.toggleModalView}/>
-            </Modal>
-          </div>
+              ) : (
+                <Button basic color='green' onClick={this.toggleModalView}>
+                  View Detail
+                </Button>
+              )
+            }
+            open={modalVisible}
+          >
+            <SelectMahi
+              details={this.props}
+              closeModal={this.toggleModalView}
+            />
+          </Modal>
         </Card.Content>
       </Card>
-
     )
   }
 }
@@ -79,7 +111,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  changeActiveTask
+  runMapActions
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MahiSummary)

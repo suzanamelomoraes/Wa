@@ -7,7 +7,7 @@ import DeselectUser from './DeselectUser'
 
 export class VolunteerMahi extends Component {
   componentDidMount () {
-    this.props.getUser(this.props.data.assignerId)
+    this.props.getUser()
   }
 
   render () {
@@ -21,10 +21,10 @@ export class VolunteerMahi extends Component {
           <Card.Content size="huge">
             <Image src="/images/avatar01.png" size="small" floated="right" ></Image>
             <Card.Header as='h1'>{title}</Card.Header>
-            <Card.Meta as="h3">assigner <Icon name="user" size="small"></Icon><br/>{assignerName}</Card.Meta>
-            <Card.Meta as="h3">status <Icon name="spinner" size="small"></Icon><br/>{status}</Card.Meta>
-            <Card.Meta as='h3'>Category <Icon name='columns' size='small'></Icon><br/><span>{category}</span></Card.Meta>
-            <Card.Meta as="h3">Hours <Icon name="time" size="small"></Icon><br/>{hours}</Card.Meta>
+            <Card.Meta as="h3"><u>Assigner</u> <Icon name="user" size="small"></Icon><br/>{assignerName}</Card.Meta>
+            <Card.Meta as="h3"><u>Status</u> <Icon name="spinner" size="small"></Icon><br/>{status}</Card.Meta>
+            <Card.Meta as='h3'><u>Category</u> <Icon name='columns' size='small'></Icon><br/><span>{category}</span></Card.Meta>
+            <Card.Meta as="h3"><u>Hours</u> <Icon name="time" size="small"></Icon><br/>{hours}</Card.Meta>
             <Card.Description>{shortDescription}</Card.Description>
           </Card.Content>
           <Card.Content>

@@ -4,7 +4,7 @@ import { Modal, Card, Image, Button, Icon } from 'semantic-ui-react'
 import CompleteMahi from './CompleteMahi'
 import SelectOfferingMahi from './SelectOfferingMahi'
 import { connect } from 'react-redux'
-import { getUser } from '../api/users'
+import { getUserById } from '../api/users'
 
 export class OfferingMahi extends Component {
   state = {
@@ -12,7 +12,7 @@ export class OfferingMahi extends Component {
   }
   componentDidMount () {
     const { assignee } = this.props.data
-    getUser(assignee).then(user => {
+    getUserById(assignee).then(user => {
       if (user) {
         const assigneeName = user.name
         this.setState({ assigneeName: assigneeName })
@@ -43,15 +43,15 @@ export class OfferingMahi extends Component {
           <Card.Content size="huge">
             <Image src="/images/avatar01.png" size="small" floated="right" ></Image>
             <Card.Header as='h1'>{title}</Card.Header>
-            <Card.Meta as="h3">Assignee <Icon name="user" size="small"></Icon><br/>{this.state.assigneeName || 'Not Assigned'}</Card.Meta>
-            <Card.Meta as="h3">Status <Icon name="spinner" size="small"></Icon><br/>{status}</Card.Meta>
-            <Card.Meta as='h3'>Category <Icon name='columns' size='small'></Icon><br/>{categoryName && categoryName}</Card.Meta>
-            <Card.Meta as="h3">Hours <Icon name="time" size="small"></Icon><br/>{hours}</Card.Meta>
+            <Card.Meta as="h3"><u>Assignee</u> <Icon name="user" size="small"></Icon><br/>{assigneeName || 'Not Assigned'}</Card.Meta>
+            <Card.Meta as="h3"><u>Status</u> <Icon name="spinner" size="small"></Icon><br/>{status}</Card.Meta>
+            <Card.Meta as='h3'><u>Category</u> <Icon name='columns' size='small'></Icon><br/>{categoryName && categoryName}</Card.Meta>
+            <Card.Meta as="h3"><u>Hours</u> <Icon name="time" size="small"></Icon><br/>{hours}</Card.Meta>
 
             <Card.Description>{shortDescription}</Card.Description>
           </Card.Content>
           <Card.Content>
-            <CompleteMahi data={{ assigneeId, assignerId, taskId, hours }}/>
+            <CompleteMahi data={{ assigneeId, assignerId, taskId, hours, assignee }}/>
             <SelectOfferingMahi data={{ ...this.props.data, assigneeId, categoryName, assigneeName }}/>
           </Card.Content>
         </Card>
@@ -59,6 +59,7 @@ export class OfferingMahi extends Component {
     )
   }
 }
+
 function shortenText (longText) {
   const string = longText
   const splitArray = string.split(' ')

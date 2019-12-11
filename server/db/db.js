@@ -65,11 +65,13 @@ function getTaskByAssignee (id, db = connection) {
       'tasks.cat_id as categoryId',
       'tasks.assigner as assignerId',
       'tasks.name as title',
-      'tasks.description', 
+      'tasks.description',
       'tasks.status',
       'tasks.time as hours',
       'tasks.assignee as assignee',
       'users.name as assignerName',
+      'users.mobile as assignerMobile',
+      'users.email as assignerEmail',
       'categories.name as category'
     )
 }
@@ -79,7 +81,7 @@ function selectTask (id, assignee, db = connection) {
     .where('id', id)
     .update({
       assignee: assignee,
-      status: 'in progress'
+      status: 'In progress'
     })
     .then(() => getTask(id, db))
 }
@@ -89,7 +91,7 @@ function deselectTask (id, db = connection) {
     .where('id', id)
     .update({
       assignee: null,
-      status: 'open'
+      status: 'Open'
     })
     .then(() => getTask(id, db))
 }
@@ -98,15 +100,16 @@ function completeTask (id, assignerId, assigneeId, time, db = connection) {
   return db('tasks')
     .where('id', id)
     .update({
-      status: 'completed'
+      status: 'Completed',
+      assigner: null
     })
-    .then(() => {
-      return db('users')
-        .where('id', assignerId)
-        .decrement({
-          balance: time
-        })
-    })
+    // .then(() => {
+    //   return db('users')
+    //     .where('id', assignerId)
+    //     .decrement({
+    //       balance: time
+    //     })
+    // })
     .then(() => {
       return db('users')
         .where('id', assigneeId)
@@ -122,16 +125,23 @@ function addTask (
   { assignerId, title, description, status, hours },
   db = connection
 ) {
-  return db('tasks')
-    .insert({
-      cat_id: categoryId,
-      assigner: assignerId,
-      name: title,
-      description,
-      status,
-      time: hours
+  return db('users')
+    .where('id', assignerId)
+    .decrement({
+      balance: hours
     })
-    .then(() => getTasks(db))
+    .then(() =>
+      db('tasks')
+        .insert({
+          cat_id: categoryId,
+          assigner: assignerId,
+          name: title,
+          description,
+          status,
+          time: hours
+        })
+        .then(() => getTasks(db))
+    )
 }
 
 function getUsers (db = connection) {

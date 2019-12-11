@@ -1,62 +1,69 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 import { getUser } from '../actions/user'
 
 import Profile from './Profile'
-import TimeCurrency from './TimeCurrency'
 import AddMahi from './AddMahi'
 import OfferingList from './OfferingList'
 import VolunteeringList from './VolunteeringList'
 
+import { getOfferings, getVolunteering } from '../actions/tasks'
+
 export class Dashboard extends Component {
   state = {
-    id: 2,
-    user: {}
+    isLoaded: false,
+    user: null
   }
+
   componentDidMount () {
-    const id = 1
-    this.props.getUser(id)
-      .then(() =>
+    this.props.getUser()
+      .then(() => this.props.getOfferings())
+      .then(() => this.props.getVolunteering())
+      .then(() => {
         this.setState({
+          isLoaded: true,
           user: this.props.user
         })
-      )
+      })
   }
+
   render () {
-    const { id, user } = this.state
+    const { isLoaded, user } = this.state
+
+    if (!isLoaded || !user) return null
     return (
       <div>
-        <Grid columns={3}>
-          <Grid.Column>
-            <Profile user={user}/>
-            <TimeCurrency props={user}/>
-
+        <Grid stackable={true} columns={3}>
+          <Grid.Column width={5}>
+            <Profile />
           </Grid.Column>
-          <Grid.Column>
-            <OfferingList id={id}/>
+          <Grid.Column width={5}>
+            <OfferingList />
           </Grid.Column>
-          <Grid.Column>
-            <VolunteeringList id={id}/>
+          <Grid.Column width={5}>
+            <VolunteeringList />
           </Grid.Column>
         </Grid>
-        <Segment fixed='true' attached='bottom'>
-          <AddMahi id={id}/>
-        </Segment>
-      </div>
 
+        <AddMahi id={user.id} balance={user.balance} />
+      </div>
     )
   }
 }
 
 const mapDispatchToProps = {
-  getUser
+  getUser,
+  getOfferings,
+  getVolunteering
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    offerings: state.offerings,
+    volunteering: state.volunteering
   }
 }
 
