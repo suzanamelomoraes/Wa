@@ -9,6 +9,7 @@ import Notification from './Notification'
 import Error from './Error'
 import Loading from './Loading'
 
+import { getUser } from '../actions/user'
 import { changeActiveTask, getTasks } from '../actions/tasks'
 
 const MapToggleButton = ({ text, onClick }) => (
@@ -17,7 +18,7 @@ const MapToggleButton = ({ text, onClick }) => (
     size='huge'
     color='olive'
     onClick={onClick}
-    style={{ marginTop: 40, marginRight: 25 }}
+    style={{ marginTop: 50, marginRight: 25 }}
   >
     <Button.Content hidden style={{ fontSize: '0.8em' }}>
       {text}
@@ -34,7 +35,8 @@ export class Listing extends Component {
   }
 
   componentDidMount () {
-    this.props.getTasks()
+    this.props.getUser()
+      .then(() => this.props.getTasks())
       .then(() => this.props.changeActiveTask(null))
   }
 
@@ -75,6 +77,7 @@ export class Listing extends Component {
         <Divider />
 
         <Grid>
+          <Loading />
           <Grid.Column
             width={mapVisible ? 8 : 16}
             style={{
@@ -137,7 +140,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   changeActiveTask,
-  getTasks
+  getTasks,
+  getUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listing)

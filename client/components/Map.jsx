@@ -11,7 +11,7 @@ export class Map extends Component {
     },
     zoom: 15
   };
-  
+
   render () {
     return (
       <div style={{ height: '100vh', width: '100%' }}>

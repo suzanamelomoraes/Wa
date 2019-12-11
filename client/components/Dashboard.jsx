@@ -16,7 +16,7 @@ import { getOfferings, getVolunteering } from '../actions/tasks'
 export class Dashboard extends Component {
   state = {
     isLoaded: false,
-    user: null
+    user: {}
   }
 
   componentDidMount () {
@@ -34,13 +34,13 @@ export class Dashboard extends Component {
   render () {
     const { isLoaded, user } = this.state
 
-    if (!isLoaded || !user) return null
+    if (!isLoaded || !user) return <Error/>
     return (
       <div>
         <Loading />
         {this.props.error
           ? <Error />
-          : <>
+          : (<>
         <Grid stackable={true} columns={3}>
           <Grid.Column width={5}>
             <Profile />
@@ -55,6 +55,7 @@ export class Dashboard extends Component {
 
         <AddMahi id={user.id} balance={user.balance} />
         </>
+          )
         }
       </div>
     )

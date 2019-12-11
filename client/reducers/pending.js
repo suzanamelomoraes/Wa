@@ -34,6 +34,7 @@ export default function (pending = false, action) {
     case GET_TASKS_SUCCESS:
     case GET_OFFERINGS_SUCCESS:
     case GET_USER_SUCCESS:
+    case GET_VOLUNTEERING_SUCCESS:
     case SET_ERROR:
     case GET_VOLUNTEERING_SUCCESS:
       return false
