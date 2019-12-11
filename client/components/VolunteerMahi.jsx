@@ -4,6 +4,7 @@ import { Card, Image, Icon } from 'semantic-ui-react'
 import SelectVolunteerMahi from './SelectVolunteerMahi'
 import { getUser } from '../actions/user'
 import DeselectUser from './DeselectUser'
+import Loading from './Loading'
 
 export class VolunteerMahi extends Component {
   componentDidMount () {
@@ -17,6 +18,7 @@ export class VolunteerMahi extends Component {
 
     return (
       <>
+        <Loading />
         <Card>
           <Card.Content size="huge">
             <Image src="/images/avatar01.png" size="small" floated="right" ></Image>
@@ -36,6 +38,7 @@ export class VolunteerMahi extends Component {
     )
   }
 }
+
 function shortenText (longText) {
   const string = longText
   const splitArray = string.split(' ')
