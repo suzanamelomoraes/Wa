@@ -9,27 +9,29 @@ import { getUser } from '../actions/user'
 import { deleteMahi } from '../api/tasks'
 
 export class SelectOfferingMahi extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      showModal: false
-    }
-    this.toggleModal = this.toggleModal.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+_isMounted = false
+constructor (props) {
+  super(props)
+  this.state = {
+    showModal: false
   }
+}
+componentDidMount () {
+  this._isMounted = true
+}
 
-  toggleModal () {
-    this._isMounted = true
+  toggleModal =() => {
     this.setState({ showModal: false })
   }
 
-  handleClick () {
-    this._isMounted = true
-    const { id, assignerId, hours } = this.props.data
-    deleteMahi({ id, assignerId, hours })
-      .then(() => this.props.getUser())
-      .then(() => this.props.getOfferings())
-      .then(() => this.toggleModal())
+  handleClick = () => {
+    if (this._isMounted === true) {
+      const { id, assignerId, hours } = this.props.data
+      deleteMahi({ id, assignerId, hours })
+        .then(() => this.props.getUser())
+        .then(() => this.props.getOfferings())
+        .then(() => this.toggleModal())
+    }
   }
 
   render () {
@@ -55,13 +57,13 @@ export class SelectOfferingMahi extends Component {
             basic
             color ="red"
             content="Delete"
-            onClick={this.handleClick}>
+            onClick={() => this.handleClick()}>
           </Button>
           <Button
             basic
             color ="green"
             content="Close"
-            onClick={this.toggleModal}>
+            onClick={() => this.toggleModal()}>
           </Button>
         </Modal.Actions>
       </Modal>

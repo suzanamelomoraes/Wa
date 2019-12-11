@@ -109,8 +109,8 @@ function completeTask (id, assignerId, assigneeId, time, db = connection) {
         .increment({
           balance: time
         })
+        .then(() => getTask(id, db))
     })
-    .then(() => getTask(id, db))
 }
 
 function addTask (
@@ -118,35 +118,37 @@ function addTask (
   { assignerId, title, description, status, hours },
   db = connection
 ) {
-  db('users')
+  return db('users')
     .where('id', assignerId)
     .decrement({
       balance: hours
     })
-
-  return db('tasks')
-    .insert({
-      cat_id: categoryId,
-      assigner: assignerId,
-      name: title,
-      description,
-      status,
-      time: hours
+    .then(() => {
+      return db('tasks')
+        .insert({
+          cat_id: categoryId,
+          assigner: assignerId,
+          name: title,
+          description,
+          status,
+          time: hours
+        })
+        .then(() => getTasks(db))
     })
-    .then(() => getTasks(db))
 }
 
 function deleteTask ({ id, assignerId, hours }, db = connection) {
-  db('users')
+  return db('users')
     .where('id', assignerId)
     .increment({
       balance: hours
     })
-
-  return db('tasks')
-    .where('id', id)
-    .del()
-    .then(() => getTasks(db))
+    .then(() => {
+      return db('tasks')
+        .where('id', id)
+        .del()
+        .then(() => getTasks(db))
+    })
 }
 
 function getUsers (db = connection) {
