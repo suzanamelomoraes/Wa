@@ -54,7 +54,9 @@ export function getVolunteering (id) {
     dispatch(getVolunteeringPending())
 
     return apiUser.getVolunteering(id)
-      .then(volunteering => dispatch(getVolunteeringSuccess(volunteering)))
+      .then(volunteering => {
+        return dispatch(getVolunteeringSuccess(volunteering))
+      })
       .catch(err => dispatch(setError(err.message)))
   }
 }
