@@ -53,7 +53,7 @@ export class Listing extends Component {
 
   render () {
     const { mapVisible } = this.state
-    const { tasks, userId } = this.props
+    const { tasks } = this.props
 
     return (
       <React.Fragment>
@@ -92,7 +92,6 @@ export class Listing extends Component {
                     <MahiSummary
                       key={mahi.taskId}
                       {...mahi}
-                      userId={userId}
                       mapVisible={mapVisible}
                     />
                   )
@@ -128,8 +127,7 @@ export class Listing extends Component {
 const mapStateToProps = state => {
   return {
     activeIndex: state.activeIndex,
-    tasks: state.tasks,
-    userId: state.user.id
+    tasks: state.tasks
   }
 }
 
