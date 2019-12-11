@@ -6,10 +6,6 @@ import { addMahi } from '../api/tasks'
 import { getCategories } from '../actions/categories'
 import { getOfferings } from '../actions/tasks'
 import { getUser } from '../actions/user'
-<<<<<<< HEAD
-
-=======
->>>>>>> 9dc1d392e62b77c0a09c628d0ad16fa8ebfd1870
 import {
   Modal,
   Form,
