@@ -5,7 +5,7 @@ import { Message, Container } from 'semantic-ui-react'
 export class Error extends Component {
   render () {
     return (
-      <Container>
+      <Container style={{margin: '10rem'}} >
 
         {this.props.error &&
         <Message negative floating>

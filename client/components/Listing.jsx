@@ -6,6 +6,7 @@ import MahiSummary from './MahiSummary'
 import Map from './Map'
 import MahiMarker from './MahiMarker'
 import Notification from './Notification'
+import Error from './Error'
 import Loading from './Loading'
 
 // import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
@@ -58,6 +59,7 @@ export class Listing extends Component {
 
     return (
       <React.Fragment>
+        <Loading />
         <Grid>
           <Grid.Column
             textAlign='left'
@@ -86,19 +88,22 @@ export class Listing extends Component {
               overflow: 'scroll'
             }}
           >
-            <Card.Group centered>
-              {tasks.map(mahi => {
-                if (mahi.status === 'Open') {
-                  return (
-                    <MahiSummary
-                      key={mahi.taskId}
-                      {...mahi}
-                      mapVisible={mapVisible}
-                    />
-                  )
-                }
-              })}
-            </Card.Group>
+            {this.props.error
+              ? <Error /> : (
+                <Card.Group centered>
+                  {tasks.map(mahi => {
+                    if (mahi.status === 'Open') {
+                      return (
+                        <MahiSummary
+                          key={mahi.taskId}
+                          {...mahi}
+                          mapVisible={mapVisible}
+                        />
+                      )
+                    }
+                  })}
+                </Card.Group>)
+            }
           </Grid.Column>
 
           {mapVisible &&
@@ -116,6 +121,7 @@ export class Listing extends Component {
                     )
                   }
                 })}
+
               </Map>
             </Grid.Column>
           }
@@ -128,12 +134,13 @@ export class Listing extends Component {
 const mapStateToProps = state => {
   return {
     activeIndex: state.activeIndex,
-    tasks: state.tasks
+    tasks: state.tasks,
+    error: state.error,
+    load: state.pending
   }
 }
 
 const mapDispatchToProps = {
-  setError,
   changeActiveTask,
   getTasks
 }

@@ -7,7 +7,7 @@ export class VolunteeringList extends React.Component {
 
   render () {
     const { volunteering } = this.props
-console.log(volunteering)
+
     return (
       <Segment style={{ marginTop: 100 }}>
         {volunteering.length
