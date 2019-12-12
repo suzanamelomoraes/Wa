@@ -86,7 +86,8 @@ exports.seed = function(knex) {
           cat_id: 12,
           assigner: 5,
           name: "Surfing lessons needed",
-          description: "Looking for someone that can help me learn how to surf over the weekends this summer.",
+          description:
+            "Looking for someone that can help me learn how to surf over the weekends this summer.",
           status: "Open",
           time: "6"
         },
@@ -115,7 +116,8 @@ exports.seed = function(knex) {
           cat_id: 9,
           assigner: 13,
           name: "Need assistance after injury",
-          description: "I broke my ankle. Need some help with things around the house for two weeks.",
+          description:
+            "I broke my ankle. Need some help with things around the house for two weeks.",
           status: "Open",
           time: "4"
         },
@@ -141,9 +143,10 @@ exports.seed = function(knex) {
         {
           id: 15,
           cat_id: 6,
-          assigner: 22,
+          assigner: 10,
           name: "Cleaning house",
-          description: "Need someone to deep clean my house over the weekend since I'm moving out.",
+          description:
+            "Need someone to deep clean my house over the weekend since I'm moving out.",
           status: "Open",
           time: "5"
         },
@@ -172,7 +175,8 @@ exports.seed = function(knex) {
           cat_id: 3,
           assigner: 6,
           name: "Paint my living room",
-          description: "Need help painting my living room. All materials and tools are provided.",
+          description:
+            "Need help painting my living room. All materials and tools are provided.",
           status: "Open",
           time: "5"
         },
@@ -181,7 +185,8 @@ exports.seed = function(knex) {
           cat_id: 2,
           assigner: 3,
           name: "Walk my dogs",
-          description: "Looking for someone to walk my dogs at 5pm on weekdays this month. Have one dachshund and one samoyed.",
+          description:
+            "Looking for someone to walk my dogs at 5pm on weekdays this month. Have one dachshund and one samoyed.",
           status: "Open",
           time: "4"
         },
@@ -190,7 +195,8 @@ exports.seed = function(knex) {
           cat_id: 1,
           assigner: 18,
           name: "Replace tires",
-          description: "I need help to replace the tires of my car. Toyota Corolla 2013, already have the tires.",
+          description:
+            "I need help to replace the tires of my car. Toyota Corolla 2013, already have the tires.",
           status: "Open",
           time: "2"
         },
@@ -199,7 +205,8 @@ exports.seed = function(knex) {
           cat_id: 2,
           assigner: 25,
           name: "Feeding my dogs",
-          description: "Going on a short trip next weekend. Need someone to feed my dogs every morning.",
+          description:
+            "Going on a short trip next weekend. Need someone to feed my dogs every morning.",
           status: "Open",
           time: "1"
         },
