@@ -8,7 +8,7 @@ exports.seed = function(knex) {
         {
           id: 1,
           cat_id: 5,
-          assigner: 23,
+          assigner: 20,
           name: "Look after my baby",
           description:
             "Need someone to look after my five-month old baby on weekdays from 1pm to 5pm.",
@@ -18,7 +18,7 @@ exports.seed = function(knex) {
         {
           id: 2,
           cat_id: 3,
-          assigner: 4,
+          assigner: 2,
           name: "Fix roof gutter",
           description: "There's a hole in it and it's almost falling off",
           status: "Open",
@@ -46,7 +46,7 @@ exports.seed = function(knex) {
         {
           id: 5,
           cat_id: 16,
-          assigner: 8,
+          assigner: 14,
           name: "Wanted: Meditation teacher",
           description:
             "My community centre group and I are looking for a meditation teacher to give one class on 15 January.",
@@ -93,7 +93,7 @@ exports.seed = function(knex) {
         {
           id: 10,
           cat_id: 11,
-          assigner: 25,
+          assigner: 15,
           name: "Moving house",
           description:
             "Need someone to help me move to a new house. Pretty close, not too much stuff. Will throw in a six-pack and pizza too.",
@@ -188,7 +188,7 @@ exports.seed = function(knex) {
         {
           id: 20,
           cat_id: 1,
-          assigner: 4,
+          assigner: 18,
           name: "Replace tires",
           description: "I need help to replace the tires of my car. Toyota Corolla 2013, already have the tires.",
           status: "Open",
