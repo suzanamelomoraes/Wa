@@ -83,7 +83,7 @@ export class Listing extends Component {
           <Grid.Column
             width={mapVisible ? 8 : 16}
             style={{
-              minHeight: '100vh',
+              height: '100vh',
               width: '100%',
               overflow: 'scroll'
             }}
