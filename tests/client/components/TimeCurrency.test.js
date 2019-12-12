@@ -9,9 +9,10 @@ test('Testing for true is truthy', () => {
 
 describe('Testing TimeuCurrency component', () => {
   it('test for a number', () => {
-    const expected = '3'
-    const props = { balance: 3 }
-    const component = mount(<TimeCurrency props={props}/>)
+    const balance = 3
+    const hold = 1
+    const expected = `${balance} hour(s)Total Wā${hold} hour(s)Wā on hold`
+    const component = mount(<TimeCurrency balance={balance} hold={hold}/>)
     const wrapper = component
     expect(wrapper.text()).toMatch(expected)
   })

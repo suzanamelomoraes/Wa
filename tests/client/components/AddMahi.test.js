@@ -15,14 +15,14 @@ const categories = [
 describe('<Add Mahi /> component tests', () => {
   it('contains renders a button that can be clicked to add mahi', () => {
     const component = mount(
-      <AddMahi categories={categories} getCategories={jest.fn()} />
+      <AddMahi user={{balance:3}} categories={categories} getCategories={jest.fn()} />
     )
     expect(component.find('button#addMahi').text()).toMatch('Add Mahi')
     expect(component.state('modalVisible')).toBe(false)
   })
   it('should update the state of title on change', () => {
     const component = mount(
-      <AddMahi categories={categories} getCategories={jest.fn()} />
+      <AddMahi user={{balance:3}} categories={categories} getCategories={jest.fn()} />
     )
     const button = component.find('button#addMahi')
     button.simulate('click')
@@ -34,7 +34,7 @@ describe('<Add Mahi /> component tests', () => {
   })
   it('should update the state of description on change', () => {
     const component = mount(
-      <AddMahi categories={categories} getCategories={jest.fn()} />
+      <AddMahi user={{balance:3}} categories={categories} getCategories={jest.fn()} />
     )
     const button = component.find('button#addMahi')
     button.simulate('click')
@@ -45,7 +45,7 @@ describe('<Add Mahi /> component tests', () => {
   })
   it('should update the state of time on change', () => {
     const component = mount(
-      <AddMahi categories={categories} getCategories={jest.fn()} />
+      <AddMahi user={{balance:3}} categories={categories} getCategories={jest.fn()} />
     )
     const button = component.find('button#addMahi')
     button.simulate('click')
@@ -57,7 +57,7 @@ describe('<Add Mahi /> component tests', () => {
   it('should change render a button', () => {
     
     const component = mount(
-      <AddMahi categories={categories} getCategories={jest.fn()} />
+      <AddMahi user={{balance:3}} categories={categories} getCategories={jest.fn()} />
     )
 
     const button = component.find('button#addMahi')
