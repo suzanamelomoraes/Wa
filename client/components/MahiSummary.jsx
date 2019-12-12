@@ -41,6 +41,9 @@ export class MahiSummary extends Component {
       mapVisible
     } = this.props
     const { modalVisible } = this.state
+    const shortTitle = shortenText(title, 43)
+    const shortDescription = shortenText(description, 120)
+
 
     return (
       <Card
@@ -51,7 +54,7 @@ export class MahiSummary extends Component {
           <Image floated='right' size='small' src={image} id='mahiImage' />
 
           <Card.Header as='h1' id='mahiTitle'>
-            {title}
+            {shortTitle}
           </Card.Header>
 
           <Card.Meta as='h3' id='mahiCategory'>
@@ -74,7 +77,7 @@ export class MahiSummary extends Component {
           </Card.Meta>
 
           <Card.Description id='mahiDescription'>
-            {description}
+            {shortDescription}
           </Card.Description>
         </Card.Content>
 
@@ -103,6 +106,29 @@ export class MahiSummary extends Component {
     )
   }
 }
+
+// maxCharLength: max number of character before shortening occurs
+function shortenText (longText, maxCharLength) {
+  const charLength = longText.length
+
+  if (charLength > maxCharLength) {
+    // If text is too long, then return the amount
+    const splitArray = longText.split(' ')
+    let charCounter = 0
+    let i = 0
+    for (i = 0; i < splitArray.length; i++) {
+      if (charCounter + splitArray[i].length + 1 > maxCharLength) {
+        break
+      }
+      charCounter += splitArray[i].length + 1
+    }
+    const shortenedText = splitArray.slice(0, i).join(' ') + ' ...'
+    return shortenedText
+  }
+  //  If text is right
+  return longText
+}
+
 
 const mapStateToProps = state => {
   return {

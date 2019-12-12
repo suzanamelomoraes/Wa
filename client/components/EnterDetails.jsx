@@ -65,14 +65,12 @@ handleChange = (e, { name, value }) => this.setState({ [name]: value })
       suburb: suburb,
       city: city
     })
-      .then(geocode =>
-        addUserDetails({
-          email: email,
-          mobile: mobile,
-          street: street,
-          suburb: suburb,
-          city: city
-        }, geocode)
+      .then(addressDetails =>
+        addUserDetails(
+          addressDetails,
+          mobile,
+          email
+        )
       )
       .then(() =>
         this.props.history.push('/dashboard'))

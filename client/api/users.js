@@ -49,17 +49,20 @@ export function geocodeAddress (details) {
   return request
     .get(`${url}${trimmedStreet}+${suburb}+${city}+New+Zealand&key=${APIKey}`)
     .then(res => {
-      return res.body.results[0].geometry.location
+      return {
+        geolocation: res.body.results[0].geometry.location,
+        address: res.body.results[0].formatted_address
+      }
     })
     .catch(err => { throw new Error(err.message) })
 }
 
-export function addUserDetails (details, geocode) {
+export function addUserDetails (addressDetails, mobile, email) {
   return request
     .post(`${apiURL}/users`)
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-    .send({ details, geocode })
+    .send({ addressDetails, mobile,email })
     .then(res => res.body)
     .catch(err => { throw new Error(err.message) })
 }
