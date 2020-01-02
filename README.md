@@ -1,6 +1,6 @@
 # Wa
 
-Final project where I worked as a Full Stack developer presented at my graduation ceremony at Dev Academy.
+Final project presented at my graduation ceremony at Dev Academy and where I worked as a Full Stack developer in a team of six developers.
 
 Application which manages time as money to who wants to help their community.
 
