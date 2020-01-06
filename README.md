@@ -1,6 +1,9 @@
 # Wa
 
-Final project presented at my graduation ceremony at Dev Academy and where I worked as a Full Stack developer in a team of six developers.
+Final project presented at my graduation ceremony at Dev Academy and where I worked as a Full Stack developer in a team of six developers. The development process simulates a real work environment under short deadlines, using agile principles and scrum practices.
+
+
+Wa
 
 Application which manages time as money to who wants to help their community.
 
@@ -8,7 +11,7 @@ The user can register a profile and offer a mahi (task) which her/him/they need 
 
 
 
-Technologies
+Technologies:
 
 React, Redux, Node.js, SQLite3, Knex, Express, Jest, Enzyme, Superagent, Authenticare and Semantic-UI
 
