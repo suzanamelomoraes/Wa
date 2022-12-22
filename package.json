@@ -34,7 +34,7 @@
     "authenticare": "^0.4.6",
     "express": "^4.17.1",
     "google-map-react": "^1.1.5",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "knex": "^0.20.3",
     "pg": "^7.14.0",
     "react-google-maps-addons": "^1.0.2",
